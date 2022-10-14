@@ -12,7 +12,6 @@ public abstract class Interactable : MonoBehaviour
     [Tooltip("Message to display when interacted with.")] public string promptMessage = "Default message.";
     [Tooltip("How loud the interactable's sounds are.")] [Range(0f, 1f)] public float soundVolume = 1f;
     [Tooltip("Sound that plays when the object is interacted with.")] public AudioClip interactSound;
-    private AudioSource audioSource;
 
     /// <summary>
     /// Call from the player controller
@@ -20,7 +19,6 @@ public abstract class Interactable : MonoBehaviour
     /// </summary>
     public void BaseInteract() {
         Interact();
-        PlaySound();
     }
 
     /// <summary>
@@ -28,12 +26,5 @@ public abstract class Interactable : MonoBehaviour
     /// </summary>
     protected virtual void Interact() {
         Debug.Log("You just interacted with me, my name is:" + this.name);
-    }
-
-    /// <summary>
-    /// Play a sound upon interaction.
-    /// </summary>
-    protected virtual void PlaySound() {
-        audioSource.PlayOneShot(interactSound, soundVolume);
     }
 }
