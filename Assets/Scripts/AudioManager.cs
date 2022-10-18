@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
+            Debug.Log("Audio Manager initialized.");
         }
         else
         {
@@ -32,18 +33,20 @@ public class AudioManager : MonoBehaviour
 
     public static void SetVolume(MixerLabel mixerLabel, float value)
     {
-        instance._mixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(value) * 20);
+        instance._mixer?.SetFloat(mixerLabel.ToString(), Mathf.Log10(value) * 20);
     }
 
     public static float GetVolume(MixerLabel mixerLabel)
     {
-        instance._mixer.GetFloat(mixerLabel.ToString(), out float val);
+        float val = 0;
+        instance._mixer?.GetFloat(mixerLabel.ToString(), out val);
         return val;
     }
 
     public static float GetVolumeNormalized(MixerLabel mixerLabel)
     {
-        instance._mixer.GetFloat(mixerLabel.ToString(), out float val);
+        float val = 0;
+        instance._mixer?.GetFloat(mixerLabel.ToString(), out val);
         return (val / 20f) + 1;
     }
 }

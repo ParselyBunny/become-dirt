@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Menu
 {
-    public GameObject ParentObject { get; private set; }
+    public GameObject MenuRoot { get; private set; }
     public bool StartEnabled { get; private set; }
     public bool AlwaysEnabled { get; private set; }
 
     public Menu(GameObject obj, bool se, bool ae)
     {
-        this.ParentObject = obj;
+        this.MenuRoot = obj;
         this.StartEnabled = se;
         this.AlwaysEnabled = ae;
     }
@@ -32,5 +32,10 @@ public class MenuComponent : MonoBehaviour
     private void OnDestroy()
     {
         UIMenus.RemoveMenu(this.asMenu);
+    }
+
+    public void SetActiveMenu(string menuName)
+    {
+        UIMenus.SetActiveMenu(menuName);
     }
 }

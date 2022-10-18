@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mixerLabel: 0
+  _sliderValueDisplay: {fileID: 0}
 --- !u!1 &7080673063042964903
 GameObject:
   m_ObjectHideFlags: 0
