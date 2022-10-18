@@ -1,26 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using JTools;
 
 /// <summary>
-/// Attach this to an object to allow player
-/// to toggle it open and closed.
+/// Attach this to an object with an animator
+/// that has a trigger to allow player
+/// to toggle it. Intended for openable
+/// objects like doors and drawers.
 /// </summary>
 public class Openable : Interactable
 {
-    public bool isOpen = false;
-    public Animator animator;
+    [Tooltip("Name of a trigger to activate on this object's animator component.")] public string TriggerName = "openClose";
+    private Animator _Animator;
 
     void Start() {
-        // if ? then : else
-        animator = (GetComponent<Animator>() != null) ? GetComponent<Animator>() : new Animator();
+        _Animator = (GetComponent<Animator>() != null) ? GetComponent<Animator>() : new Animator();
     }
 
     protected override void Interact()
     {
         base.Interact();
-        // TODO: trigger obj animation
-        ImpactController.current.soundComponent.PlayOneShot(interactSound, soundVolume);   
+
+        _Animator.SetTrigger(TriggerName);
     }
 }

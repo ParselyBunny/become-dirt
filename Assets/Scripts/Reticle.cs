@@ -3,44 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manage behavior of a reticle image.
+/// </summary>
 public class Reticle : MonoBehaviour
 {
-    public float restingSize;
-    public float maxSize;
-    public float speed;
-    public Sprite focusedReticle;
-    public Sprite unfocusedReticle;
-    private RectTransform reticle;
-    private Image image;
-    private float currentSize;
-    private bool focus = false;
+    public float RestingSize;
+    public float MaxSize;
+    public float Speed;
+    public Sprite FocusedReticle;
+    public Sprite UnfocusedReticle;
+    private RectTransform _reticle;
+    private Image _image;
+    private float _currentSize;
+    private bool _focus = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        reticle = GetComponent<RectTransform>();
-        image = GetComponent<Image>();
+        _reticle = GetComponent<RectTransform>();
+        _image = GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (focus) {
-            currentSize = Mathf.Lerp(currentSize, maxSize, Time.deltaTime * speed);
+        if (_focus) {
+            _currentSize = Mathf.Lerp(_currentSize, MaxSize, Time.deltaTime * Speed);
         } else {
-            currentSize = Mathf.Lerp(currentSize, restingSize, Time.deltaTime * speed);
+            _currentSize = Mathf.Lerp(_currentSize, RestingSize, Time.deltaTime * Speed);
         }
 
-        reticle.sizeDelta = new Vector2(currentSize, currentSize);
+        _reticle.sizeDelta = new Vector2(_currentSize, _currentSize);
     }
 
+    /// <summary>
+    /// Set the focus state of the reticle.
+    /// </summary>
     public void SetFocus(bool value) {
-        focus = value;
+        _focus = value;
 
+        // Swap to appropriate reticle type
         if (value) {
-            image.sprite = focusedReticle;
+            _image.sprite = FocusedReticle;
         } else {
-            image.sprite = unfocusedReticle;
+            _image.sprite = UnfocusedReticle;
         }
     }
 }
