@@ -39,14 +39,14 @@ public class AudioManager : MonoBehaviour
     public static float GetVolume(MixerLabel mixerLabel)
     {
         float val = 0;
-        instance._mixer?.GetFloat(mixerLabel.ToString(), out val);
+        instance?._mixer?.GetFloat(mixerLabel.ToString(), out val);
         return val;
     }
 
     public static float GetVolumeNormalized(MixerLabel mixerLabel)
     {
         float val = 0;
-        instance._mixer?.GetFloat(mixerLabel.ToString(), out val);
+        instance?._mixer?.GetFloat(mixerLabel.ToString(), out val);
         return (val / 20f) + 1;
     }
 }

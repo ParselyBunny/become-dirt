@@ -5,7 +5,9 @@ namespace JTools
     public class ImpactComponent_Addon_UI : ImpactComponent_Addon
     {
         [SerializeField]
-        private string _pauseMenuName;
+        private string _pauseMenuName = "Pause Menu";
+
+        private bool menusOpen = false;
 
         public override void ComponentUpdate(ImpactController player)
         {
@@ -13,7 +15,21 @@ namespace JTools
 
             if (owner.inputComponent.inputData.pressedMenu)
             {
-                UIMenus.SetActiveMenu(this._pauseMenuName);
+                Debug.LogFormat("Toggling Pause Menu - now enabled: `{0}`", !menusOpen);
+                if (menusOpen)
+                {
+                    UIMenus.SetActiveMenu("");
+                    menusOpen = false;
+                    // lock cursor
+                    // enable player movement
+                }
+                else
+                {
+                    UIMenus.SetActiveMenu(this._pauseMenuName);
+                    menusOpen = true;
+                    // unlock cursor
+                    // disable player movement
+                }
             }
         }
     }

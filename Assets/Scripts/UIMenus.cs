@@ -42,7 +42,7 @@ public static class UIMenus
     // TODO: There's a better way to do this without relying on an accurate string
     public static void SetActiveMenu(string menuName)
     {
-        Debug.LogFormat("Setting Active UI Menu to %s", menuName);
+        Debug.LogFormat("Setting Active UI Menu to `{0}`", menuName);
         foreach (KeyValuePair<string, Menu> entry in _menus)
         {
             entry.Value.MenuRoot.SetActive(
