@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JTools;
 
 /// <summary>
 /// Attach this to an object with an animator
@@ -21,7 +22,10 @@ public class NPC : Interactable
     protected override void Interact()
     {
         base.Interact();
-
-        //_animator.SetTrigger(TriggerName);
+        
+        UIMenus.SetActiveMenu("Dialogue");
+        InkManager.Instance.Continue();
+        // TODO: Make own implementation for lock input?
+        //JTools.ImpactController.current.inputComponent.lockInput = true;
     }
 }
