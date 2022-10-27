@@ -35,7 +35,7 @@ public class InkManager : MonoBehaviour
         SetDialogue(_story.Continue());
 
         // Unlock player input
-        //JTools.ImpactController.current.inputComponent.lockInput = false;
+        JTools.ImpactController.current.inputComponent.lockInput = false;
     }
 
     public void SetName(string newText) {

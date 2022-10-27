@@ -25,7 +25,6 @@ public class NPC : Interactable
         
         UIMenus.SetActiveMenu("Dialogue");
         InkManager.Instance.Continue();
-        // TODO: Make own implementation for lock input?
-        //JTools.ImpactController.current.inputComponent.lockInput = true;
+        JTools.ImpactController.current.inputComponent.lockInput = true;
     }
 }
