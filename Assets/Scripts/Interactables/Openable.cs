@@ -13,11 +13,12 @@ public class Openable : Interactable
     [Tooltip("Name of a trigger to activate on this object's animator component.")] public string TriggerName = "openClose";
     private Animator _Animator;
 
-    void Start() {
+    void Start()
+    {
         _Animator = (GetComponent<Animator>() != null) ? GetComponent<Animator>() : new Animator();
     }
 
-    protected override void Interact()
+    public override void Interact()
     {
         base.Interact();
 

@@ -39,7 +39,7 @@ public static class UIMenus
         Debug.LogFormat("Trying to RemoveMenu that already exists with name %s", menu.MenuRoot.name);
     }
 
-    // TODO: There's a better way to do this without relying on an accurate string
+    // TODO: There's a better way to do this without relying on an 'accurate string'
     public static void SetActiveMenu(string menuName)
     {
         Debug.LogFormat("Setting Active UI Menu to `{0}`", menuName);
@@ -48,6 +48,18 @@ public static class UIMenus
             entry.Value.MenuRoot.SetActive(
                 entry.Value.MenuRoot.name == menuName || entry.Value.AlwaysEnabled
             );
+        }
+    }
+
+    public static void HideMenu(string menuName)
+    {
+        Debug.LogFormat("Setting Active UI Menu to `{0}`", menuName);
+        foreach (KeyValuePair<string, Menu> entry in _menus)
+        {
+            if (entry.Value.MenuRoot.name == menuName)
+            {
+                entry.Value.MenuRoot.SetActive(false);
+            }
         }
     }
 }

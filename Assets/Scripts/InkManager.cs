@@ -7,42 +7,88 @@ using TMPro;
 /// </summary>
 public class InkManager : MonoBehaviour
 {
-    public static InkManager Instance { get { return _instance; } }
     private static InkManager _instance;
-    private Story _story;
+
+    public static bool IsPlaying { get; private set; }
+
     [SerializeField]
     private TextAsset _inkJSONAsset;
-    [Tooltip("Drag the TMPro text UI object for the name of the speaker in here to have it updated.")] public TextMeshProUGUI NameText;
-    [Tooltip("Drag the TMPro text UI object for dialogue content in here to have it updated.")] public TextMeshProUGUI DialogueText;
+    [SerializeField, Tooltip("Drag the TMPro text UI object for the name of the speaker in here to have it updated.")]
+    private TextMeshProUGUI NameText;
+    [SerializeField, Tooltip("Drag the TMPro text UI object for dialogue content in here to have it updated.")]
+    private TextMeshProUGUI DialogueText;
 
-    void Awake()
-    {
-        _instance = this;
-        StartStory();
-    }
+    private Story _story;
+    private static bool _continuePlaying;
 
-    /// <summary>
-    /// Create a new Story object.
-    /// </summary>
-    void StartStory()
+    private void Awake()
     {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this);
+            Debug.Log("Ink Manager initialized.");
+        }
+        else
+        {
+            Debug.LogWarning("InkManager already instanced, destroying self.", this.gameObject);
+            Destroy(this);
+        }
+
         _story = new Story(_inkJSONAsset.text);
     }
 
-    public void Continue() {
-        //TODO: do while Continue(), afterward unlock player input and hide Dialogue menu
-        //TODO: parse out name of character and set it
-        SetDialogue(_story.Continue());
+    public static void PlayNext()
+    {
+        if (IsPlaying)
+        {
+            _continuePlaying = true;
+        }
+        else
+        {
+            _instance.StartCoroutine(_instance.ContinueStory());
+        }
+    }
+
+    private System.Collections.IEnumerator ContinueStory()
+    {
+        JTools.ImpactController.current.inputComponent.lockInput = true;
+        IsPlaying = true;
+        _continuePlaying = true;
+        UIMenus.SetActiveMenu("Dialogue");
+
+        // TODO: parse out name of character and set it
+        // TODO: condition for pausing story-level ink execution (indicating when a dialogue box should end)
+        while (_instance._story.canContinue)
+        {
+            if (_continuePlaying)
+            {
+                SetDialogue(_instance._story.Continue());
+                _continuePlaying = false;
+            }
+            yield return null;
+        }
+
+        EndDialogue();
 
         // Unlock player input
+        UIMenus.HideMenu("Dialogue");
+        IsPlaying = false;
         JTools.ImpactController.current.inputComponent.lockInput = false;
     }
 
-    public void SetName(string newText) {
-        NameText.text = newText;
+    private static void SetName(string newText)
+    {
+        _instance.NameText.text = newText;
     }
 
-    public void SetDialogue(string newText) {
-        DialogueText.text = newText;
+    private static void SetDialogue(string newText)
+    {
+        _instance.DialogueText.text = newText;
+    }
+
+    private static void EndDialogue()
+    {
+        _instance.DialogueText.text = "";
     }
 }

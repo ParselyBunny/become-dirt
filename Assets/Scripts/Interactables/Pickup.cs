@@ -8,10 +8,10 @@ using UnityEngine;
 /// </summary>
 public class Pickup : Interactable
 {
-    protected override void Interact()
+    public override void Interact()
     {
         base.Interact();
-              
+
         Destroy(this.gameObject);
     }
 }

@@ -29,18 +29,22 @@ namespace JTools
             RaycastHit hitInfo;
 
             // Check for collision with an object that has an Interactable component
-            if (Physics.Raycast(ray, out hitInfo, distance, mask)) {
-                if (hitInfo.collider.GetComponent<Interactable>() != null) {
-                    Debug.Log(hitInfo.collider.GetComponent<Interactable>().PromptMessage);
-
+            if (Physics.Raycast(ray, out hitInfo, distance, mask))
+            {
+                if (hitInfo.collider.GetComponent<Interactable>() != null)
+                {
                     // Change reticle state to show player is aiming at something interactable
                     reticle.SetFocus(true);
 
-                    if (owner.inputComponent.inputData.pressedInteract) {
-                        hitInfo.collider.GetComponent<Interactable>().BaseInteract();
+                    if (owner.inputComponent.inputData.pressedInteract)
+                    {
+                        Debug.Log(hitInfo.collider.GetComponent<Interactable>().PromptMessage);
+                        hitInfo.collider.GetComponent<Interactable>().Interact();
                     }
                 }
-            } else {
+            }
+            else
+            {
                 reticle.SetFocus(false);
             }
         }
