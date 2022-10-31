@@ -1,6 +1,7 @@
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
+using System;
 
 /// <summary>
 /// Manage Ink Story.
@@ -38,16 +39,37 @@ public class InkManager : MonoBehaviour
         _story = new Story(_inkJSONAsset.text);
     }
 
+
     public static void PlayNext()
     {
         if (IsPlaying)
         {
             _continuePlaying = true;
-        }
-        else
-        {
+        } else {
             _instance.StartCoroutine(_instance.ContinueStory());
         }
+    }
+
+    /// <summary>
+    /// Check if a string 
+    /// </summary>
+    public static bool CheckVariable(string inkVariable) {
+        object obj = _instance._story.variablesState[inkVariable];
+        bool val = false;
+
+        if (obj != null) {
+            Type t = obj.GetType();
+            
+            if (t.Equals(typeof(bool))) {
+                val = (bool)obj;
+            } else {
+                Debug.LogWarning(inkVariable + " is not a boolean. Please check that the correct variable is being defined in the editor.");
+            }
+        } else {
+            Debug.LogWarning(inkVariable + " evaluates to null. Please check that the variable is defined in the Ink file and that the spelling in the editor is correct.");
+        }
+
+        return val;
     }
 
     private System.Collections.IEnumerator ContinueStory()
