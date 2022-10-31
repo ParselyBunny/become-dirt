@@ -28,8 +28,7 @@ public class AudioSlider : MonoBehaviour
 
     private void OnDisable()
     {
-        this._slider.onValueChanged.RemoveListener(UpdateMixerVolume);
-        this._slider.onValueChanged.RemoveListener(UpdateSliderText);
+        this._slider.onValueChanged.RemoveAllListeners();
     }
 
     private void UpdateMixerVolume(float val)

@@ -15,7 +15,8 @@ namespace JTools
         {
             base.ComponentInitialize(player);
 
-            reticle = FindObjectOfType<Reticle>();
+            reticle = UIMenus.GetMenu("Reticle").GetComponent<Reticle>();
+            UIMenus.SetActiveMenu("Reticle");
         }
 
         public override void ComponentUpdate(ImpactController player)

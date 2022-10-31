@@ -6,6 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Manage behavior of a reticle image.
 /// </summary>
+[RequireComponent(typeof(Image), typeof(RectTransform))]
 public class Reticle : MonoBehaviour
 {
     public float RestingSize;
@@ -18,8 +19,7 @@ public class Reticle : MonoBehaviour
     private float _currentSize;
     private bool _focus = false;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _reticle = GetComponent<RectTransform>();
         _image = GetComponent<Image>();
@@ -28,9 +28,12 @@ public class Reticle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_focus) {
+        if (_focus)
+        {
             _currentSize = Mathf.Lerp(_currentSize, MaxSize, Time.deltaTime * Speed);
-        } else {
+        }
+        else
+        {
             _currentSize = Mathf.Lerp(_currentSize, RestingSize, Time.deltaTime * Speed);
         }
 
@@ -40,13 +43,17 @@ public class Reticle : MonoBehaviour
     /// <summary>
     /// Set the focus state of the reticle.
     /// </summary>
-    public void SetFocus(bool value) {
+    public void SetFocus(bool value)
+    {
         _focus = value;
 
         // Swap to appropriate reticle type
-        if (value) {
+        if (value)
+        {
             _image.sprite = FocusedReticle;
-        } else {
+        }
+        else
+        {
             _image.sprite = UnfocusedReticle;
         }
     }

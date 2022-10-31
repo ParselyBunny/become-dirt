@@ -26,8 +26,8 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Audio Manager already has instance assigned.", instance);
-            Destroy(this.gameObject);
+            Debug.LogWarning("AudioManager already instanced, destroying self.", this.gameObject);
+            Destroy(this);
         }
     }
 
@@ -47,6 +47,7 @@ public class AudioManager : MonoBehaviour
     {
         float val = 0;
         instance?._mixer?.GetFloat(mixerLabel.ToString(), out val);
+        // This math is wrong lol
         return (val / 20f) + 1;
     }
 }

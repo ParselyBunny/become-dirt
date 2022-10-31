@@ -20,15 +20,17 @@ namespace JTools
                 {
                     UIMenus.SetActiveMenu("");
                     menusOpen = false;
-                    // lock cursor
-                    // enable player movement
+                    owner.inputComponent.ChangeLockState(false);
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
                 }
                 else
                 {
                     UIMenus.SetActiveMenu(this._pauseMenuName);
                     menusOpen = true;
-                    // unlock cursor
-                    // disable player movement
+                    owner.inputComponent.ChangeLockState(true);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                 }
             }
         }

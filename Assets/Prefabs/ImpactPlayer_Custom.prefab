@@ -125,7 +125,7 @@ MonoBehaviour:
   keyCrouch: 306
   keyJump: 32
   keySprint: 304
-  keyMenu: 27
+  keyMenu: 9
   buttonPrimary: 0
   buttonSecondary: 1
   keyInteract: 101

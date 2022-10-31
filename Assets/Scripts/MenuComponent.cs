@@ -22,16 +22,21 @@ public class MenuComponent : MonoBehaviour
     private bool AlwaysEnabled;
 
     private Menu asMenu;
+    private bool _wasAdded;
 
-    private void Awake()
+    private void Start()
     {
         this.asMenu = new Menu(this.gameObject, StartEnabled, AlwaysEnabled);
-        UIMenus.AddMenu(this.asMenu);
+
+        _wasAdded = UIMenus.AddMenu(this.asMenu);
     }
 
     private void OnDestroy()
     {
-        UIMenus.RemoveMenu(this.asMenu);
+        if (_wasAdded)
+        {
+            UIMenus.RemoveMenu(this.asMenu);
+        }
     }
 
     public void SetActiveMenu(string menuName)
