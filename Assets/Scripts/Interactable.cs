@@ -14,8 +14,6 @@ public abstract class Interactable : MonoBehaviour
     [Tooltip("How loud the interactable's sounds are.")][Range(0f, 1f)] public float SoundVolume = 1f;
     [Tooltip("Sound that plays when the object is interacted with.")] public AudioClip InteractSound;
 
-    private bool _interacted = false;
-
     /// <summary>
     /// Perform some interaction.
     /// </summary>

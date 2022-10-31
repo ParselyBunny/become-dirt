@@ -24,6 +24,6 @@ public class NPC : Interactable
     {
         base.Interact();
 
-        InkManager.PlayNext();
+        InkManager.PlayNext(InkKnot);
     }
 }
