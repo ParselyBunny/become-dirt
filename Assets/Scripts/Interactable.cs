@@ -11,7 +11,6 @@ using JTools;
 public abstract class Interactable : MonoBehaviour
 {
     [Tooltip("Message to display when interacted with.")] public string PromptMessage = "Default message.";
-    [Tooltip("How loud the interactable's sounds are.")][Range(0f, 1f)] public float SoundVolume = 1f;
     [Tooltip("Sound that plays when the object is interacted with.")] public AudioClip InteractSound;
 
     /// <summary>
@@ -20,6 +19,6 @@ public abstract class Interactable : MonoBehaviour
     public virtual void Interact()
     {
         Debug.Log("You just interacted with me, my name is: " + this.name);
-        ImpactController.current.soundComponent.PlayOneShot(InteractSound, SoundVolume);
+        AudioManager.PlayOneShot(InteractSound);
     }
 }

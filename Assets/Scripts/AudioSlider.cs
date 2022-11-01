@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,13 @@ public class AudioSlider : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(Init());
+    }
+
+    private IEnumerator Init()
+    {
+        yield return null; // AudioManager needs a frame to load cause we don't have dependency injection
+
         this._slider.value = AudioManager.GetVolumeNormalized(this._mixerLabel);
         this._slider.onValueChanged.AddListener(UpdateMixerVolume);
         if (this._sliderValueDisplay != null)

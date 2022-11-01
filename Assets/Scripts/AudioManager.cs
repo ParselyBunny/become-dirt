@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
     public enum MixerLabel
@@ -14,7 +15,13 @@ public class AudioManager : MonoBehaviour
     private static AudioManager instance;
 
     [SerializeField]
-    private AudioMixer _mixer;
+    private AudioMixerGroup _masterMixer;
+    [SerializeField]
+    private AudioMixerGroup _musicMixer;
+    [SerializeField]
+    private AudioMixerGroup _sfxMixer;
+
+    private int startingPoolSize = 16;
 
     private void Awake()
     {
@@ -29,25 +36,101 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("AudioManager already instanced, destroying self.", this.gameObject);
             Destroy(this);
         }
+
+        GameObject go;
+        AudioSource source;
+        ReturnToPool rtp;
+        for (int i = 0; i < startingPoolSize; i++)
+        {
+            go = new GameObject("Pooled AudioSource");
+            go.transform.SetParent(instance.transform);
+
+            source = go.AddComponent<AudioSource>();
+
+            rtp = go.AddComponent<ReturnToPool>();
+            rtp.Source = source;
+            rtp.Init();
+
+            StaticObjectPool.Push<AudioSource>(source);
+        }
     }
 
-    public static void SetVolume(MixerLabel mixerLabel, float value)
+    public static void PlayOneShot(AudioClip clip)
     {
-        instance._mixer?.SetFloat(mixerLabel.ToString(), Mathf.Log10(value) * 20);
+        instance.PlayPooledOneShot(clip);
     }
 
-    public static float GetVolume(MixerLabel mixerLabel)
+    private AudioSource tempSourceRef;
+    private void PlayPooledOneShot(AudioClip clip)
     {
-        float val = 0;
-        instance?._mixer?.GetFloat(mixerLabel.ToString(), out val);
-        return val;
+        var ok = StaticObjectPool.TryPop<AudioSource>(out tempSourceRef);
+        if (!ok)
+        {
+            Debug.LogWarningFormat("Trying to play clip when pool is empty! {0}", clip.name);
+            return;
+        }
+
+        Debug.Log("Using AudioSource from pool", tempSourceRef.gameObject);
+        tempSourceRef.Stop();
+        tempSourceRef.clip = clip;
+        tempSourceRef.Play();
+    }
+
+    public static void SetVolume(MixerLabel mixerLabel, float val)
+    {
+        switch (mixerLabel)
+        {
+            case MixerLabel.Master:
+                instance._masterMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                break;
+            case MixerLabel.Music:
+                instance._musicMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                break;
+            case MixerLabel.SFX:
+                instance._sfxMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+
+                break;
+            default:
+                Debug.LogErrorFormat("Call to SetVolume was made with invalid label - {0}", mixerLabel.ToString());
+                return;
+        }
+
+        PlayerPrefs.SetFloat(mixerLabel.ToString(), val);
     }
 
     public static float GetVolumeNormalized(MixerLabel mixerLabel)
     {
-        float val = 0;
-        instance?._mixer?.GetFloat(mixerLabel.ToString(), out val);
-        // This math is wrong lol
-        return (val / 20f) + 1;
+        // or 10^(x/20)
+        return PlayerPrefs.GetFloat(mixerLabel.ToString(), 1);
+    }
+}
+
+// This component returns the AudioSource to the pool when the clip ends.
+[RequireComponent(typeof(AudioSource))]
+public class ReturnToPool : MonoBehaviour
+{
+    public AudioSource Source;
+
+    public void Init()
+    {
+        StartCoroutine(WaitForClipEnd());
+    }
+
+    private void OnDestroy()
+    {
+        StopCoroutine(WaitForClipEnd());
+    }
+
+    private System.Collections.IEnumerator WaitForClipEnd()
+    {
+        yield return new WaitUntil(() => Source.isPlaying);
+        yield return new WaitUntil(() => !Source.isPlaying && Source.time == 0.0f);
+        ReleaseSelf();
+    }
+
+    private void ReleaseSelf()
+    {
+        // Return to the pool
+        StaticObjectPool.Push<AudioSource>(Source);
     }
 }
