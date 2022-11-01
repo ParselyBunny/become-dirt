@@ -2235,7 +2235,7 @@ MonoBehaviour:
   PromptMessage: Pretty tall fella...
   InteractSound: {fileID: 0}
   Name: Grandmother
-  InkKnot: GrandmotherConvoA
+  InkKnot: Intro.GrandmotherConvoA
 --- !u!1 &1469014423
 GameObject:
   m_ObjectHideFlags: 0
