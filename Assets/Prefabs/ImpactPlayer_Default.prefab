@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5056173044798251246}
   - component: {fileID: 1312580569798877917}
-  - component: {fileID: 4044093022414591645}
+  - component: {fileID: 3213936460890395464}
   - component: {fileID: 4754107696508692566}
   - component: {fileID: 3715187978387094822}
   - component: {fileID: 6102523249223408526}
@@ -85,7 +85,7 @@ MonoBehaviour:
   playerArtRoot: {fileID: 4632760602622499799}
   playerRadius: 0.3
   playerHeight: 1.64
-  inputComponent: {fileID: 4044093022414591645}
+  inputComponent: {fileID: 3213936460890395464}
   cameraComponent: {fileID: 4754107696508692566}
   motionComponent: {fileID: 3715187978387094822}
   addonComponents:
@@ -95,7 +95,7 @@ MonoBehaviour:
   frameRate: 60
   capsuleCollider: {fileID: 0}
   soundComponent: {fileID: 0}
---- !u!114 &4044093022414591645
+--- !u!114 &3213936460890395464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5060298884549454450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeb4d02a3968e084f8a93d876d4e00f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f123aafeb6496f459a7ef243643ae30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   lookAxisY: Mouse Y
   movementStrafe: Horizontal
   movementWalk: Vertical
-  keyCrouch: 99
+  keyCrouch: 306
   keyJump: 32
   keySprint: 304
   keyMenu: 27
@@ -325,7 +325,6 @@ MonoBehaviour:
   owner: {fileID: 0}
   initialized: 0
   enableSounds: 1
-  soundVolume: 0.752
   walkSounds:
   - {fileID: 8300000, guid: 015cb8287390c0f4683d1c3e3ee44810, type: 3}
   - {fileID: 8300000, guid: 25ba1d50666707a48bad714c72b506d3, type: 3}
