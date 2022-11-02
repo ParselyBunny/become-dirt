@@ -3,6 +3,7 @@ using Ink.Runtime;
 using TMPro;
 using System;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// Manage Ink Story.
@@ -41,10 +42,14 @@ public class InkManager : MonoBehaviour
         _story = new Story(_inkJSONAsset.text);
     }
 
-    public static void PlayNext(string knotName, NPC nextSpeakingNPC) {
-        if (IsPlaying) {
+    public static void PlayNext(string knotName, NPC nextSpeakingNPC)
+    {
+        if (IsPlaying)
+        {
             _continuePlaying = true;
-        } else {
+        }
+        else
+        {
             _instance._speakingNPC = nextSpeakingNPC;
             _instance._story.ChoosePathString(knotName);
             _instance.StartCoroutine(_instance.ContinueStory());
@@ -57,19 +62,26 @@ public class InkManager : MonoBehaviour
     /// variable is not a boolean or the variable
     /// is null.
     /// </summary>
-    public static bool CheckVariable(string inkVariable) {
+    public static bool CheckVariable(string inkVariable)
+    {
         object obj = _instance._story.variablesState[inkVariable];
         bool val = false;
 
-        if (obj != null) {
+        if (obj != null)
+        {
             Type t = obj.GetType();
 
-            if (t.Equals(typeof(bool))) {
+            if (t.Equals(typeof(bool)))
+            {
                 val = (bool)obj;
-            } else {
+            }
+            else
+            {
                 Debug.LogError(inkVariable + " is not a boolean. Please check that the correct variable is being defined in the editor.");
             }
-        } else {
+        }
+        else
+        {
             Debug.LogError(inkVariable + " evaluates to null. Please check that the variable is defined in the Ink file and that the spelling in the editor is correct.");
         }
 
@@ -82,6 +94,7 @@ public class InkManager : MonoBehaviour
         IsPlaying = true;
         _continuePlaying = true;
         UIMenus.SetActiveMenu("Dialogue");
+        string text;
 
         // TODO: parse out name of character and set it
         // TODO: condition for pausing story-level ink execution (indicating when a dialogue box should end)
@@ -89,7 +102,9 @@ public class InkManager : MonoBehaviour
         {
             if (_continuePlaying)
             {
-                SetDialogue(_instance._story.Continue());
+                text = _instance._story.Continue();
+                ParseName(ref text);
+                SetDialogue(text);
                 _continuePlaying = false;
             }
             yield return null;
@@ -103,9 +118,40 @@ public class InkManager : MonoBehaviour
         JTools.ImpactController.current.inputComponent.lockInput = false;
     }
 
-    private static void SetName(string newText)
+    // private static readonly Regex nameRegex = new Regex("SISTER:|GRANDMOTHER:|BROTHER:|MOTHER:");
+    private const string NAME_REGEX = @"(SISTER:|GRANDMOTHER:|BROTHER:|MOTHER:) ";
+    private static void ParseName(ref string storyText)
     {
-        _instance.NameText.text = newText;
+        if (storyText == "")
+        {
+            return;
+        }
+
+        // regex `SISTER:|GRANDMOTHER:|BROTHER:|MOTHER:`
+        var match = Regex.Match(storyText, NAME_REGEX);
+        string name = "";
+        if (match.Success)
+        {
+            switch (match.Value)
+            {
+                case "SISTER: ":
+                    name = "Sister";
+                    goto default;
+                case "GRANDMOTHER: ":
+                    name = "Grandmother";
+                    goto default;
+                case "MOTHER: ":
+                    name = "Mother";
+                    goto default;
+                case "BROTHER: ":
+                    name = "Brother";
+                    goto default;
+                default:
+                    _instance.NameText.text = name;
+                    storyText = storyText.Substring(match.Value.Length);
+                    break;
+            }
+        }
     }
 
     private static void SetDialogue(string newText)
