@@ -23,7 +23,8 @@ public class NPC : Interactable
     public override void Interact()
     {
         base.Interact();
+        base.SetAllowInteractSound(false);
 
-        InkManager.PlayNext(InkKnot);
+        InkManager.PlayNext(InkKnot, this);
     }
 }

@@ -22,6 +22,7 @@ public class InkManager : MonoBehaviour
 
     private Story _story;
     private static bool _continuePlaying;
+    private NPC _speakingNPC;
 
     private void Awake()
     {
@@ -40,10 +41,11 @@ public class InkManager : MonoBehaviour
         _story = new Story(_inkJSONAsset.text);
     }
 
-    public static void PlayNext(string knotName) {
+    public static void PlayNext(string knotName, NPC nextSpeakingNPC) {
         if (IsPlaying) {
             _continuePlaying = true;
         } else {
+            _instance._speakingNPC = nextSpeakingNPC;
             _instance._story.ChoosePathString(knotName);
             _instance.StartCoroutine(_instance.ContinueStory());
         }
@@ -114,5 +116,6 @@ public class InkManager : MonoBehaviour
     private static void EndDialogue()
     {
         _instance.DialogueText.text = "";
+        _instance._speakingNPC.SetAllowInteractSound(true);
     }
 }
