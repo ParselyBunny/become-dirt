@@ -31,7 +31,8 @@ Recently, though, he's been afraid of something. I don't know what he's worried 
         GRANDMOTHER: I do not need tea. Caffeine will ruin you, especially this close to dinner. Didn’t you burn yourself on the kettle yesterday?
         GRANDMOTHER: To think that your school allows you to take an exam a second time after failure. What purpose does a test serve if failure has no consequences?
 
-        ->GrandmotherLoop
+        -> DONE
+        //->GrandmotherLoop
         =GrandmotherLoop
             GRANDMOTHER: I only hope that one day you realize how damaging your lack of diligence has been. Given your lack of aptitude with the family arts, you should be putting more effort into your schoolwork.
             GRANDMOTHER: You will not have the luxury of failure forever. When you become an adult, however long it may take you, failure is unacceptable. There will be no leniency. 

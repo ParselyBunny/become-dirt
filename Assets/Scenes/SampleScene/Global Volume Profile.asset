@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d61509376d05fc438d9ed9281e44e26, type: 3}
   m_Name: CompressionVolume
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   isEnabled:
     m_OverrideState: 1
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd3a97acc7ef644da680b9eb611919e, type: 3}
   m_Name: CathodeRayTubeVolume
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   isEnabled:
     m_OverrideState: 1
@@ -293,7 +293,7 @@ MonoBehaviour:
     m_Value: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
@@ -453,7 +453,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   isClearDepthBeforeUIEnabled:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
 --- !u!114 &864668051855445491
 MonoBehaviour:
@@ -473,7 +473,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   bakedLightingMultiplier:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
     min: 0
   vertexColorLightingMultiplier:
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad71758d66b75b45a6157133f3e6024, type: 3}
   m_Name: AccumulationMotionBlurVolume
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   weight:
     m_OverrideState: 0
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d335ddfaff71d4493ab520ae36643e, type: 3}
   m_Name: TonemapperVolume
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   isEnabled:
     m_OverrideState: 1
