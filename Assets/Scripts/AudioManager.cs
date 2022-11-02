@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
     private AudioMixerGroup _sfxMixer;
 
     private int startingPoolSize = 16;
+    private AudioSource _musicSource;
 
     private void Awake()
     {
@@ -36,6 +37,8 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("AudioManager already instanced, destroying self.", this.gameObject);
             Destroy(this);
         }
+
+        _musicSource = GetComponent<AudioSource>();
 
         GameObject go;
         AudioSource source;
@@ -58,6 +61,13 @@ public class AudioManager : MonoBehaviour
     public static void PlayOneShot(AudioClip clip)
     {
         instance.PlayPooledOneShot(clip);
+    }
+
+    public static void PlayMusic(AudioClip clip)
+    {
+        instance._musicSource.Stop();
+        instance._musicSource.clip = clip;
+        instance._musicSource.Play();
     }
 
     private AudioSource tempSourceRef;

@@ -26,12 +26,12 @@ public class AudioSlider : MonoBehaviour
     {
         yield return null; // AudioManager needs a frame to load cause we don't have dependency injection
 
-        this._slider.value = AudioManager.GetVolumeNormalized(this._mixerLabel);
         this._slider.onValueChanged.AddListener(UpdateMixerVolume);
         if (this._sliderValueDisplay != null)
         {
             this._slider.onValueChanged.AddListener(UpdateSliderText);
         }
+        this._slider.value = AudioManager.GetVolumeNormalized(this._mixerLabel);
     }
 
     private void OnDisable()
