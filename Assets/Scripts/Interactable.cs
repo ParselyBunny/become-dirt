@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using JTools;
 
 // Code sourced from this Raycast Interactions vid: https://www.youtube.com/watch?app=desktop&v=gPPGnpV1Y1c
 
@@ -21,7 +18,8 @@ public abstract class Interactable : MonoBehaviour
     {
         Debug.Log("You just interacted with me, my name is: " + this.name);
 
-        if (_allowInteractSound) {
+        if (_allowInteractSound)
+        {
             AudioManager.PlayOneShot(InteractSound);
         }
     }
@@ -31,7 +29,8 @@ public abstract class Interactable : MonoBehaviour
     /// Use this in your specific interactable implementations
     /// to control when interact sounds are allowed to be played.
     /// </summary>
-    public void SetAllowInteractSound(bool isAllowed) {
+    public void SetAllowInteractSound(bool isAllowed)
+    {
         _allowInteractSound = isAllowed;
     }
 }
