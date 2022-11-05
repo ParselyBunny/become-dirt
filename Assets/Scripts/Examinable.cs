@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using JTools;
 
 public abstract class Examinable : Interactable
 {
     [SerializeField, Tooltip("Message to display when examined.")]
-    private string[] _examineMessage = "Object Examined.";
+    private string[] _examineMessage = new string[] { "Object Examined." };
 
     public override void Interact()
     {
@@ -17,6 +14,6 @@ public abstract class Examinable : Interactable
     {
         Debug.Log("You just examined me, my name is: " + this.name);
 
-        InkManager.ShowExamineText(_examineMessage);
+        InkManager.ShowExamineText(this.gameObject.name, _examineMessage);
     }
 }
