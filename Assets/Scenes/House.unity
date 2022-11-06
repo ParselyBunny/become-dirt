@@ -12358,6 +12358,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: IsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -15073,6 +15077,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: IsLocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18163,6 +18171,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: IsLocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

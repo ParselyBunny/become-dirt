@@ -11,8 +11,10 @@ using UnityEngine;
 public class Openable : Interactable
 {
     [Tooltip("Name of a trigger to activate on this object's animator component.")] public string BoolName = "isOpen";
+    [Tooltip("If this is true, the door is locked when closed.")] public bool IsLocked = false;
     [Tooltip("Sound that plays when the object is opened.")] public AudioClip OpenSound;
     [Tooltip("Sound that plays when the object is closed.")] public AudioClip CloseSound;
+    [Tooltip("Sound that plays when the object is locked.")] public AudioClip LockedSound;
     private Animator _Animator;
 
     void Start()
@@ -25,14 +27,18 @@ public class Openable : Interactable
     {
         base.Interact();
 
-        bool isOpen = _Animator.GetBool(BoolName);
-        _Animator.SetBool(BoolName, !isOpen);
-
-        if (!isOpen)
-        {
-            AudioManager.PlayOneShot(OpenSound);
+        if (IsLocked) {
+            AudioManager.PlayOneShot(LockedSound);
         } else {
-            AudioManager.PlayOneShot(CloseSound);
+            bool isOpen = _Animator.GetBool(BoolName);
+            _Animator.SetBool(BoolName, !isOpen);
+
+            if (!isOpen)
+            {
+                AudioManager.PlayOneShot(OpenSound);
+            } else {
+                AudioManager.PlayOneShot(CloseSound);
+            }
         }
     }
 }

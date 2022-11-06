@@ -313,5 +313,7 @@ MonoBehaviour:
   PromptMessage: Default message.
   InteractSound: {fileID: 8300000, guid: 8b6e6461e601bdd438a1167311b3a2a3, type: 3}
   BoolName: isOpen
+  IsLocked: 0
   OpenSound: {fileID: 8300000, guid: 8b6e6461e601bdd438a1167311b3a2a3, type: 3}
   CloseSound: {fileID: 8300000, guid: 6dcfe08d696e00a4687ddd06c7e6e7ae, type: 3}
+  LockedSound: {fileID: 8300000, guid: 391dd5b5dc15bb64ebed4b7ab90e9ffc, type: 3}
