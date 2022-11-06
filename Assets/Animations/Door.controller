@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Door|DoorAction_002 0
+  m_Name: Door|DoorAction_002 (Close)
   m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
@@ -34,7 +34,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Door_001|Door_001Action
+  m_Name: Door_001|Door_001Action (Jiggle)
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1008,7 +1008,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Door|DoorAction_002
+  m_Name: Door|DoorAction_002 (Open)
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
