@@ -12,6 +12,7 @@ public class InkManager : MonoBehaviour
 {
     private static InkManager _instance;
 
+    public static System.Action OnDialogueEnd;
     public static bool IsPlaying { get; private set; }
 
     [SerializeField]
@@ -94,6 +95,7 @@ public class InkManager : MonoBehaviour
         // Unlock player input
         UIMenus.SetActiveMenu("Reticle");
         IsPlaying = false;
+        OnDialogueEnd();
         JTools.ImpactController.current.inputComponent.lockInput = false;
     }
 
@@ -102,7 +104,9 @@ public class InkManager : MonoBehaviour
         if (IsPlaying)
         {
             _continuePlaying = true;
-        } else {
+        }
+        else
+        {
             _instance._story.ChoosePathString(knotName);
             _instance.StartCoroutine(_instance.ContinueStory());
         }
@@ -113,7 +117,9 @@ public class InkManager : MonoBehaviour
         if (IsPlaying)
         {
             _continuePlaying = true;
-        } else {
+        }
+        else
+        {
             _instance._speakingNPC = nextSpeakingNPC;
             _instance._story.ChoosePathString(knotName);
             _instance.StartCoroutine(_instance.ContinueStory());
