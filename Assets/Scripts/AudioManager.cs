@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -63,6 +62,11 @@ public class AudioManager : MonoBehaviour
         instance.PlayPooledOneShot(clip);
     }
 
+    public static void PlayOneShot(AudioClip clip, float delaySeconds)
+    {
+        instance.StartCoroutine(instance.PlayPooledOneShotWithDelay(clip, delaySeconds));
+    }
+
     public static void PlayMusic(AudioClip clip)
     {
         instance._musicSource.Stop();
@@ -84,6 +88,12 @@ public class AudioManager : MonoBehaviour
         tempSourceRef.Stop();
         tempSourceRef.clip = clip;
         tempSourceRef.Play();
+    }
+
+    private System.Collections.IEnumerator PlayPooledOneShotWithDelay(AudioClip clip, float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        PlayPooledOneShot(clip);
     }
 
     public static void SetVolume(MixerLabel mixerLabel, float val)
