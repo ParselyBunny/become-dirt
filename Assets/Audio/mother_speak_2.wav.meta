@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: d0c89f8b2d0f44b4fb2132f474a3e7e1
+=======
+guid: bd464a7d2ef267549bcc2a08e6f02c57
+>>>>>>> Add colliders to furniture, add skybox
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6

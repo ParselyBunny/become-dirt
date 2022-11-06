@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96575ff06efbe184aa6c6f9f90b4aab9, type: 3}
   m_Name: FogVolume
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   isEnabled:
     m_OverrideState: 1
@@ -293,7 +293,7 @@ MonoBehaviour:
     m_Value: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.099, g: 0.04604651, b: 0.04604651, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
