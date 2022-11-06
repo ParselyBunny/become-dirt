@@ -97,14 +97,23 @@ public class InkManager : MonoBehaviour
         JTools.ImpactController.current.inputComponent.lockInput = false;
     }
 
+    public static void PlayNext(string knotName)
+    {
+        if (IsPlaying)
+        {
+            _continuePlaying = true;
+        } else {
+            _instance._story.ChoosePathString(knotName);
+            _instance.StartCoroutine(_instance.ContinueStory());
+        }
+    }
+
     public static void PlayNext(string knotName, NPC nextSpeakingNPC)
     {
         if (IsPlaying)
         {
             _continuePlaying = true;
-        }
-        else
-        {
+        } else {
             _instance._speakingNPC = nextSpeakingNPC;
             _instance._story.ChoosePathString(knotName);
             _instance.StartCoroutine(_instance.ContinueStory());
