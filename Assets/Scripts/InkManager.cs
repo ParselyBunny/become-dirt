@@ -102,7 +102,11 @@ public class InkManager : MonoBehaviour
         // Unlock player input
         UIMenus.SetActiveMenu("Reticle");
         IsPlaying = false;
-        //OnDialogueEnd();
+
+        if (OnDialogueEnd != null) {
+            OnDialogueEnd();
+        }
+        
         JTools.ImpactController.current.inputComponent.lockInput = false;
     }
 
