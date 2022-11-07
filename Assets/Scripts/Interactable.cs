@@ -9,7 +9,7 @@ public abstract class Interactable : MonoBehaviour
 {
     [Tooltip("Message to display when interacted with.")] public string PromptMessage = "Default message.";
     [Tooltip("Sound that plays when the object is interacted with.")] public AudioClip InteractSound;
-    private bool _allowInteractSound = true;
+    [Tooltip("If true, play interact sound.")] public bool AllowInteractSound = true;
 
     /// <summary>
     /// Perform some interaction.
@@ -18,7 +18,7 @@ public abstract class Interactable : MonoBehaviour
     {
         Debug.Log("You just interacted with me, my name is: " + this.name);
 
-        if (_allowInteractSound)
+        if (AllowInteractSound)
         {
             AudioManager.PlayOneShot(InteractSound);
         }
@@ -31,6 +31,6 @@ public abstract class Interactable : MonoBehaviour
     /// </summary>
     public void SetAllowInteractSound(bool isAllowed)
     {
-        _allowInteractSound = isAllowed;
+        AllowInteractSound = isAllowed;
     }
 }

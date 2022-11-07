@@ -15,7 +15,7 @@ public class Choreographer : MonoBehaviour
     [Tooltip("If Ink flag is true, then objects in the lists are enabled/disabled. Leave empty if you don't want this choreography to be conditional on an Ink flag.")] public string InkBoolName = "";
     [Tooltip("The Ink dialogue to play upon hitting this trigger. Leave empty if you don't want to trigger dialogue.")] public string InkKnotName = "";
     private bool _canTrigger = false;
-    
+
     void Update()
     {
         // TODO: Add a check for direction facing using quaternions?
@@ -46,7 +46,7 @@ public class Choreographer : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other) {
+    private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             Debug.Log("Player hit a trigger.");
             

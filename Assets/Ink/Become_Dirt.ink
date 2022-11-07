@@ -8,16 +8,15 @@ My grandmother knows them all - She learned them when she was young and practice
 Normally my mother would be the one to teach us, but she can't do magic at all. She never could. I heard that when I was born, my grandmother was overjoyed and nearly cracked a smile as she held me. She could tell I had the talent for magic, but even with all the lessons she gave me I could only ever use the most useless of our family's spells. Become Dirt - the spell that makes you worthless.
 My younger brother is better at it than me - Magic, that is. He learned our family's strongest spell without any trouble. Become Mechanical, the spell my grandmother used to work beyond her own limits and raise a daughter on her own without ever breaking or slowing down. He's a really smart kid, and he's a lot more responsible than I ever was. 
 Recently, though, he's been afraid of something. I don't know what he's worried about, but he always seems anxious and uneasy these days. My grandmother wants to make sure he knew all the family's magic so that he can pass it on one day, and he's been making great progress. I don't know what would make him so frightened... I should check on him today.
-    ->CallOut
+->DONE
 
     =CallOut
         SISTER: [Brother]!
         His bus should have stopped by about an hour ago, so he should be here. 
         SISTER: ...[Brother]?"
         Maybe he's in the hideout. He's been going down there a lot more lately. I should check our room first, at least.
-    
-    
-        ->GrandmotherConvoA
+        -> DONE
+        
     =GrandmotherConvoA
         GRANDMOTHER: You. You're home late.
         SISTER: O-oh, yeah. I had to stay after for a make-up test.
@@ -63,20 +62,23 @@ Recently, though, he's been afraid of something. I don't know what he's worried 
         -I don’t know what my grandma is thinking. I don’t think I’ve ever known, even when she told me. I don’t think it’s hard to tell, I’m just not good at understanding other people sometimes. That’s why, even when she’s mad at me and I know it’s not my fault, I don’t really have a reason to argue. Even if it’s not my fault, I probably deserve the blame anyway.     
         
     
-        ->ExplorationA
+        -> ExplorationA
     =ExplorationA
     
         [Entering siblings' room]
         My younger brother and I share a room at the end of the hall. There's not a lot of space for either of us, but we spend about as much time in our hideout as we do here so it's never been a problem.
         SISTER: [Brother]?
         He's not here. It looks like he was doing his schoolwork up until a moment ago, though.
-        
+        -> DONE
+    
+    =ExaminePapers
         [Examine Papers on Desk]
         
         Oh, he got a 97. He is smart, after all. He studies every night, too... I try to do that, but it's hard for me to focus on anything when I see that many letters on a page at the same time. I mostly try to study to make sure he doesn't worry about me, but most of the time all I can do is look at the paper and trace lines through the blank spaces with my eyes. 
         There's a report here... it must be the one he's working on for school this week. It looks like the topic is "My Future Job." He was asking me about the future just the other day too...
+        -> DONE
     
-    ->RecollectionA
+    -> RecollectionA
     
     
         =RecollectionA
@@ -105,21 +107,21 @@ Recently, though, he's been afraid of something. I don't know what he's worried 
         
         SISTER: You don't have to. If you don't really want to, you don't have to learn all the family arts. I learned one spell already, right? So I can definitely learn more.
         BROTHER: I’m good at it though. Grandma said I’m good at it, and if I do this then they won’t yell at you as much.
-
     
-        ->CrawlSpaceA
+        -> DONE
+        
     =CrawlSpaceA
 
 
 ---That monster was one he told me about, from a nightmare of his...
-->GateOne
+-> GateOne
 
 
 === GateOne
 
     =Realization
     TODO where the elder sister realizes her brother must have used the BECOME FEAR spell
-        ->ChoreAssignment
+        -> ChoreAssignment
     =ChoreAssignment
     
         SISTER: Oh! W-welcome home. Your coffee’s ready, I think...
@@ -128,7 +130,7 @@ Recently, though, he's been afraid of something. I don't know what he's worried 
         MOTHER: What?
         SISTER: Nothing. Sorry.
         
-        ->MotherConvoLoop
+        -> MotherConvoLoop
         
         
         
@@ -145,16 +147,16 @@ Recently, though, he's been afraid of something. I don't know what he's worried 
                 SISTER: I'm sorry. I-
                 [SISTER trips]
                 MOTHER: Watch it now! I told you to stand back, didn't I? You don't need to crowd in here while I fix this... I just need to grab the fool thing and get it situated right.
-                ->MotherConvoLoop
+                -> MotherConvoLoop
             *I can fix the cord later if you want.
                 MOTHER: No, I'll fix it and you just sit still right there and watch. Once i'm 
                 
-                ->MotherConvoLoop
+                -> MotherConvoLoop
             *I'll fix it right now, I promise!
                 SISTER: I'm sorry, I'll fix it right now! You just got home, you're tired right? I'll take care of it so-
                 MOTHER: No you won't. You sit right there until I get this settled. If you touch one more thing over here you're liable to cost me a damn fortune replacing the washer. 
                 
-                ->MotherConvoLoop
+                -> MotherConvoLoop
             *Become Dirt   
                 SISTER: I wasn’t paying attention, I’m sorry. I’m sorry, I need to look at where I’m going, and probably use a handrail, haha. I tripped earlier and scraped my knee on the driveway too. Sorry. I’ll fix it now.
                 
@@ -167,23 +169,23 @@ Recently, though, he's been afraid of something. I don't know what he's worried 
         
         
         
-        ->BecomeVigilant
+        -> BecomeVigilant
     =BecomeVigilant
     
         *Become Vigilant
-            ->Vigilance
+            -> Vigilance
             NOTIFICATION: Use the BECOME VIGILANT spell to notice important items around the house or to discern words within noise.
             FLAVORTEXT: Open your eyes further. We were never meant to only see the narrow band of light before us. Movement. Breaths. The scent of a predator. The brush of wind across your neck. Sight and sense serve to bring you knowledge of the world. Know all. See all. We must be forewarned.
     =Vigilance
-        ->ExplorationB
+        -> ExplorationB
     =ExplorationB
-        ->MonsterA
+        -> MonsterA
 
     =MonsterA
-        ->CrawlSpaceB
+        -> CrawlSpaceB
     
     =CrawlSpaceB
-        ->BrotherConvoA
+        -> BrotherConvoA
     
     =BrotherConvoA
     
@@ -192,30 +194,30 @@ Recently, though, he's been afraid of something. I don't know what he's worried 
         
         
     
-        ->MonsterB
+        -> MonsterB
     
     =MonsterB
     
     
 -What's this stuffed behind his desk?
-->GateTwo
+-> GateTwo
 
 === GateTwo
 
 
     =ExplorationC
-        ->MonsterC
+        -> MonsterC
     =MonsterC
-        ->GrandmotherConvoB
+        -> GrandmotherConvoB
     =GrandmotherConvoB
     
         GRANDMOTHER: “Be quieter. I expect you to respect my personal space within this house, and that extends to the sounds that come through my walls.”
-        ->MothersRoom
+        -> MothersRoom
     =MothersRoom
-        ->BecomeGlass
+        -> BecomeGlass
     =BecomeGlass
         *Become Glass
-            ->FragilePane
+            -> FragilePane
             
     =FragilePane
 

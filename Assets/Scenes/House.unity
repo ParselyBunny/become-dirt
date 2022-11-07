@@ -9544,8 +9544,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 2.173571, z: 2.0331798}
-  m_Center: {x: 0, y: 0.17178547, z: -0.009335518}
+  m_Size: {x: 1.2384542, y: 2.173571, z: 2.0331798}
+  m_Center: {x: 0.59422714, y: 0.17178547, z: -0.009335518}
 --- !u!114 &816078323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9561,7 +9561,7 @@ MonoBehaviour:
   ObjectsToDisable: []
   ObjectsToEnable: []
   AlwaysTrigger: 1
-  DestroyOnTrigger: 0
+  DestroyOnTrigger: 1
   InkBoolName: 
   InkKnotName: Intro.CallOut
 --- !u!4 &816078324
@@ -12428,6 +12428,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: AllowInteractSound
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
@@ -13137,6 +13141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptMessage: Mom looks tired.
   InteractSound: {fileID: 8300000, guid: 34db6cbab6a3e054e988981000e14660, type: 3}
+  AllowInteractSound: 1
   Name: Mom
   InkKnot: GateOne.MotherConvoLoop
 --- !u!1001 &1101781709
@@ -15148,6 +15153,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: AllowInteractSound
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
@@ -18240,6 +18249,10 @@ PrefabInstance:
       propertyPath: IsLocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: AllowInteractSound
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -18845,6 +18858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptMessage: Grandmother...
   InteractSound: {fileID: 8300000, guid: 34db6cbab6a3e054e988981000e14660, type: 3}
+  AllowInteractSound: 1
   Name: Grandma
   InkKnot: Intro.GrandmotherConvoA
 --- !u!1001 &1693433610
@@ -20697,7 +20711,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: IsLocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: AllowInteractSound
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
@@ -20816,7 +20838,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
 --- !u!4 &1827484474 stripped
 Transform:

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
+using JTools;
 using System;
 using System.Collections;
 using System.Text.RegularExpressions;
@@ -25,6 +26,12 @@ public class InkManager : MonoBehaviour
     private Story _story;
     private static bool _continuePlaying;
     private NPC _speakingNPC;
+
+    private void Update() {
+        if (ImpactController.current.inputComponent.inputData.pressedInteract && IsPlaying) {
+            _continuePlaying = true;
+        }
+    }
 
     private void Awake()
     {
@@ -95,7 +102,7 @@ public class InkManager : MonoBehaviour
         // Unlock player input
         UIMenus.SetActiveMenu("Reticle");
         IsPlaying = false;
-        OnDialogueEnd();
+        //OnDialogueEnd();
         JTools.ImpactController.current.inputComponent.lockInput = false;
     }
 
@@ -103,7 +110,7 @@ public class InkManager : MonoBehaviour
     {
         if (IsPlaying)
         {
-            _continuePlaying = true;
+            //_continuePlaying = true;
         }
         else
         {
@@ -116,7 +123,7 @@ public class InkManager : MonoBehaviour
     {
         if (IsPlaying)
         {
-            _continuePlaying = true;
+            //_continuePlaying = true;
         }
         else
         {
