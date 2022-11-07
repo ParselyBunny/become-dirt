@@ -56,26 +56,30 @@ Recently, though, he's been afraid of something. I don't know what he's worried 
                 GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
                 SISTER: Yes, you're right. Thank you. I need to put in more effort.
                 GRANDMOTHER: ...
-                [The Grandmother's door closes]
+                // [The Grandmother's door closes]
     
     
         -I don’t know what my grandma is thinking. I don’t think I’ve ever known, even when she told me. I don’t think it’s hard to tell, I’m just not good at understanding other people sometimes. That’s why, even when she’s mad at me and I know it’s not my fault, I don’t really have a reason to argue. Even if it’s not my fault, I probably deserve the blame anyway.     
-        
     
         -> ExplorationA
+    
+    =GrandmotherIdle
+        SISTER: She's just looking at me...
+        -> DONE
+    
     =ExplorationA
     
-        [Entering siblings' room]
-        My younger brother and I share a room at the end of the hall. There's not a lot of space for either of us, but we spend about as much time in our hideout as we do here so it's never been a problem.
+        // [Entering siblings' room]
+        SISTER: My younger brother and I share a room at the end of the hall. There's not a lot of space for either of us, but we spend about as much time in our hideout as we do here so it's never been a problem.
         SISTER: [Brother]?
         He's not here. It looks like he was doing his schoolwork up until a moment ago, though.
         -> DONE
     
     =ExaminePapers
-        [Examine Papers on Desk]
+        // [Examine Papers on Desk]
         
-        Oh, he got a 97. He is smart, after all. He studies every night, too... I try to do that, but it's hard for me to focus on anything when I see that many letters on a page at the same time. I mostly try to study to make sure he doesn't worry about me, but most of the time all I can do is look at the paper and trace lines through the blank spaces with my eyes. 
-        There's a report here... it must be the one he's working on for school this week. It looks like the topic is "My Future Job." He was asking me about the future just the other day too...
+        SISTER: Oh, he got a 97. He is smart, after all. He studies every night, too... I try to do that, but it's hard for me to focus on anything when I see that many letters on a page at the same time. I mostly try to study to make sure he doesn't worry about me, but most of the time all I can do is look at the paper and trace lines through the blank spaces with my eyes. 
+        SISTER: There's a report here... it must be the one he's working on for school this week. It looks like the topic is "My Future Job." He was asking me about the future just the other day too...
         -> DONE
     
     -> RecollectionA
