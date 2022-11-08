@@ -10254,7 +10254,7 @@ GameObject:
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &816078322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10282,7 +10282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectsToDisable: []
   ObjectsToEnable: []
-  LookTarget: {fileID: 816078324}
+  LookTarget: {fileID: 1361229978}
   LookSpeed: 1
   dialogueRunner: {fileID: 1361229976}
   AlwaysTrigger: 1
@@ -16121,7 +16121,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1361229978
 Transform:
