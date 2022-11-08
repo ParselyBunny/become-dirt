@@ -39,6 +39,11 @@ public class AudioManager : MonoBehaviour
 
         _musicSource = GetComponent<AudioSource>();
 
+        // TODO: Just loop over the enum keys
+        AudioManager.SetVolume(MixerLabel.Master, AudioManager.GetVolumeNormalized(MixerLabel.Master));
+        AudioManager.SetVolume(MixerLabel.Music, AudioManager.GetVolumeNormalized(MixerLabel.Music));
+        AudioManager.SetVolume(MixerLabel.SFX, AudioManager.GetVolumeNormalized(MixerLabel.SFX));
+
         GameObject go;
         AudioSource source;
         ReturnToPool rtp;
@@ -121,7 +126,6 @@ public class AudioManager : MonoBehaviour
 
     public static float GetVolumeNormalized(MixerLabel mixerLabel)
     {
-        // or 10^(x/20)
         return PlayerPrefs.GetFloat(mixerLabel.ToString(), 1);
     }
 }
