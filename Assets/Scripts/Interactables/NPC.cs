@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using JTools;
 
 /// <summary>
 /// Attach this to an object with an animator

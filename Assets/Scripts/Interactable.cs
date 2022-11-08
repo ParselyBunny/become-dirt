@@ -20,7 +20,14 @@ public abstract class Interactable : MonoBehaviour
 
         if (AllowInteractSound)
         {
-            AudioManager.PlayOneShot(InteractSound);
+            if (InteractSound == null)
+            {
+                Debug.LogWarning("Trying to play Interact sound without clip.", this);
+            }
+            else
+            {
+                AudioManager.PlayOneShot(InteractSound);
+            }
         }
     }
 

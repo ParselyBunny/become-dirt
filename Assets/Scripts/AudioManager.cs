@@ -151,6 +151,8 @@ public class ReturnToPool : MonoBehaviour
     private void ReleaseSelf()
     {
         // Return to the pool
+        Source.Stop();
+        Source.clip = null;
         StaticObjectPool.Push<AudioSource>(Source);
     }
 }

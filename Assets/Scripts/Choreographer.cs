@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using JTools;
@@ -7,69 +6,124 @@ using JTools;
 /// Activate and deactivate NPCs
 /// and other key story objects.
 /// </summary>
+[RequireComponent(typeof(Collider))]
 public class Choreographer : MonoBehaviour
 {
-    public List<GameObject> ObjectsToDisable;
-    public List<GameObject> ObjectsToEnable;
-    public Transform LookTarget;
-    public float LookSpeed = 1.0f;
-    [Tooltip("If this is true, this component always triggers even if the Ink flag is false.")] public bool AlwaysTrigger = false;
-    [Tooltip("If this is true, destroy this component so it only does its arrangement once.")] public bool DestroyOnTrigger;
-    [Tooltip("If this is true, force player to look at a target when a dialogue starts.")] public bool WillLookAt = false;
-    [Tooltip("If Ink flag is true, then objects in the lists are enabled/disabled. Leave empty if you don't want this choreography to be conditional on an Ink flag.")] public string InkBoolName = "";
-    [Tooltip("The Ink dialogue to play upon hitting this trigger. Leave empty if you don't want to trigger dialogue.")] public string InkKnotName = "";
-    private bool _canTrigger = false;
-    private Coroutine _lookCoroutine;
+    [SerializeField]
+    private List<GameObject> ObjectsToDisable;
+    [SerializeField]
+    private List<GameObject> ObjectsToEnable;
+    [SerializeField]
+    private Transform LookTarget;
+    [SerializeField]
+    private float LookSpeed = 1.0f; // TODO: UNUSED
 
-    void Update()
+    [SerializeField, Tooltip("Create a child object with a DialogueRunner")] private DialogueRunner dialogueRunner;
+    [SerializeField, Tooltip("If true, this component always triggers even if the Ink flag is false.")] private bool AlwaysTrigger;
+    [SerializeField, Tooltip("If true, destroy this component so it only does its arrangement once.")] private bool DestroyOnTrigger;
+
+    private bool _canTrigger = false;
+    private Collider _collider;
+
+    private void Awake()
     {
-        // TODO: Add a check for direction facing using quaternions?
-        if (_canTrigger) {
+        _collider = GetComponent<Collider>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("Player hit a choreo trigger.");
+
+            if (dialogueRunner == null)
+            {
+                Debug.LogWarning("Running choreo with no DialogueRunner.", this);
+            }
+
+            if (AlwaysTrigger)
+            {
+                _canTrigger = AlwaysTrigger;
+            }
+            else if (dialogueRunner?.InkBoolName != "")
+            {
+                _canTrigger = InkManager.CheckVariable(dialogueRunner.InkBoolName);
+            }
+
+            if (!_canTrigger)
+            {
+                return;
+            }
+
             Debug.Log(name + " Choreographer was triggered. Rearranging scene.");
 
-            foreach(GameObject obj in ObjectsToDisable){
-                if (obj != null) {
+            foreach (GameObject obj in ObjectsToDisable)
+            {
+                if (obj != null)
+                {
                     obj.SetActive(false);
                 }
             }
 
-            foreach(GameObject obj in ObjectsToEnable){
-                if (obj != null) {
+            foreach (GameObject obj in ObjectsToEnable)
+            {
+                if (obj != null)
+                {
                     obj.SetActive(true);
                 }
             }
 
+            if (dialogueRunner?.InkKnotName != "")
+            {
+                if (LookTarget != null)
+                {
+                    if (ImpactController.current != null && ImpactController.current.cameraComponent != null)
+                    {
+                        // TODO: Add a check for direction facing using quaternions?
+                        ImpactController.current.cameraComponent.SetLookTarget(LookTarget);
+                        InkManager.OnDialogueEnd += StopLookAt;
+                    }
+                    else
+                    {
+                        Debug.LogError("Trying to use LookTarget when ImpactController Camera is not set up!", this);
+                    }
+                }
+
+                _collider.enabled = false;
+                dialogueRunner?.EnableInteraction();
+
+                if (DestroyOnTrigger)
+                {
+                    InkManager.OnDialogueEnd += DestroySelf;
+                }
+                else
+                {
+                    InkManager.OnDialogueEnd += EnableSelf;
+                }
+
+                InkManager.PlayNext(dialogueRunner?.InkKnotName);
+            }
+            else if (DestroyOnTrigger)
+            {
+                Destroy(this.gameObject);
+            }
+
             _canTrigger = false;
-
-            if (InkKnotName != "") {
-                InkManager.PlayNext(InkKnotName);
-            }
-
-            if (DestroyOnTrigger) {
-                Destroy(this);
-            }
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
-            Debug.Log("Player hit a trigger.");
-            
-            if (AlwaysTrigger) {
-                _canTrigger = AlwaysTrigger;
-            } else if (InkBoolName != "") {
-                _canTrigger = InkManager.CheckVariable(InkBoolName);
-            }
-
-            if (WillLookAt) {
-                ImpactController.current.cameraComponent.SetLookTarget(LookTarget);
-                InkManager.OnDialogueEnd += StopLookAt;
-            }
-        }
+    private void DestroySelf()
+    {
+        Destroy(this.gameObject);
     }
 
-    private void StopLookAt() {
-        InkManager.OnDialogueEnd -= StopLookAt;
+    private void EnableSelf()
+    {
+        _collider.enabled = true;
+    }
+
+    private void StopLookAt()
+    {
         ImpactController.current.cameraComponent.SetLookTarget(null);
     }
 }

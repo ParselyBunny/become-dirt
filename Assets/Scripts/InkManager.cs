@@ -27,12 +27,6 @@ public class InkManager : MonoBehaviour
     private static bool _continuePlaying;
     private NPC _speakingNPC;
 
-    private void Update() {
-        if (ImpactController.current.inputComponent.inputData.pressedInteract && IsPlaying) {
-            _continuePlaying = true;
-        }
-    }
-
     private void Awake()
     {
         if (_instance == null)
@@ -82,42 +76,15 @@ public class InkManager : MonoBehaviour
         return val;
     }
 
-
-    private static void StartDialogue()
-    {
-        JTools.ImpactController.current.inputComponent.lockInput = true;
-        IsPlaying = true;
-        _continuePlaying = true;
-        UIMenus.SetActiveMenu("Dialogue");
-    }
-
-    private static void EndDialogue()
-    {
-        _instance.DialogueText.text = "";
-        if (_instance._speakingNPC != null)
-        {
-            _instance._speakingNPC.SetAllowInteractSound(true);
-            _instance._speakingNPC = null;
-        }
-        // Unlock player input
-        UIMenus.SetActiveMenu("Reticle");
-        IsPlaying = false;
-
-        if (OnDialogueEnd != null) {
-            OnDialogueEnd();
-        }
-        
-        JTools.ImpactController.current.inputComponent.lockInput = false;
-    }
-
     public static void PlayNext(string knotName)
     {
         if (IsPlaying)
         {
-            //_continuePlaying = true;
+            _continuePlaying = true;
         }
         else
         {
+            Debug.LogFormat("Starting dialogue from knot {0}", knotName);
             _instance._story.ChoosePathString(knotName);
             _instance.StartCoroutine(_instance.ContinueStory());
         }
@@ -127,10 +94,11 @@ public class InkManager : MonoBehaviour
     {
         if (IsPlaying)
         {
-            //_continuePlaying = true;
+            _continuePlaying = true;
         }
         else
         {
+            Debug.LogFormat("Starting dialogue from knot {0} from {1}", knotName, nextSpeakingNPC.Name);
             _instance._speakingNPC = nextSpeakingNPC;
             _instance._story.ChoosePathString(knotName);
             _instance.StartCoroutine(_instance.ContinueStory());
@@ -153,6 +121,11 @@ public class InkManager : MonoBehaviour
                 SetDialogue(text);
                 _continuePlaying = false;
             }
+            yield return null;
+        }
+
+        while (!_continuePlaying)
+        {
             yield return null;
         }
 
@@ -189,6 +162,39 @@ public class InkManager : MonoBehaviour
         }
 
         EndDialogue();
+    }
+
+    private static void StartDialogue()
+    {
+        Debug.Log("Starting dialogue.");
+
+        JTools.ImpactController.current.inputComponent.lockInput = true;
+        IsPlaying = true;
+        _continuePlaying = true;
+        UIMenus.SetActiveMenu("Dialogue");
+    }
+
+    private static void EndDialogue()
+    {
+        Debug.Log("Ending dialogue.");
+
+        _instance.DialogueText.text = "";
+        if (_instance._speakingNPC != null)
+        {
+            _instance._speakingNPC.SetAllowInteractSound(true);
+            _instance._speakingNPC = null;
+        }
+        // Unlock player input
+        UIMenus.SetActiveMenu("Reticle");
+        IsPlaying = false;
+
+        if (OnDialogueEnd != null)
+        {
+            OnDialogueEnd();
+            OnDialogueEnd = null;
+        }
+
+        JTools.ImpactController.current.inputComponent.lockInput = false;
     }
 
     // private static readonly Regex nameRegex = new Regex("SISTER:|GRANDMOTHER:|BROTHER:|MOTHER:");
@@ -234,6 +240,8 @@ public class InkManager : MonoBehaviour
 
     private static void SetDialogue(string newText)
     {
+        Debug.LogFormat("Setting Dialogue to {0}", newText);
+
         _instance.DialogueText.text = newText;
     }
 }
