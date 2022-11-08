@@ -23,6 +23,9 @@ public class Reticle : MonoBehaviour
     {
         _reticle = GetComponent<RectTransform>();
         _image = GetComponent<Image>();
+
+        _reticle.sizeDelta = new Vector2(RestingSize, RestingSize);
+        SetFocus(false);
     }
 
     // Update is called once per frame
@@ -43,12 +46,12 @@ public class Reticle : MonoBehaviour
     /// <summary>
     /// Set the focus state of the reticle.
     /// </summary>
-    public void SetFocus(bool value)
+    public void SetFocus(bool focused)
     {
-        _focus = value;
+        _focus = focused;
 
         // Swap to appropriate reticle type
-        if (value)
+        if (_focus)
         {
             _image.sprite = FocusedReticle;
         }

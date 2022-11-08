@@ -42,6 +42,7 @@ public class InkManager : MonoBehaviour
         }
 
         _story = new Story(_inkJSONAsset.text);
+        SetName("");
     }
 
     /// <summary>
