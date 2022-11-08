@@ -51,7 +51,7 @@ public class AudioManager : MonoBehaviour
 
             rtp = go.AddComponent<ReturnToPool>();
             rtp.Source = source;
-            rtp.Init();
+            rtp.AwaitRelease();
 
             StaticObjectPool.Push<AudioSource>(source);
         }
@@ -81,11 +81,12 @@ public class AudioManager : MonoBehaviour
         if (!ok)
         {
             Debug.LogWarningFormat("Trying to play clip when pool is empty! {0}", clip.name);
+            tempSourceRef = null;
             return;
         }
 
         Debug.Log("Using AudioSource from pool", tempSourceRef.gameObject);
-        tempSourceRef.Stop();
+        tempSourceRef.GetComponent<ReturnToPool>().AwaitRelease();
         tempSourceRef.clip = clip;
         tempSourceRef.Play();
     }
@@ -131,7 +132,7 @@ public class ReturnToPool : MonoBehaviour
 {
     public AudioSource Source;
 
-    public void Init()
+    public void AwaitRelease()
     {
         StartCoroutine(WaitForClipEnd());
     }
