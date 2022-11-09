@@ -66,6 +66,7 @@ namespace JTools
             base.ControlsLocked();
 
             inputData.pressedInteract = Input.GetKeyDown(keyInteract);
+            inputData.pressedMenu = Input.GetKeyDown(keyMenu);
         }
     }
 }

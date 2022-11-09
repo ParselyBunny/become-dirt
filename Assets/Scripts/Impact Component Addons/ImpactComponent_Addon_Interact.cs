@@ -15,7 +15,7 @@ namespace JTools
         {
             base.ComponentInitialize(player);
 
-            reticle = UIMenus.GetMenu("Reticle").GetComponent<Reticle>();
+            reticle = UIMenus.GetMenuGameObject("Reticle").GetComponent<Reticle>();
             UIMenus.SetActiveMenu("Reticle");
         }
 
@@ -34,7 +34,8 @@ namespace JTools
             {
                 Interactable interactableComponent = hitInfo.collider.GetComponent<Interactable>();
 
-                if (interactableComponent == null) {
+                if (interactableComponent == null)
+                {
                     interactableComponent = hitInfo.collider.GetComponentInParent<Interactable>();
                 }
 

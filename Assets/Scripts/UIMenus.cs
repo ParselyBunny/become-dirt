@@ -8,13 +8,17 @@ public static class UIMenus
     [SerializeField]
     private static Dictionary<string, Menu> _menus = new Dictionary<string, Menu>();
 
-    public static void RefreshViews()
+    public static void RefreshOverrides()
     {
         foreach (KeyValuePair<string, Menu> entry in _menus)
         {
-            entry.Value.MenuRoot.SetActive(
-                entry.Value.StartEnabled || entry.Value.AlwaysEnabled
-            );
+            if (entry.Value.AlwaysEnabledOverride != entry.Value.AlwaysEnabled)
+            {
+                entry.Value.SetAlwaysEnabledOverride(entry.Value.AlwaysEnabled);
+                entry.Value.MenuRoot.SetActive(
+                    entry.Value.StartEnabled || entry.Value.AlwaysEnabled
+                );
+            }
         }
     }
 
@@ -26,7 +30,7 @@ public static class UIMenus
             return false;
         }
 
-        menu.MenuRoot.SetActive(menu.StartEnabled || menu.AlwaysEnabled);
+        menu.MenuRoot.SetActive(menu.StartEnabled || menu.AlwaysEnabledOverride);
         _menus.Add(menu.MenuRoot.name, menu);
         return true;
     }
@@ -49,7 +53,7 @@ public static class UIMenus
         foreach (KeyValuePair<string, Menu> entry in _menus)
         {
             entry.Value.MenuRoot.SetActive(
-                entry.Value.MenuRoot.name == menuName || entry.Value.AlwaysEnabled
+                entry.Value.MenuRoot.name == menuName || entry.Value.AlwaysEnabledOverride
             );
         }
     }
@@ -66,13 +70,27 @@ public static class UIMenus
         }
     }
 
-    public static GameObject GetMenu(string menuName)
+    public static GameObject GetMenuGameObject(string menuName)
     {
         foreach (KeyValuePair<string, Menu> entry in _menus)
         {
             if (entry.Value.MenuRoot.name == menuName)
             {
                 return entry.Value.MenuRoot;
+            }
+        }
+
+        Debug.LogWarningFormat("Failed to GetMenuGameObject with name: {0}", menuName);
+        return null;
+    }
+
+    public static Menu GetMenu(string menuName)
+    {
+        foreach (KeyValuePair<string, Menu> entry in _menus)
+        {
+            if (entry.Value.MenuRoot.name == menuName)
+            {
+                return entry.Value;
             }
         }
 

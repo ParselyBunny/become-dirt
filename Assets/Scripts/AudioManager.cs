@@ -39,11 +39,6 @@ public class AudioManager : MonoBehaviour
 
         _musicSource = GetComponent<AudioSource>();
 
-        // TODO: Just loop over the enum keys
-        AudioManager.SetVolume(MixerLabel.Master, AudioManager.GetVolumeNormalized(MixerLabel.Master));
-        AudioManager.SetVolume(MixerLabel.Music, AudioManager.GetVolumeNormalized(MixerLabel.Music));
-        AudioManager.SetVolume(MixerLabel.SFX, AudioManager.GetVolumeNormalized(MixerLabel.SFX));
-
         GameObject go;
         AudioSource source;
         ReturnToPool rtp;
@@ -60,6 +55,14 @@ public class AudioManager : MonoBehaviour
 
             StaticObjectPool.Push<AudioSource>(source);
         }
+    }
+
+    private void Start()
+    {
+        // TODO: Just loop over the enum keys
+        AudioManager.SetVolume(MixerLabel.Master, AudioManager.GetVolumeNormalized(MixerLabel.Master));
+        AudioManager.SetVolume(MixerLabel.Music, AudioManager.GetVolumeNormalized(MixerLabel.Music));
+        AudioManager.SetVolume(MixerLabel.SFX, AudioManager.GetVolumeNormalized(MixerLabel.SFX));
     }
 
     public static void PlayOneShot(AudioClip clip)

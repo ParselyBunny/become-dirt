@@ -20,7 +20,10 @@ namespace JTools
                 {
                     UIMenus.SetActiveMenu("");
                     menusOpen = false;
-                    owner.inputComponent.ChangeLockState(false);
+                    if (!InkManager.IsPlaying)
+                    {
+                        owner.inputComponent.ChangeLockState(false);
+                    }
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                 }
@@ -28,7 +31,10 @@ namespace JTools
                 {
                     UIMenus.SetActiveMenu(this._pauseMenuName);
                     menusOpen = true;
-                    owner.inputComponent.ChangeLockState(true);
+                    if (!InkManager.IsPlaying)
+                    {
+                        owner.inputComponent.ChangeLockState(true);
+                    }
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }

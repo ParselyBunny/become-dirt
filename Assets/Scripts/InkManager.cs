@@ -1,7 +1,6 @@
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
-using JTools;
 using System;
 using System.Collections;
 using System.Text.RegularExpressions;
@@ -9,12 +8,13 @@ using System.Text.RegularExpressions;
 /// <summary>
 /// Manage Ink Story.
 /// </summary>
+[RequireComponent(typeof(ChoiceDisplayer))]
 public class InkManager : MonoBehaviour
 {
-    private static InkManager _instance;
-
     public static System.Action OnDialogueEnd;
     public static bool IsPlaying { get; private set; }
+
+    private static InkManager _instance;
 
     [SerializeField]
     private TextAsset _inkJSONAsset;
@@ -23,9 +23,12 @@ public class InkManager : MonoBehaviour
     [SerializeField, Tooltip("Drag the TMPro text UI object for dialogue content in here to have it updated.")]
     private TextMeshProUGUI DialogueText;
 
-    private Story _story;
+    private ChoiceDisplayer _choiceDisplayer;
+
+    private static Story _story;
+    private static NPC _speakingNPC;
     private static bool _continuePlaying;
-    private NPC _speakingNPC;
+    private static bool _processingChoices;
 
     private void Awake()
     {
@@ -41,8 +44,18 @@ public class InkManager : MonoBehaviour
             Destroy(this);
         }
 
+        _choiceDisplayer = GetComponent<ChoiceDisplayer>();
         _story = new Story(_inkJSONAsset.text);
         SetName("");
+    }
+
+    public static void StopCoroutines()
+    {
+        _instance.StopAllCoroutines();
+        if (IsPlaying)
+        {
+            EndDialogue(true);
+        }
     }
 
     /// <summary>
@@ -53,7 +66,7 @@ public class InkManager : MonoBehaviour
     /// </summary>
     public static bool CheckVariable(string inkVariable)
     {
-        object obj = _instance._story.variablesState[inkVariable];
+        object obj = _story.variablesState[inkVariable];
         bool val = false;
 
         if (obj != null)
@@ -86,8 +99,8 @@ public class InkManager : MonoBehaviour
         else
         {
             Debug.LogFormat("Starting dialogue from knot {0}", knotName);
-            _instance._story.ChoosePathString(knotName);
-            _instance.StartCoroutine(_instance.ContinueStory());
+            _story.ChoosePathString(knotName);
+            _instance.StartCoroutine(_instance.ContinueFromStory());
         }
     }
 
@@ -100,40 +113,60 @@ public class InkManager : MonoBehaviour
         else
         {
             Debug.LogFormat("Starting dialogue from knot {0} from {1}", knotName, nextSpeakingNPC.Name);
-            _instance._speakingNPC = nextSpeakingNPC;
-            _instance._story.ChoosePathString(knotName);
-            _instance.StartCoroutine(_instance.ContinueStory());
+            _speakingNPC = nextSpeakingNPC;
+            _story.ChoosePathString(knotName);
+            _instance.StartCoroutine(_instance.ContinueFromStory());
         }
     }
 
-    private IEnumerator ContinueStory()
+    public static void PlayNext(int choiceIndex)
+    {
+        if (!IsPlaying)
+        {
+            Debug.LogWarning("Called PlayNext with choice when no story is playing.");
+            return;
+        }
+
+        _story.ChooseChoiceIndex(choiceIndex);
+        _processingChoices = false;
+        _continuePlaying = true;
+    }
+
+    private IEnumerator ContinueFromStory()
     {
         StartDialogue();
 
-        // TODO: parse out name of character and set it
-        // TODO: condition for pausing story-level ink execution (indicating when a dialogue box should end)
         string text;
-        while (_instance._story.canContinue)
+        while (_story.canContinue || _processingChoices)
         {
-            if (_continuePlaying)
+            if (_continuePlaying && !_processingChoices)
             {
-                text = _instance._story.Continue();
-                ParseName(ref text);
+                text = _story.Continue();
+                ParseNPCName(ref text);
                 SetDialogue(text);
+
+                _processingChoices = false;
                 _continuePlaying = false;
+
+                if (_story.currentChoices.Count > 0)
+                {
+                    _processingChoices = true;
+                    _instance._choiceDisplayer.DisplayChoices(_story.currentChoices);
+                }
             }
             yield return null;
         }
 
+        // We don't have any more text, but we gotta wait to close the dialogue
         while (!_continuePlaying)
         {
             yield return null;
         }
 
-        EndDialogue();
+        EndDialogue(false);
     }
 
-    public static void ShowExamineText(string objectName, string[] text)
+    public static void DisplayObjectText(string objectName, string[] text)
     {
         if (IsPlaying)
         {
@@ -142,11 +175,11 @@ public class InkManager : MonoBehaviour
         else
         {
             SetName(objectName);
-            _instance.StartCoroutine(_instance.ShowText(text));
+            _instance.StartCoroutine(_instance.DisplayText(text));
         }
     }
 
-    private IEnumerator ShowText(string[] text)
+    private IEnumerator DisplayText(string[] text)
     {
         StartDialogue();
 
@@ -162,7 +195,13 @@ public class InkManager : MonoBehaviour
             yield return null;
         }
 
-        EndDialogue();
+        // We don't have any more text, but we gotta wait to close the dialogue
+        while (!_continuePlaying)
+        {
+            yield return null;
+        }
+
+        EndDialogue(false);
     }
 
     private static void StartDialogue()
@@ -172,21 +211,26 @@ public class InkManager : MonoBehaviour
         JTools.ImpactController.current.inputComponent.lockInput = true;
         IsPlaying = true;
         _continuePlaying = true;
+        UIMenus.GetMenu("Dialogue").SetAlwaysEnabledOverride(true);
         UIMenus.SetActiveMenu("Dialogue");
     }
 
-    private static void EndDialogue()
+    private static void EndDialogue(bool manuallyTerminated)
     {
         Debug.Log("Ending dialogue.");
 
         _instance.DialogueText.text = "";
-        if (_instance._speakingNPC != null)
+        if (_speakingNPC != null)
         {
-            _instance._speakingNPC.SetAllowInteractSound(true);
-            _instance._speakingNPC = null;
+            _speakingNPC.SetAllowInteractSound(true);
+            _speakingNPC = null;
         }
-        // Unlock player input
-        UIMenus.SetActiveMenu("Reticle");
+
+        if (!manuallyTerminated)
+        {
+            UIMenus.GetMenu("Dialogue").SetAlwaysEnabledOverride(false);
+            UIMenus.SetActiveMenu("Reticle");
+        }
         IsPlaying = false;
 
         if (OnDialogueEnd != null)
@@ -200,7 +244,7 @@ public class InkManager : MonoBehaviour
 
     // private static readonly Regex nameRegex = new Regex("SISTER:|GRANDMOTHER:|BROTHER:|MOTHER:");
     private const string NAME_REGEX = @"(SISTER:|GRANDMOTHER:|BROTHER:|MOTHER:) ";
-    private static void ParseName(ref string text)
+    private static void ParseNPCName(ref string text)
     {
         if (text == "")
         {

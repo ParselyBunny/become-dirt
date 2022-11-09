@@ -5,12 +5,18 @@ public class Menu
     public GameObject MenuRoot { get; private set; }
     public bool StartEnabled { get; private set; }
     public bool AlwaysEnabled { get; private set; }
+    public bool AlwaysEnabledOverride { get; private set; }
 
     public Menu(GameObject obj, bool se, bool ae)
     {
         this.MenuRoot = obj;
         this.StartEnabled = se;
         this.AlwaysEnabled = ae;
+    }
+
+    public void SetAlwaysEnabledOverride(bool alwaysEnabled)
+    {
+        AlwaysEnabledOverride = alwaysEnabled;
     }
 }
 
