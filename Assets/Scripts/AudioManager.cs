@@ -127,6 +127,26 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat(mixerLabel.ToString(), val);
     }
 
+    public static void SetVolumeWithoutSaving(MixerLabel mixerLabel, float val)
+    {
+        switch (mixerLabel)
+        {
+            case MixerLabel.Master:
+                instance._masterMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                break;
+            case MixerLabel.Music:
+                instance._musicMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                break;
+            case MixerLabel.SFX:
+                instance._sfxMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+
+                break;
+            default:
+                Debug.LogErrorFormat("Call to SetVolume was made with invalid label - {0}", mixerLabel.ToString());
+                return;
+        }
+    }
+
     public static float GetVolumeNormalized(MixerLabel mixerLabel)
     {
         return PlayerPrefs.GetFloat(mixerLabel.ToString(), 1);

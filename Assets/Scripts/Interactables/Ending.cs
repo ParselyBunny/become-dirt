@@ -18,7 +18,7 @@ public class Ending : Interactable
 
         ImpactController.current.inputComponent.lockInput = true;
         _musicVolume = AudioManager.GetVolumeNormalized(AudioManager.MixerLabel.Music);
-        AudioManager.SetVolume(AudioManager.MixerLabel.Music, -80.0f);
+        AudioManager.SetVolumeWithoutSaving(AudioManager.MixerLabel.Music, -80.0f);
         UIMenus.SetActiveMenu("Black Screen");
 
         GetComponent<Collider>().enabled = false;
@@ -30,7 +30,7 @@ public class Ending : Interactable
         yield return new WaitForSecondsRealtime(3);
 
         AudioManager.PlayMusic(EndingMusic);
-        AudioManager.SetVolume(AudioManager.MixerLabel.Music, _musicVolume);
+        AudioManager.SetVolumeWithoutSaving(AudioManager.MixerLabel.Music, _musicVolume);
         UIMenus.SetActiveMenu("Ending");
 
         StartCoroutine(Quit());
