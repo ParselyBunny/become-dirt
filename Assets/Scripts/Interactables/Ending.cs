@@ -6,6 +6,7 @@ using JTools;
 /// Attach this to the object that
 /// will end the game.
 /// </summary>
+[RequireComponent(typeof(Collider))]
 public class Ending : Interactable
 {
     public AudioClip EndingMusic;
@@ -20,10 +21,12 @@ public class Ending : Interactable
         AudioManager.SetVolume(AudioManager.MixerLabel.Music, -80.0f);
         UIMenus.SetActiveMenu("Black Screen");
 
+        GetComponent<Collider>().enabled = false;
         StartCoroutine(End());
     }
 
-    private IEnumerator End() {
+    private IEnumerator End()
+    {
         yield return new WaitForSecondsRealtime(3);
 
         AudioManager.PlayMusic(EndingMusic);
@@ -33,7 +36,8 @@ public class Ending : Interactable
         StartCoroutine(Quit());
     }
 
-    private IEnumerator Quit() {
+    private IEnumerator Quit()
+    {
         yield return new WaitForSecondsRealtime(13);
 
         UIUtils.QuitGame();
