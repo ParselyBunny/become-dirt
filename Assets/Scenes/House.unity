@@ -10603,6 +10603,18 @@ PrefabInstance:
       propertyPath: landingSound
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6102523249223408527, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
+      propertyPath: mask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6102523249223408527, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
+      propertyPath: hitMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6102523249223408527, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
 --- !u!1 &840362495 stripped

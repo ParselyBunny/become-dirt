@@ -8,7 +8,9 @@ namespace JTools
     {
         [Tooltip("Whether or not interactions are enabled.")] public bool enableInteractions = true;
         [Tooltip("Range that the player can interact with things.")] public float distance = 3f;
-        [Tooltip("The player can only interact with objects on this layer.")] public LayerMask mask;
+        [Tooltip("The layers used for raycast physics.")] public LayerMask hitMask;
+        [Tooltip("The player can only interact with objects on this layer.")] public LayerMask targetMask;
+
         private Reticle reticle;
 
         public override void ComponentInitialize(ImpactController player)
@@ -30,25 +32,36 @@ namespace JTools
             RaycastHit hitInfo;
 
             // Check for collision with an object that has an Interactable component
-            if (Physics.Raycast(ray, out hitInfo, distance, mask))
+            if (Physics.Raycast(ray, out hitInfo, distance, hitMask))
             {
-                Interactable interactableComponent = hitInfo.collider.GetComponent<Interactable>();
-
-                if (interactableComponent == null)
+                Debug.LogFormat("{0} {1} {2} {3}",
+                    hitInfo.collider.gameObject.layer,
+                    (1 << hitInfo.collider.gameObject.layer),
+                    targetMask.value,
+                    ((1 << hitInfo.collider.gameObject.layer) & targetMask.value));
+                if (((1 << hitInfo.collider.gameObject.layer) & targetMask.value) == targetMask.value)
                 {
-                    interactableComponent = hitInfo.collider.GetComponentInParent<Interactable>();
-                }
-
-                if (interactableComponent != null)
-                {
-                    // Change reticle state to show player is aiming at something interactable
-                    reticle.SetFocus(true);
-
-                    if (owner.inputComponent.inputData.pressedInteract)
+                    Interactable interactableComponent = hitInfo.collider.GetComponent<Interactable>();
+                    if (interactableComponent == null)
                     {
-                        Debug.Log(interactableComponent.PromptMessage);
-                        interactableComponent.Interact();
+                        interactableComponent = hitInfo.collider.GetComponentInParent<Interactable>();
                     }
+
+                    if (interactableComponent != null)
+                    {
+                        // Change reticle state to show player is aiming at something interactable
+                        reticle.SetFocus(true);
+
+                        if (owner.inputComponent.inputData.pressedInteract)
+                        {
+                            Debug.Log(interactableComponent.PromptMessage);
+                            interactableComponent.Interact();
+                        }
+                    }
+                }
+                else
+                {
+                    reticle.SetFocus(false);
                 }
             }
             else
