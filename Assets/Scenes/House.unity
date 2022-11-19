@@ -10523,18 +10523,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1312580569798877917, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
-      propertyPath: playerHeight
-      value: 1.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 1312580569798877917, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
-      propertyPath: addonComponents.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1312580569798877917, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
-      propertyPath: addonComponents.Array.data[2]
-      value: 
-      objectReference: {fileID: 840362496}
     - target: {fileID: 3715187978387094822, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
       propertyPath: walkRate
       value: 0.4
@@ -10599,44 +10587,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ImpactPlayer_Default
       objectReference: {fileID: 0}
-    - target: {fileID: 6102523249223408526, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
-      propertyPath: landingSound
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6102523249223408527, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
       propertyPath: mask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
-    - target: {fileID: 6102523249223408527, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
-      propertyPath: hitMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102523249223408527, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
-      propertyPath: targetMask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
---- !u!1 &840362495 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5060298884549454450, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
-  m_PrefabInstance: {fileID: 840362494}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &840362496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840362495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd86e0ac5fcd4854e95a74dee7093638, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 0}
-  initialized: 0
-  _pauseMenuName: Pause Menu
 --- !u!1001 &848232031
 PrefabInstance:
   m_ObjectHideFlags: 0

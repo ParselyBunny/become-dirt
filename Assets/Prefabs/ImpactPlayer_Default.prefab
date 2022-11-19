@@ -84,13 +84,21 @@ MonoBehaviour:
   playerCamera: {fileID: 5076629632816349116}
   playerArtRoot: {fileID: 4632760602622499799}
   playerRadius: 0.3
-  playerHeight: 1.64
+  playerHeight: 1.44
   inputComponent: {fileID: 3213936460890395464}
   cameraComponent: {fileID: 4754107696508692566}
   motionComponent: {fileID: 3715187978387094822}
   addonComponents:
   - {fileID: 6102523249223408526}
   - {fileID: 6102523249223408527}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   lockFramerate: 1
   frameRate: 60
   capsuleCollider: {fileID: 0}
@@ -331,7 +339,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fab1153940066b14cb8174769bedaf30, type: 3}
   - {fileID: 8300000, guid: 2e4ffbf814487c14f82cfa4b2cfb40ab, type: 3}
   jumpingSound: {fileID: 0}
-  landingSound: {fileID: 8300000, guid: fab1153940066b14cb8174769bedaf30, type: 3}
+  landingSound: {fileID: 0}
   overrideFootsteps: 0
 --- !u!114 &6102523249223408527
 MonoBehaviour:
@@ -349,7 +357,10 @@ MonoBehaviour:
   initialized: 0
   enableInteractions: 1
   distance: 3
-  mask:
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  targetMask:
     serializedVersion: 2
     m_Bits: 8
 --- !u!1 &5061515794177671736

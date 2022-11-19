@@ -1,43 +1,41 @@
 using UnityEngine;
 
-namespace JTools
+[DisallowMultipleComponent]
+public class ImpactComponent_Addon_UI : JTools.ImpactComponent_Addon
 {
-    public class ImpactComponent_Addon_UI : ImpactComponent_Addon
+    [SerializeField]
+    private string _pauseMenuName = "Pause Menu";
+
+    public bool MenusOpen;
+
+    public override void ComponentUpdate(JTools.ImpactController player)
     {
-        [SerializeField]
-        private string _pauseMenuName = "Pause Menu";
+        base.ComponentUpdate(player);
 
-        private bool menusOpen = false;
-
-        public override void ComponentUpdate(ImpactController player)
+        if (owner.inputComponent.inputData.pressedMenu)
         {
-            base.ComponentUpdate(player);
-
-            if (owner.inputComponent.inputData.pressedMenu)
+            Debug.LogFormat("Toggling Pause Menu - now enabled: `{0}`", !MenusOpen);
+            if (MenusOpen)
             {
-                Debug.LogFormat("Toggling Pause Menu - now enabled: `{0}`", !menusOpen);
-                if (menusOpen)
+                UIMenus.SetActiveMenu("");
+                MenusOpen = false;
+                if (!InkManager.IsPlaying)
                 {
-                    UIMenus.SetActiveMenu("");
-                    menusOpen = false;
-                    if (!InkManager.IsPlaying)
-                    {
-                        owner.inputComponent.ChangeLockState(false);
-                    }
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false;
+                    owner.inputComponent.ChangeLockState(false);
                 }
-                else
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else
+            {
+                UIMenus.SetActiveMenu(this._pauseMenuName);
+                MenusOpen = true;
+                if (!InkManager.IsPlaying)
                 {
-                    UIMenus.SetActiveMenu(this._pauseMenuName);
-                    menusOpen = true;
-                    if (!InkManager.IsPlaying)
-                    {
-                        owner.inputComponent.ChangeLockState(true);
-                    }
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
+                    owner.inputComponent.ChangeLockState(true);
                 }
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }
