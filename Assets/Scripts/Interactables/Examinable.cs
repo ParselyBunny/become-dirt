@@ -1,19 +1,21 @@
 using UnityEngine;
 
-public class Examinable : Interactable
+public class Examinable : NPC
 {
     [SerializeField, Tooltip("Message to display when examined.")]
-    private string[] _examineMessage = new string[] { "Object Examined." };
+    private string[] _examineMessage = new string[] { };
 
     public override void Interact()
     {
         base.Interact();
-    }
 
-    public virtual void Examine()
-    {
         Debug.Log("You just examined me, my name is: " + this.name);
 
-        InkManager.DisplayObjectText(this.gameObject.name, _examineMessage);
+        if (_examineMessage.Length > 0)
+        {
+            base.SetAllowInteractSound(false);
+            InkManager.OnDialogueEnd += () => base.SetAllowInteractSound(true);
+            InkManager.DisplayObjectText(base.Name, _examineMessage);
+        }
     }
 }

@@ -72,12 +72,10 @@ public class ImpactComponent_Input_Custom : JTools.ImpactComponent_Input
 
         if (_uiAddon.MenusOpen)
         {
-            Debug.Log("UI OPEN");
             inputData.pressedInteract = false;
         }
         else
         {
-            Debug.Log("UI CLOSED");
             inputData.pressedInteract = Input.GetKeyDown(keyInteract);
         }
 

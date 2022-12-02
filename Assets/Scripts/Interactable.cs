@@ -7,9 +7,11 @@ using UnityEngine;
 /// </summary>
 public abstract class Interactable : MonoBehaviour
 {
-    [Tooltip("Message to display when interacted with.")] public string PromptMessage = "Default message.";
-    [Tooltip("Sound that plays when the object is interacted with.")] public AudioClip InteractSound;
-    [Tooltip("If true, play interact sound.")] public bool AllowInteractSound = true;
+    [Tooltip("Sound that plays when the object is interacted with.")]
+    public AudioClip InteractSound;
+
+    [Tooltip("If true, play interact sound.")]
+    public bool AllowInteractSound = true;
 
     /// <summary>
     /// Perform some interaction.

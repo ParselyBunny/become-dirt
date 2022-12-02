@@ -168,6 +168,12 @@ public class InkManager : MonoBehaviour
 
     public static void DisplayObjectText(string objectName, string[] text)
     {
+        if (text.Length == 0)
+        {
+            Debug.Log("DisplayObjectText was called with no text.");
+            return;
+        }
+
         if (IsPlaying)
         {
             _continuePlaying = true;
@@ -208,9 +214,10 @@ public class InkManager : MonoBehaviour
     {
         Debug.Log("Starting dialogue.");
 
-        JTools.ImpactController.current.inputComponent.lockInput = true;
+        JTools.ImpactController.current.inputComponent.ChangeLockState(true);
         IsPlaying = true;
         _continuePlaying = true;
+        UIMenus.GetMenu("Reticle").SetAlwaysEnabledOverride(false);
         UIMenus.GetMenu("Dialogue").SetAlwaysEnabledOverride(true);
         UIMenus.SetActiveMenu("Dialogue");
     }
@@ -229,6 +236,7 @@ public class InkManager : MonoBehaviour
         if (!manuallyTerminated)
         {
             UIMenus.GetMenu("Dialogue").SetAlwaysEnabledOverride(false);
+            UIMenus.GetMenu("Reticle").SetAlwaysEnabledOverride(true);
             UIMenus.SetActiveMenu("Reticle");
         }
         IsPlaying = false;
@@ -239,7 +247,7 @@ public class InkManager : MonoBehaviour
             OnDialogueEnd = null;
         }
 
-        JTools.ImpactController.current.inputComponent.lockInput = false;
+        JTools.ImpactController.current.inputComponent.ChangeLockState(false);
     }
 
     // private static readonly Regex nameRegex = new Regex("SISTER:|GRANDMOTHER:|BROTHER:|MOTHER:");

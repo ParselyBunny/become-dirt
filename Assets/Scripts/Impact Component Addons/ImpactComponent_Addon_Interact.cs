@@ -16,18 +16,20 @@ public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
 
         reticle = UIMenus.GetMenuGameObject("Reticle").GetComponent<Reticle>();
         UIMenus.SetActiveMenu("Reticle");
+        UIMenus.GetMenu("Reticle").SetAlwaysEnabledOverride(true);
     }
 
+    // -- These vars are here for GC reasons
     private Interactable interactRef;
+    private Ray ray;
+    private RaycastHit hitInfo; // Store collision info
     public override void ComponentUpdate(JTools.ImpactController player)
     {
         base.ComponentUpdate(player);
 
         // Create a ray at the center of the camera going forward
-        Ray ray = new Ray(owner.playerCamera.transform.position, owner.playerCamera.transform.forward);
+        ray = new Ray(owner.playerCamera.transform.position, owner.playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance);
-        // Store collision info
-        RaycastHit hitInfo;
 
         // Check for collision with an object that has an Interactable component
         if (Physics.Raycast(ray, out hitInfo, distance, hitMask))
@@ -52,8 +54,7 @@ public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
 
                     if (owner.inputComponent.inputData.pressedInteract)
                     {
-                        Debug.Log("Input Locked? " + owner.inputComponent.lockInput);
-                        Debug.Log(interactRef.PromptMessage, interactRef.gameObject);
+                        // Debug.Log("Input Locked? " + owner.inputComponent.lockInput);
                         interactRef.Interact();
                     }
                 }

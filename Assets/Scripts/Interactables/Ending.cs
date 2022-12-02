@@ -16,12 +16,17 @@ public class Ending : Interactable
         base.Interact();
         base.SetAllowInteractSound(false);
 
-        ImpactController.current.inputComponent.lockInput = true;
+        ImpactController.current.inputComponent.ChangeLockState(false);
+        Destroy(ImpactController.current.gameObject);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         _musicVolume = AudioManager.GetVolumeNormalized(AudioManager.MixerLabel.Music);
         AudioManager.SetVolumeWithoutSaving(AudioManager.MixerLabel.Music, -80.0f);
+        UIMenus.GetMenu("Black Screen").SetAlwaysEnabledOverride(true);
         UIMenus.SetActiveMenu("Black Screen");
 
         GetComponent<Collider>().enabled = false;
+
         StartCoroutine(End());
     }
 
@@ -31,15 +36,14 @@ public class Ending : Interactable
 
         AudioManager.PlayMusic(EndingMusic);
         AudioManager.SetVolumeWithoutSaving(AudioManager.MixerLabel.Music, _musicVolume);
+        UIMenus.GetMenu("Black Screen").SetAlwaysEnabledOverride(false);
+        UIMenus.GetMenu("Ending").SetAlwaysEnabledOverride(true);
         UIMenus.SetActiveMenu("Ending");
 
-        StartCoroutine(Quit());
-    }
-
-    private IEnumerator Quit()
-    {
         yield return new WaitForSecondsRealtime(13);
 
-        UIUtils.QuitGame();
+        // AudioManager.PlayMusic(null);
+        AudioManager.SetLoopMusic(false);
+        UIMenus.SetActiveMenu("Thanks");
     }
 }

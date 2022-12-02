@@ -30,7 +30,7 @@ public static class UIMenus
             return false;
         }
 
-        menu.MenuRoot.SetActive(menu.StartEnabled || menu.AlwaysEnabledOverride);
+        menu.MenuRoot.SetActive(menu.StartEnabled || menu.AlwaysEnabledOverride || menu.AlwaysEnabled);
         _menus.Add(menu.MenuRoot.name, menu);
         return true;
     }
@@ -53,7 +53,7 @@ public static class UIMenus
         foreach (KeyValuePair<string, Menu> entry in _menus)
         {
             entry.Value.MenuRoot.SetActive(
-                entry.Value.MenuRoot.name == menuName || entry.Value.AlwaysEnabledOverride
+                entry.Value.MenuRoot.name == menuName || entry.Value.AlwaysEnabledOverride || entry.Value.AlwaysEnabled
             );
         }
     }

@@ -82,6 +82,11 @@ public class AudioManager : MonoBehaviour
         instance._musicSource.Play();
     }
 
+    public static void SetLoopMusic(bool shouldLoop)
+    {
+        instance._musicSource.loop = shouldLoop;
+    }
+
     private AudioSource tempSourceRef;
     private void PlayPooledOneShot(AudioClip clip)
     {
