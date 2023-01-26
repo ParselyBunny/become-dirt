@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIUtility : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class UIUtility : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(this.gameObject);
         _isInitialized = true;
         _OnDestroy.AddListener(() => { _isInitialized = false; });
     }
@@ -25,16 +25,17 @@ public class UIUtility : MonoBehaviour
         _OnDestroy.Invoke();
     }
 
-    public void LoadScene(int sceneIndex)
+    public void ReloadCurrentScene()
     {
-        UIUtils.LoadScene(sceneIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void LoadSceneAdditive(int sceneIndex)
-    {
-        UIUtils.LoadSceneAdditive(sceneIndex);
-    }
+
     public void QuitGame()
     {
-        UIUtils.QuitGame();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        UnityEngine.Application.Quit();
+#endif
     }
 }

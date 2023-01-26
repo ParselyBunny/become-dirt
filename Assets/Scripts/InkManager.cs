@@ -35,7 +35,6 @@ public class InkManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(this);
             Debug.Log("Ink Manager initialized.");
         }
         else
@@ -49,7 +48,7 @@ public class InkManager : MonoBehaviour
         SetName("");
     }
 
-    public static void StopCoroutines()
+    private void OnDestroy()
     {
         _instance.StopAllCoroutines();
         if (IsPlaying)
@@ -222,7 +221,7 @@ public class InkManager : MonoBehaviour
         UIMenus.SetActiveMenu("Dialogue");
     }
 
-    private static void EndDialogue(bool manuallyTerminated)
+    private static void EndDialogue(bool forced)
     {
         Debug.Log("Ending dialogue.");
 
@@ -233,20 +232,20 @@ public class InkManager : MonoBehaviour
             _speakingNPC = null;
         }
 
-        if (!manuallyTerminated)
+        if (!forced)
         {
             UIMenus.GetMenu("Dialogue").SetAlwaysEnabledOverride(false);
             UIMenus.GetMenu("Reticle").SetAlwaysEnabledOverride(true);
             UIMenus.SetActiveMenu("Reticle");
+
+            if (OnDialogueEnd != null)
+            {
+                OnDialogueEnd();
+            }
         }
+
+        OnDialogueEnd = null;
         IsPlaying = false;
-
-        if (OnDialogueEnd != null)
-        {
-            OnDialogueEnd();
-            OnDialogueEnd = null;
-        }
-
         JTools.ImpactController.current.inputComponent.ChangeLockState(false);
     }
 

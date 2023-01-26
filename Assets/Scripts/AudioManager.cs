@@ -28,7 +28,6 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
             Debug.Log("Audio Manager initialized.");
         }
         else
@@ -75,16 +74,30 @@ public class AudioManager : MonoBehaviour
         instance.StartCoroutine(instance.PlayPooledOneShotWithDelay(clip, delaySeconds));
     }
 
+    // INSPECTOR METHOD
     public static void PlayMusic(AudioClip clip)
     {
         instance._musicSource.Stop();
+        if (clip == null)
+        {
+            Debug.LogWarning("Trying to play music with null clip selected.");
+            return;
+        }
         instance._musicSource.clip = clip;
         instance._musicSource.Play();
     }
 
-    public static void SetLoopMusic(bool shouldLoop)
+    public static void PlayMusic(AudioClip clip, bool shouldLoop)
     {
+        instance._musicSource.Stop();
+        if (clip == null)
+        {
+            Debug.LogWarning("Trying to play music with null clip selected.");
+            return;
+        }
+        instance._musicSource.clip = clip;
         instance._musicSource.loop = shouldLoop;
+        instance._musicSource.Play();
     }
 
     private AudioSource tempSourceRef;

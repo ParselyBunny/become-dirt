@@ -34,7 +34,7 @@ public class Ending : Interactable
     {
         yield return new WaitForSecondsRealtime(3);
 
-        AudioManager.PlayMusic(EndingMusic);
+        AudioManager.PlayMusic(EndingMusic, true);
         AudioManager.SetVolumeWithoutSaving(AudioManager.MixerLabel.Music, _musicVolume);
         UIMenus.GetMenu("Black Screen").SetAlwaysEnabledOverride(false);
         UIMenus.GetMenu("Ending").SetAlwaysEnabledOverride(true);
@@ -42,8 +42,6 @@ public class Ending : Interactable
 
         yield return new WaitForSecondsRealtime(13);
 
-        // AudioManager.PlayMusic(null);
-        AudioManager.SetLoopMusic(false);
         UIMenus.SetActiveMenu("Thanks");
     }
 }
