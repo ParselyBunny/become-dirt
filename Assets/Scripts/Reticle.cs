@@ -12,6 +12,10 @@ public class Reticle : MonoBehaviour
     public float Speed;
     public Sprite FocusedReticle;
     public Sprite UnfocusedReticle;
+
+    [SerializeField]
+    private GameObject _inputPromptObj;
+
     private RectTransform _reticle;
     private Image _image;
     private float _currentSize;
@@ -47,6 +51,7 @@ public class Reticle : MonoBehaviour
     public void SetFocus(bool focused)
     {
         _focus = focused;
+        _inputPromptObj.SetActive(this.gameObject.activeSelf && _focus);
 
         // Swap to appropriate reticle type
         if (_focus)

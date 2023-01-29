@@ -7,12 +7,12 @@ using JTools;
 /// and other key story objects.
 /// </summary>
 [RequireComponent(typeof(Collider))]
-public class Choreographer : MonoBehaviour
+public class Choreographer : StateSerializer
 {
     [SerializeField]
-    private List<GameObject> ObjectsToDisable;
+    private List<StateSerializer> ObjectsToDisable;
     [SerializeField]
-    private List<GameObject> ObjectsToEnable;
+    private List<StateSerializer> ObjectsToEnable;
     [SerializeField]
     private Transform LookTarget;
     [SerializeField]
@@ -21,6 +21,7 @@ public class Choreographer : MonoBehaviour
     [SerializeField, Tooltip("Create a child object with a DialogueRunner")] private DialogueRunner dialogueRunner;
     [SerializeField, Tooltip("If true, this component always triggers even if the Ink flag is false.")] private bool AlwaysTrigger;
     [SerializeField, Tooltip("If true, destroy this component so it only does its arrangement once.")] private bool DestroyOnTrigger;
+    [SerializeField, Tooltip("If true, initiate auto-save after choreo execution.")] private bool SaveOnTrigger;
 
     private bool _canTrigger = false;
     private Collider _collider;
@@ -28,6 +29,16 @@ public class Choreographer : MonoBehaviour
     private void Awake()
     {
         _collider = GetComponent<Collider>();
+
+        SaveStateManager.MarkObjectForSaving(this);
+        for (int i = 0; i < ObjectsToDisable.Count; i++)
+        {
+            SaveStateManager.MarkObjectForSaving(ObjectsToDisable[i]);
+        }
+        for (int i = 0; i < ObjectsToEnable.Count; i++)
+        {
+            SaveStateManager.MarkObjectForSaving(ObjectsToEnable[i]);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -57,19 +68,19 @@ public class Choreographer : MonoBehaviour
 
             Debug.Log(name + " Choreographer was triggered. Rearranging scene.");
 
-            foreach (GameObject obj in ObjectsToDisable)
+            foreach (StateSerializer obj in ObjectsToDisable)
             {
                 if (obj != null)
                 {
-                    obj.SetActive(false);
+                    obj.gameObject.SetActive(false);
                 }
             }
 
-            foreach (GameObject obj in ObjectsToEnable)
+            foreach (StateSerializer obj in ObjectsToEnable)
             {
                 if (obj != null)
                 {
-                    obj.SetActive(true);
+                    obj.gameObject.SetActive(true);
                 }
             }
 
@@ -99,6 +110,11 @@ public class Choreographer : MonoBehaviour
                 else
                 {
                     InkManager.OnDialogueEnd += EnableSelf;
+                }
+
+                if (this.SaveOnTrigger)
+                {
+                    InkManager.OnDialogueEnd += SaveStateManager.SaveGame;
                 }
 
                 InkManager.PlayNext(dialogueRunner?.InkKnotName);
