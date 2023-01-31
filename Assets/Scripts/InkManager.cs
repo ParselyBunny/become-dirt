@@ -223,7 +223,7 @@ public class InkManager : MonoBehaviour
 
     private static void EndDialogue(bool forced)
     {
-        Debug.Log("Ending dialogue.");
+        Debug.LogFormat("Ending dialogue. Forced = {0}", forced);
 
         _instance.DialogueText.text = "";
         if (_speakingNPC != null)

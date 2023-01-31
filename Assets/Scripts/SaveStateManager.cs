@@ -1,33 +1,87 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 public static class SaveStateManager
 {
     public const string VERSION = "0.1";
-    private static string _savePath = System.IO.Path.Combine(Application.dataPath, "Saves", (VERSION + ".json"));
+    private static string _saveDirectoryPath = Path.Combine(Application.dataPath, "Saves");
+#if UNITY_EDITOR
+    private static string _saveFileName = VERSION + "-editor.json";
+#else
+    private static string _saveFileName = VERSION + ".json";
+#endif
+    private static string SaveFileFullPath { get { return Path.Combine(_saveDirectoryPath, _saveFileName); } }
 
     private static Dictionary<string, GameObject> _markedObjects = new Dictionary<string, GameObject>();
     private static StateSerializer[] _serializersInScene;
-    private static Dictionary<string, SaveObject.ObjectState> _saveFile = new Dictionary<string, SaveObject.ObjectState>();
+    private static Dictionary<string, SaveObject.ObjectState> _loadedSave = new Dictionary<string, SaveObject.ObjectState>();
 
-    static SaveStateManager()
+    public static void MarkObjectForSaving(StateSerializer obj)
     {
-        LoadSaveFile();
+        if (obj == null)
+        {
+            Debug.LogWarning("Object marked for saving is null.");
+            return;
+        }
+
+        // Debug.Log("Marking object for saving: " + obj.gameObject.name, obj.gameObject);
+        if (!_markedObjects.ContainsKey(obj.UUID))
+        {
+            _markedObjects.Add(obj.UUID, obj.gameObject);
+        }
+        // Debug.Log($"Marked Contents:\n{string.Join("\n", _markedObjects)}");
+    }
+
+    public static void SaveGame()
+    {
+        Debug.Log("Saving Game.");
+        List<SaveObject> data = new List<SaveObject>(_markedObjects.Count);
+
+        foreach (KeyValuePair<string, GameObject> kv in _markedObjects)
+        {
+            // Debug.Log("Marking object for saving: " + kv.Key, kv.Value);
+            // var newObj = new SaveObject(kv.Key, kv.Value);
+            // Debug.LogFormat("Marking object for saving: {0} {1}", newObj.UUID, newObj.State.ToString());
+            data.Add(new SaveObject(kv.Key, kv.Value));
+        }
+
+        SaveFile saveData = new SaveFile() { Objects = data.ToArray() };
+        // Debug.Log($"List Contents:\n{string.Join("\n", data)}");
+        // Debug.LogFormat("Save data in list: {0}", data.ToString());
+        string saveDataJSON = JsonUtility.ToJson(saveData, true);
+        // Debug.LogFormat("Save data written: {0}", saveDataJSON);
+        File.WriteAllText(SaveFileFullPath, saveDataJSON);
+        Debug.Log("Game Saved.");
     }
 
     public static void LoadSaveFile()
     {
-        if (!System.IO.File.Exists(_savePath))
+        if (!Directory.Exists(_saveDirectoryPath))
         {
-            Debug.LogWarningFormat("Save file does not exist with path `{0}`", _savePath);
+            Directory.CreateDirectory(_saveDirectoryPath);
+            Debug.LogWarning("Save directory did not exist, creating now.");
+        }
+        if (!File.Exists(SaveFileFullPath))
+        {
+            Debug.LogWarningFormat("Save file did not exist, creating now. Path @ `{0}`", _saveDirectoryPath);
+            File.Create(SaveFileFullPath);
             return;
         }
 
-        var rawSave = System.IO.File.ReadAllText(_savePath);
-        var saveDataList = JsonUtility.FromJson<List<SaveObject>>(rawSave);
+        var rawLoadedData = File.ReadAllText(SaveFileFullPath);
+        Debug.LogFormat("Save File loaded: {0}", rawLoadedData);
+        var loadedDataList = JsonUtility.FromJson<List<SaveObject>>(rawLoadedData);
 
-        _saveFile = saveDataList.ToDictionary(obj => obj.UUID, obj => obj.State);
+        if (loadedDataList == null)
+        {
+            Debug.LogWarning("Loaded Save File had no retrievable data.");
+            _loadedSave = new Dictionary<string, SaveObject.ObjectState>();
+            return;
+        }
+
+        _loadedSave = loadedDataList.ToDictionary(obj => obj.UUID, obj => obj.State);
     }
 
     public static void LoadObjectByUUID(string uuid)
@@ -50,7 +104,7 @@ public static class SaveStateManager
                         continue;
                     }
 
-                    switch (_saveFile[uuid])
+                    switch (_loadedSave[uuid])
                     {
                         case SaveObject.ObjectState.Destroyed:
                             Object.Destroy(_serializersInScene[i].gameObject);
@@ -73,38 +127,18 @@ public static class SaveStateManager
             }
         }
     }
-
-    public static void MarkObjectForSaving(StateSerializer obj)
-    {
-        if (obj == null)
-        {
-            Debug.LogWarning("Object marked for saving is null.");
-            return;
-        }
-
-        if (!_markedObjects.ContainsKey(obj.UUID))
-        {
-            _markedObjects.Add(obj.UUID, obj.gameObject);
-        }
-    }
-
-    public static void SaveGame()
-    {
-        List<SaveObject> data = new List<SaveObject>(_markedObjects.Count);
-
-        foreach (KeyValuePair<string, GameObject> kv in _markedObjects)
-        {
-            data.Add(new SaveObject(kv.Key, kv.Value));
-        }
-
-        string saveData = JsonUtility.ToJson(data);
-        System.IO.File.WriteAllText(_savePath, saveData);
-    }
 }
 
 [System.Serializable]
-public struct SaveObject
+public class SaveFile
 {
+    public SaveObject[] Objects = new SaveObject[] { };
+}
+
+[System.Serializable]
+public class SaveObject
+{
+    [System.Serializable]
     public enum ObjectState
     {
         Destroyed,
@@ -112,8 +146,8 @@ public struct SaveObject
         Enabled
     }
 
-    public string UUID { get; private set; }
-    public ObjectState State { get; private set; }
+    public string UUID;
+    public ObjectState State;
 
     public SaveObject(string uuid, GameObject go)
     {

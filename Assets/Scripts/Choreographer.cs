@@ -20,8 +20,8 @@ public class Choreographer : StateSerializer
 
     [SerializeField, Tooltip("Create a child object with a DialogueRunner")] private DialogueRunner dialogueRunner;
     [SerializeField, Tooltip("If true, this component always triggers even if the Ink flag is false.")] private bool AlwaysTrigger;
-    [SerializeField, Tooltip("If true, destroy this component so it only does its arrangement once.")] private bool DestroyOnTrigger;
-    [SerializeField, Tooltip("If true, initiate auto-save after choreo execution.")] private bool SaveOnTrigger;
+    [SerializeField, Tooltip("If true, destroy this component so it only does its arrangement once.")] private bool DestroyPostTrigger;
+    [SerializeField, Tooltip("If true, initiate auto-save after choreo execution.")] private bool SavePostTrigger;
 
     private bool _canTrigger = false;
     private Collider _collider;
@@ -103,7 +103,7 @@ public class Choreographer : StateSerializer
                 _collider.enabled = false;
                 dialogueRunner?.EnableInteraction();
 
-                if (DestroyOnTrigger)
+                if (DestroyPostTrigger)
                 {
                     InkManager.OnDialogueEnd += DestroySelf;
                 }
@@ -112,14 +112,14 @@ public class Choreographer : StateSerializer
                     InkManager.OnDialogueEnd += EnableSelf;
                 }
 
-                if (this.SaveOnTrigger)
+                if (this.SavePostTrigger)
                 {
                     InkManager.OnDialogueEnd += SaveStateManager.SaveGame;
                 }
 
                 InkManager.PlayNext(dialogueRunner?.InkKnotName);
             }
-            else if (DestroyOnTrigger)
+            else if (DestroyPostTrigger)
             {
                 Destroy(this.gameObject);
             }

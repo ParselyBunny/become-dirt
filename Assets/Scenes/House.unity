@@ -10859,8 +10859,8 @@ MonoBehaviour:
   LookSpeed: 1
   dialogueRunner: {fileID: 1361229976}
   AlwaysTrigger: 1
-  DestroyOnTrigger: 1
-  SaveOnTrigger: 0
+  DestroyPostTrigger: 1
+  SavePostTrigger: 0
 --- !u!4 &816078324
 Transform:
   m_ObjectHideFlags: 0
@@ -10977,10 +10977,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1979929348}
     - target: {fileID: 1312580569798877917, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
-      propertyPath: addonComponents.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1312580569798877917, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
       propertyPath: addonComponents.Array.data[3]
       value: 
       objectReference: {fileID: 0}
@@ -11071,10 +11067,6 @@ PrefabInstance:
     - target: {fileID: 5061515794177671736, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102523249223408527, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
-      propertyPath: mask.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db92906bd36d3934a82ae68d3ab0c7ca, type: 3}
@@ -19225,8 +19217,8 @@ MonoBehaviour:
   LookSpeed: 1
   dialogueRunner: {fileID: 1881381663}
   AlwaysTrigger: 1
-  DestroyOnTrigger: 1
-  SaveOnTrigger: 0
+  DestroyPostTrigger: 1
+  SavePostTrigger: 0
 --- !u!4 &1521129247
 Transform:
   m_ObjectHideFlags: 0
@@ -24583,8 +24575,8 @@ MonoBehaviour:
   LookSpeed: 1
   dialogueRunner: {fileID: 1960713066}
   AlwaysTrigger: 1
-  DestroyOnTrigger: 1
-  SaveOnTrigger: 0
+  DestroyPostTrigger: 1
+  SavePostTrigger: 1
 --- !u!4 &1867512201
 Transform:
   m_ObjectHideFlags: 0
@@ -25663,8 +25655,8 @@ MonoBehaviour:
   LookSpeed: 1
   dialogueRunner: {fileID: 484088867}
   AlwaysTrigger: 1
-  DestroyOnTrigger: 1
-  SaveOnTrigger: 0
+  DestroyPostTrigger: 1
+  SavePostTrigger: 0
 --- !u!4 &1943752285
 Transform:
   m_ObjectHideFlags: 0
@@ -29694,6 +29686,14 @@ PrefabInstance:
     - target: {fileID: 3493487931197964127, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493487931585007331, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493487931585007331, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3493487932127456807, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_IsActive
