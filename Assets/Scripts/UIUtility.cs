@@ -38,4 +38,9 @@ public class UIUtility : MonoBehaviour
         UnityEngine.Application.Quit();
 #endif
     }
+
+    public void ApplyFileToScene()
+    {
+        SaveStateManager.ApplyFileToScene();
+    }
 }

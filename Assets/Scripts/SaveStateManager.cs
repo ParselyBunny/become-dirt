@@ -15,7 +15,6 @@ public static class SaveStateManager
     private static string SaveFileFullPath { get { return Path.Combine(_saveDirectoryPath, _saveFileName); } }
 
     private static Dictionary<string, GameObject> _markedObjects = new Dictionary<string, GameObject>();
-    private static StateSerializer[] _serializersInScene;
     private static Dictionary<string, SaveObject.ObjectState> _loadedSave = new Dictionary<string, SaveObject.ObjectState>();
 
     public static void MarkObjectForSaving(StateSerializer obj)
@@ -56,7 +55,7 @@ public static class SaveStateManager
         Debug.Log("Game Saved.");
     }
 
-    public static void LoadSaveFile()
+    public static bool TryLoadSaveFile()
     {
         if (!Directory.Exists(_saveDirectoryPath))
         {
@@ -65,65 +64,62 @@ public static class SaveStateManager
         }
         if (!File.Exists(SaveFileFullPath))
         {
-            Debug.LogWarningFormat("Save file did not exist, creating now. Path @ `{0}`", _saveDirectoryPath);
+            Debug.LogWarningFormat("Save file does not exist, creating now. Path @ `{0}`", _saveDirectoryPath);
             File.Create(SaveFileFullPath);
-            return;
+            return false;
         }
 
         var rawLoadedData = File.ReadAllText(SaveFileFullPath);
-        Debug.LogFormat("Save File loaded: {0}", rawLoadedData);
-        var loadedDataList = JsonUtility.FromJson<List<SaveObject>>(rawLoadedData);
+        Debug.LogFormat("Save File data: {0}", rawLoadedData);
+        var loadedFile = JsonUtility.FromJson<SaveFile>(rawLoadedData);
 
-        if (loadedDataList == null)
+
+        if (loadedFile == null)
         {
             Debug.LogWarning("Loaded Save File had no retrievable data.");
             _loadedSave = new Dictionary<string, SaveObject.ObjectState>();
-            return;
+            return false;
         }
 
-        _loadedSave = loadedDataList.ToDictionary(obj => obj.UUID, obj => obj.State);
+        _loadedSave = loadedFile.Objects.ToDictionary(obj => obj.UUID, obj => obj.State);
+        return true;
     }
 
-    public static void LoadObjectByUUID(string uuid)
+    public static void ApplyFileToScene()
     {
-        if (_serializersInScene == null)
-        {
-            _serializersInScene = GameObject.FindObjectsOfType<StateSerializer>();
-        }
+        var _serializersInScene = Resources.FindObjectsOfTypeAll(typeof(StateSerializer)) as StateSerializer[];
+        Debug.LogWarningFormat("IN SCENE = {0}", _serializersInScene.Length);
 
         for (int i = 0; i < _serializersInScene.Length; i++)
         {
-            if (_serializersInScene[i].UUID == uuid)
+            if (_markedObjects.ContainsKey(_serializersInScene[i].UUID))
             {
-                if (_markedObjects.ContainsKey(_serializersInScene[i].UUID))
+                var go = _markedObjects[_serializersInScene[i].UUID];
+                if (go == null)
                 {
-                    var go = _markedObjects[_serializersInScene[i].UUID];
-                    if (go == null)
-                    {
-                        Debug.LogErrorFormat("Reference to scene serializer `{0}` became null.", uuid);
-                        continue;
-                    }
+                    Debug.LogErrorFormat("Reference to scene serializer `{0}` became null.", _serializersInScene[i].UUID);
+                    continue;
+                }
 
-                    switch (_loadedSave[uuid])
-                    {
-                        case SaveObject.ObjectState.Destroyed:
-                            Object.Destroy(_serializersInScene[i].gameObject);
-                            break;
-                        case SaveObject.ObjectState.Enabled:
-                            _serializersInScene[i].gameObject.SetActive(true);
-                            break;
-                        case SaveObject.ObjectState.Disabled:
-                            _serializersInScene[i].gameObject.SetActive(false);
-                            break;
-                        default:
-                            Debug.LogErrorFormat("Invalid object state retrieved for `{0}`.", uuid);
-                            break;
-                    }
-                }
-                else
+                switch (_loadedSave[_serializersInScene[i].UUID])
                 {
-                    Debug.LogErrorFormat("Something went bad trying to locate `{0}` in the scene!", uuid);
+                    case SaveObject.ObjectState.Destroyed:
+                        Object.Destroy(_serializersInScene[i].gameObject);
+                        break;
+                    case SaveObject.ObjectState.Enabled:
+                        _serializersInScene[i].gameObject.SetActive(true);
+                        break;
+                    case SaveObject.ObjectState.Disabled:
+                        _serializersInScene[i].gameObject.SetActive(false);
+                        break;
+                    default:
+                        Debug.LogErrorFormat("Invalid object state retrieved for `{0}`.", _serializersInScene[i].UUID);
+                        break;
                 }
+            }
+            else
+            {
+                Debug.LogErrorFormat("Something went bad trying to locate `{0}` in the scene!", _serializersInScene[i].UUID);
             }
         }
     }
