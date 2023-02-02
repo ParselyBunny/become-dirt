@@ -45,7 +45,7 @@ public class Choreographer : StateSerializer
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Player hit a choreo trigger.");
+            // Debug.Log("Player hit a choreo trigger.");
 
             if (dialogueRunner == null)
             {
@@ -66,7 +66,7 @@ public class Choreographer : StateSerializer
                 return;
             }
 
-            Debug.Log(name + " Choreographer was triggered. Rearranging scene.");
+            // Debug.Log(name + " Choreographer was triggered. Rearranging scene.");
 
             foreach (StateSerializer obj in ObjectsToDisable)
             {
@@ -114,7 +114,7 @@ public class Choreographer : StateSerializer
 
                 if (this.SavePostTrigger)
                 {
-                    InkManager.OnDialogueEnd += SaveStateManager.SaveGame;
+                    InkManager.OnDialogueEnd += UIUtility.SaveGame;
                 }
 
                 InkManager.PlayNext(dialogueRunner?.InkKnotName);
@@ -130,6 +130,7 @@ public class Choreographer : StateSerializer
 
     private void DestroySelf()
     {
+        // Debug.LogFormat("Choreo destroying self {0}", this.gameObject.name);
         Destroy(this.gameObject);
     }
 

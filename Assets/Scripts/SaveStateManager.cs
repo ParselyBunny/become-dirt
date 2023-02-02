@@ -25,17 +25,26 @@ public static class SaveStateManager
             return;
         }
 
-        // Debug.Log("Marking object for saving: " + obj.gameObject.name, obj.gameObject);
-        if (!_markedObjects.ContainsKey(obj.UUID))
+        if (_markedObjects.ContainsKey(obj.UUID))
         {
-            _markedObjects.Add(obj.UUID, obj.gameObject);
+            Debug.LogFormat("Object with UUID `{0}` already marked for saving.", obj.UUID);
+            return;
         }
+
+        if (obj.gameObject == null)
+        {
+            Debug.LogFormat("Object with UUID `{0}` has nil GameObject, will not mark.", obj.UUID);
+            return;
+        }
+
+        // Debug.Log("Marking object for saving: " + obj.gameObject.name, obj.gameObject);
+        _markedObjects.Add(obj.UUID, obj.gameObject);
         // Debug.Log($"Marked Contents:\n{string.Join("\n", _markedObjects)}");
     }
 
     public static void SaveGame()
     {
-        Debug.Log("Saving Game.");
+        // Debug.Log("Saving Game.");
         List<SaveObject> data = new List<SaveObject>(_markedObjects.Count);
 
         foreach (KeyValuePair<string, GameObject> kv in _markedObjects)
@@ -52,7 +61,7 @@ public static class SaveStateManager
         string saveDataJSON = JsonUtility.ToJson(saveData, true);
         // Debug.LogFormat("Save data written: {0}", saveDataJSON);
         File.WriteAllText(SaveFileFullPath, saveDataJSON);
-        Debug.Log("Game Saved.");
+        // Debug.Log("Game Saved.");
     }
 
     public static bool TryLoadSaveFile()
@@ -70,7 +79,7 @@ public static class SaveStateManager
         }
 
         var rawLoadedData = File.ReadAllText(SaveFileFullPath);
-        Debug.LogFormat("Save File data: {0}", rawLoadedData);
+        // Debug.LogFormat("Save File data: {0}", rawLoadedData);
         var loadedFile = JsonUtility.FromJson<SaveFile>(rawLoadedData);
 
 
@@ -122,6 +131,11 @@ public static class SaveStateManager
                 Debug.LogErrorFormat("Something went bad trying to locate `{0}` in the scene!", _serializersInScene[i].UUID);
             }
         }
+    }
+
+    public static void ResetCache()
+    {
+        _markedObjects.Clear();
     }
 }
 

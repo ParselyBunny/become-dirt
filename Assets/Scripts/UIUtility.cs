@@ -1,23 +1,25 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIUtility : MonoBehaviour
 {
-    private static bool _isInitialized = false;
+    private static UIUtility instance;
 
     private UnityEngine.Events.UnityEvent _OnDestroy = new UnityEngine.Events.UnityEvent();
 
     private void Awake()
     {
-        if (_isInitialized)
+        if (instance == null)
         {
-            Debug.LogWarning("UIUtility already initialized, destroying self.");
-            Destroy(this.gameObject);
-            return;
+            instance = this;
+            Debug.Log("Audio Manager initialized.");
         }
-
-        _isInitialized = true;
-        _OnDestroy.AddListener(() => { _isInitialized = false; });
+        else
+        {
+            Debug.LogWarning("AudioManager already instanced, destroying self.", this.gameObject);
+            Destroy(this);
+        }
     }
 
     private void OnDestroy()
@@ -27,6 +29,7 @@ public class UIUtility : MonoBehaviour
 
     public void ReloadCurrentScene()
     {
+        SaveStateManager.ResetCache();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -42,5 +45,16 @@ public class UIUtility : MonoBehaviour
     public void ApplyFileToScene()
     {
         SaveStateManager.ApplyFileToScene();
+    }
+
+    public static void SaveGame()
+    {
+        instance.StartCoroutine(instance.SaveGameAfterFrame());
+    }
+
+    public IEnumerator SaveGameAfterFrame()
+    {
+        yield return null; // Wait a frame before saving
+        SaveStateManager.SaveGame();
     }
 }
