@@ -20,7 +20,7 @@ public class NPC : Interactable
 
         if (InkKnot == "")
         {
-            Debug.LogWarning("Interacting with NPC without InkKnot set.", this);
+            Debug.LogError("Interacting with NPC without InkKnot set.", this);
             return;
         }
 
