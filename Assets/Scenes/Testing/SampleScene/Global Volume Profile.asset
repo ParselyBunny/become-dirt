@@ -478,7 +478,7 @@ MonoBehaviour:
     min: 0
   vertexColorLightingMultiplier:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
     min: 0
   dynamicLightingMultiplier:
     m_OverrideState: 1
