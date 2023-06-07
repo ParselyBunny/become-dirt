@@ -293,7 +293,7 @@ MonoBehaviour:
     m_Value: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.099, g: 0.04604651, b: 0.04604651, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
@@ -309,12 +309,12 @@ MonoBehaviour:
     min: 0
     max: 1
   distanceMin:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
     min: 0
   distanceMax:
-    m_OverrideState: 0
-    m_Value: 100
+    m_OverrideState: 1
+    m_Value: 15
     min: 0.00001
   fogFalloffCurve:
     m_OverrideState: 0
