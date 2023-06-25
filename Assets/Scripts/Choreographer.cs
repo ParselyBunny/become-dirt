@@ -117,6 +117,10 @@ public class Choreographer : StateSerializer
                     InkManager.OnDialogueEnd += UIUtility.SaveGame;
                 }
 
+                InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
+
+                JTools.ImpactController.current.inputComponent.ChangeLockState(true);
+                InkManager.ToggleReticle(false);
                 InkManager.PlayNext(dialogueRunner?.InkKnotName);
             }
             else if (DestroyPostTrigger)

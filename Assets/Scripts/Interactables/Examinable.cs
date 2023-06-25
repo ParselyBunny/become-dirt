@@ -15,6 +15,10 @@ public class Examinable : NPC
         {
             base.SetAllowInteractSound(false);
             InkManager.OnDialogueEnd += () => base.SetAllowInteractSound(true);
+            InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
+
+            JTools.ImpactController.current.inputComponent.ChangeLockState(true);
+            InkManager.ToggleReticle(false);
             InkManager.DisplayObjectText(base.Name, _examineMessage);
         }
     }

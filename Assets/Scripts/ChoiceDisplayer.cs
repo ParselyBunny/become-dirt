@@ -17,6 +17,7 @@ public class ChoiceDisplayer : MonoBehaviour
             _choicesObjects[i].GetComponent<Button>().onClick.AddListener(
                 () =>
                 {
+                    // TODO: Special UI for when Ability trigger is required via tags
                     DisableChoices();
                     InkManager.PlayNext(i);
                 });

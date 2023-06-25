@@ -26,6 +26,10 @@ public class DialogueRunner : Interactable
     {
         base.Interact();
 
+        InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
+
+        JTools.ImpactController.current.inputComponent.ChangeLockState(true);
+        InkManager.ToggleReticle(false);
         InkManager.PlayNext(_inkKnotName);
     }
 }
