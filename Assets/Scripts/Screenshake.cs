@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using UnityEngine;
 using JTools;
 
@@ -6,13 +6,29 @@ using JTools;
 /// Shake shake the screen!!!
 /// </summary>
 public class Screenshake : MonoBehaviour {
-    public bool Start = false;
+    [HideInInspector]
+    public static bool StartShake = false;
+    [HideInInspector]
+    public Action<string> ShakeScreen;
     public float Strength = 0.2f;
-    
-    void Update() {
-        if (Start) {
-            Start = false;
+
+    void Start()
+    {
+        ShakeScreen = _shakeScreen;
+        InkManager.AddTagChecker("shake", _shakeScreen);
+    }
+
+    void Update()
+    {
+        if (StartShake)
+        {
+            StartShake = false;
             ImpactController.current.cameraComponent.screenshake = Strength;
         }
+    }
+
+    static void _shakeScreen(string tag)
+    {
+        StartShake = true;
     }
 }
