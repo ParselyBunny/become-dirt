@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -46,3 +47,4 @@ public class InkManager_test_GUI : PropertyDrawer
         EditorGUI.EndProperty();
     }
 }
+#endif
