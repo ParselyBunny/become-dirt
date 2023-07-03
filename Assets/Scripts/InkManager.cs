@@ -338,6 +338,7 @@ public class InkManager : MonoBehaviour
         SetName("");
         OnDialogueEnd = null;
         IsPlaying = false;
+        JTools.ImpactController.current.inputComponent.ChangeLockState(false);
     }
 
     // private static readonly Regex nameRegex = new Regex("SISTER:|GRANDMOTHER:|BROTHER:|MOTHER:");
