@@ -147,7 +147,7 @@ public class InkManager : MonoBehaviour
 
     public static void AddTagChecker(string tag, Action<string> action)
     {
-        if (TagActions[tag] != null)
+        if (TagActions.ContainsKey(tag) && TagActions[tag] != null)
         {
             TagActions[tag] += action;
         }
@@ -159,7 +159,7 @@ public class InkManager : MonoBehaviour
 
     public static void RemoveTagChecker(string tag, Action<string> action)
     {
-        if (TagActions[tag] != null)
+        if (TagActions.ContainsKey(tag) && TagActions[tag] != null)
         {
             TagActions[tag] -= action;
         }
