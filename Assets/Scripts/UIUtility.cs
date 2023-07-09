@@ -13,11 +13,11 @@ public class UIUtility : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            Debug.Log("Audio Manager initialized.");
+            Debug.Log("UIUtility initialized.");
         }
         else
         {
-            Debug.LogWarning("AudioManager already instanced, destroying self.", this.gameObject);
+            Debug.LogWarning("UIUtility already instanced, destroying self.", this.gameObject);
             Destroy(this);
         }
     }

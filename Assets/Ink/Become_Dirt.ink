@@ -35,7 +35,7 @@ I should check on him today.
         GRANDMOTHER: ...
         GRANDMOTHER: Time wasted, young lady... It will not come back to you. 
         SISTER: Ah, haha, yeah. Um, did you need anything? I can make some tea, if you'd like.
-        GRANDMOTHER: I do not need tea. Caffeine will ruin you, especially this close to dinner. Didn’t you burn yourself on the kettle yesterday?
+        GRANDMOTHER: I do not need tea. Caffeine will ruin you, especially this close to dinner. Didn't you burn yourself on the kettle yesterday?
         GRANDMOTHER: To think that your school allows you to take an exam a second time after failure. What purpose does a test serve if failure has no consequences?
 
         -> DONE
@@ -59,7 +59,7 @@ I should check on him today.
                     NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations. 
                     FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all. 
     
-                SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
+                SISTER: Haha, you're right. I can't even boil water without burning myself. Thank you for looking out for me. I'd probably be dead if you weren't stopping me from doing stupid things like that... thank you.
                 GRANDMOTHER:...
                 GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
                 SISTER: Yes, you're right. Thank you. I need to put in more effort.
@@ -67,9 +67,9 @@ I should check on him today.
                 
     
     
-        -I don’t know what my grandma is thinking. I don’t think I’ve ever known, even when she told me. 
-        I don’t think it’s hard to tell, I’m just not good at understanding other people sometimes. That’s why, even when she’s mad at me and I know it’s not my fault, I don’t really have a reason to argue. 
-        Even if it’s not my fault, I probably deserve the blame anyway.     
+        -I don't know what my grandma is thinking. I don't think I've ever known, even when she told me. 
+        I don't think it's hard to tell, I'm just not good at understanding other people sometimes. That's why, even when she's mad at me and I know it's not my fault, I don't really have a reason to argue. 
+        Even if it's not my fault, I probably deserve the blame anyway.     
             ->END
     
         
@@ -126,7 +126,7 @@ I should check on him today.
         SISTER: What? 
         BROTHER: I need to learn all of them, so that's what I'll put down. Is 'Family Business' okay?
         SISTER: You don't have to. If you don't really want to, you don't have to learn all the family arts. I learned one spell already, right? So I can definitely learn more.
-        BROTHER: I’m good at it though. Grandma said I’m good at it, and if I do this then they won’t yell at you as much.
+        BROTHER: I'm good at it though. Grandma said I'm good at it, and if I do this then they won't yell at you as much.
     
         He kept staring down at his half-written report the whole time we talked. His clothes and the page were covered in eraser shavings.
         
@@ -317,7 +317,7 @@ I should check on him today.
 
     //PantryExplore
     =PastaShelf
-        Pasta is nice, when it’s just pasta. Last week I made a bowl of macaroni and I finished half of it before I realized there were moth worms dangling out of the elbow noodles. They were boiled long enough to be safe though, I think, and it’s bad to waste food. 
+        Pasta is nice, when it's just pasta. Last week I made a bowl of macaroni and I finished half of it before I realized there were moth worms dangling out of the elbow noodles. They were boiled long enough to be safe though, I think, and it's bad to waste food. 
         ->END
     =CanShelf
         Canned pears, carrots, corn, peas, green beans, kidney beans, navy beans, black beans, refried beans, and beets.

@@ -5682,6 +5682,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 6c41cb5241ead94418c1c16581b7b5f7, type: 2}
     - target: {fileID: 919132149155446097, guid: c92d3987ac4be554e93f453741f4eedf, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: c92d3987ac4be554e93f453741f4eedf, type: 3}
       propertyPath: m_Name
       value: papers
       objectReference: {fileID: 0}
@@ -7583,6 +7587,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 13209461b0d934641b7e68a3fac42f34, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 13209461b0d934641b7e68a3fac42f34, type: 3}
       propertyPath: m_Name
       value: drawers
@@ -10082,7 +10090,7 @@ GameObject:
   m_Layer: 3
   m_Name: Shelf (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -11871,6 +11879,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3865122b6323f9c44a3913e62972a31f, type: 2}
+    - target: {fileID: 919132149155446097, guid: 7981d4e3881b6ff49bfad249759845dc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 7981d4e3881b6ff49bfad249759845dc, type: 3}
       propertyPath: m_Name
       value: mom's plate
@@ -15204,7 +15216,7 @@ MonoBehaviour:
   InteractSound: {fileID: 0}
   AllowInteractSound: 0
   _inkBoolName: 
-  _inkKnotName: Intro.ExplorationA
+  _inkKnotName: Intro.ExplorationA1
 --- !u!65 &484088868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15486,7 +15498,7 @@ GameObject:
   m_Layer: 3
   m_Name: Shelf (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -18404,6 +18416,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 3865122b6323f9c44a3913e62972a31f, type: 2}
     - target: {fileID: 919132149155446097, guid: 7981d4e3881b6ff49bfad249759845dc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: 7981d4e3881b6ff49bfad249759845dc, type: 3}
       propertyPath: m_Name
       value: my plate
       objectReference: {fileID: 0}
@@ -19709,6 +19725,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3865122b6323f9c44a3913e62972a31f, type: 2}
+    - target: {fileID: 919132149155446097, guid: d775c6e80fd07b548b1d99f0f5167c54, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d775c6e80fd07b548b1d99f0f5167c54, type: 3}
       propertyPath: m_Name
       value: sink
@@ -21313,6 +21333,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e84d5becf05f72b47832bcc2ff89d065, type: 2}
+    - target: {fileID: 919132149155446097, guid: 5b6f675c5a294e14492e64a93a1ebe64, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 5b6f675c5a294e14492e64a93a1ebe64, type: 3}
       propertyPath: m_Name
       value: book1
@@ -23689,6 +23713,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 39a3c91373293f54f89df92570699b2f, type: 2}
     - target: {fileID: 919132149155446097, guid: ff33296bdb487a142a13765b839330ff, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: ff33296bdb487a142a13765b839330ff, type: 3}
       propertyPath: m_Name
       value: single_sofa
       objectReference: {fileID: 0}
@@ -24597,6 +24625,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f9c5d6970db9ffc44a8be2e3efba7ceb, type: 2}
+    - target: {fileID: 919132149155446097, guid: 37c719cf8227f994dbba3aa0018fb6bf, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 37c719cf8227f994dbba3aa0018fb6bf, type: 3}
       propertyPath: m_Name
       value: book2
@@ -25881,6 +25913,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 26d8c3642c920bd489f15cd43031dfc1, type: 2}
+    - target: {fileID: 919132149155446097, guid: d1d67456e6cdf8343b87025b4461a984, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d1d67456e6cdf8343b87025b4461a984, type: 3}
       propertyPath: m_Name
       value: rug
@@ -29860,7 +29896,7 @@ GameObject:
   m_Layer: 3
   m_Name: Shelf
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -30236,6 +30272,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ae19e9b75ffd7f44498bd488645d591f, type: 2}
+    - target: {fileID: 919132149155446097, guid: 1c3cbb17b898c1448ab81d6d0f643008, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 1c3cbb17b898c1448ab81d6d0f643008, type: 3}
       propertyPath: m_Name
       value: fireplace
@@ -33519,6 +33559,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Name
       value: Back Door
       objectReference: {fileID: 0}
@@ -35806,7 +35850,7 @@ GameObject:
   m_Layer: 3
   m_Name: Shelf (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44694,6 +44738,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 30951f83e5914c147bf3f4515e7c4008, type: 2}
     - target: {fileID: 919132149155446097, guid: cee57648a82a1ca448cbd1a608dd2334, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: cee57648a82a1ca448cbd1a608dd2334, type: 3}
       propertyPath: m_Name
       value: food tray
       objectReference: {fileID: 0}
@@ -46213,6 +46261,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Name
       value: Front Door
@@ -48050,6 +48102,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f9c5d6970db9ffc44a8be2e3efba7ceb, type: 2}
+    - target: {fileID: 919132149155446097, guid: 432e7c7e5737de744818c12301f0a793, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 432e7c7e5737de744818c12301f0a793, type: 3}
       propertyPath: m_Name
       value: openbook0
@@ -50017,6 +50073,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3a14efe9dfc63f44bbe1eaa6e4d3327a, type: 2}
+    - target: {fileID: 919132149155446097, guid: ae562d44422b9fd44bcf13e8f5828316, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: ae562d44422b9fd44bcf13e8f5828316, type: 3}
       propertyPath: m_Name
       value: bunkbed
@@ -53709,6 +53769,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Name
       value: Mom's Door
@@ -57596,6 +57660,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: dc9005d4f021b1a4194f2e65f3774e00, type: 2}
     - target: {fileID: 919132149155446097, guid: 5b6f675c5a294e14492e64a93a1ebe64, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: 5b6f675c5a294e14492e64a93a1ebe64, type: 3}
       propertyPath: m_Name
       value: Fallen Tome
       objectReference: {fileID: 0}
@@ -58248,6 +58316,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 3865122b6323f9c44a3913e62972a31f, type: 2}
     - target: {fileID: 919132149155446097, guid: 7981d4e3881b6ff49bfad249759845dc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: 7981d4e3881b6ff49bfad249759845dc, type: 3}
       propertyPath: m_Name
       value: bro's plate
       objectReference: {fileID: 0}
@@ -58724,7 +58796,7 @@ GameObject:
   m_Layer: 3
   m_Name: Bro's Tomes
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -60400,6 +60472,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e84d5becf05f72b47832bcc2ff89d065, type: 2}
+    - target: {fileID: 919132149155446097, guid: 432e7c7e5737de744818c12301f0a793, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 432e7c7e5737de744818c12301f0a793, type: 3}
       propertyPath: m_Name
       value: Open Tome
@@ -62673,7 +62749,7 @@ GameObject:
   - component: {fileID: 1943752284}
   - component: {fileID: 1943752283}
   m_Layer: 0
-  m_Name: ChoreoC (ExplorationA)
+  m_Name: ChoreoC (ExplorationA1)
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -64999,6 +65075,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 39a3c91373293f54f89df92570699b2f, type: 2}
+    - target: {fileID: 919132149155446097, guid: eacd4dce1767eb443a3d8e768c1714e2, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: eacd4dce1767eb443a3d8e768c1714e2, type: 3}
       propertyPath: m_Name
       value: double_sofa
@@ -68982,6 +69062,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 052b2e973bab3c246a03cd6b81dc23c8, type: 2}
     - target: {fileID: 919132149155446097, guid: 2a2a8501206cc3e4b9956b6372251c49, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: 2a2a8501206cc3e4b9956b6372251c49, type: 3}
       propertyPath: m_Name
       value: grandma's chair
       objectReference: {fileID: 0}
@@ -69177,6 +69261,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: dc9005d4f021b1a4194f2e65f3774e00, type: 2}
     - target: {fileID: 919132149155446097, guid: 432e7c7e5737de744818c12301f0a793, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: 432e7c7e5737de744818c12301f0a793, type: 3}
       propertyPath: m_Name
       value: openbook0 (1)
       objectReference: {fileID: 0}
@@ -69279,7 +69367,7 @@ GameObject:
   m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -69311,7 +69399,7 @@ MonoBehaviour:
   InteractSound: {fileID: 8300000, guid: 3e5cece40eba0ea47a16502a1d0b0616, type: 3}
   AllowInteractSound: 1
   Name: Brother's Notes
-  InkKnot: Intro.ExaminePapers
+  InkKnot: Intro.ExplorationA2
   _examineMessage: []
 --- !u!137 &961428881227112112
 SkinnedMeshRenderer:
@@ -69811,7 +69899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2869491513766560537, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 2869491513766560537, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -69883,7 +69971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640069980625, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640069980625, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -69907,7 +69995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640070832868, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640070832868, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -69939,7 +70027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640424591557, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640424591557, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70435,7 +70523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3270365966269949324, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 3270365966269949324, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70659,7 +70747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341277449637, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341277449637, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70707,7 +70795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341425781666, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341425781666, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70779,7 +70867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341851066642, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341851066642, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70803,7 +70891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341902963145, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341902963145, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70851,7 +70939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341973470328, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 918.38367
+      value: 959.8578
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341973470328, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -71367,7 +71455,7 @@ GameObject:
   m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -71386,7 +71474,7 @@ MonoBehaviour:
   InteractSound: {fileID: 8300000, guid: 3e5cece40eba0ea47a16502a1d0b0616, type: 3}
   AllowInteractSound: 1
   Name: Brother's Notes
-  InkKnot: Intro.ExaminePapers
+  InkKnot: Intro.ExplorationA2
   _examineMessage: []
 --- !u!65 &8132086699238239835
 BoxCollider:
