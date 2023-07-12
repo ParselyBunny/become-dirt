@@ -321,11 +321,7 @@ public class InkManager : MonoBehaviour
         Debug.LogFormat("Ending dialogue. Forced = {0}", forced);
 
         Instance.DialogueText.text = "";
-        if (_speakingNPC != null)
-        {
-            _speakingNPC.SetAllowInteractSound(true);
-            _speakingNPC = null;
-        }
+        _speakingNPC = null;
 
         if (!forced)
         {

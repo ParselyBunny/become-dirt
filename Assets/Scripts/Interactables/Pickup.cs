@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 /// <summary>
 /// Attach this to an object to allow player
 /// to pick it up.
@@ -11,6 +7,8 @@ public class Pickup : Interactable
     public override void Interact()
     {
         base.Interact();
+
+        // TODO: functionality go here
 
         Destroy(this.gameObject);
     }

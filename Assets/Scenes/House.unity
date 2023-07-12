@@ -5595,11 +5595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.GrandmaSetting
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!64 &168234420
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10120,11 +10116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.BottomShelf
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &303635968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12456,11 +12448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.GrandmaSetting
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!64 &390869388
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14855,23 +14843,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
   m_PrefabInstance: {fileID: 1063113048}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &474478592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474478591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Examine.SideDoor
-  InkKnot: 
-  _examineMessage: []
 --- !u!64 &474478593
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15195,9 +15166,9 @@ GameObject:
   - component: {fileID: 484088867}
   - component: {fileID: 484088868}
   m_Layer: 3
-  m_Name: ChoreoC Interactor
+  m_Name: ChoreoC Interactor [EA1]
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -15213,10 +15184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4645270d63d611d43ab3f91909110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 0
-  _inkBoolName: 
-  _inkKnotName: Intro.ExplorationA1
+  _data: {fileID: 11400000, guid: 6cf392fbed637dd47b392d40df92c228, type: 2}
 --- !u!65 &484088868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15528,11 +15496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.MiddleShelves
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &490954976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16285,6 +16249,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 25b6c63f4587af64bac384ca5f2b8b4d, type: 2}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _isLocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -16385,8 +16357,7 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
 --- !u!4 &514053286 stripped
 Transform:
@@ -19779,11 +19750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.Sink
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!1 &596458813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8705807341851066643, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
@@ -21153,6 +21120,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 25b6c63f4587af64bac384ca5f2b8b4d, type: 2}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -21241,6 +21212,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Name
       value: Laundry Door
@@ -21373,11 +21348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 8300000, guid: 3e5cece40eba0ea47a16502a1d0b0616, type: 3}
-  AllowInteractSound: 1
-  Name: 
-  InkKnot: 
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &653328656
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22472,6 +22443,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 62eb1d37eb13b8e4db2c13f64f440dd2, type: 2}
     - target: {fileID: 919132149155446097, guid: a72dc64c176b58f41a80337db4a1f712, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: a72dc64c176b58f41a80337db4a1f712, type: 3}
       propertyPath: m_Name
       value: Hatch
       objectReference: {fileID: 0}
@@ -22525,8 +22500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a332ccca1d7a2c4382ce5a1113e651b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 8300000, guid: 9ac9aa28d586dd5408a83fa791f52ece, type: 3}
-  AllowInteractSound: 1
   EndingMusic: {fileID: 8300000, guid: 7a6c4e03c3ec6364289013d7ef965f18, type: 3}
 --- !u!114 &678946367
 MonoBehaviour:
@@ -23766,11 +23739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.Sofa2
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!1 &719800865
 GameObject:
   m_ObjectHideFlags: 0
@@ -24160,11 +24129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.MySetting1
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!1001 &748140731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24665,11 +24630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 8300000, guid: 3e5cece40eba0ea47a16502a1d0b0616, type: 3}
-  AllowInteractSound: 1
-  Name: 
-  InkKnot: 
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &763643369
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26755,11 +26716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.GrandmaSetting
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!64 &846722085
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29926,11 +29883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.TopShelf
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &935650594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30326,11 +30279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.Fireplace
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!1001 &948807749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33427,7 +33376,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 25b6c63f4587af64bac384ca5f2b8b4d, type: 2}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: IsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _isLocked
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
@@ -34484,9 +34441,9 @@ GameObject:
   - component: {fileID: 1095416763}
   - component: {fileID: 1095416766}
   m_Layer: 3
-  m_Name: Quad
+  m_Name: Mother Quad
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -34584,10 +34541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a4cc8e33179b548b11ae5b70acf0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 8300000, guid: d0c89f8b2d0f44b4fb2132f474a3e7e1, type: 3}
-  AllowInteractSound: 1
-  Name: Mom
-  InkKnot: GateOne.MotherConvoLoop
+  _data: {fileID: 11400000, guid: 01a61a1013eb44944a04101fcd52b06f, type: 2}
 --- !u!1001 &1101781709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35817,11 +35771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.CanShelf
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!64 &1156259975
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35880,11 +35830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.MiddleShelves
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &1157100801
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35929,11 +35875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.LivingRug
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!1001 &1158355641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38022,11 +37964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: 
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!1001 &1245450449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38489,11 +38427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.BrotherSetting1
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!64 &1269673963
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38610,6 +38544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 25b6c63f4587af64bac384ca5f2b8b4d, type: 2}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -38698,6 +38636,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Name
       value: Pantry Door
@@ -45252,9 +45194,9 @@ GameObject:
   - component: {fileID: 1361229976}
   - component: {fileID: 1361229977}
   m_Layer: 3
-  m_Name: ChoreoA Interactor
+  m_Name: ChoreoA Interactor [CallOut]
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45270,10 +45212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4645270d63d611d43ab3f91909110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 0
-  _inkBoolName: 
-  _inkKnotName: Intro.CallOut
+  _data: {fileID: 11400000, guid: fc65b2b691ee17845807eca90660c26f, type: 2}
 --- !u!65 &1361229977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46126,7 +46065,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 25b6c63f4587af64bac384ca5f2b8b4d, type: 2}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: IsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _isLocked
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
@@ -49645,23 +49592,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
   m_PrefabInstance: {fileID: 1654209722}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1508413540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508413539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Mom's Door
-  InkKnot: Examine.MomDoor
-  _examineMessage: []
 --- !u!65 &1508413541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53638,7 +53568,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 25b6c63f4587af64bac384ca5f2b8b4d, type: 2}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: IsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _isLocked
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
@@ -54477,9 +54415,9 @@ GameObject:
   - component: {fileID: 1674076427}
   - component: {fileID: 1674076430}
   m_Layer: 3
-  m_Name: Quad
+  m_Name: Grandma Quad
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -54572,10 +54510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a4cc8e33179b548b11ae5b70acf0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 8300000, guid: 1cd722224fe4bfc4598a12e6e598cd9e, type: 3}
-  AllowInteractSound: 1
-  Name: Grandma
-  InkKnot: Intro.GrandmotherIdle
+  _data: {fileID: 11400000, guid: f1f5ea5b2846b0a46a4a3c4f53b12a3c, type: 2}
 --- !u!1001 &1678598907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56129,11 +56064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Bunk Bed
-  InkKnot: Examine.BunkBed
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &1744810384
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56348,23 +56279,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
   m_PrefabInstance: {fileID: 1381538026}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1756218599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756218598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.FrontDoor1
-  _examineMessage: []
 --- !u!64 &1756218600
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57694,11 +57608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 8300000, guid: 3e5cece40eba0ea47a16502a1d0b0616, type: 3}
-  AllowInteractSound: 1
-  Name: Fallen Tome
-  InkKnot: 
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &1786203698
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58791,8 +58701,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1801781986}
-  - component: {fileID: 1801781987}
-  - component: {fileID: 1801781988}
   m_Layer: 3
   m_Name: Bro's Tomes
   m_TagString: Untagged
@@ -58817,36 +58725,6 @@ Transform:
   m_Father: {fileID: 260976520}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1801781987
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801781985}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.1640263, y: 0.39241537, z: 0.6225467}
-  m_Center: {x: -0.08201313, y: 0.04620768, z: 0.18872666}
---- !u!114 &1801781988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801781985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Bro's Tomes
-  InkKnot: Examine.SiblingDesk
-  _examineMessage: []
 --- !u!1 &1804717956 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8705807341973470329, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
@@ -60512,11 +60390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 8300000, guid: 3e5cece40eba0ea47a16502a1d0b0616, type: 3}
-  AllowInteractSound: 1
-  Name: 
-  InkKnot: 
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &1862365158
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61130,9 +61004,9 @@ GameObject:
   - component: {fileID: 1881381663}
   - component: {fileID: 1881381664}
   m_Layer: 3
-  m_Name: ChoreoB Interactor
+  m_Name: ChoreoB Interactor [GmaCA]
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -61148,10 +61022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4645270d63d611d43ab3f91909110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 0
-  _inkBoolName: 
-  _inkKnotName: Intro.GrandmotherConvoA
+  _data: {fileID: 11400000, guid: 2cb3f393bcea0b5488b7768022c7e385, type: 2}
 --- !u!65 &1881381664
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62968,7 +62839,7 @@ GameObject:
   m_Layer: 3
   m_Name: Intro Choreo Interactor
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -62984,10 +62855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4645270d63d611d43ab3f91909110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 0
-  _inkBoolName: 
-  _inkKnotName: Intro
+  _data: {fileID: 11400000, guid: e5f988d8a83140f4c8e411a77e44ece0, type: 2}
 --- !u!65 &1960713067
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -63747,13 +63615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.dresser
-  _examineMessage:
-  - Dresser!!
-  - It's dressing homie :)
+  _data: {fileID: 0}
 --- !u!1001 &1999347223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65124,11 +64986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.Sofa1
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!1001 &2024828835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65298,6 +65156,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 25b6c63f4587af64bac384ca5f2b8b4d, type: 2}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -65390,6 +65252,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Name
       value: Bathroom Door
@@ -69115,11 +68981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 0}
-  AllowInteractSound: 1
-  Name: Unknown
-  InkKnot: Examine.GrandmaSetting
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!1001 &2138316005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69396,11 +69258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 8300000, guid: 3e5cece40eba0ea47a16502a1d0b0616, type: 3}
-  AllowInteractSound: 1
-  Name: Brother's Notes
-  InkKnot: Intro.ExplorationA2
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!137 &961428881227112112
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -69468,6 +69326,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2082320367}
     m_Modifications:
+    - target: {fileID: -5474837781765146517, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 25b6c63f4587af64bac384ca5f2b8b4d, type: 2}
     - target: {fileID: 604832049824242298, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -69556,6 +69418,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9178822924302755319, guid: 518e1287cb387f245a9c8fedca8d6cd1, type: 3}
       propertyPath: m_Name
       value: Kids' Door
@@ -69899,7 +69765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2869491513766560537, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 2869491513766560537, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -69971,7 +69837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640069980625, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640069980625, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -69995,7 +69861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640070832868, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640070832868, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70027,7 +69893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640424591557, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 2901099640424591557, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70523,7 +70389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3270365966269949324, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 3270365966269949324, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70747,7 +70613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341277449637, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341277449637, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70795,7 +70661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341425781666, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341425781666, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70867,7 +70733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341851066642, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341851066642, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70891,7 +70757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341902963145, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341902963145, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70939,7 +70805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341973470328, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.8578
+      value: 960.28235
       objectReference: {fileID: 0}
     - target: {fileID: 8705807341973470328, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -71471,11 +71337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93731ef938227941affda17e640911b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractSound: {fileID: 8300000, guid: 3e5cece40eba0ea47a16502a1d0b0616, type: 3}
-  AllowInteractSound: 1
-  Name: Brother's Notes
-  InkKnot: Intro.ExplorationA2
-  _examineMessage: []
+  _data: {fileID: 0}
 --- !u!65 &8132086699238239835
 BoxCollider:
   m_ObjectHideFlags: 0

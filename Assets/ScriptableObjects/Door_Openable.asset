@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7914de64d8cc73749bc06a582f6fbc34, type: 3}
+  m_Name: Door_Openable
+  m_EditorClassIdentifier: 
+  InteractSound: {fileID: 0}
+  boolName: isOpen
+  openSound: {fileID: 8300000, guid: 8b6e6461e601bdd438a1167311b3a2a3, type: 3}
+  closeSound: {fileID: 8300000, guid: 6dcfe08d696e00a4687ddd06c7e6e7ae, type: 3}
+  lockedSound: {fileID: 8300000, guid: 391dd5b5dc15bb64ebed4b7ab90e9ffc, type: 3}

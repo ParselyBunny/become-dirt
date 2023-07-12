@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -8,16 +6,17 @@ using UnityEngine;
 /// to toggle it. Intended for openable
 /// objects like doors and drawers.
 /// </summary>
+[RequireComponent(typeof(Animator))]
 public class Openable : Interactable
 {
-    [Tooltip("Name of a trigger to activate on this object's animator component.")] public string BoolName = "isOpen";
-    [Tooltip("If this is true, the door is locked when closed.")] public bool IsLocked = false;
-    [Tooltip("Sound that plays when the object is opened.")] public AudioClip OpenSound;
-    [Tooltip("Sound that plays when the object is closed.")] public AudioClip CloseSound;
-    [Tooltip("Sound that plays when the object is locked.")] public AudioClip LockedSound;
+    [SerializeField]
+    private OpenableData _data;
+    [SerializeField, Tooltip("If this is true, the door is locked when closed.")]
+    private bool _isLocked = false;
+
     private Animator _Animator;
 
-    void Start()
+    void Awake()
     {
         _Animator = (GetComponent<Animator>() != null) ? GetComponent<Animator>() : new Animator();
         base.SetAllowInteractSound(false);
@@ -27,17 +26,22 @@ public class Openable : Interactable
     {
         base.Interact();
 
-        if (IsLocked) {
-            AudioManager.PlayOneShot(LockedSound);
-        } else {
-            bool isOpen = _Animator.GetBool(BoolName);
-            _Animator.SetBool(BoolName, !isOpen);
+        if (_isLocked)
+        {
+            AudioManager.PlayOneShot(_data.LockedSound);
+        }
+        else
+        {
+            bool isOpen = _Animator.GetBool(_data.BoolName);
+            _Animator.SetBool(_data.BoolName, !isOpen);
 
             if (!isOpen)
             {
-                AudioManager.PlayOneShot(OpenSound);
-            } else {
-                AudioManager.PlayOneShot(CloseSound);
+                AudioManager.PlayOneShot(_data.OpenSound);
+            }
+            else
+            {
+                AudioManager.PlayOneShot(_data.CloseSound);
             }
         }
     }

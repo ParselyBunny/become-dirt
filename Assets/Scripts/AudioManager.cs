@@ -66,6 +66,11 @@ public class AudioManager : MonoBehaviour
 
     public static void PlayOneShot(AudioClip clip)
     {
+        if (instance == null)
+        {
+            Debug.LogError("failed to PlayOneShot, AudioManager not initialized");
+            return;
+        }
         instance.PlayPooledOneShot(clip);
     }
 

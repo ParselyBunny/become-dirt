@@ -8,23 +8,24 @@ using UnityEngine;
 /// </summary>
 public class NPC : Interactable
 {
-    [Tooltip("Name of the NPC to be displayed on the screen.")]
-    public string Name = "Unknown";
+    public string Name { get { return _data.Name; } }
 
-    [Tooltip("The knot to jump to in the Ink Story.")]
-    public string InkKnot = "";
+    [SerializeField]
+    private NPCData _data;
 
     public override void Interact()
     {
         base.Interact();
 
-        if (InkKnot == "")
+        if (_data.InkKnot == "")
         {
             Debug.LogError("Interacting with NPC without InkKnot set.", this);
             return;
         }
 
-        base.SetAllowInteractSound(false);
-        InkManager.PlayNext(InkKnot, this);
+        PlayInteractSound(_data.InteractSound);
+        SetAllowInteractSound(false);
+        InkManager.OnDialogueEnd += () => base.SetAllowInteractSound(true);
+        InkManager.PlayNext(_data.InkKnot, this);
     }
 }
