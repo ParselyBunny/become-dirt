@@ -21,7 +21,7 @@ I should check on him today.
         
         Maybe he's in the hideout. He's been going down there a lot more lately. 
         I should check our room first, at least.
-        -> END
+        -> GrandmotherConvoA
     
     
 
@@ -42,79 +42,80 @@ I should check on him today.
         GRANDMOTHER: When I was left to shepherd the family arts while raising your mother all on my own, there were never extensions or convenient make-up tests. 
         GRANDMOTHER: You will be tested daily in life. You must pass each and every time, each and every day. What would have happened if I hadn't worked hard enough to support your mother? What would have happened if I had spent my time making baubles and playing in the dirt as you do? We would have lost everything. Our home. Our lives. All knowledge of our family arts. Each of us bears this responsibility.
         GRANDMOTHER: I know you tire of hearing about this, and that is exactly why I will say it again. Do you think that politely offering to poorly make tea and trawl for sympathy from your own clumsiness will help you in this life?
-        
             ->GrandmotherLoop
+        
             =GrandmotherLoop
             
-            GRANDMOTHER: Well?
-            GRANDMOTHER: Answer me. Idle silence is a mark of sloth. 
-            
-            *Sorry...
-                GRANDMOTHER: Why is it that you only apologize when we catch you misbehaving? A girl who felt remorse would apologize on her own.
-                #shake
-                GRANDMOTHER: Apologies are important, but an apology without change is meaningless. To my eyes, you have not changed your behavior in the slightest.
-                GRANDMOTHER: Now, speak clear and plainly. 
-                SISTER: ...
-            
-                ->GrandmotherLoop
+                GRANDMOTHER: Well?
+                GRANDMOTHER: Answer me. Idle silence is a mark of sloth. 
                 
-            *I've been getting better at making tea.
-                #shake
-                GRANDMOTHER: An excuse and a lie. 
-                SISTER: Ow! I-I'm sorry.
-                GRANDMOTHER: Changing the subject does not change the reality of your performance. 
-                GRANDMOTHER: Confront your failure directly. Do you understand why you cannot brew a satisfactory cup of tea?
-                GRANDMOTHER: ...Answer.
-                SISTER: I... probably steep it too long, or use too much sugar.
-                GRANDMOTHER: And this is why you do not improve. You pour boiling water over mass produced bags of dust swept from the dregs of a factory floor. Every cup you make will be disgusting regardless of how precisely you time your preparations.
-                GRANDMOTHER: Proper tea requires proper ingredients. Do you have fresh leaves? Clean and balanced water? Clear honey? You may as well steep cardboard without that.
-                SISTER: Those are the only teabags we have though...
-                #shake
-                GRANDMOTHER: This is where you fail. Do you see? You try to perfect swill rather than going out to find quality ingredients. Your failure on this recent exam is the same. 
-                GRANDMOTHER: Do you see?
+                *Sorry...
+                    GRANDMOTHER: Why is it that you only apologize when we catch you misbehaving? A girl who felt remorse would apologize on her own.
+                    #shake
+                    GRANDMOTHER: Apologies are important, but an apology without change is meaningless. To my eyes, you have not changed your behavior in the slightest.
+                    GRANDMOTHER: Now, speak clear and plainly. 
+                    SISTER: ...
                 
-                ->GrandmotherLoop
-            *I should go study more, you're right...
-                GRANDMOTHER: Correct. Now tell me: How will you study?
-                GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
-                    ->GrandmaStudyQ
-                    
-                =GrandmaStudyQ
-                    *I don't know.
-                        GRANDMOTHER: And how do you plan to learn? 
-                        GRANDMOTHER: Do you reflect on your teacher's words? Do you listen to my advice? Have you asked your peers? Do you have a tutor? If you don't have an answer, then seek one.
-                        GRANDMOTHER: Your apathy is fatal, young lady. It will kill your mind and lead you to sloven habits. 
-                        SISTER: I'm sorry.
-                        #shake
-                        SISTER: Ow!
-                        GRANDMOTHER: Apologies without action are meaningless. I've told you as much before, haven't I?
                     ->GrandmotherLoop
-                    *I'll go over my homework again...?
-                        GRANDMOTHER: Homework that you turned in late? That you didn't complete? 
-                        ## Time a gasp or wince here, preparing for a pinch that doesn't come
-                        GRANDMOTHER: ...
-                        GRANDMOTHER: Please do not think that I lecture you out of scorn. 
-                        GRANDMOTHER: Time wasted will not come back to you. If I thought you a waste of my time, I would not offer you so much of it. Do you understand?
-                        SISTER: Y-yes. Of course, I know you only do it because you care and want me to do my best.
-                        GRANDMOTHER: No. Not your best. I want you to do exceptionally. Your best may not be enough, but you can do more than your best. You can push yourself further. 
-                        GRANDMOTHER: Now, answer me again. How will you study differently this time?
+                    
+                *I've been getting better at making tea.
+                    #shake
+                    GRANDMOTHER: An excuse and a lie. 
+                    SISTER: Ow! I-I'm sorry.
+                    GRANDMOTHER: Changing the subject does not change the reality of your performance. 
+                    GRANDMOTHER: Confront your failure directly. Do you understand why you cannot brew a satisfactory cup of tea?
+                    GRANDMOTHER: ...Answer.
+                    SISTER: I... probably steep it too long, or use too much sugar.
+                    GRANDMOTHER: And this is why you do not improve. You pour boiling water over mass produced bags of dust swept from the dregs of a factory floor. Every cup you make will be disgusting regardless of how precisely you time your preparations.
+                    GRANDMOTHER: Proper tea requires proper ingredients. Do you have fresh leaves? Clean and balanced water? Clear honey? You may as well steep cardboard without that.
+                    SISTER: Those are the only teabags we have though...
+                    #shake
+                    GRANDMOTHER: This is where you fail. Do you see? You try to perfect swill rather than going out to find quality ingredients. Your failure on this recent exam is the same. 
+                    GRANDMOTHER: Do you see?
+                    
+                    ->GrandmotherLoop
+                *I should go study more, you're right...
+                    GRANDMOTHER: Correct. Now tell me: How will you study?
+                    GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
                         ->GrandmaStudyQ
-                    *Could you help me with it?
-                        GRANDMOTHER: ...
-                        GRANDMOTHER: No. 
-                        ->GrandmaStudyQ
-            *Become Dirt
-                ->BECOMINGDIRT
+                        
+                    =GrandmaStudyQ
+                        *I don't know.
+                            GRANDMOTHER: And how do you plan to learn? 
+                            GRANDMOTHER: Do you reflect on your teacher's words? Do you listen to my advice? Have you asked your peers? Do you have a tutor? If you don't have an answer, then seek one.
+                            GRANDMOTHER: Your apathy is fatal, young lady. It will kill your mind and lead you to sloven habits. 
+                            SISTER: I'm sorry.
+                            #shake
+                            SISTER: Ow!
+                            GRANDMOTHER: Apologies without action are meaningless. I've told you as much before, haven't I?
+                        ->GrandmotherLoop
+                        *I'll go over my homework again...?
+                            GRANDMOTHER: Homework that you turned in late? That you didn't complete? 
+                            ## Time a gasp or wince here, preparing for a pinch that doesn't come
+                            GRANDMOTHER: ...
+                            GRANDMOTHER: Please do not think that I lecture you out of scorn. 
+                            GRANDMOTHER: Time wasted will not come back to you. If I thought you a waste of my time, I would not offer you so much of it. Do you understand?
+                            SISTER: Y-yes. Of course, I know you only do it because you care and want me to do my best.
+                            GRANDMOTHER: No. Not your best. I want you to do exceptionally. Your best may not be enough, but you can do more than your best. You can push yourself further. 
+                            GRANDMOTHER: Now, answer me again. How will you study differently this time?
+                            ->GrandmaStudyQ
+                        *Could you help me with it?
+                            GRANDMOTHER: ...
+                            GRANDMOTHER: No. 
+                            ->END
                 
-                =BECOMINGDIRT
-                    NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations. 
-                    FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all. 
+            ##*Become Dirt
+              ##  ->BECOMINGDIRT
+                
+                ##=BECOMINGDIRT
+                  ##  NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations. 
+                ##    FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all. 
     
-                SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
-                GRANDMOTHER:...
-                GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
-                SISTER: Yes, you're right. Thank you. I need to put in more effort.
-                GRANDMOTHER: ...
+                ##SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
+                ##GRANDMOTHER:...
+                ##GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
+                ##SISTER: Yes, you're right. Thank you. I need to put in more effort.
+                ##GRANDMOTHER: ...
                 
     
     
