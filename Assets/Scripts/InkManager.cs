@@ -6,6 +6,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// Manage Ink Story.
@@ -15,6 +16,31 @@ public class InkManager : MonoBehaviour
 {
     public static InkManager Instance { get; private set; }
     public static System.Action OnDialogueEnd;
+    
+    
+    //Text Speed and Skipping Lines
+    [Header("Text Display")]
+    public float textspeed = .01f;
+    public Dictionary<char, float> specialtextdelays = new Dictionary<char, float>();
+    public AudioSource textnoise;
+    public AudioClip[] textnoises;
+
+    [Header("NonChar Lines")]
+    public GameObject NameBoxChild;
+
+    [Header("Character Visuals")] 
+    public List<CharNamePair> CharPortraits;
+    public List<UiCharacter> CharVisuals;
+    public GameObject CharVisualsPlacer;
+    public GameObject CharacterPrefab;
+
+    [Header("ContinueVisual")] 
+    public RectTransform continueindicator;
+    private float boty = 20;
+    private float topy = 90;
+
+    private bool DisplayingLine;
+    private bool SkipCalled;
     public static bool IsPlaying { get; private set; }
 
     private static Dictionary<string, System.Action<string>> TagActions = new Dictionary<string, Action<string>>();
@@ -34,6 +60,17 @@ public class InkManager : MonoBehaviour
     private static bool _processingChoices;
     private static string _currentPath;
 
+    private void Start()
+    {
+         specialtextdelays.Add(',', 10f);
+         specialtextdelays.Add('-', 10f);
+         specialtextdelays.Add(';', 10f);
+         specialtextdelays.Add('.', 20f);
+         specialtextdelays.Add('?', 20f);
+         specialtextdelays.Add('!', 20f);
+        
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -50,6 +87,21 @@ public class InkManager : MonoBehaviour
         _choiceDisplayer = GetComponent<ChoiceDisplayer>();
         _story = new Story(_inkJSONAsset.text);
         SetName("");
+    }
+
+    public void Update()
+    {
+        float target = DisplayingLine ? boty : topy;
+        Vector3 targetpos = new Vector3(continueindicator.localPosition.x, target, continueindicator.localPosition.z);
+        continueindicator.localPosition = Vector3.Lerp(continueindicator.localPosition, targetpos, Time.deltaTime * 10);
+        
+        if (DisplayingLine && !SkipCalled)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
+            {
+                SkipCalled = true;
+            }
+        }
     }
 
     private void OnDestroy()
@@ -232,8 +284,8 @@ public class InkManager : MonoBehaviour
             if (_continuePlaying && !_processingChoices)
             {
                 text = _story.Continue();
+                Debug.Log("Setting Name");
                 ParseNPCName(ref text);
-                SetDialogue(text);
 
                 foreach (string tag in _story.currentTags)
                 {
@@ -242,6 +294,10 @@ public class InkManager : MonoBehaviour
                         TagActions[tag].Invoke(tag);
                     }
                 }
+                //New method of displaying text
+                DisplayingLine = true;
+                SetDialogue(text);
+                yield return new WaitUntil(() => DisplayingLine == false);
 
                 _processingChoices = false;
                 _continuePlaying = false;
@@ -279,6 +335,7 @@ public class InkManager : MonoBehaviour
         else
         {
             SetName(objectName);
+            Debug.Log("DisplayObjectText Called");
             Instance.StartCoroutine(Instance.DisplayText(text));
         }
     }
@@ -292,7 +349,10 @@ public class InkManager : MonoBehaviour
         {
             if (_continuePlaying)
             {
+                DisplayingLine = true;
+                
                 SetDialogue(text[currentIndex]);
+                yield return new WaitUntil(() => DisplayingLine == false);
                 _continuePlaying = false;
                 currentIndex++;
             }
@@ -332,6 +392,12 @@ public class InkManager : MonoBehaviour
         }
 
         SetName("");
+        for(int i =0; i<Instance.CharVisuals.Count; i++)
+        {
+            Destroy(Instance.CharVisuals[i].gameObject);
+        }
+        Instance.CharVisuals.Clear();
+        
         OnDialogueEnd = null;
         IsPlaying = false;
         JTools.ImpactController.current.inputComponent.ChangeLockState(false);
@@ -351,6 +417,7 @@ public class InkManager : MonoBehaviour
         string name = "";
         if (match.Success)
         {
+            Instance.NameBoxChild.SetActive(true);
             switch (match.Value)
             {
                 case "SISTER: ":
@@ -371,6 +438,11 @@ public class InkManager : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            Instance.NameBoxChild.SetActive(false);
+        }
+        Instance.updateCharVisuals(name);
     }
 
     private static void SetName(string name)
@@ -378,10 +450,75 @@ public class InkManager : MonoBehaviour
         Instance.NameText.text = name;
     }
 
-    private static void SetDialogue(string newText)
+    public static void SetDialogue(string text)
     {
-        Debug.LogFormat("Setting Dialogue to {0}", newText);
+        Instance.StartCoroutine(Instance.SetDialogueIE(text));
+    }
 
-        Instance.DialogueText.text = newText;
+    private IEnumerator SetDialogueIE(string newText)
+    {
+        SkipCalled = false;
+        DisplayingLine = true;
+        Debug.LogFormat("Setting Dialogue to {0}", newText);
+        
+        DialogueText.maxVisibleCharacters = 0;
+        DialogueText.text = newText;
+        
+        for (int i = 0; i < newText.Length; i++)
+        {
+            if(SkipCalled) break;
+            DialogueText.maxVisibleCharacters = i + 1;
+            
+            
+            float tempdelaytime = textspeed;
+            if (specialtextdelays.ContainsKey(newText[i]))
+                tempdelaytime *= specialtextdelays[newText[i]];
+            yield return new WaitForSeconds(tempdelaytime);
+            
+            if(newText[i] != ' ')
+                playpennoise();
+        }
+
+        DialogueText.maxVisibleCharacters = newText.Length + 1;
+        playpennoise();
+        DisplayingLine = false;
+
+    }
+
+    public void playpennoise()
+    {
+        textnoise.clip = textnoises[Random.Range(0, textnoises.Length)];
+        textnoise.pitch = Random.Range(.9f, 1.1f);
+        textnoise.Play();
+    }
+
+    public void updateCharVisuals(string activename)
+    {
+        if (!CharVisuals.Find(c => c.name == activename) && activename != "")
+        {
+            GameObject g = Instantiate(CharacterPrefab, CharVisualsPlacer.transform);
+            UiCharacter c = g.GetComponent<UiCharacter>();
+            c.name = activename;
+            c.character.sprite = CharPortraits.Find(p => p.name.ToLower() == activename.ToLower()).image;
+            CharVisuals.Add(c);
+        }
+
+        foreach (UiCharacter uic in CharVisuals)
+        {
+            uic.setActive(uic.name == activename);
+        }
+    }
+}
+
+
+[System.Serializable]
+public class CharNamePair
+{
+    public string name;
+    public Sprite image;
+    public CharNamePair(string _name, Sprite _image)
+    {
+        name = _name;
+        image = _image;
     }
 }
