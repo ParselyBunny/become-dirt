@@ -12,7 +12,7 @@ Become Mechanical, the spell my grandmother used to work beyond her own limits a
 Recently, though, he's been afraid of something. I don't know what he's worried about, but he always seems anxious and uneasy these days. 
 My grandmother wants to make sure he knew all the family's magic so that he can pass it on one day, and he's been making great progress. I don't know what would make him so frightened... 
 I should check on him today.
-    ->CallOut
+->END
 
     =CallOut
         SISTER: Brother!
@@ -21,7 +21,7 @@ I should check on him today.
         
         Maybe he's in the hideout. He's been going down there a lot more lately. 
         I should check our room first, at least.
-        -> GrandmotherConvoA
+        -> END
     
     
 
@@ -50,8 +50,9 @@ I should check on him today.
             
                 GRANDMOTHER: Well?
                 GRANDMOTHER: Answer me. Idle silence is a mark of sloth.
+                -> END
                 
-                +Sorry...
+                //*Sorry...
                     GRANDMOTHER: Why is it that you only apologize when we catch you misbehaving? A girl who felt remorse would apologize on her own.
                     #shake
                     GRANDMOTHER: Apologies are important, but an apology without change is meaningless. To my eyes, you have not changed your behavior in the slightest.
@@ -60,7 +61,7 @@ I should check on him today.
                 
                     ->GrandmotherLoop
                     
-                *I've been getting better at making tea.
+               // *I've been getting better at making tea.
                     #shake
                     GRANDMOTHER: An excuse and a lie. 
                     SISTER: Ow! I-I'm sorry.
@@ -76,7 +77,7 @@ I should check on him today.
                     GRANDMOTHER: Do you see?
                     
                     ->GrandmotherLoop
-                *I should go study more, you're right...
+                //*I should go study more, you're right...
                     GRANDMOTHER: Correct. Now tell me: How will you study?
                     GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
                         ->GrandmaStudyQ
@@ -91,7 +92,7 @@ I should check on him today.
                             SISTER: Ow!
                             GRANDMOTHER: Apologies without action are meaningless. I've told you as much before, haven't I?
                         ->GrandmotherLoop
-                        *I'll go over my homework again...?
+                        //*I'll go over my homework again...?
                             GRANDMOTHER: Homework that you turned in late? That you didn't complete? 
                             ## Time a gasp or wince here, preparing for a pinch that doesn't come
                             GRANDMOTHER: ...
@@ -101,13 +102,13 @@ I should check on him today.
                             GRANDMOTHER: No. Not your best. I want you to do exceptionally. Your best may not be enough, but you can do more than your best. You can push yourself further. 
                             GRANDMOTHER: Now, answer me again. How will you study differently this time?
                             ->GrandmaStudyQ
-                        *Could you help me with it?
+                        //*Could you help me with it?
                             GRANDMOTHER: ...
                             GRANDMOTHER: No. 
                             ->END
-                        * ->
+                        //* ->
                 
-                        ##Become Dirt
+                        //Become Dirt
                           ##  ->BECOMINGDIRT
                             
                             ##=BECOMINGDIRT
@@ -128,7 +129,7 @@ I should check on him today.
             ->END
     
         
-    =ExplorationA
+    =ExplorationA1
     
         My younger brother and I share a room at the end of the hall. 
         There's not a lot of space for either of us, but we spend about as much time in our hideout as we do here so it's never been a problem.
@@ -275,106 +276,113 @@ I should check on him today.
         ->END
 === Explorations
 
-    =BathroomExplore
-        *Mirror
-            I hate the way sink scum dries on the mirror. Every time you look at yourself, you're surrounded by little bits of toothpaste, water mixed with soap from washing our hands and faces, and a few smudges I don't want to really think about. We clean it, of course, but a lot of these stains won't come off anymore.
-            ->END
-        *Sink
-            We just unclogged it last week so it finally drains alright. 
-            ->END
-        *Toilet
-            The fluffy cover on the toilet lid always stares back at me before I lift it. 
-            ->END
-        
-        
-    =SiblingRoomExplore
-        *BunkBed
-            The bunk bed where my brother and I sleep. The bottom bunk is his, since I kept banging my head on the top bunk when I used to sleep down there. 
-            He asked me to switch one day, saying he was scared of heights and wanted to be closer to the ground. I'm pretty sure he was just being considerate.
-            ->END
-        *SisterBooks
-            A faded copy of Northanger Abbey rests under a pile of overstretched hair ties and flavored chapstick. 
-            ->END
-        *dresser
-            When I was seven I ruined my dresser with glitter stickers, so now the handles are covered in sticky dust and gunk. 
-            I thought I learned a really valuable lesson the day Mom yelled at me and made me scrape the stickers off one by one, but yesterday I scratched the varnish trying to open the top drawer. 
-            ->END
-        *SiblingDesk
-            Two of grandma's old magic books are laid out on top of Brother's homework.
-            None of us can use the spells in most of her old books, but she makes him study all of them anyway. 
-            ->END
-    =HallExplore
-        *MomDoor
-            #This should only become active after Mother arrives home and while she's in the room
-            I can hear Mom watching The Young & The Restless through the door. Cricket died again, I think.
+    //BathroomExplore
+    =Mirror
+        I hate the way sink scum dries on the mirror. Every time you look at yourself, you're surrounded by little bits of toothpaste, water mixed with soap from washing our hands and faces, and a few smudges I don't want to really think about. We clean it, of course, but a lot of these stains won't come off anymore.
         ->END
-    =LivingRoomExplore
-        *Fireplace
-            I don't think we've ever used this. Every few months Mom says she needs to get it cleaned, but we've never been able to afford it.
-            ->END
-        *DiningTable
-            **Brother's Setting
-                My brother's setting at the table. I don't remember when we both started sitting side by side all the way on this end. It's just how we've always done things.
-                ->END
-            **Brother's Setting 2
-                There are old crayon marks on the edge of the table here. When he was younger, Brother used to color the edges of all his assignments because he liked it when paper had borders. 
-                ->END
-            **My Setting
-                My place at the table. It's quiet in the corner.
-                ->END
-            **My Setting 2
-                We don't eat meals as a family very often anymore. 
-                ->END
-            **Mom's Setting
-                Mom's seat at the table. She's got a few mugs of coffee around the house.
-                ->END
-            **Mom's Setting 2
-                I'm never sure if I should clean out her old mugs or not. Last time she got mad at me for dumping her coffee, but last week she told me I shouldn't just leave old mugs lying around if I see them when I do dishes. 
-                ->END
-            **Grandma's Setting
-                Our Grandma's seat at the table. She uses it like a desk when she teaches my little brother magic. His practice pages are scattered around the floor in this corner.
-                ->END
-        *Bookcase
-            **Top Shelf
-                The top shelf is full of reference books that Mom got at a yard sale. A lot of the encyclopedia sets are missing volumes, but I did use a couple of these for school once.
-                ->END
-            **Middle Shelves
-                Most of the bookcase is full of used paperbacks and discards from the library. Mom says she reads these all the time, but they never leave the bookcase.
-                ->END
-            **Bottom Shelf
-                Cookbooks and a couple of gardening books fill the bottom shelf, like Microwave Chef and Southern Homes & Gardens. 
-                ->END
-        *Sofa
-            The sofa is well worn. Not by us - we almost never use them anymore. Someone else wore the springs down and ripped the cushion. 
-            ->END
-        *Sofa2
-            Creaky and comfy.
-            ->END
-        *Armchair
-            Mom's Armchair. She sits here and drinks her coffee after dinner almost every night.
-            ->END
-        *LivingRug
-            Sometimes, when I'm tired, I'll come in here and stare at this rug to space out. The pattern looks like it starts moving after a while, like watching a popcorn ceiling through fan blades.
-            ->END
-    =LaundryExplore
-        *WashDryer
-            Our dryer, and our wet-er. 
-            ->END
-        *LintBucket
-            Mom's lint bucket. She uses this for her plushies. 
-            ->END
+    =Sink
+        We just unclogged it last week so it finally drains alright. 
+        ->END
+    =Toilet
+        The fluffy cover on the toilet lid always stares back at me before I lift it. 
+        ->END
+
+    //SiblingRoomExplore
+    =BunkBed
+        The bunk bed where my brother and I sleep. The bottom bunk is his, since I kept banging my head on the top bunk when I used to sleep down there. 
+        He asked me to switch one day, saying he was scared of heights and wanted to be closer to the ground. I'm pretty sure he was just being considerate.
+        ->END
+    =SisterBooks
+        A faded copy of Northanger Abbey rests under a pile of overstretched hair ties and flavored chapstick. 
+        ->END
+    =dresser
+        When I was seven I ruined my dresser with glitter stickers, so now the handles are covered in sticky dust and gunk. 
+        I thought I learned a really valuable lesson the day Mom yelled at me and made me scrape the stickers off one by one, but yesterday I scratched the varnish trying to open the top drawer. 
+        ->END
+    =SiblingDesk
+        Two of grandma's old magic books are laid out on top of [Brother]'s homework.
+        None of us can use the spells in most of her old books, but she makes him study all of them anyway. 
+        ->END
+
+    //HallExplore
+    =MomDoor
+        //This should only become active after Mother arrives home and while she's in the room
+        I can hear Mom watching The Young & The Restless through the door. Cricket died again, I think.
+        ->END
+
+    //LivingRoomExplore
+    =Fireplace
+        I don't think we've ever used this. Every few months Mom says she needs to get it cleaned, but we've never been able to afford it.
+        ->END
+
+    //DiningTable
+    =BrotherSetting1
+        My brother's setting at the table. I don't remember when we both started sitting side by side all the way on this end. It's just how we've always done things.
+        ->END
+    =BrotherSetting2
+        There are old crayon marks on the edge of the table here. When he was younger, [BROTHER] used to color the edges of all his assignments because he liked it when paper had borders. 
+        ->END
+    =MySetting1
+        My place at the table. It's quiet in the corner.
+        ->END
+    =MySetting2
+        We don't eat meals as a family very often anymore. 
+        ->END
+    =MomSetting1
+        Mom's seat at the table. She's got a few mugs of coffee around the house.
+        ->END
+    =MomSetting2
+        I'm never sure if I should clean out her old mugs or not. Last time she got mad at me for dumping her coffee, but last week she told me I shouldn't just leave old mugs lying around if I see them when I do dishes. 
+        ->END
+    =GrandmaSetting
+        Our Grandma's seat at the table. She uses it like a desk when she teaches my little brother magic. His practice pages are scattered around the floor in this corner.
+        ->END
+    
+    //Bookcase
+    =TopShelf
+        The top shelf is full of reference books that Mom got at a yard sale. A lot of the encyclopedia sets are missing volumes, but I did use a couple of these for school once.
+        ->END
+    =MiddleShelves
+        Most of the bookcase is full of used paperbacks and discards from the library. Mom says she reads these all the time, but they never leave the bookcase.
+        ->END
+    =BottomShelf
+        Cookbooks and a couple of gardening books fill the bottom shelf, like Microwave Chef and Southern Homes & Gardens. 
+        ->END
+    =Sofa1
+        The sofa is well worn. Not by us - we almost never use them anymore. Someone else wore the springs down and ripped the cushion. 
+        ->END
+    =Sofa2
+        Creaky and comfy.
+        ->END
+    =Armchair
+        Mom's Armchair. She sits here and drinks her coffee after dinner almost every night.
+        ->END
+    =LivingRug
+        Sometimes, when I'm tired, I'll come in here and stare at this rug to space out. The pattern looks like it starts moving after a while, like watching a popcorn ceiling through fan blades.
+        ->END
+    
+    //LaundryExplore
+    =WashDryer
+        Our dryer, and our wet-er. 
+        ->END
+    =LintBucket
+        Mom's lint bucket. She uses this for her plushies. 
+        ->END
+    
     =KitchenExplore
-            ->END
-    =PantryExplore
-        *PastaShelf
-            Pasta is nice, when it’s just pasta. Last week I made a bowl of macaroni and I finished half of it before I realized there were moth worms dangling out of the elbow noodles. They were boiled long enough to be safe though, I think, and it’s bad to waste food. 
-            ->END
-        *CanShelf
-            Canned pears, carrots, corn, peas, green beans, kidney beans, navy beans, black beans, refried beans, and beets.
-            Mom gets as many of these as she can on sale, since she can't go to the grocery store often.
-            ->END
-    =CrawlSpaceExplore
-        *VentilationDuct
-            These ducts hum and rattle when the A/C or heater turns on.
-            Brother and I used to lay rocks on them to make noises whenever the A/C started up, but Grandma noticed right away. 
-            ->END
+        ->END
+
+    //PantryExplore
+    =PastaShelf
+        Pasta is nice, when it's just pasta. Last week I made a bowl of macaroni and I finished half of it before I realized there were moth worms dangling out of the elbow noodles. They were boiled long enough to be safe though, I think, and it's bad to waste food. 
+        ->END
+    =CanShelf
+        Canned pears, carrots, corn, peas, green beans, kidney beans, navy beans, black beans, refried beans, and beets.
+        Mom gets as many of these as she can on sale, since she can't go to the grocery store often.
+        ->END
+
+    //CrawlSpaceExplore
+    =VentilationDuct
+        These ducts hum and rattle when the A/C or heater turns on.
+        [Brother] and I used to lay rocks on them to make noises whenever the A/C started up, but Grandma noticed right away. 
+        ->END
