@@ -15,9 +15,9 @@ I should check on him today.
     ->CallOut
 
     =CallOut
-        SISTER: [Brother]!
+        SISTER: Brother!
         His bus should have stopped by about an hour ago, so he should be here. 
-        SISTER: ...[Brother]?"
+        SISTER: ...Brother?"
         
         Maybe he's in the hideout. He's been going down there a lot more lately. 
         I should check our room first, at least.
@@ -29,27 +29,29 @@ I should check on him today.
         GRANDMOTHER: You. You're home late.
         SISTER: O-oh, yeah. I had to stay after for a make-up test.
         GRANDMOTHER: ...
-        SISTER: Has [Brother] made it home yet?
+        SISTER: Has Brother made it home yet?
         GRANDMOTHER: He returned on time and should be studying now. Had you studied more effectively, you would have saved yourself over an hour and twenty minutes. 
         SISTER: I just got unlucky this time, the test wasn't that hard I just messed up a few formulas. I did really well this time, I think. Enough to pass, definitely.
         GRANDMOTHER: ...
         GRANDMOTHER: Time wasted, young lady... It will not come back to you. 
         SISTER: Ah, haha, yeah. Um, did you need anything? I can make some tea, if you'd like.
         GRANDMOTHER: I do not need tea. Caffeine will ruin you, especially this close to dinner. Didn’t you burn yourself on the kettle yesterday?
+        #shake
+        SISTER: Ow!
         GRANDMOTHER: To think that your school allows you to take an exam a second time after failure. What purpose does a test serve if failure has no consequences?
         GRANDMOTHER: I only hope that one day you realize how damaging your lack of diligence has been. Given your lack of aptitude with the family arts, you should be putting more effort into your schoolwork.
         GRANDMOTHER: You will not have the luxury of failure forever. When you become an adult, however long it may take you, failure is unacceptable. There will be no leniency. 
         GRANDMOTHER: When I was left to shepherd the family arts while raising your mother all on my own, there were never extensions or convenient make-up tests. 
         GRANDMOTHER: You will be tested daily in life. You must pass each and every time, each and every day. What would have happened if I hadn't worked hard enough to support your mother? What would have happened if I had spent my time making baubles and playing in the dirt as you do? We would have lost everything. Our home. Our lives. All knowledge of our family arts. Each of us bears this responsibility.
-        GRANDMOTHER: I know you tire of hearing about this, and that is exactly why I will say it again. Do you think that politely offering to poorly make tea and trawl for sympathy from your own clumsiness will help you in this life?
+        GRANDMOTHER: I know you tire of hearing about this, and that is exactly why I will say it again. Do you think that politely offering to poorly make tea and trawl for sympathy from your own clumsiness will help you in this life? 
             ->GrandmotherLoop
         
             =GrandmotherLoop
             
                 GRANDMOTHER: Well?
-                GRANDMOTHER: Answer me. Idle silence is a mark of sloth. 
+                GRANDMOTHER: Answer me. Idle silence is a mark of sloth.
                 
-                *Sorry...
+                +Sorry...
                     GRANDMOTHER: Why is it that you only apologize when we catch you misbehaving? A girl who felt remorse would apologize on her own.
                     #shake
                     GRANDMOTHER: Apologies are important, but an apology without change is meaningless. To my eyes, you have not changed your behavior in the slightest.
@@ -103,19 +105,20 @@ I should check on him today.
                             GRANDMOTHER: ...
                             GRANDMOTHER: No. 
                             ->END
+                        * ->
                 
-            ##*Become Dirt
-              ##  ->BECOMINGDIRT
+                        ##Become Dirt
+                          ##  ->BECOMINGDIRT
+                            
+                            ##=BECOMINGDIRT
+                              ##  NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations. 
+                            ##    FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all. 
                 
-                ##=BECOMINGDIRT
-                  ##  NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations. 
-                ##    FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all. 
-    
-                ##SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
-                ##GRANDMOTHER:...
-                ##GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
-                ##SISTER: Yes, you're right. Thank you. I need to put in more effort.
-                ##GRANDMOTHER: ...
+                            ##SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
+                            ##GRANDMOTHER:...
+                            ##GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
+                            ##SISTER: Yes, you're right. Thank you. I need to put in more effort.
+                            ##GRANDMOTHER: ...
                 
     
     
@@ -129,7 +132,7 @@ I should check on him today.
     
         My younger brother and I share a room at the end of the hall. 
         There's not a lot of space for either of us, but we spend about as much time in our hideout as we do here so it's never been a problem.
-        SISTER: [Brother]?
+        SISTER: Brother?
         He's not here. It looks like he was doing his schoolwork up until a moment ago, though.
             ->END
         
@@ -144,7 +147,7 @@ I should check on him today.
     
         =RecollectionA
     
-        BROTHER: [SISTER]. You're back early.
+        BROTHER: SISTER. You're back early.
         SISTER: Yep! Hey, there were some extra quarters on the ground under the vending machine at school so I got you a twix.
         BROTHER: ! A whole twix!
         SISTER: Yeah, haha.
@@ -198,13 +201,13 @@ I should check on him today.
         
         The air ducts are all moved around. I don't think I can get to the hideout like this.
         
-        SISTER: [Brother]? [Brother]!
+        SISTER: Brother? Brother!
         
         Did he block the way on purpose? He can't lift things this heavy but - oh, if he used grandma's spell he could. Why would he do that, though?
         
         ## After a brief exploration here, eyes appear in the dark
         
-        SISTER: [Brother]? Hey, are you over there?
+        SISTER: Brother? Hey, are you over there?
         BROTHER?: ...
         SISTER: Um. I had some ideas for some stuff we could add to the hideout today. Do you have the flashlight down here?
         BROTHER?: ...
@@ -297,7 +300,7 @@ I should check on him today.
             I thought I learned a really valuable lesson the day Mom yelled at me and made me scrape the stickers off one by one, but yesterday I scratched the varnish trying to open the top drawer. 
             ->END
         *SiblingDesk
-            Two of grandma's old magic books are laid out on top of [Brother]'s homework.
+            Two of grandma's old magic books are laid out on top of Brother's homework.
             None of us can use the spells in most of her old books, but she makes him study all of them anyway. 
             ->END
     =HallExplore
@@ -314,7 +317,7 @@ I should check on him today.
                 My brother's setting at the table. I don't remember when we both started sitting side by side all the way on this end. It's just how we've always done things.
                 ->END
             **Brother's Setting 2
-                There are old crayon marks on the edge of the table here. When he was younger, [BROTHER] used to color the edges of all his assignments because he liked it when paper had borders. 
+                There are old crayon marks on the edge of the table here. When he was younger, Brother used to color the edges of all his assignments because he liked it when paper had borders. 
                 ->END
             **My Setting
                 My place at the table. It's quiet in the corner.
@@ -373,5 +376,5 @@ I should check on him today.
     =CrawlSpaceExplore
         *VentilationDuct
             These ducts hum and rattle when the A/C or heater turns on.
-            [Brother] and I used to lay rocks on them to make noises whenever the A/C started up, but Grandma noticed right away. 
+            Brother and I used to lay rocks on them to make noises whenever the A/C started up, but Grandma noticed right away. 
             ->END
