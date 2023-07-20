@@ -17,10 +17,12 @@ public abstract class Interactable : MonoBehaviour
     {
         if (AllowInteractSound)
         {
-            if (audio != null)
+            if (audio == null)
             {
-                AudioManager.PlayOneShot(audio);
+                Debug.LogWarning("failed to play interaction sound for object", this);
+                return;
             }
+            AudioManager.PlayOneShot(audio);
         }
     }
 

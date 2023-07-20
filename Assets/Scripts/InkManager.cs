@@ -16,8 +16,8 @@ public class InkManager : MonoBehaviour
 {
     public static InkManager Instance { get; private set; }
     public static System.Action OnDialogueEnd;
-    
-    
+
+
     //Text Speed and Skipping Lines
     [Header("Text Display")]
     public float textspeed = .01f;
@@ -28,13 +28,13 @@ public class InkManager : MonoBehaviour
     [Header("NonChar Lines")]
     public GameObject NameBoxChild;
 
-    [Header("Character Visuals")] 
+    [Header("Character Visuals")]
     public List<CharNamePair> CharPortraits;
     public List<UiCharacter> CharVisuals;
     public GameObject CharVisualsPlacer;
     public GameObject CharacterPrefab;
 
-    [Header("ContinueVisual")] 
+    [Header("ContinueVisual")]
     public RectTransform continueindicator;
     private float boty = 20;
     private float topy = 90;
@@ -62,13 +62,13 @@ public class InkManager : MonoBehaviour
 
     private void Start()
     {
-         specialtextdelays.Add(',', 10f);
-         specialtextdelays.Add('-', 10f);
-         specialtextdelays.Add(';', 10f);
-         specialtextdelays.Add('.', 20f);
-         specialtextdelays.Add('?', 20f);
-         specialtextdelays.Add('!', 20f);
-        
+        specialtextdelays.Add(',', 10f);
+        specialtextdelays.Add('-', 10f);
+        specialtextdelays.Add(';', 10f);
+        specialtextdelays.Add('.', 20f);
+        specialtextdelays.Add('?', 20f);
+        specialtextdelays.Add('!', 20f);
+
     }
 
     private void Awake()
@@ -94,7 +94,7 @@ public class InkManager : MonoBehaviour
         float target = DisplayingLine ? boty : topy;
         Vector3 targetpos = new Vector3(continueindicator.localPosition.x, target, continueindicator.localPosition.z);
         continueindicator.localPosition = Vector3.Lerp(continueindicator.localPosition, targetpos, Time.deltaTime * 10);
-        
+
         if (DisplayingLine && !SkipCalled)
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
@@ -217,6 +217,14 @@ public class InkManager : MonoBehaviour
         }
     }
 
+    public static void PlayNext()
+    {
+        if (IsPlaying)
+        {
+            _continuePlaying = true;
+        }
+    }
+
     public static void PlayNext(string knotName)
     {
         if (IsPlaying)
@@ -246,17 +254,19 @@ public class InkManager : MonoBehaviour
         }
     }
 
-    public static void PlayNext(int choiceIndex)
+    public static void ChooseChoice(int choiceIndex)
     {
         if (!IsPlaying)
         {
-            Debug.LogWarning("Called PlayNext with choice when no story is playing.");
+            Debug.LogWarning("Called ChooseChoice when no story is playing.");
             return;
         }
 
+        Debug.Log(_story.currentChoices);
+        Debug.Log(choiceIndex);
+
         _story.ChooseChoiceIndex(choiceIndex);
         _processingChoices = false;
-        _continuePlaying = true;
     }
 
     public static void SetKnot(string knotName)
@@ -279,10 +289,21 @@ public class InkManager : MonoBehaviour
         StartDialogue();
 
         string text;
-        while (_story.canContinue || _processingChoices)
+        while (_story.canContinue || _story.currentChoices.Count > 0)
         {
-            if (_continuePlaying && !_processingChoices)
+            if (_continuePlaying)
             {
+                if (_story.currentChoices.Count > 0)
+                {
+                    _processingChoices = true;
+                    Instance._choiceDisplayer.DisplayChoices(_story.currentChoices);
+
+                    while (_processingChoices)
+                    {
+                        yield return null;
+                    }
+                }
+
                 text = _story.Continue();
                 Debug.Log("Setting Name");
                 ParseNPCName(ref text);
@@ -299,14 +320,7 @@ public class InkManager : MonoBehaviour
                 SetDialogue(text);
                 yield return new WaitUntil(() => DisplayingLine == false);
 
-                _processingChoices = false;
                 _continuePlaying = false;
-
-                if (_story.currentChoices.Count > 0)
-                {
-                    _processingChoices = true;
-                    Instance._choiceDisplayer.DisplayChoices(_story.currentChoices);
-                }
             }
             yield return null;
         }
@@ -350,7 +364,7 @@ public class InkManager : MonoBehaviour
             if (_continuePlaying)
             {
                 DisplayingLine = true;
-                
+
                 SetDialogue(text[currentIndex]);
                 yield return new WaitUntil(() => DisplayingLine == false);
                 _continuePlaying = false;
@@ -380,9 +394,6 @@ public class InkManager : MonoBehaviour
     {
         Debug.LogFormat("Ending dialogue. Forced = {0}", forced);
 
-        Instance.DialogueText.text = "";
-        _speakingNPC = null;
-
         if (!forced)
         {
             if (OnDialogueEnd != null)
@@ -391,13 +402,16 @@ public class InkManager : MonoBehaviour
             }
         }
 
+        Instance.DialogueText.text = "";
+        _speakingNPC = null;
         SetName("");
-        for(int i =0; i<Instance.CharVisuals.Count; i++)
+
+        for (int i = 0; i < Instance.CharVisuals.Count; i++)
         {
             Destroy(Instance.CharVisuals[i].gameObject);
         }
         Instance.CharVisuals.Clear();
-        
+
         OnDialogueEnd = null;
         IsPlaying = false;
         JTools.ImpactController.current.inputComponent.ChangeLockState(false);
@@ -460,22 +474,22 @@ public class InkManager : MonoBehaviour
         SkipCalled = false;
         DisplayingLine = true;
         Debug.LogFormat("Setting Dialogue to {0}", newText);
-        
+
         DialogueText.maxVisibleCharacters = 0;
         DialogueText.text = newText;
-        
+
         for (int i = 0; i < newText.Length; i++)
         {
-            if(SkipCalled) break;
+            if (SkipCalled) break;
             DialogueText.maxVisibleCharacters = i + 1;
-            
-            
+
+
             float tempdelaytime = textspeed;
             if (specialtextdelays.ContainsKey(newText[i]))
                 tempdelaytime *= specialtextdelays[newText[i]];
             yield return new WaitForSeconds(tempdelaytime);
-            
-            if(newText[i] != ' ')
+
+            if (newText[i] != ' ')
                 playpennoise();
         }
 

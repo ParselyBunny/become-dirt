@@ -108,6 +108,12 @@ public class AudioManager : MonoBehaviour
     private AudioSource tempSourceRef;
     private void PlayPooledOneShot(AudioClip clip)
     {
+        if (clip == null)
+        {
+            Debug.LogError("Failed to play requested audio clip");
+            return;
+        }
+
         var ok = StaticObjectPool.TryPop<AudioSource>(out tempSourceRef);
         if (!ok)
         {

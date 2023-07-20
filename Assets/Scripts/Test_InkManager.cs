@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(InkManager))]
-public class InkManager_test : MonoBehaviour
+public class Test_InkManager : MonoBehaviour
 {
     [System.Serializable]
     public class Knot
@@ -13,6 +13,9 @@ public class InkManager_test : MonoBehaviour
             this._name = name;
         }
     }
+
+    [SerializeField, InspectorButton("Continue")]
+    private bool ContinueStory; // typing here is irrelevant, just used for the name
 
     // Custom button to refresh knot list
     [SerializeField, InspectorButton("LoadKnotList")]
@@ -44,6 +47,11 @@ public class InkManager_test : MonoBehaviour
         }
 
         // this._content.Select(i => $"{i}").ToList().ForEach(Debug.Log);
+    }
+
+    private void Continue()
+    {
+        InkManager.PlayNext();
     }
 
     public static void PlayNext(string knotName)

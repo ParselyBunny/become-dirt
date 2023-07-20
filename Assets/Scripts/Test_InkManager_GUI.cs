@@ -2,8 +2,8 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(InkManager_test.Knot))]
-public class InkManager_test_GUI : PropertyDrawer
+[CustomPropertyDrawer(typeof(Test_InkManager.Knot))]
+public class Test_InkManager_GUI : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
@@ -33,7 +33,7 @@ public class InkManager_test_GUI : PropertyDrawer
         // style.alignment = TextAnchor.MiddleLeft;
         if (GUI.Button(buttonRect, "Inject"))
         {
-            InkManager_test.PlayNext(label.text);
+            Test_InkManager.PlayNext(label.text);
         }
 
         // Draw fields - passs GUIContent.none to each so they are drawn without labels
