@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ChoiceDisplayer : MonoBehaviour
@@ -25,10 +26,11 @@ public class ChoiceDisplayer : MonoBehaviour
             int index = choices[i].index;
             _choicesObjects[i].GetComponentInChildren<TextMeshProUGUI>().text = choices[i].text;
             _choicesObjects[i].GetComponent<Button>().onClick.AddListener(() => { SelectChoice(index); });
-            _choicesObjects[i].SetActive(true);
+            _choicesObjects[i].GetComponent<Button>().interactable = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        FindObjectOfType<EventSystem>().SetSelectedGameObject(_choicesObjects[0]);
     }
 
     private void SelectChoice(int index)
@@ -44,7 +46,7 @@ public class ChoiceDisplayer : MonoBehaviour
     {
         for (int i = 0; i < _choicesObjects.Length; i++)
         {
-            _choicesObjects[i].SetActive(false);
+            _choicesObjects[i].GetComponent<Button>().interactable = false;
             _choicesObjects[i].GetComponent<Button>().onClick.RemoveAllListeners();
             _choicesObjects[i].GetComponentInChildren<TextMeshProUGUI>().text = i.ToString();
         }
