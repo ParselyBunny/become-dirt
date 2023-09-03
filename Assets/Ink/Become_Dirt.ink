@@ -52,7 +52,7 @@ I should check on him today.
                 GRANDMOTHER: Answer me. Idle silence is a mark of sloth.
                 -> END
                 
-                //*Sorry...
+                *Sorry...
                     GRANDMOTHER: Why is it that you only apologize when we catch you misbehaving? A girl who felt remorse would apologize on her own.
                     #shake
                     GRANDMOTHER: Apologies are important, but an apology without change is meaningless. To my eyes, you have not changed your behavior in the slightest.
@@ -61,7 +61,7 @@ I should check on him today.
                 
                     ->GrandmotherLoop
                     
-               // *I've been getting better at making tea.
+               *I've been getting better at making tea.
                     #shake
                     GRANDMOTHER: An excuse and a lie. 
                     SISTER: Ow! I-I'm sorry.
@@ -77,7 +77,7 @@ I should check on him today.
                     GRANDMOTHER: Do you see?
                     
                     ->GrandmotherLoop
-                //*I should go study more, you're right...
+                *I should go study more, you're right...
                     GRANDMOTHER: Correct. Now tell me: How will you study?
                     GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
                         ->GrandmaStudyQ
@@ -92,9 +92,9 @@ I should check on him today.
                             SISTER: Ow!
                             GRANDMOTHER: Apologies without action are meaningless. I've told you as much before, haven't I?
                         ->GrandmotherLoop
-                        //*I'll go over my homework again...?
+                        *I'll go over my homework again...?
                             GRANDMOTHER: Homework that you turned in late? That you didn't complete? 
-                            ## Time a gasp or wince here, preparing for a pinch that doesn't come
+                        // Time a gasp or wince here, preparing for a pinch that doesn't come
                             GRANDMOTHER: ...
                             GRANDMOTHER: Please do not think that I lecture you out of scorn. 
                             GRANDMOTHER: Time wasted will not come back to you. If I thought you a waste of my time, I would not offer you so much of it. Do you understand?
@@ -102,24 +102,24 @@ I should check on him today.
                             GRANDMOTHER: No. Not your best. I want you to do exceptionally. Your best may not be enough, but you can do more than your best. You can push yourself further. 
                             GRANDMOTHER: Now, answer me again. How will you study differently this time?
                             ->GrandmaStudyQ
-                        //*Could you help me with it?
+                        *Could you help me with it?
                             GRANDMOTHER: ...
                             GRANDMOTHER: No. 
                             ->END
                         //* ->
                 
                         //Become Dirt
-                          ##  ->BECOMINGDIRT
+                         //  ->BECOMINGDIRT
                             
-                            ##=BECOMINGDIRT
-                              ##  NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations. 
-                            ##    FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all. 
+                        //=BECOMINGDIRT
+                             //  NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations. 
+                        //    FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all. 
                 
-                            ##SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
-                            ##GRANDMOTHER:...
-                            ##GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
-                            ##SISTER: Yes, you're right. Thank you. I need to put in more effort.
-                            ##GRANDMOTHER: ...
+                        //SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
+                        //GRANDMOTHER:...
+                        //GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
+                        //SISTER: Yes, you're right. Thank you. I need to put in more effort.
+                        //GRANDMOTHER: ...
                 
     
     
@@ -191,10 +191,12 @@ I should check on him today.
         
     =FearA
         SISTER: Was that-
-        ## FearA - Door disappearance 
+    // FearA - Door disappearance 
         NOTIFICATION: When confronted with overwhelming horror, you can use the BECOME DIRT spell to fall beneath the notice of all monsters, menaces, and members of your family. Take care when using this spell over loose floorboards or open grates. 
     
-        ## BECOME DIRT falling through the floorboards effect here
+    // BECOME DIRT falling through the floorboards effect here
+        ->END
+    =CrawlSpaceA
         
         SISTER: *coughing*
         SISTER: Ow... Why does falling through the floor always hurt my stomach like that. 
@@ -206,7 +208,7 @@ I should check on him today.
         
         Did he block the way on purpose? He can't lift things this heavy but - oh, if he used grandma's spell he could. Why would he do that, though?
         
-        ## After a brief exploration here, eyes appear in the dark
+    // After a brief exploration here, eyes appear in the dark
         
         SISTER: Brother? Hey, are you over there?
         BROTHER?: ...
@@ -215,27 +217,23 @@ I should check on him today.
         SISTER: Ah, that's ok. I can go get it if you don't. Did you have lessons again today?
         BROTHER?: ...
         
-        ## The eyes fade and a sound erupts, giving the clear impression of a massive, clearly inhuman creature moving through the crawlspace.
+    // The eyes fade and a sound erupts, giving the clear impression of a massive, clearly inhuman creature moving through the crawlspace.
         
         ...
         He and I are the only two people who ever come down here. Not even raccoons or squirrels go down into the crawl space. 
         That had to be him.
         And then, upstairs...
         
+        That monster was one he told me about, from a nightmare of his.
+        I need to get back upstairs.
+        
         ->END
-    =CrawlSpaceA
-
-
----That monster was one he told me about, from a nightmare of his.
----I need to get back upstairs.
-
-->END
-
+    
 
 === GateOne
 
     =Realization
-    ## Return to the house proper, via the hole in the laundry room.
+// Return to the house proper, via the hole in the laundry room.
         Our Family only has three spells left, and only one of them is worth using. 
         Become Dirt, the oldest spell, makes you into something completely useless and common and pathetic. It's the only spell I ever learned, maybe because I'm already useless even without magic.
         Become Mechanical is my grandma's specialty and it's probably the only reason our family still exists. 
@@ -252,6 +250,81 @@ I should check on him today.
         I think... my brother used Become Fear. 
         I need to find a way down into our hideout, in the far corner of the crawl space.
         
+        ->END
+
+    =MomConvoA
+        // After attempting to leave this area of the house [laundry/pantry/kitchen] we hear the side door close and the mother will return home.
+    
+        SISTER: Oh! W-welcome home. Your coffee’s ready, I think...
+        MOTHER: I know. It’s automatic.
+        SISTER: Oh, right. Um...
+        MOTHER: What?
+        SISTER: Nothing. Sorry.
+    ->END
+    
+    =MotherConvoLoop
+        MOTHER: I swear to God you spend all your time staring down at your toes and still manage to trip on every cord in the house. Learn to watch yourself! You know who’ll have to pay for it if you break another lamp or tear the TV cord out of the wall again? You wanna start an electrical fire?
+        MOTHER: And the laundry's still piled up to the brim in here - you didn't run it like I asked, did you?
+        SISTER: Sorry, I just got home.
+        MOTHER: Don't give me that. I asked you to take care of that this morning. It takes 5 seconds to pour the detergent in and press a few buttons.
+        MOTHER: And now I've got to fix this mess... I swear to hell. 
+     
+        *Have you seen Brother?
+            MOTHER: Don't try and change the subject. You know full well I just got home, and he's got a report due at the end of this week so don't you bother him while he's working on that. 
+            MOTHER: And, dear? Try not to rip any other sockets out of the wall while you're at it, okay?
+            SISTER: I'm sorry. I-
+            [SISTER trips]
+            MOTHER: Watch it now! I told you to stand back, didn't I? You don't need to crowd in here while I fix this... I just need to grab the fool thing and get it situated right.
+            ->MotherConvoLoop
+        *I can fix the cord later if you want.
+            MOTHER: No, I'll fix it and you just sit still right there and watch. Once I'm done here I gotta get the stove going for dinner. I don't have time to do the laundry so you need to start it the second I finish up here. Are you listening to me!?
+            SISTER: Y-yes! Sorry...
+            
+            ->MotherConvoLoop
+        *I'll fix it right now, I promise!
+            SISTER: I'm sorry, I'll fix it right now! You just got home, you're tired right? I'll take care of it so-
+            MOTHER: No you won't. You sit right there until I get this settled. If you touch one more thing over here you're liable to cost me a damn fortune replacing the washer. 
+            
+            ->MotherConvoLoop
+        *Become Dirt   
+            SISTER: I wasn’t paying attention, I’m sorry. I’m sorry, I need to look at where I’m going, and probably use a handrail, haha. I tripped earlier and scraped my knee on the driveway too. Sorry. I’ll start the laundry and I can do dinner too if you need!
+            
+            MOTHER: ...Enough.
+            MOTHER: Alright. I’m gonna drink this coffee and finish emergency surgery on a tiger. By the time I get done, the laundry will be switched over and the dishwasher will be running, got it? When I check back in here I better not find a heap of wet clothes in the wash.
+        
+            ->END
+        
+        =LaundryTask
+            Our Mom works really hard and fixes almost everything that breaks in the house. That’s probably why she doesn’t have a lot of patience for people who break the dishwasher every other week. I don’t do it on purpose, I promise.
+            I think all the clothes are already in the machine so I just need to find the box of detergent and measure it out before I press the start button...
+    
+            ->END
+
+        
+        
+        // Exploring around the laundry room will yield no immediate results, though you can sort of see the box of detergent having fallen back down behind the washer & dryer
+        // Attempting to leave will result in the Mother calling out to you and forcing you back into the Laundry already
+        
+        =AttemptEscapeLaundry
+        
+            MOTHER: I don't hear that washer going yet.
+            SISTER: Ah, I just couldn't find the detergent so I figured-
+            MOTHER: It's in there. Keep looking. 
+            SISTER: Y-yeah.
+            ->END
+        
+    =BecomeVigilant
+        I need to keep looking. Not in the normal way... I need to focus.
+    
+        //NOTIFICATION: Use the BECOME VIGILANT spell to notice important items around the house or to discern words within noise.
+        //FLAVORTEXT: Open your eyes further. We were never meant to only see the narrow band of light before us. Movement. Breaths. The scent of a predator. The brush of wind across your neck. Sight and sense serve to bring you knowledge of the world. Know all. See all. We must be forewarned.
+        ->END
+        
+    =Vigilance
+    
+    //The Detergent box will be highlighted and also easily interactable whereas before its interactions were blocked. 
+        There. It probably fell from the back of the machine when the dryer was rumbling last time. 
+        Vigilance isn't really a spell, by the way. I just got really good at noticing sounds and details because I needed to know if my mom or grandma was walking down the hall and if I should hide the clay I was working with so they didn't get mad at me. If it was useful, that would be one thing, but I don't think I've ever used it for anything but getting myself out of trouble. 
         ->END
 
 === Explanatory
@@ -274,9 +347,10 @@ I should check on him today.
         ->END
     =CrawlSpaceHatch
         ->END
+
+
 === Explorations
 
-    //BathroomExplore
     =Mirror
         I hate the way sink scum dries on the mirror. Every time you look at yourself, you're surrounded by little bits of toothpaste, water mixed with soap from washing our hands and faces, and a few smudges I don't want to really think about. We clean it, of course, but a lot of these stains won't come off anymore.
         ->END
@@ -303,6 +377,25 @@ I should check on him today.
         Two of grandma's old magic books are laid out on top of [Brother]'s homework.
         None of us can use the spells in most of her old books, but she makes him study all of them anyway. 
         ->END
+        
+    =OpenTome
+        Two of grandma's old magic books are laid out on top of [Brother]'s homework.
+        None of us can use the spells in most of her old books, but she makes him study all of them anyway. 
+        ->END
+    
+    =PaperTrash
+         What...is this?
+         These strange icospheres on the ground, is this wax? Or some sort of soft stone used in a ritual? They seem like — oh.
+         It's my homework from last week. It got crumbled up in the bottom of my backpack.
+        ->END
+    
+    =Poster
+        A poster I got from the school book fair for reading all of 'Where the Red Fern Grows'. I didn't really like it much but the poster's nice.
+        ->END
+        
+    =Wardrobe
+        I need to fold my clothes right. I don't have that many pairs of jeans but they barely fit in my side because I never fold them. 
+        ->END
 
     //HallExplore
     =MomDoor
@@ -311,8 +404,14 @@ I should check on him today.
         ->END
 
     //LivingRoomExplore
+    =Television
+        Mom watches TV here after dinner and sometimes my brother and I watch things early in the morning on weekends though we can't make too much noise. It's hard to hear unless we sit close and his neck starts to cramp when he has to look up for so long. 
+        ->END
+    =EntertainmentCenter
+        I remember when we carried this home. Someone left it out by a dumpster a few years ago and Mom had me help her carry it back. It had some kind of bug living in it, so now it smells like bug spray and cologne. 
+        ->END
     =Fireplace
-        I don't think we've ever used this. Every few months Mom says she needs to get it cleaned, but we've never been able to afford it.
+        It's dangerous for the fireplace to be lit when no one's watching it. I'm watching it right now, though, so it's safe.
         ->END
 
     //DiningTable
@@ -320,7 +419,7 @@ I should check on him today.
         My brother's setting at the table. I don't remember when we both started sitting side by side all the way on this end. It's just how we've always done things.
         ->END
     =BrotherSetting2
-        There are old crayon marks on the edge of the table here. When he was younger, [BROTHER] used to color the edges of all his assignments because he liked it when paper had borders. 
+        There are old crayon marks on the edge of the table here. When he was younger, BROTHER used to color the edges of all his assignments because he liked it when paper had borders. 
         ->END
     =MySetting1
         My place at the table. It's quiet in the corner.
@@ -335,7 +434,7 @@ I should check on him today.
         I'm never sure if I should clean out her old mugs or not. Last time she got mad at me for dumping her coffee, but last week she told me I shouldn't just leave old mugs lying around if I see them when I do dishes. 
         ->END
     =GrandmaSetting
-        Our Grandma's seat at the table. She uses it like a desk when she teaches my little brother magic. His practice pages are scattered around the floor in this corner.
+        Our Grandma's seat at the table. She uses it like a desk when she teaches my little brother magic. 
         ->END
     
     //Bookcase
@@ -369,7 +468,53 @@ I should check on him today.
         Mom's lint bucket. She uses this for her plushies. 
         ->END
     
-    =KitchenExplore
+    =Paul1
+        It's a creature with the head of a stuffed bird and the body of a mysteriously decapitated stuffed lion, I think. My mom named it Paul. 
+        ->END
+    =Paul2
+        I think there's styrofoam in his legs. That's what keeps him standing upright, and also why he sounds so awful when he moves. 
+        ->END
+    =PlushieGuts
+        I wish there was an easy way to clean plushie guts. This pile alone took me two days and I can still see bits of granola in it. 
+        ->END
+    =HuskedBear
+        Mom keeps saying she's going to stuff this bear and dress her up like a ballerina. She's saved a lot of satin for making the dress, but so far the bear is still just an empty husk.
+        ->END
+    
+    //KitchenExplore
+    =Fridge
+        Cleaning the fridge is pretty easy when it's half empty, actually. 
+        ->END
+    =FoodTray
+        Cans of green beans, pickled beets, small potatoes, and corn. 
+        ->END
+    =CoffeePot
+        Mom's coffee pot is pretty old but it's programmed to start up right before she gets home from work every day.
+        ->END
+    =Cupboards
+        Grandma keeps a whole stack of cake and jello molds in here, but she never bakes anymore. I'm not sure when any of us used them last, since I got in trouble for trying to use it to make a yogurt Santa when I was younger.
+        ->END
+    =KitchenSink
+        Fruit Flies... do they live down there? Is there a world where they're happy at the bottom of the sink drain?
+        ->END
+    =Freezer
+        I'm supposed to chip away the ice in here so we can get to the steaks Mom got on sale a few months ago. I lost the knife sharpener though and it's too dangerous to use anything else.
+        ->END
+    =Plates
+        Six nice plates for potatoes with chives, I dropped one last week and then there were five.
+        ...Sorry.
+        ->END
+    =DiningTableCandles
+        The lights over the dining table are a lot brighter but my grandma says candlelight is better for reading because it's less strain on the eyes.
+        ->END
+    =OpenBooks
+        My grandma always reads our family's old magic books at the table. It's where she teaches my little brother, too.
+        ->END
+    =OpenBooksGround
+        Why are these on the ground? My grandma would hang me from the coat rack if she saw these here... but I'm also not allowed to touch them anymore.
+        ->END
+    =OpenBooksGround2
+        Maybe my brother was in the middle of a lesson and something happened?
         ->END
 
     //PantryExplore
@@ -384,5 +529,5 @@ I should check on him today.
     //CrawlSpaceExplore
     =VentilationDuct
         These ducts hum and rattle when the A/C or heater turns on.
-        [Brother] and I used to lay rocks on them to make noises whenever the A/C started up, but Grandma noticed right away. 
+        Brother and I used to lay rocks on them to make noises whenever the A/C started up, but Grandma noticed right away. 
         ->END
