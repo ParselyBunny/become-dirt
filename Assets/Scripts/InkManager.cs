@@ -334,13 +334,17 @@ public class InkManager : MonoBehaviour
         EndDialogue(false);
     }
 
-    public static void DisplayObjectText(string objectName, string[] text)
+    // For displaying text when examining objects
+    public static void DisplayObjectText(string inkKnot)
     {
-        if (text.Length == 0)
+        if (inkKnot.Length == 0)
         {
-            Debug.Log("DisplayObjectText was called with no text.");
+            Debug.LogError("DisplayObjectText was called with no ink knot defined.");
             return;
         }
+
+        SetKnot(inkKnot);
+        string text = _story.Continue();
 
         if (IsPlaying)
         {
@@ -348,30 +352,24 @@ public class InkManager : MonoBehaviour
         }
         else
         {
-            SetName(objectName);
-            Debug.Log("DisplayObjectText Called");
             Instance.StartCoroutine(Instance.DisplayText(text));
         }
     }
 
-    private IEnumerator DisplayText(string[] text)
+    private IEnumerator DisplayText(string text)
     {
         StartDialogue();
 
-        var currentIndex = 0;
-        while (currentIndex < text.Length)
+        if (_continuePlaying)
         {
-            if (_continuePlaying)
-            {
-                DisplayingLine = true;
+            DisplayingLine = true;
 
-                SetDialogue(text[currentIndex]);
-                yield return new WaitUntil(() => DisplayingLine == false);
-                _continuePlaying = false;
-                currentIndex++;
-            }
-            yield return null;
+            SetName("");
+            SetDialogue(text);
+            yield return new WaitUntil(() => DisplayingLine == false);
+            _continuePlaying = false;
         }
+        yield return null;
 
         // We don't have any more text, but we gotta wait to close the dialogue
         while (!_continuePlaying)
