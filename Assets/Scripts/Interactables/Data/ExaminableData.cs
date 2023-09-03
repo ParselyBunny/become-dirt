@@ -1,11 +1,11 @@
 using UnityEngine;
-using System;
 
 [CreateAssetMenu]
-public class ExaminableData : NPCData
+public class ExaminableData : InteractableData
 {
-    public string[] ExamineMessage { get => _examineMessage; }
+    // An array of Ink Knots, in the implementation it should cycle between these
+    public string[] InkKnots { get => _inkKnots; set => _inkKnots = value; }
 
-    [SerializeField, Tooltip("Message to display when examined if knot unspecified.")]
-    private string[] _examineMessage = new string[] { };
+    [SerializeField, Tooltip("The knot to jump to in the Ink Story.")]
+    private string[] _inkKnots = {};
 }
