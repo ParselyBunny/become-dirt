@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: GrandmaSetting
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Grandma's Place
-  _inkKnot: Explorations.GrandmaSetting
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.GrandmaSetting

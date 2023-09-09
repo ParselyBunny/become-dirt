@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Mirror
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Mirror
-  _inkKnot: Explorations.Mirror
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.Mirror

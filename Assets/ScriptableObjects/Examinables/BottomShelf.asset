@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: BottomShelf
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Books
-  _inkKnot: Explorations.BottomShelf
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.BottomShelf

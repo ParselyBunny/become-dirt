@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BrotherSetting
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Brother's Place
-  _inkKnot: Explorations.BrotherSetting1
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.BrotherSetting1
+  - Explorations.BrotherSetting2

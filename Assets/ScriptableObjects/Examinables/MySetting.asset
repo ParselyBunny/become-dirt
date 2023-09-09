@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MySetting
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: My Place
-  _inkKnot: Explorations.MySetting1
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.MySetting1
+  - Explorations.MySetting2

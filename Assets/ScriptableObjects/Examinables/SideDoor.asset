@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: SideDoor
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Unknown
-  _inkKnot: 
-  _examineMessage: []
+  _inkKnots:
+  - Explanatory.SideDoor

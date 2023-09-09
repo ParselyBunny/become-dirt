@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: deb0a2d315cdcc14787e8d1441157d26, type: 3}
-  m_Name: MomSetting
+  m_Name: Poster
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
   _inkKnots:
-  - Explorations.MomSetting1
-  - Explorations.MomSetting2
+  - Explorations.Poster

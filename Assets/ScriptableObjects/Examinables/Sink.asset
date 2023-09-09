@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Sink
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Sink
-  _inkKnot: Explorations.Sink
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.Sink

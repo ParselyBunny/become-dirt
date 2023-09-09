@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: SiblingDesk
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Brother's Desk
-  _inkKnot: Explorations.SiblingDesk
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.SiblingDesk

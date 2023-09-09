@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: MomDoor
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 8300000, guid: 391dd5b5dc15bb64ebed4b7ab90e9ffc, type: 3}
-  _name: Mom's Room
-  _inkKnot: Explanatory.MomDoorLocked
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.MomDoor

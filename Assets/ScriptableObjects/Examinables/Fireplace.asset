@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Fireplace
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Fireplace
-  _inkKnot: Explorations.Fireplace
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.Fireplace

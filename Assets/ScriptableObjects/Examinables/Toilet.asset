@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Toilet
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Toilet
-  _inkKnot: Explorations.Toilet
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.Toilet

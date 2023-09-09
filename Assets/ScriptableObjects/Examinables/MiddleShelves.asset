@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: MiddleShelves
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Books
-  _inkKnot: Explorations.MiddleShelves
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.MiddleShelves

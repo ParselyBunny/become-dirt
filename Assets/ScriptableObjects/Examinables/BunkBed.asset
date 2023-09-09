@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: BunkBed
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Bunk Bed
-  _inkKnot: Explorations.BunkBed
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.BunkBed

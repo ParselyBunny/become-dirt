@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: FrontDoor
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 8300000, guid: 391dd5b5dc15bb64ebed4b7ab90e9ffc, type: 3}
-  _name: Front Door
-  _inkKnot: Explanatory.FrontDoor1
-  _examineMessage:
-  - 
+  _inkKnots:
+  - Explanatory.FrontDoor

@@ -360,6 +360,9 @@ I should check on him today.
     =Toilet
         The fluffy cover on the toilet lid always stares back at me before I lift it. 
         ->END
+    =BathTub
+        My sitting place.
+        ->END
 
     //SiblingRoomExplore
     =BunkBed
@@ -367,9 +370,9 @@ I should check on him today.
         He asked me to switch one day, saying he was scared of heights and wanted to be closer to the ground. I'm pretty sure he was just being considerate.
         ->END
     =SisterBooks
-        A faded copy of Northanger Abbey rests under a pile of overstretched hair ties and flavored chapstick. 
+        Ah. My Biology textbook... I need it for homework but brother left one of the magic tomes on top of it.
         ->END
-    =dresser
+    =Dresser
         When I was seven I ruined my dresser with glitter stickers, so now the handles are covered in sticky dust and gunk. 
         I thought I learned a really valuable lesson the day Mom yelled at me and made me scrape the stickers off one by one, but yesterday I scratched the varnish trying to open the top drawer. 
         ->END
@@ -384,9 +387,15 @@ I should check on him today.
         ->END
     
     =PaperTrash
-         What...is this?
-         These strange icospheres on the ground, is this wax? Or some sort of soft stone used in a ritual? They seem like — oh.
-         It's my homework from last week. It got crumbled up in the bottom of my backpack.
+        What...is this?
+        These strange icospheres on the ground, is this wax? Or some sort of soft stone used in a ritual? They seem like — oh.
+        ->END
+        
+    =PaperTrash2
+        It's my homework from last week. It got crumbled up in the bottom of my backpack.
+        ->END
+    =Dragonology
+        Oh, my copy of 'Dragonology' is back here. I loved that book when I was my brother's age, but it's a little disheartening to think about how expensive it would be to actually see a Dragon. 
         ->END
     
     =Poster
@@ -394,7 +403,7 @@ I should check on him today.
         ->END
         
     =Wardrobe
-        I need to fold my clothes right. I don't have that many pairs of jeans but they barely fit in my side because I never fold them. 
+        I need to fold my clothes right. I don't have that many pairs of jeans but they barely fit in my side because I never fold them.
         ->END
 
     //HallExplore
@@ -447,7 +456,7 @@ I should check on him today.
     =BottomShelf
         Cookbooks and a couple of gardening books fill the bottom shelf, like Microwave Chef and Southern Homes & Gardens. 
         ->END
-    =Sofa1
+    =Sofa
         The sofa is well worn. Not by us - we almost never use them anymore. Someone else wore the springs down and ripped the cushion. 
         ->END
     =Sofa2

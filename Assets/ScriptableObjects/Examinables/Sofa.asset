@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sofa
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Sofa
-  _inkKnot: Explorations.Sofa1
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.Sofa
+  - Explorations.Sofa2
