@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 72.1351, y: -14.3682}
-  m_SizeDelta: {x: 906.5194, y: 88.2154}
+  m_AnchoredPosition: {x: 72.135124, y: -34.836624}
+  m_SizeDelta: {x: 906.5194, y: 87.9211}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2895859208490452785
 CanvasRenderer:
@@ -246,7 +246,6 @@ GameObject:
   - component: {fileID: 6321820766922276606}
   - component: {fileID: 2095077450464173347}
   - component: {fileID: 8971040671544524929}
-  - component: {fileID: 2570426579470077797}
   m_Layer: 5
   m_Name: Visual
   m_TagString: Untagged
@@ -272,7 +271,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -22, y: -892}
-  m_SizeDelta: {x: 2368, y: 1454}
+  m_SizeDelta: {x: 2368, y: 1203.0508}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2095077450464173347
 CanvasRenderer:
@@ -295,14 +294,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.72463506, b: 0.72463506, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21dd2e5dca92c184db9b02f6a5712be9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0119e6990b50dc4cb4fcde6906087f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -312,18 +311,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2570426579470077797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5843803535488898579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.12941177}
-  m_EffectDistance: {x: 0, y: 6.4}
-  m_UseGraphicAlpha: 1
