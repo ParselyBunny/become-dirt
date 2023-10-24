@@ -51,6 +51,12 @@ public class Test_InkManager : MonoBehaviour
 
     private void Continue()
     {
+        if (!_loaded)
+        {
+            Debug.LogWarning("Cannot execute runtime-intended method Continue while not in runtime");
+            return;
+        }
+
         InkManager.PlayNext();
     }
 
@@ -58,7 +64,7 @@ public class Test_InkManager : MonoBehaviour
     {
         if (!_loaded)
         {
-            Debug.LogWarning("Cannot execute runtime-intended method PlayNext_test while not in runtime");
+            Debug.LogWarning("Cannot execute runtime-intended method PlayNext while not in runtime");
             return;
         }
 
