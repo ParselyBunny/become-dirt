@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9153252588007348895}
   - component: {fileID: 9153252588007348880}
   m_Layer: 0
-  m_Name: GROUND_GRID_FLOOR
+  m_Name: GRID_MERGED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
