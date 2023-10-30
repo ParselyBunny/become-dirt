@@ -27,13 +27,23 @@ public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
     {
         base.ComponentUpdate(player);
 
-        // Handle becoming dirt
-        if (owner.inputComponent.customInputData.pressedDirt)
+        if (player.TryGetComponent<ImpactComponent_Input_Custom>(out ImpactComponent_Input_Custom input))
         {
-            // TODO: trigger become dirt prerender animation
-            // TODO: teleport under the floorboards
-            Debug.Log("Teleporting now.");
+            // Handle becoming dirt
+            if (input.customInputData.pressedDirt)
+            {
+                // TODO: trigger become dirt prerender animation
+                // TODO: teleport under the floorboards
+                Debug.Log("Teleporting now.");
+            }
         }
+        else
+        {
+            Debug.LogError("Could not get ImpactComponent_Input_Custom." +
+                "Are you sure it's attached to the ImpactController?");
+        }
+
+        
 
         // Create a ray at the center of the camera going forward
         ray = new Ray(owner.playerCamera.transform.position, owner.playerCamera.transform.forward);
