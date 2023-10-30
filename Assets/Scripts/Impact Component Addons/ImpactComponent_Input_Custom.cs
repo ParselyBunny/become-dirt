@@ -1,8 +1,11 @@
+using JTools;
 using UnityEngine;
 
 [DisallowMultipleComponent, RequireComponent(typeof(ImpactComponent_Addon_UI))]
 public class ImpactComponent_Input_Custom : JTools.ImpactComponent_Input
 {
+    // Define custom input data in this struct type
+    public CustomInputData customInputData;
     //The default input component, built around Unity's default input system.
     [Header("Default - General Controls")]
     public string lookAxisX = "Mouse X";
@@ -14,8 +17,8 @@ public class ImpactComponent_Input_Custom : JTools.ImpactComponent_Input
     public KeyCode keyCrouch = KeyCode.LeftControl;
     public KeyCode keyJump = KeyCode.Space;
     public KeyCode keySprint = KeyCode.LeftShift;
-
     public KeyCode keyMenu = KeyCode.Escape;
+    public KeyCode keyDirt = KeyCode.F;
     [Space]
     public JTools.ImpactInput_MouseSetting buttonPrimary = JTools.ImpactInput_MouseSetting.leftMouse;
     public JTools.ImpactInput_MouseSetting buttonSecondary = JTools.ImpactInput_MouseSetting.rightMouse;
@@ -27,6 +30,8 @@ public class ImpactComponent_Input_Custom : JTools.ImpactComponent_Input
     public override void ComponentInitialize(JTools.ImpactController player)
     {
         base.ComponentInitialize(player);
+
+        inputData = new ImpactInputData();
 
         _uiAddon = GetComponent<ImpactComponent_Addon_UI>();
     }
@@ -64,11 +69,28 @@ public class ImpactComponent_Input_Custom : JTools.ImpactComponent_Input
         inputData.pressedInteract = Input.GetKeyDown(keyInteract);
         inputData.holdingInteract = Input.GetKey(keyInteract);
         inputData.releasedInteract = Input.GetKeyUp(keyInteract);
+
+        customInputData.pressedDirt = Input.GetKeyDown(keyDirt);
+        customInputData.holdingDirt = Input.GetKey(keyDirt);
+        customInputData.releasedDirt = Input.GetKeyUp(keyDirt);
     }
 
     public override void ControlsLocked()
     {
         base.ControlsLocked();
+
+        customInputData.pressedDirt = false;
+
+        if (customInputData.holdingDirt)
+        {
+            customInputData.releasedDirt = true;
+        }
+        else
+        {
+            customInputData.releasedDirt = false;
+        }
+
+        customInputData.holdingDirt = false;
 
         if (_uiAddon.MenusOpen)
         {

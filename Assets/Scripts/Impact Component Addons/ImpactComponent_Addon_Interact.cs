@@ -27,6 +27,14 @@ public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
     {
         base.ComponentUpdate(player);
 
+        // Handle becoming dirt
+        if (owner.inputComponent.customInputData.pressedDirt)
+        {
+            // TODO: trigger become dirt prerender animation
+            // TODO: teleport under the floorboards
+            Debug.Log("Teleporting now.");
+        }
+
         // Create a ray at the center of the camera going forward
         ray = new Ray(owner.playerCamera.transform.position, owner.playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance);
