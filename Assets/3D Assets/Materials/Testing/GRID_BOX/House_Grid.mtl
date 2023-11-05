@@ -1,0 +1,55 @@
+newmtl Test-Green
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Cyan_Dark
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Cyan
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Green_Dark
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Yellow_Dark
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Red_Dark
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Magenta_Dark
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Magenta
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Red
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Yellow
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Test-Orange
+map_Kd GridBox_Default.png
+Kd 1.0 1.0 1.0
+d 1.0
+

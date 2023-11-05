@@ -91,7 +91,7 @@ public class InkManager : MonoBehaviour
 
     public void Update()
     {
-        float target = DisplayingLine ? boty : topy;
+        float target = DisplayingLine || (_story.currentChoices.Count > 0) ? boty : topy;
         Vector3 targetpos = new Vector3(continueindicator.localPosition.x, target, continueindicator.localPosition.z);
         continueindicator.localPosition = Vector3.Lerp(continueindicator.localPosition, targetpos, Time.deltaTime * 10);
 

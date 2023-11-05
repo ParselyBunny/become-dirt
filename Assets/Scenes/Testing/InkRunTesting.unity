@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &279012646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2424065817931057335, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+  m_PrefabInstance: {fileID: 3423378081828412518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &290646240
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +221,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &337433956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5973317848030450119, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+  m_PrefabInstance: {fileID: 3423378081828412518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &480019002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4779436868423401750, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+  m_PrefabInstance: {fileID: 3423378081828412518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1049023705
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,11 +263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _choicesObjects:
-  - {fileID: 3493487932264417366}
-  - {fileID: 3493487932427576378}
-  - {fileID: 3493487932705784385}
-  - {fileID: 3493487932200834535}
-  - {fileID: 3493487931809884305}
+  - {fileID: 337433956}
+  - {fileID: 2095306324}
+  - {fileID: 1278057095}
+  - {fileID: 279012646}
+  - {fileID: 480019002}
 --- !u!114 &1049023707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +280,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b62727fea04f045a9e7fdc01941022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textspeed: 0.01
+  textnoise: {fileID: 0}
+  textnoises: []
+  NameBoxChild: {fileID: 0}
+  CharPortraits: []
+  CharVisuals: []
+  CharVisualsPlacer: {fileID: 0}
+  CharacterPrefab: {fileID: 0}
+  continueindicator: {fileID: 0}
   _inkJSONAsset: {fileID: 4900000, guid: 340bb8f8202d69546a029097a2de1e17, type: 3}
   NameText: {fileID: 3493487931405644960}
   DialogueText: {fileID: 4006124236512343425}
@@ -291,58 +315,89 @@ MonoBehaviour:
   m_GameObject: {fileID: 1049023705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a52c42be9ebf0ad4b8be49db9b5dca06, type: 3}
+  m_Script: {fileID: 11500000, guid: 96e885e19171f8f40863e6124e7b4b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContinueStory: 0
   ReloadKnotList: 0
   _content:
   - _name: Intro
   - _name: Intro.CallOut
   - _name: Intro.GrandmotherConvoA
   - _name: Intro.GrandmotherLoop
-  - _name: Intro.BECOMINGDIRT
+  - _name: Intro.GrandmaStudyQ
   - _name: Intro.ExplorationA1
   - _name: Intro.ExplorationA2
   - _name: Intro.RecollectionA
-  - _name: Intro.MonsterA
+  - _name: Intro.FearA
   - _name: Intro.CrawlSpaceA
   - _name: GateOne
   - _name: GateOne.Realization
-  - _name: Examine
-  - _name: Examine.FrontDoor1
-  - _name: Examine.FrontDoor2
-  - _name: Examine.SideDoor
-  - _name: Examine.MomDoorLocked
-  - _name: Examine.CrawlSpaceHatch
-  - _name: Examine.Mirror
-  - _name: Examine.Sink
-  - _name: Examine.Toilet
-  - _name: Examine.BunkBed
-  - _name: Examine.SisterBooks
-  - _name: Examine.dresser
-  - _name: Examine.SiblingDesk
-  - _name: Examine.MomDoor
-  - _name: Examine.Fireplace
-  - _name: Examine.BrotherSetting1
-  - _name: Examine.BrotherSetting2
-  - _name: Examine.MySetting1
-  - _name: Examine.MySetting2
-  - _name: Examine.MomSetting1
-  - _name: Examine.MomSetting2
-  - _name: Examine.GrandmaSetting
-  - _name: Examine.TopShelf
-  - _name: Examine.MiddleShelves
-  - _name: Examine.BottomShelf
-  - _name: Examine.Sofa1
-  - _name: Examine.Sofa2
-  - _name: Examine.Armchair
-  - _name: Examine.LivingRug
-  - _name: Examine.WashDryer
-  - _name: Examine.LintBucket
-  - _name: Examine.KitchenExplore
-  - _name: Examine.PastaShelf
-  - _name: Examine.CanShelf
-  - _name: Examine.VentilationDuct
+  - _name: GateOne.MomConvoA
+  - _name: GateOne.MotherConvoLoop
+  - _name: GateOne.LaundryTask
+  - _name: GateOne.AttemptEscapeLaundry
+  - _name: GateOne.BecomeVigilant
+  - _name: GateOne.Vigilance
+  - _name: Explanatory
+  - _name: Explanatory.FrontDoor1
+  - _name: Explanatory.FrontDoor2
+  - _name: Explanatory.SideDoor
+  - _name: Explanatory.MomDoorLocked
+  - _name: Explanatory.CrawlSpaceHatch
+  - _name: Explorations
+  - _name: Explorations.Mirror
+  - _name: Explorations.Sink
+  - _name: Explorations.Toilet
+  - _name: Explorations.BathTub
+  - _name: Explorations.BunkBed
+  - _name: Explorations.SisterBooks
+  - _name: Explorations.Dresser
+  - _name: Explorations.SiblingDesk
+  - _name: Explorations.OpenTome
+  - _name: Explorations.PaperTrash
+  - _name: Explorations.PaperTrash2
+  - _name: Explorations.Dragonology
+  - _name: Explorations.Poster
+  - _name: Explorations.Wardrobe
+  - _name: Explorations.MomDoor
+  - _name: Explorations.Television
+  - _name: Explorations.EntertainmentCenter
+  - _name: Explorations.Fireplace
+  - _name: Explorations.BrotherSetting1
+  - _name: Explorations.BrotherSetting2
+  - _name: Explorations.MySetting1
+  - _name: Explorations.MySetting2
+  - _name: Explorations.MomSetting1
+  - _name: Explorations.MomSetting2
+  - _name: Explorations.GrandmaSetting
+  - _name: Explorations.TopShelf
+  - _name: Explorations.MiddleShelves
+  - _name: Explorations.BottomShelf
+  - _name: Explorations.Sofa
+  - _name: Explorations.Sofa2
+  - _name: Explorations.Armchair
+  - _name: Explorations.LivingRug
+  - _name: Explorations.WashDryer
+  - _name: Explorations.LintBucket
+  - _name: Explorations.Paul1
+  - _name: Explorations.Paul2
+  - _name: Explorations.PlushieGuts
+  - _name: Explorations.HuskedBear
+  - _name: Explorations.Fridge
+  - _name: Explorations.FoodTray
+  - _name: Explorations.CoffeePot
+  - _name: Explorations.Cupboards
+  - _name: Explorations.KitchenSink
+  - _name: Explorations.Freezer
+  - _name: Explorations.Plates
+  - _name: Explorations.DiningTableCandles
+  - _name: Explorations.OpenBooks
+  - _name: Explorations.OpenBooksGround
+  - _name: Explorations.OpenBooksGround2
+  - _name: Explorations.PastaShelf
+  - _name: Explorations.CanShelf
+  - _name: Explorations.VentilationDuct
 --- !u!1 &1088996418
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +481,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1278057095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 560561527442012497, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+  m_PrefabInstance: {fileID: 3423378081828412518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2095306324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2084046536580302361, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+  m_PrefabInstance: {fileID: 3423378081828412518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3423378081828412518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -765,6 +830,86 @@ PrefabInstance:
       propertyPath: StartEnabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3412895294059745549, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412895294059745549, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412895294059745549, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412895294059745549, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605931574613754332, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605931574613754332, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605931574613754332, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605931574613754332, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524493660385859756, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524493660385859756, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524493660385859756, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524493660385859756, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694805749040326986, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694805749040326986, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694805749040326986, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694805749040326986, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206394128137737730, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206394128137737730, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206394128137737730, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206394128137737730, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
 --- !u!224 &3493487931081350044 stripped
@@ -783,26 +928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &3493487931809884305 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 558603560543776913, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
-  m_PrefabInstance: {fileID: 3423378081828412518}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3493487932200834535 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 558603560723369467, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
-  m_PrefabInstance: {fileID: 3423378081828412518}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3493487932264417366 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 558603560659619914, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
-  m_PrefabInstance: {fileID: 3423378081828412518}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3493487932427576378 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 558603561033481254, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
-  m_PrefabInstance: {fileID: 3423378081828412518}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3493487932447266821
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,11 +1041,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &3493487932705784385 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 558603561254279713, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}
-  m_PrefabInstance: {fileID: 3423378081828412518}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4006124236512343425 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1736934797052946919, guid: 36b57a5fbbb0a53468b281ab05e7619b, type: 3}

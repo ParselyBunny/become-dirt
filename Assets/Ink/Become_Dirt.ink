@@ -50,7 +50,6 @@ I should check on him today.
             
                 GRANDMOTHER: Well?
                 GRANDMOTHER: Answer me. Idle silence is a mark of sloth.
-                -> END
                 
                 *Sorry...
                     GRANDMOTHER: Why is it that you only apologize when we catch you misbehaving? A girl who felt remorse would apologize on her own.
