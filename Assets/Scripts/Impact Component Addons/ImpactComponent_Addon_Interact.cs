@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 [DisallowMultipleComponent]
 public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
@@ -32,9 +33,32 @@ public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
             // Handle becoming dirt
             if (input.customInputData.pressedDirt)
             {
-                // TODO: trigger become dirt prerender animation
-                // TODO: teleport under the floorboards
-                Debug.Log("Teleporting now.");
+                player.inputComponent.ChangeLockState(true);
+                // TODO: Unlock input after teleport
+
+                // Trigger become dirt prerender animation
+                VideoPlayer videoPlayer = player.playerCamera.GetComponent<VideoPlayer>();
+                videoPlayer.Play();
+
+                // Define layer mask to collide with only layer 7, the crawlspace floor
+                int layerMask = 1 << 7;
+                // Define a ray aiming down
+                ray = new Ray(owner.playerCamera.transform.position, -transform.up);
+
+                Debug.DrawRay(ray.origin, ray.direction, Color.red, 5.0f, false);
+                Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask);
+
+                if (hitInfo.collider != null)
+                {
+                    // Change player's position
+                    player.gameObject.transform.position = hitInfo.collider.transform.position;
+                    Debug.Log("Teleporting now.");
+                }
+                else
+                {
+                    Debug.Log("Could not find a legal surface directly below the player.");
+                    // TODO: Find the nearest legal surface to jump to?
+                }
             }
         }
         else
@@ -42,8 +66,6 @@ public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
             Debug.LogError("Could not get ImpactComponent_Input_Custom." +
                 "Are you sure it's attached to the ImpactController?");
         }
-
-        
 
         // Create a ray at the center of the camera going forward
         ray = new Ray(owner.playerCamera.transform.position, owner.playerCamera.transform.forward);
