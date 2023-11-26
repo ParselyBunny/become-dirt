@@ -102,6 +102,13 @@ public class InkManager : MonoBehaviour
                 SkipCalled = true;
             }
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
+            {
+                PlayNext();
+            }
+        }
     }
 
     private void OnDestroy()
