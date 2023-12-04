@@ -2,27 +2,19 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 8
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: bookcase_texture
+  m_Name: metal_0041_ao_1k
   m_Shader: {fileID: 4800000, guid: 055eab4e84dc70a47ae75b3125a22de6, type: 3}
-  m_ValidKeywords:
-  - _BRDF_MODE_LAMBERT
-  - _FOG_ON
-  - _LIGHTING_BAKED_ON
-  - _LIGHTING_DYNAMIC_ON
-  - _SHADING_EVALUATION_MODE_PER_PIXEL
-  - _TEXTURE_FILTER_MODE_TEXTURE_IMPORT_SETTINGS
-  m_InvalidKeywords: []
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -32,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b86302f71b981424dbe942094b85c1c1, type: 3}
+        m_Texture: {fileID: 2800000, guid: a609ce7f1f6385949b4826af18c2497b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ReflectionCubemap:
@@ -43,7 +35,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: []
     m_Floats:
     - _AffineTextureWarpingWeight: 1
     - _AlphaClip: 0
@@ -68,7 +59,7 @@ Material:
     - _ReflectionBlendMode: 0
     - _ReflectionDirectionMode: 0
     - _RenderQueueCategory: 0
-    - _ShadingEvaluationMode: 1
+    - _ShadingEvaluationMode: 0
     - _SrcBlend: 1
     - _Surface: 0
     - _TextureFilterMode: 0
