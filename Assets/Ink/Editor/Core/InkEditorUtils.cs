@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Linq;
@@ -30,6 +29,16 @@ namespace Ink.UnityIntegration {
 		const string lastCompileTimeKey = "InkIntegrationLastCompileTime";
 
 		private static Texture2D _inkLogoIcon;
+
+		static InkEditorUtils() {
+			var isFirstLaunch = SessionState.GetBool("InkIsFirstUnityLaunch", true);
+			if (isFirstLaunch) {
+				SessionState.SetBool("InkIsFirstUnityLaunch", false);
+				if(InkSettings.instance.automaticallyAddDefineSymbols)
+					InkDefineSymbols.AddGlobalDefine();
+			}
+		}
+
 		public static Texture2D inkLogoIcon {
 			get {
 				if(_inkLogoIcon == null) {
@@ -131,6 +140,11 @@ namespace Ink.UnityIntegration {
         [MenuItem("Help/Ink/API Documentation...")]
 		public static void OpenAPIDocumentation() {
 			Application.OpenURL("https://github.com/inkle/ink/blob/master/Documentation/RunningYourInk.md");
+		}
+
+		[MenuItem("Help/Ink/Discord (Community + Support...")]
+		public static void OpenDiscord() {
+			Application.OpenURL("https://discord.gg/inkle");
 		}
 
 		[MenuItem("Help/Ink/Donate...")]
@@ -266,12 +280,18 @@ namespace Ink.UnityIntegration {
 		/// <param name="path">The path to check.</param>
 		/// <returns>True if it's an ink file, otherwise false.</returns>
 		public static bool IsInkFile(string path) {
+			if (string.IsNullOrEmpty(path)) return false;
 			string extension = Path.GetExtension(path);
 			if (extension == InkEditorUtils.inkFileExtension) {
 				return true;
-			}
-
-			return String.IsNullOrEmpty(extension) && InkLibrary.instance.inkLibrary.Exists(f => f.filePath == path);
+			} else if (String.IsNullOrEmpty(extension)) {
+				if (!File.Exists(path)) return false;
+				if (File.GetAttributes(path).HasFlag(FileAttributes.Directory)) return false;
+				// This check exists only in the case of ink files that lack the .ink extension.
+				// We support this mostly for legacy reasons - Inky didn't used to add .ink by default which made a this relatively common issue.
+				// This function needs to be speedy but getting all the ink file paths is a bit slow, so I'd like to remove support for missing extensions in the future.
+				return InkLibrary.instance.inkLibrary.Exists(f => f.filePath == path);
+			} else return false;
 		}
 
 
@@ -282,15 +302,19 @@ namespace Ink.UnityIntegration {
 		/// </summary>
 		public static void OpenInEditor (InkFile inkFile, InkCompilerLog log) {
 			var targetFilePath = log.GetAbsoluteFilePath(inkFile);
-			#if UNITY_2019_1_OR_NEWER
+			// EditorUtility.OpenWithDefaultApp(targetFilePath);
+			AssetDatabase.OpenAsset(inkFile.inkAsset, log.lineNumber);
+			// Unity.CodeEditor.CodeEditor.OSOpenFile();
+#if UNITY_2019_1_OR_NEWER
+
 			// This function replaces OpenFileAtLineExternal, but I guess it's totally internal and can't be accessed.
 			// CodeEditorUtility.Editor.Current.OpenProject(targetFilePath, lineNumber);
-			#pragma warning disable
+			// #pragma warning disable
+			// UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(targetFilePath, log.lineNumber);
+			// #pragma warning restore
+#else
 			UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(targetFilePath, log.lineNumber);
-			#pragma warning restore
-			#else
-			UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(targetFilePath, log.lineNumber);
-			#endif
+#endif
 		}
 		/// <summary>
 		/// Opens an ink file in the associated editor at the correct line number.
@@ -333,6 +357,33 @@ namespace Ink.UnityIntegration {
 							: lineBreak;
 
 			return String.Concat(result);
+		}
+
+
+
+		// If this plugin is installed as a package, returns info about it.
+		public static UnityEditor.PackageManager.PackageInfo GetPackageInfo() {
+			var packageAssetPath = "Packages/com.inkle.ink-unity-integration";
+			if (AssetDatabase.IsValidFolder(packageAssetPath)) return UnityEditor.PackageManager.PackageInfo.FindForAssetPath(packageAssetPath);
+			else return null;
+		}
+		
+		// Gets the root directory of this plugin, enabling us to find assets within it.
+		// Less efficent if not installed as a package because the location/folder name is not known.
+		public static string FindAbsolutePluginDirectory() {
+			var packageInfo = GetPackageInfo();
+			if (packageInfo != null) {
+				return packageInfo.resolvedPath;
+			} else {
+				// Find the InkLibs folder. We assume that it exists in the top level of the plugin folder. We use this folder because it has a fairly unique name and is essential for the plugin to function.
+				string[] guids = AssetDatabase.FindAssets("t:DefaultAsset", new[] {"Assets"}).Where(g => AssetDatabase.GUIDToAssetPath(g).EndsWith("/InkLibs")).ToArray();
+				if (guids.Length > 0) {
+					var assetPathOfInkLibsFolder = AssetDatabase.GUIDToAssetPath(guids[0]);
+					var rootPluginFolder = assetPathOfInkLibsFolder.Substring(0, assetPathOfInkLibsFolder.Length - "/InkLibs".Length);
+					return Path.GetFullPath(Path.Combine(Application.dataPath, "..", rootPluginFolder));
+				}
+			}
+			return null; // If no folder is found
 		}
 	}
 }

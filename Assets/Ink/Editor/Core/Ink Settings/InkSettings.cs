@@ -46,6 +46,12 @@ namespace Ink.UnityIntegration {
 						instance = ScriptableObject.CreateInstance<InkSettings>();
 						instance.Save(true);
 					}
+					// Oh gosh Unity never unloads ScriptableObjects once created! This fixes it but is more of an expensive call than I like.
+					// I've commented this out in favour of a callback approach - see OnEnable. Left this for posterity in case we need to return to this. 
+					// foreach (var settings in Resources.FindObjectsOfTypeAll<InkSettings>()) {
+					// 	if(settings == instance) continue;
+					// 	DestroyImmediate(settings);
+					// }
 				}
 				return _instance;
 			} private set {
@@ -55,15 +61,6 @@ namespace Ink.UnityIntegration {
 		}
 		// #endif
 
-        public class AssetSaver : UnityEditor.AssetModificationProcessor {
-            static string[] OnWillSaveAssets(string[] paths) {
-                InkSettings.instance.Save(true);
-                return paths;
-            }
-        }
-
-		
-		
 		public DefaultAsset templateFile;
 		public string templateFilePath {
 			get {
@@ -84,6 +81,10 @@ namespace Ink.UnityIntegration {
 		public int compileTimeout = 30;
 		
 		public bool printInkLogsInConsoleOnCompile;
+		
+		public bool suppressStartupWindow;
+		
+		public bool automaticallyAddDefineSymbols = true;
 
 		#if UNITY_EDITOR && !UNITY_2018_1_OR_NEWER
 		[MenuItem("Edit/Project Settings/Ink", false, 500)]
@@ -97,11 +98,15 @@ namespace Ink.UnityIntegration {
 		#endif
         
 		public bool ShouldCompileInkFileAutomatically (InkFile inkFile) {
-			return compileAllFilesAutomatically || (inkFile.compileAsMasterFile && filesToCompileAutomatically.Contains(inkFile.inkAsset));
+			return compileAllFilesAutomatically || (inkFile.isMaster && filesToCompileAutomatically.Contains(inkFile.inkAsset));
 		}
 
 		
 		void OnEnable () {
+			// Oh gosh Unity never unloads ScriptableObjects once created! We destroy these objects before we recompile so there's only ever one in memory at once.
+			AssemblyReloadEvents.beforeAssemblyReload += () => {
+				DestroyImmediate(this);
+			};
 			// Validate the includeFilesToCompileAsMasterFiles list.
             for (int i = includeFilesToCompileAsMasterFiles.Count - 1; i >= 0; i--) {
                 if(includeFilesToCompileAsMasterFiles[i] == null) {
@@ -115,18 +120,6 @@ namespace Ink.UnityIntegration {
 					filesToCompileAutomatically.RemoveAt(i);
 				}
             }
-			// Deletes the persistent version of this asset that we used to use prior to 0.9.71
-			if(!Application.isPlaying && EditorUtility.IsPersistent(this)) {
-				var path = AssetDatabase.GetAssetPath(this);
-				if(!string.IsNullOrEmpty(path)) {
-					#if !UNITY_2020_1_OR_NEWER
-                    if(_instance == this) _instance = null;
-					#endif
-                    AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(this));
-					AssetDatabase.Refresh();
-					return;
-				}
-			}
 		}
 	}	
 }
