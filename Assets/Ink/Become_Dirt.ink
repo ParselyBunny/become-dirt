@@ -12,7 +12,8 @@ Become Mechanical, the spell my grandmother used to work beyond her own limits a
 Recently, though, he's been afraid of something. I don't know what he's worried about, but he always seems anxious and uneasy these days. 
 My grandmother wants to make sure he knew all the family's magic so that he can pass it on one day, and he's been making great progress. I don't know what would make him so frightened... 
 I should check on him today.
-->END
+// -> END
+-> GrandmotherConvoA
 
     =CallOut
         SISTER: Brother!
@@ -23,8 +24,6 @@ I should check on him today.
         I should check our room first, at least.
         -> END
     
-    
-
     =GrandmotherConvoA
         GRANDMOTHER: You. You're home late.
         SISTER: O-oh, yeah. I had to stay after for a make-up test.
@@ -44,109 +43,102 @@ I should check on him today.
         GRANDMOTHER: When I was left to shepherd the family arts while raising your mother all on my own, there were never extensions or convenient make-up tests. 
         GRANDMOTHER: You will be tested daily in life. You must pass each and every time, each and every day. What would have happened if I hadn't worked hard enough to support your mother? What would have happened if I had spent my time making baubles and playing in the dirt as you do? We would have lost everything. Our home. Our lives. All knowledge of our family arts. Each of us bears this responsibility.
         GRANDMOTHER: I know you tire of hearing about this, and that is exactly why I will say it again. Do you think that politely offering to poorly make tea and trawl for sympathy from your own clumsiness will help you in this life? 
-            ->GrandmotherLoop
+        ->GrandmotherLoop
         
-            =GrandmotherLoop
-            
-                GRANDMOTHER: Well?
-                GRANDMOTHER: Answer me. Idle silence is a mark of sloth.
-                
-                *Sorry...
-                    GRANDMOTHER: Why is it that you only apologize when we catch you misbehaving? A girl who felt remorse would apologize on her own.
-                    #shake
-                    GRANDMOTHER: Apologies are important, but an apology without change is meaningless. To my eyes, you have not changed your behavior in the slightest.
-                    GRANDMOTHER: Now, speak clear and plainly. 
-                    SISTER: ...
-                
-                    ->GrandmotherLoop
-                    
-               *I've been getting better at making tea.
-                    #shake
-                    GRANDMOTHER: An excuse and a lie. 
-                    SISTER: Ow! I-I'm sorry.
-                    GRANDMOTHER: Changing the subject does not change the reality of your performance. 
-                    GRANDMOTHER: Confront your failure directly. Do you understand why you cannot brew a satisfactory cup of tea?
-                    GRANDMOTHER: ...Answer.
-                    SISTER: I... probably steep it too long, or use too much sugar.
-                    GRANDMOTHER: And this is why you do not improve. You pour boiling water over mass produced bags of dust swept from the dregs of a factory floor. Every cup you make will be disgusting regardless of how precisely you time your preparations.
-                    GRANDMOTHER: Proper tea requires proper ingredients. Do you have fresh leaves? Clean and balanced water? Clear honey? You may as well steep cardboard without that.
-                    SISTER: Those are the only teabags we have though...
-                    #shake
-                    GRANDMOTHER: This is where you fail. Do you see? You try to perfect swill rather than going out to find quality ingredients. Your failure on this recent exam is the same. 
-                    GRANDMOTHER: Do you see?
-                    
-                    ->GrandmotherLoop
-                *I should go study more, you're right...
-                    GRANDMOTHER: Correct. Now tell me: How will you study?
-                    GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
-                        ->GrandmaStudyQ
-                        
-                    =GrandmaStudyQ
-                        *I don't know.
-                            GRANDMOTHER: And how do you plan to learn? 
-                            GRANDMOTHER: Do you reflect on your teacher's words? Do you listen to my advice? Have you asked your peers? Do you have a tutor? If you don't have an answer, then seek one.
-                            GRANDMOTHER: Your apathy is fatal, young lady. It will kill your mind and lead you to sloven habits. 
-                            SISTER: I'm sorry.
-                            #shake
-                            SISTER: Ow!
-                            GRANDMOTHER: Apologies without action are meaningless. I've told you as much before, haven't I?
-                        ->GrandmotherLoop
-                        *I'll go over my homework again...?
-                            GRANDMOTHER: Homework that you turned in late? That you didn't complete? 
-                        // Time a gasp or wince here, preparing for a pinch that doesn't come
-                            GRANDMOTHER: ...
-                            GRANDMOTHER: Please do not think that I lecture you out of scorn. 
-                            GRANDMOTHER: Time wasted will not come back to you. If I thought you a waste of my time, I would not offer you so much of it. Do you understand?
-                            SISTER: Y-yes. Of course, I know you only do it because you care and want me to do my best.
-                            GRANDMOTHER: No. Not your best. I want you to do exceptionally. Your best may not be enough, but you can do more than your best. You can push yourself further. 
-                            GRANDMOTHER: Now, answer me again. How will you study differently this time?
-                            ->GrandmaStudyQ
-                        *Could you help me with it?
-                            GRANDMOTHER: ...
-                            GRANDMOTHER: No. 
-                            ->END
-                        //* ->
-                
-                        //Become Dirt
-                         //  ->BECOMINGDIRT
-                            
-                        //=BECOMINGDIRT
-                             //  NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations. 
-                        //    FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all. 
-                
-                        //SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
-                        //GRANDMOTHER:...
-                        //GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
-                        //SISTER: Yes, you're right. Thank you. I need to put in more effort.
-                        //GRANDMOTHER: ...
-                
+    =GrandmotherLoop
+        GRANDMOTHER: Well?
+        GRANDMOTHER: Answer me. Idle silence is a mark of sloth.
     
+        * Sorry...
+            GRANDMOTHER: Why is it that you only apologize when we catch you misbehaving? A girl who felt remorse would apologize on her own.
+            #shake
+            GRANDMOTHER: Apologies are important, but an apology without change is meaningless. To my eyes, you have not changed your behavior in the slightest.
+            GRANDMOTHER: Now, speak clear and plainly. 
+            SISTER: ...
+            ->GrandmotherLoop
     
-        -I don’t know what my grandma is thinking. I don’t think I’ve ever known, even when she told me. 
+       * I've been getting better at making tea.
+            #shake
+            GRANDMOTHER: An excuse and a lie. 
+            SISTER: Ow! I-I'm sorry.
+            GRANDMOTHER: Changing the subject does not change the reality of your performance. 
+            GRANDMOTHER: Confront your failure directly. Do you understand why you cannot brew a satisfactory cup of tea?
+            GRANDMOTHER: ...Answer.
+            SISTER: I... probably steep it too long, or use too much sugar.
+            GRANDMOTHER: And this is why you do not improve. You pour boiling water over mass produced bags of dust swept from the dregs of a factory floor. Every cup you make will be disgusting regardless of how precisely you time your preparations.
+            GRANDMOTHER: Proper tea requires proper ingredients. Do you have fresh leaves? Clean and balanced water? Clear honey? You may as well steep cardboard without that.
+            SISTER: Those are the only teabags we have though...
+            #shake
+            GRANDMOTHER: This is where you fail. Do you see? You try to perfect swill rather than going out to find quality ingredients. Your failure on this recent exam is the same. 
+            GRANDMOTHER: Do you see?
+            ->GrandmotherLoop
+    
+        * I should go study more, you're right...
+            GRANDMOTHER: Correct. Now tell me: How will you study?
+            GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
+            ->GrandmaStudyQ
+        
+        * SISTER: # SIGIL: DIRT
+            ->BECOMINGDIRT
+        
+        - I don’t know what my grandma is thinking. I don’t think I’ve ever known, even when she told me. 
         I don’t think it’s hard to tell, I’m just not good at understanding other people sometimes. That’s why, even when she’s mad at me and I know it’s not my fault, I don’t really have a reason to argue. 
         Even if it’s not my fault, I probably deserve the blame anyway.     
-            ->END
+        ->END
     
+    =GrandmaStudyQ
+        * I don't know.
+            GRANDMOTHER: And how do you plan to learn? 
+            GRANDMOTHER: Do you reflect on your teacher's words? Do you listen to my advice? Have you asked your peers? Do you have a tutor? If you don't have an answer, then seek one.
+            GRANDMOTHER: Your apathy is fatal, young lady. It will kill your mind and lead you to sloven habits. 
+            SISTER: I'm sorry.
+            #shake
+            SISTER: Ow!
+            GRANDMOTHER: Apologies without action are meaningless. I've told you as much before, haven't I?
+            ->GrandmotherLoop
+        * I'll go over my homework again...?
+            GRANDMOTHER: Homework that you turned in late? That you didn't complete? 
+            // Time a gasp or wince here, preparing for a pinch that doesn't come
+            GRANDMOTHER: ...
+            GRANDMOTHER: Please do not think that I lecture you out of scorn. 
+            GRANDMOTHER: Time wasted will not come back to you. If I thought you a waste of my time, I would not offer you so much of it. Do you understand?
+            SISTER: Y-yes. Of course, I know you only do it because you care and want me to do my best.
+            GRANDMOTHER: No. Not your best. I want you to do exceptionally. Your best may not be enough, but you can do more than your best. You can push yourself further. 
+            GRANDMOTHER: Now, answer me again. How will you study differently this time?
+            ->GrandmaStudyQ
+        * Could you help me with it?
+            GRANDMOTHER: ...
+            GRANDMOTHER: No. 
+            GRANDMOTHER: Now, answer me again. How will you study differently this time?
+            ->GrandmaStudyQ
+                
+    = BECOMINGDIRT
+        # NOTIFICATION: "Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations." 
+        # FLAVORTEXT: "Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all."
+    
+        SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
+        GRANDMOTHER:...
+        GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
+        SISTER: Yes, you're right. Thank you. I need to put in more effort.
+        GRANDMOTHER: ...
+        -> DONE
         
     =ExplorationA1
-    
         My younger brother and I share a room at the end of the hall. 
         There's not a lot of space for either of us, but we spend about as much time in our hideout as we do here so it's never been a problem.
         SISTER: Brother?
         He's not here. It looks like he was doing his schoolwork up until a moment ago, though.
-            ->END
+        ->END
         
     =ExplorationA2
         Oh, he got a 97. He is smart, after all. 
-        He studies every night, too... I try to do that, but it's hard for me to focus on anything when I see that many letters on a page at the same time. 
+        He studies every night, too... I try to do that, but it's hard for me to focus on anything when I see that many letters on a page at the same time.
         I mostly try to study to make sure he doesn't worry about me, but most of the time all I can do is look at the paper and trace lines through the blank spaces with my eyes. 
         There's a report here... it must be the one he's working on for school this week. It looks like the topic is "My Future Job." He was asking me about the future just the other day too...
+        ->RecollectionA
     
-    ->RecollectionA
-    
-    
-        =RecollectionA
-    
+    =RecollectionA
+        # CUTSTART
         BROTHER: SISTER. You're back early.
         SISTER: Yep! Hey, there were some extra quarters on the ground under the vending machine at school so I got you a twix.
         BROTHER: ! A whole twix!
@@ -186,17 +178,17 @@ I should check on him today.
         He kept staring down at his half-written report the whole time we talked. His clothes and the page were covered in eraser shavings.
         
         I should check on him.
+        # CUTEND
         ->END
         
     =FearA
         SISTER: Was that-
-    // FearA - Door disappearance 
+        // FearA - Door disappearance 
         NOTIFICATION: When confronted with overwhelming horror, you can use the BECOME DIRT spell to fall beneath the notice of all monsters, menaces, and members of your family. Take care when using this spell over loose floorboards or open grates. 
-    
-    // BECOME DIRT falling through the floorboards effect here
+        // BECOME DIRT falling through the floorboards effect here
         ->END
-    =CrawlSpaceA
         
+    =CrawlSpaceA
         SISTER: *coughing*
         SISTER: Ow... Why does falling through the floor always hurt my stomach like that. 
         SISTER: ...
@@ -225,41 +217,36 @@ I should check on him today.
         
         That monster was one he told me about, from a nightmare of his.
         I need to get back upstairs.
-        
-        ->END
-    
-
-=== GateOne
-
-    =Realization
-// Return to the house proper, via the hole in the laundry room.
-        Our Family only has three spells left, and only one of them is worth using. 
-        Become Dirt, the oldest spell, makes you into something completely useless and common and pathetic. It's the only spell I ever learned, maybe because I'm already useless even without magic.
-        Become Mechanical is my grandma's specialty and it's probably the only reason our family still exists. 
-        It's an incredible spell that turns your body into a machine and makes it possible to do almost anything, no matter how much it hurts or how tired you are or how much your brain is screaming for you to stop. 
-        Grandma told us about how her parents and grandparents used this magic to work perfectly and past the point when their bodies would have normally given out, all so that they could keep moving up in their careers and ensure the family's prosperity. 
-        Everything fell apart when it turned out that my mom couldn't use any magic at all. She works really hard, maybe harder than our ancestors did, 
-        but she can't keep a smile up all the time and she has to call off work sometimes because of her back and knees, or when one of us gets sick.
-        Maybe if I was old enough to work, and if I could use Become Mechanical, things would be better for us... though I don't know if mom would like me any better in that case.
-        The last spell our family keeps is forbidden. Become Dirt and Become Mechanical are temporary spells that you can use while you need them and stop when you're done. Become Fear isn't like that. 
-        Become Fear is a spell you use as an absolute last resort, a spell that will keep you from ever feeling afraid by turning you into every horrible and terrifying thing you've ever known. 
-        Nothing can frighten you if you're the scariest thing around, after all. My grandma tried to teach me about it, once, but since I don't have any talent for magic she never told me how to actually cast it. 
-        It's a spell that requires you to discard everything that makes you a person, and it's a spell you can't break or end on your own. 
-        
-        I think... my brother used Become Fear. 
-        I need to find a way down into our hideout, in the far corner of the crawl space.
-        
         ->END
 
-    =MomConvoA
-        // After attempting to leave this area of the house [laundry/pantry/kitchen] we hear the side door close and the mother will return home.
+=== GateOne // Return to the house proper, via the hole in the laundry room.
+
+=Realization
+    Our Family only has three spells left, and only one of them is worth using. 
+    Become Dirt, the oldest spell, makes you into something completely useless and common and pathetic. It's the only spell I ever learned, maybe because I'm already useless even without magic.
+    Become Mechanical is my grandma's specialty and it's probably the only reason our family still exists. 
+    It's an incredible spell that turns your body into a machine and makes it possible to do almost anything, no matter how much it hurts or how tired you are or how much your brain is screaming for you to stop. 
+    Grandma told us about how her parents and grandparents used this magic to work perfectly and past the point when their bodies would have normally given out, all so that they could keep moving up in their careers and ensure the family's prosperity. 
+    Everything fell apart when it turned out that my mom couldn't use any magic at all. She works really hard, maybe harder than our ancestors did, 
+    but she can't keep a smile up all the time and she has to call off work sometimes because of her back and knees, or when one of us gets sick.
+    Maybe if I was old enough to work, and if I could use Become Mechanical, things would be better for us... though I don't know if mom would like me any better in that case.
+    The last spell our family keeps is forbidden. Become Dirt and Become Mechanical are temporary spells that you can use while you need them and stop when you're done. Become Fear isn't like that. 
+    Become Fear is a spell you use as an absolute last resort, a spell that will keep you from ever feeling afraid by turning you into every horrible and terrifying thing you've ever known. 
+    Nothing can frighten you if you're the scariest thing around, after all. My grandma tried to teach me about it, once, but since I don't have any talent for magic she never told me how to actually cast it. 
+    It's a spell that requires you to discard everything that makes you a person, and it's a spell you can't break or end on your own. 
     
-        SISTER: Oh! W-welcome home. Your coffee’s ready, I think...
-        MOTHER: I know. It’s automatic.
-        SISTER: Oh, right. Um...
-        MOTHER: What?
-        SISTER: Nothing. Sorry.
+    I think... my brother used Become Fear. 
+    I need to find a way down into our hideout, in the far corner of the crawl space.
     ->END
+
+=MomConvoA
+    // After attempting to leave this area of the house [laundry/pantry/kitchen] we hear the side door close and the mother will return home.
+    SISTER: Oh! W-welcome home. Your coffee’s ready, I think...
+    MOTHER: I know. It’s automatic.
+    SISTER: Oh, right. Um...
+    MOTHER: What?
+    SISTER: Nothing. Sorry.
+->END
     
     =MotherConvoLoop
         MOTHER: I swear to God you spend all your time staring down at your toes and still manage to trip on every cord in the house. Learn to watch yourself! You know who’ll have to pay for it if you break another lamp or tear the TV cord out of the wall again? You wanna start an electrical fire?
