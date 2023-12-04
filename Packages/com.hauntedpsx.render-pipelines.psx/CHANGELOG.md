@@ -1,4 +1,68 @@
 ---------------------------------------------------------------------------------------------------------------------------
+New Unity Version Support: **2022.2**
+---------------------------------------------------------------------------------------------------------------------------
+Unity 2022.2 is now the newest version that the Haunted PSX Render Pipeline now supports. Previously it only supported up to 2021-LTS.
+
+---------------------------------------------------------------------------------------------------------------------------
+Bugfix 2022: Volume Editors **VolumeComponentEditor attribute deprecated**
+---------------------------------------------------------------------------------------------------------------------------
+VolumeComponentEditor attribute was deprecated in 2022. Simply use the CustomEditor attribute instead, which exists in all versions of unity that the haunted psx render pipeline supports.
+
+---------------------------------------------------------------------------------------------------------------------------
+Bugfix 2022: Shader Functions **GetViewToWorldMatrix Declaration**
+---------------------------------------------------------------------------------------------------------------------------
+In Core versions less than 14.0 (2021 and older), GetViewToWorldMatrix and TransformViewToWorld are not defined yet in SpaceTransforms.hlsl.
+But in 14.0, 2022 and up, they are.
+Currently we have no way of detecting the version of core and static branching in our shaders.
+Instead, we simply define our own PSX variants that mimic the functions in newer versions of SpaceTransforms.hlsl, and use those everywhere so that we always have compatability.
+
+---------------------------------------------------------------------------------------------------------------------------
+New Unity Version Support: **2021-LTS**
+---------------------------------------------------------------------------------------------------------------------------
+Unity 2021 LTS is now the newest version that the Haunted PSX Render Pipeline now supports. Previously it only supported up to 2020-LTS.
+
+---------------------------------------------------------------------------------------------------------------------------
+Bugfix Fog Volume: **Color LUT Mode: Texture Cube**
+---------------------------------------------------------------------------------------------------------------------------
+Many platforms, such as WebGL 2.0 do not support performing texture cube samples or loads in a vertex shader. This caused shaders in Color Lut Mode: Texture Cube to not compile in WebGL 2.0.
+Rather than splitting behavior on platforms, instead, we go for consistency, and now force fog to be evaluated per-pixel, if Color LUT Mode is set to Texture Cube.
+
+---------------------------------------------------------------------------------------------------------------------------
+Bugfix PSXLit: **MetaPass Uninitialized Vertex Color in Split Color and Lighting Mode**
+---------------------------------------------------------------------------------------------------------------------------
+Fix legitimate shader warning where the vertex color varying was not initialized when in vertex color mode split color and lighting.
+
+---------------------------------------------------------------------------------------------------------------------------
+Bugfix PSXLit: **Enable GPU Instancing**
+---------------------------------------------------------------------------------------------------------------------------
+Enable GPU Instancing on PSXLit materials no works as expected. Multiple instanced draws may occur in a single instanced draw call without flickering in and out, as it did before.
+
+---------------------------------------------------------------------------------------------------------------------------
+Bugfix UV Animation Mode: **Flipbook**
+---------------------------------------------------------------------------------------------------------------------------
+Fixed flipbook uv calculation bugs that caused unintentional drop of final flipbook frame. Also fixed bug where texture filtering (if enabled) could bleed across flipbook page boundaries. Thanks for reporting the bug Visuwyg!
+
+
+---------------------------------------------------------------------------------------------------------------------------
+New Volume Feature: **Terrain Grass**
+---------------------------------------------------------------------------------------------------------------------------
+The Terrain Grass Volume allows the Haunted PSX Render Pipeline to expose additional custom properties for the Terrain Grass shaders.
+In the future, this Terrain Grass Volume will likely expose more HPSXRP material features that were previously unmodifiable on the Terrain Grass shaders.
+Special thanks to joshuaskelly for the first pass at the implementation of terrain grass filtering.
+**Texture Filter Mode**: Controls how the Terrain Grass textures are filtered.
+TextureFilterMode.TextureImportSettings is the standard unity behavior. Textures will be filtered using the texture's import settings.
+TextureFilterMode.Point will force PSX era nearest neighbor point sampling, regardless of texture import settings.
+TextureFilterMode.PointMipmaps is the same as TextureFilterMode.Point but supports supports point sampled lods via the texture's mipmap chain.
+TextureFilterMode.N64 will force N64 era 3-point barycentric texture filtering.
+TextureFilterMode.N64MipMaps is the same as TextureFilterMode.N64 but supports N64 sampled lods via the texture's mipmap chain.
+
+---------------------------------------------------------------------------------------------------------------------------
+Bugfix: **Compression compute shader compile on all supported platforms**
+---------------------------------------------------------------------------------------------------------------------------
+Compression.compute erroneously was flagged to only compile on dx11. Now flagged to compile on all platforms that support it.
+
+
+---------------------------------------------------------------------------------------------------------------------------
 Bugfix: **Legacy Canvas UI no longer drawing**
 ---------------------------------------------------------------------------------------------------------------------------
 Legacy Canvas UI broken from the **Canvas order is not considered for legacy Canvas UI** commit. Both are now fixed.
@@ -50,7 +114,7 @@ Bugfix: **Failed to present D3D11 swapchain due to device reset/removed.**
 ---------------------------------------------------------------------------------------------------------------------------
 Fixed bug where editor crashed for some users when editor was setup with multiple viewports (i.e: scene view, game view, material preview).
 The bug turned out to be a bug within the SRP Batcher, triggered (but not directly caused) by some UnityPerMaterial layout changes in PSXLitInputs.hlsl.
-The SRP Batcher has been manually disabled in HPSXRP until the Unity engine bug is tracked down / resolved. 
+The SRP Batcher has been manually disabled in HPSXRP until the Unity engine bug is tracked down / resolved.
 
 ---------------------------------------------------------------------------------------------------------------------------
 Bugfix: **CRT Shader Scanline Size and Vignette**
@@ -122,12 +186,12 @@ To use Shadow Mask shadows:
 
 For more information on the Shadow Mask feature in unity, visit: https://docs.unity3d.com/Manual/LightMode-Mixed-Shadowmask.html
 
-Note: If ANY light source in your scene requests Shadow Mask, HPSXRP will use Shadow Mask mode for ALL Mixed light sources. You cannot have some lights set to Mixed and some lights set to baked. Of NO light sources request Shadow Mask, HPSXRP will automatically configure itself to expect Lighting Mode->Baked Indirect data. 
+Note: If ANY light source in your scene requests Shadow Mask, HPSXRP will use Shadow Mask mode for ALL Mixed light sources. You cannot have some lights set to Mixed and some lights set to baked. Of NO light sources request Shadow Mask, HPSXRP will automatically configure itself to expect Lighting Mode->Baked Indirect data.
 
 ---------------------------------------------------------------------------------------------------------------------------
 Bugfix Fog Volume: **Fog Color LUT Modes**
 ---------------------------------------------------------------------------------------------------------------------------
-Fixed WebGL compatibility issue with Fog Color LUT Modes. WebGL doesn't support SAMPLE_TEXTURE2D_LOD or SAMPLE_CUBE_LOD - replaced with SAMPLE_TEXTURE2D and SAMPLE_CUBE. The LOD call was unnecessary. 
+Fixed WebGL compatibility issue with Fog Color LUT Modes. WebGL doesn't support SAMPLE_TEXTURE2D_LOD or SAMPLE_CUBE_LOD - replaced with SAMPLE_TEXTURE2D and SAMPLE_CUBE. The LOD call was unnecessary.
 
 ---------------------------------------------------------------------------------------------------------------------------
 New Volume Feature: **Accumulation Motion Blur Volume**
@@ -181,7 +245,7 @@ New Fog Volume Feature: **Color LUT Texture**
 ---------------------------------------------------------------------------------------------------------------------------
 New Material Feature: **Shading Evaluation Mode: Per-Object**
 ---------------------------------------------------------------------------------------------------------------------------
-**Shading Evaluation Mode: Per-Object**: Evaluates lighting and fog at the object origin, rather than per-vertex or per-pixel. This is useful for replicating lighting and fog artifacts that would occur when per-vertex or per-pixel lighting could not be afforded. Note, this has approximately the same performance cost as per-vertex, it is not optimization. This is due to the fact that in our render pipeline (in the context of unity SRP), it is more convinient and likely more efficient to still perform lighting in the vertex shader, rather than running say a CPU-side job to calculate lighting per-object. 
+**Shading Evaluation Mode: Per-Object**: Evaluates lighting and fog at the object origin, rather than per-vertex or per-pixel. This is useful for replicating lighting and fog artifacts that would occur when per-vertex or per-pixel lighting could not be afforded. Note, this has approximately the same performance cost as per-vertex, it is not optimization. This is due to the fact that in our render pipeline (in the context of unity SRP), it is more convinient and likely more efficient to still perform lighting in the vertex shader, rather than running say a CPU-side job to calculate lighting per-object.
 
 ---------------------------------------------------------------------------------------------------------------------------
 Workflow Improvement: **Precision Volume->Geometry Pushback Disabled by Default**
