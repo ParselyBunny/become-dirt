@@ -1,5 +1,6 @@
 -> Intro
 
+#Change flow of game through GO TO CRAWLSPACE, SEARCH AROUND, BROTHER CONVO, longer time for uncertainty around Brother condition, dirt in crawlspace is simply Moving Around Like That hahaha nORMAL. Direction to go back to the crawlspace, search around, find that you can't get to the hideout, and try to get up and around the house. 
 
 === Intro
 Our family used to do magic.
