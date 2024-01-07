@@ -14,7 +14,7 @@ public class AudioSlider : MonoBehaviour
 
     private void Awake()
     {
-        this._slider = this.GetComponent<Slider>();
+        _slider = GetComponent<Slider>();
     }
 
     private void OnEnable()
@@ -26,17 +26,17 @@ public class AudioSlider : MonoBehaviour
     {
         yield return null; // AudioManager needs a frame to load cause we don't have dependency injection
 
-        this._slider.onValueChanged.AddListener(UpdateMixerVolume);
-        if (this._sliderValueDisplay != null)
+        _slider.onValueChanged.AddListener(UpdateMixerVolume);
+        if (_sliderValueDisplay != null)
         {
-            this._slider.onValueChanged.AddListener(UpdateSliderText);
+            _slider.onValueChanged.AddListener(UpdateSliderText);
         }
-        this._slider.value = AudioManager.GetVolumeNormalized(this._mixerLabel);
+        _slider.value = AudioManager.GetVolumeNormalized(_mixerLabel);
     }
 
     private void OnDisable()
     {
-        this._slider.onValueChanged.RemoveAllListeners();
+        _slider.onValueChanged.RemoveAllListeners();
     }
 
     private void UpdateMixerVolume(float val)
@@ -47,6 +47,6 @@ public class AudioSlider : MonoBehaviour
     // TODO: Add proper formatting for 0-1 values
     private void UpdateSliderText(float val)
     {
-        this._sliderValueDisplay.text = val.ToString();
+        _sliderValueDisplay.text = val.ToString();
     }
 }

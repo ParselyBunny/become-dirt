@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StateSerializer : MonoBehaviour
 {
-    public string UUID { get { return this._uuid; } }
+    public string UUID { get { return _uuid; } }
 
     [ReadOnly, SerializeField] private string _uuid;
 
@@ -14,6 +14,6 @@ public class StateSerializer : MonoBehaviour
     [ContextMenu("Regenerate UUID")]
     public void RegenerateUUID()
     {
-        this._uuid = System.Guid.NewGuid().ToString();
+        _uuid = System.Guid.NewGuid().ToString();
     }
 }

@@ -10,7 +10,7 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        Debug.Log("You just interacted with me, my name is: " + this.name);
+        Debug.Log("You just interacted with me, my name is: " + name);
     }
 
     protected void PlayInteractSound(AudioClip audio)

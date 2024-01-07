@@ -19,7 +19,7 @@ public class Openable : Interactable
     void Awake()
     {
         _Animator = (GetComponent<Animator>() != null) ? GetComponent<Animator>() : new Animator();
-        base.SetAllowInteractSound(false);
+        SetAllowInteractSound(false);
     }
 
     public override void Interact()

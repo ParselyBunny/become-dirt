@@ -8,17 +8,17 @@ public class Billboard : MonoBehaviour
     void OnEnable()
     {
         _targetTf = Camera.main.transform;
-        this.GetComponent<Canvas>().worldCamera = Camera.main;
+        GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
     public Vector3 lookAt;
     void LateUpdate()
     {
         lookAt.x = _targetTf.position.x;
-        lookAt.y = this.transform.position.y;
+        lookAt.y = transform.position.y;
         lookAt.z = _targetTf.position.z;
-        this.transform.LookAt(
-            2 * this.transform.position - lookAt
+        transform.LookAt(
+            2 * transform.position - lookAt
         );
     }
 }

@@ -14,8 +14,8 @@ public static class SaveStateManager
 #endif
     private static string SaveFileFullPath { get { return Path.Combine(_saveDirectoryPath, _saveFileName); } }
 
-    private static Dictionary<string, GameObject> _markedObjects = new Dictionary<string, GameObject>();
-    private static Dictionary<string, SaveObject.ObjectState> _loadedSave = new Dictionary<string, SaveObject.ObjectState>();
+    private static Dictionary<string, GameObject> _markedObjects = new();
+    private static Dictionary<string, SaveObject.ObjectState> _loadedSave = new();
 
     public static void MarkObjectForSaving(StateSerializer obj)
     {
@@ -45,7 +45,7 @@ public static class SaveStateManager
     public static void SaveGame()
     {
         // Debug.Log("Saving Game.");
-        List<SaveObject> data = new List<SaveObject>(_markedObjects.Count);
+        List<SaveObject> data = new(_markedObjects.Count);
 
         foreach (KeyValuePair<string, GameObject> kv in _markedObjects)
         {
@@ -55,7 +55,7 @@ public static class SaveStateManager
             data.Add(new SaveObject(kv.Key, kv.Value));
         }
 
-        SaveFile saveData = new SaveFile() { Objects = data.ToArray() };
+        SaveFile saveData = new() { Objects = data.ToArray() };
         // Debug.Log($"List Contents:\n{string.Join("\n", data)}");
         // Debug.LogFormat("Save data in list: {0}", data.ToString());
         string saveDataJSON = JsonUtility.ToJson(saveData, true);
@@ -161,19 +161,19 @@ public class SaveObject
 
     public SaveObject(string uuid, GameObject go)
     {
-        this.UUID = uuid;
+        UUID = uuid;
 
         if (go == null)
         {
-            this.State = ObjectState.Destroyed;
+            State = ObjectState.Destroyed;
         }
         else if (go.activeSelf)
         {
-            this.State = ObjectState.Enabled;
+            State = ObjectState.Enabled;
         }
         else
         {
-            this.State = ObjectState.Disabled;
+            State = ObjectState.Disabled;
         }
     }
 }

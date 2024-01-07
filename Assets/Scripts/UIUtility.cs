@@ -6,7 +6,7 @@ public class UIUtility : MonoBehaviour
 {
     private static UIUtility instance;
 
-    private UnityEngine.Events.UnityEvent _OnDestroy = new UnityEngine.Events.UnityEvent();
+    private UnityEngine.Events.UnityEvent _OnDestroy = new();
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class UIUtility : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UIUtility already instanced, destroying self.", this.gameObject);
+            Debug.LogWarning("UIUtility already instanced, destroying self.", gameObject);
             Destroy(this);
         }
     }

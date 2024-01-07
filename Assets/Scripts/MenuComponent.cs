@@ -9,9 +9,9 @@ public class Menu
 
     public Menu(GameObject obj, bool se, bool ae)
     {
-        this.MenuRoot = obj;
-        this.StartEnabled = se;
-        this.AlwaysEnabled = ae;
+        MenuRoot = obj;
+        StartEnabled = se;
+        AlwaysEnabled = ae;
     }
 
     public void SetAlwaysEnabledOverride(bool alwaysEnabled)
@@ -32,16 +32,16 @@ public class MenuComponent : MonoBehaviour
 
     private void Start()
     {
-        this.asMenu = new Menu(this.gameObject, StartEnabled, AlwaysEnabled);
+        asMenu = new Menu(gameObject, StartEnabled, AlwaysEnabled);
 
-        _wasAdded = UIMenus.AddMenu(this.asMenu);
+        _wasAdded = UIMenus.AddMenu(asMenu);
     }
 
     private void OnDestroy()
     {
         if (_wasAdded)
         {
-            UIMenus.RemoveMenu(this.asMenu);
+            UIMenus.RemoveMenu(asMenu);
         }
     }
 

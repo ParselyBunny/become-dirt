@@ -25,7 +25,7 @@ public class NPC : Interactable
 
         PlayInteractSound(_data.InteractSound); // this be bug no one else calls this
         SetAllowInteractSound(false);
-        InkManager.OnDialogueEnd += () => base.SetAllowInteractSound(true);
+        InkManager.OnDialogueEnd += () => SetAllowInteractSound(true);
         InkManager.PlayNext(_data.InkKnot, this);
     }
 }

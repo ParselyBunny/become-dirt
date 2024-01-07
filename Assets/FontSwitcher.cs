@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,7 +7,7 @@ public class FontSwitcher : MonoBehaviour
 {
     public List<TextMeshProUGUI> TextItemsBig;
     public List<TextMeshProUGUI> TextItemsDefault;
-    
+
     public TMP_FontAsset Fancy_Big;
 
     public TMP_FontAsset Fancy_Default;
@@ -16,8 +15,8 @@ public class FontSwitcher : MonoBehaviour
     public TMP_FontAsset Legible_Big;
 
     public TMP_FontAsset Legible_Default;
-    
-    
+
+
     // Start is called before the first frame update
     void Start()
     {

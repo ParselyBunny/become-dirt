@@ -43,7 +43,7 @@ public class InspectorButtonPropertyDrawer : PropertyDrawer
     public override void OnGUI(Rect position, SerializedProperty prop, GUIContent label)
     {
         InspectorButtonAttribute inspectorButtonAttribute = (InspectorButtonAttribute)attribute;
-        Rect buttonRect = new Rect(position.x + (position.width - inspectorButtonAttribute.ButtonWidth) * 0.5f, position.y, inspectorButtonAttribute.ButtonWidth, position.height);
+        Rect buttonRect = new(position.x + (position.width - inspectorButtonAttribute.ButtonWidth) * 0.5f, position.y, inspectorButtonAttribute.ButtonWidth, position.height);
         if (GUI.Button(buttonRect, label.text))
         {
             System.Type eventOwnerType = prop.serializedObject.targetObject.GetType();

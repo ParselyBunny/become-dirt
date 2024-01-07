@@ -28,7 +28,7 @@ public class ImpactComponent_Addon_UI : JTools.ImpactComponent_Addon
             }
             else
             {
-                UIMenus.SetActiveMenu(this._pauseMenuName);
+                UIMenus.SetActiveMenu(_pauseMenuName);
                 MenusOpen = true;
                 if (!InkManager.IsPlaying)
                 {

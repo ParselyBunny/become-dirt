@@ -10,7 +10,7 @@ public class Test_InkManager : MonoBehaviour
 
         public Knot(string name)
         {
-            this._name = name;
+            _name = name;
         }
     }
 
@@ -39,7 +39,7 @@ public class Test_InkManager : MonoBehaviour
     private void LoadKnotList()
     {
         Debug.Log("Reloading knot list.");
-        var newContent = this.GetComponent<InkManager>().GetAllKnots();
+        var newContent = GetComponent<InkManager>().GetAllKnots();
         _content = new Knot[newContent.Length];
         for (int i = 0; i < newContent.Length; i++)
         {

@@ -6,7 +6,7 @@ public static class UIMenus
     public static Dictionary<string, Menu> Menus { get { return _menus; } }
 
     [SerializeField]
-    private static Dictionary<string, Menu> _menus = new Dictionary<string, Menu>();
+    private static Dictionary<string, Menu> _menus = new();
 
     public static void RefreshOverrides()
     {

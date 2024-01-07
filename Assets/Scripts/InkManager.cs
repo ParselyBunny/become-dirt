@@ -15,13 +15,13 @@ using Random = UnityEngine.Random;
 public class InkManager : MonoBehaviour
 {
     public static InkManager Instance { get; private set; }
-    public static System.Action OnDialogueEnd;
+    public static Action OnDialogueEnd;
 
 
     //Text Speed and Skipping Lines
     [Header("Text Display")]
     public float textspeed = .01f;
-    public Dictionary<char, float> specialtextdelays = new Dictionary<char, float>();
+    public Dictionary<char, float> specialtextdelays = new();
     public AudioSource textnoise;
     public AudioClip[] textnoises;
 
@@ -36,14 +36,14 @@ public class InkManager : MonoBehaviour
 
     [Header("ContinueVisual")]
     public RectTransform continueindicator;
-    private float boty = 20;
-    private float topy = 90;
+    private const float boty = 20;
+    private const float topy = 90;
 
     private bool DisplayingLine;
     private bool SkipCalled;
     public static bool IsPlaying { get; private set; }
 
-    private static Dictionary<string, System.Action<string>> TagActions = new Dictionary<string, Action<string>>();
+    private static readonly Dictionary<string, Action<string>> TagActions = new();
 
     [SerializeField]
     private TextAsset _inkJSONAsset;
@@ -80,7 +80,7 @@ public class InkManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("InkManager already instanced, destroying self.", this.gameObject);
+            Debug.LogWarning("InkManager already instanced, destroying self.", gameObject);
             Destroy(this);
         }
 
@@ -92,7 +92,7 @@ public class InkManager : MonoBehaviour
     public void Update()
     {
         float target = DisplayingLine || (_story.currentChoices.Count > 0) ? boty : topy;
-        Vector3 targetpos = new Vector3(continueindicator.localPosition.x, target, continueindicator.localPosition.z);
+        Vector3 targetpos = new(continueindicator.localPosition.x, target, continueindicator.localPosition.z);
         continueindicator.localPosition = Vector3.Lerp(continueindicator.localPosition, targetpos, Time.deltaTime * 10);
 
         if (DisplayingLine && !SkipCalled)
@@ -122,12 +122,7 @@ public class InkManager : MonoBehaviour
 
     public string[] GetAllKnots()
     {
-        Story story = _story;
-        if (story == null)
-        {
-            story = new Story(this._inkJSONAsset.text);
-        }
-
+        Story story = _story ?? new Story(_inkJSONAsset.text);
         var knotList = new List<string>();
         story.mainContentContainer.namedContent.ToList()
             .ForEach(knot =>
@@ -317,10 +312,7 @@ public class InkManager : MonoBehaviour
 
                 foreach (string tag in _story.currentTags)
                 {
-                    if (TagActions[tag] != null)
-                    {
-                        TagActions[tag].Invoke(tag);
-                    }
+                    TagActions[tag]?.Invoke(tag);
                 }
                 //New method of displaying text
                 DisplayingLine = true;
@@ -401,10 +393,7 @@ public class InkManager : MonoBehaviour
 
         if (!forced)
         {
-            if (OnDialogueEnd != null)
-            {
-                OnDialogueEnd();
-            }
+            OnDialogueEnd?.Invoke();
         }
 
         Instance.DialogueText.text = "";
@@ -461,7 +450,7 @@ public class InkManager : MonoBehaviour
         {
             Instance.NameBoxChild.SetActive(false);
         }
-        Instance.updateCharVisuals(name);
+        Instance.UpdateCharVisuals(name);
     }
 
     private static void SetName(string name)
@@ -495,23 +484,23 @@ public class InkManager : MonoBehaviour
             yield return new WaitForSeconds(tempdelaytime);
 
             if (newText[i] != ' ')
-                playpennoise();
+                PlayPenNoise();
         }
 
         DialogueText.maxVisibleCharacters = newText.Length + 1;
-        playpennoise();
+        PlayPenNoise();
         DisplayingLine = false;
 
     }
 
-    public void playpennoise()
+    public void PlayPenNoise()
     {
         textnoise.clip = textnoises[Random.Range(0, textnoises.Length)];
         textnoise.pitch = Random.Range(.9f, 1.1f);
         textnoise.Play();
     }
 
-    public void updateCharVisuals(string activename)
+    public void UpdateCharVisuals(string activename)
     {
         if (!CharVisuals.Find(c => c.name == activename) && activename != "")
         {
@@ -530,7 +519,7 @@ public class InkManager : MonoBehaviour
 }
 
 
-[System.Serializable]
+[Serializable]
 public class CharNamePair
 {
     public string name;

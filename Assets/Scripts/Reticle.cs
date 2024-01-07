@@ -51,7 +51,7 @@ public class Reticle : MonoBehaviour
     public void SetFocus(bool focused)
     {
         _focus = focused;
-        _inputPromptObj.SetActive(this.gameObject.activeSelf && _focus);
+        _inputPromptObj.SetActive(gameObject.activeSelf && _focus);
 
         // Swap to appropriate reticle type
         if (_focus)

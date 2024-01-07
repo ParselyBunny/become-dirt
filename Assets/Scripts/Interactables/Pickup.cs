@@ -10,6 +10,6 @@ public class Pickup : Interactable
 
         // TODO: functionality go here
 
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

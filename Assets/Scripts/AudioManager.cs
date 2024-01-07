@@ -11,7 +11,9 @@ public class AudioManager : MonoBehaviour
         SFX
     }
 
-    private static AudioManager instance;
+    private const int STARTING_POOL_SIZE = 16;
+
+    private static AudioManager STATIC;
 
     [SerializeField]
     private AudioMixerGroup _masterMixer;
@@ -20,19 +22,18 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioMixerGroup _sfxMixer;
 
-    private int startingPoolSize = 16;
     private AudioSource _musicSource;
 
     private void Awake()
     {
-        if (instance == null)
+        if (STATIC == null)
         {
-            instance = this;
+            STATIC = this;
             Debug.Log("Audio Manager initialized.");
         }
         else
         {
-            Debug.LogWarning("AudioManager already instanced, destroying self.", this.gameObject);
+            Debug.LogWarning("AudioManager already instanced, destroying self.", gameObject);
             Destroy(this);
         }
 
@@ -41,10 +42,10 @@ public class AudioManager : MonoBehaviour
         GameObject go;
         AudioSource source;
         ReturnToPool rtp;
-        for (int i = 0; i < startingPoolSize; i++)
+        for (int i = 0; i < STARTING_POOL_SIZE; i++)
         {
             go = new GameObject("Pooled AudioSource");
-            go.transform.SetParent(instance.transform);
+            go.transform.SetParent(STATIC.transform);
 
             source = go.AddComponent<AudioSource>();
 
@@ -52,57 +53,57 @@ public class AudioManager : MonoBehaviour
             rtp.Source = source;
             rtp.AwaitRelease();
 
-            StaticObjectPool.Push<AudioSource>(source);
+            StaticObjectPool.Push(source);
         }
     }
 
     private void Start()
     {
         // TODO: Just loop over the enum keys
-        AudioManager.SetVolume(MixerLabel.Master, AudioManager.GetVolumeNormalized(MixerLabel.Master));
-        AudioManager.SetVolume(MixerLabel.Music, AudioManager.GetVolumeNormalized(MixerLabel.Music));
-        AudioManager.SetVolume(MixerLabel.SFX, AudioManager.GetVolumeNormalized(MixerLabel.SFX));
+        SetVolume(MixerLabel.Master, GetVolumeNormalized(MixerLabel.Master));
+        SetVolume(MixerLabel.Music, GetVolumeNormalized(MixerLabel.Music));
+        SetVolume(MixerLabel.SFX, GetVolumeNormalized(MixerLabel.SFX));
     }
 
     public static void PlayOneShot(AudioClip clip)
     {
-        if (instance == null)
+        if (STATIC == null)
         {
             Debug.LogError("failed to PlayOneShot, AudioManager not initialized");
             return;
         }
-        instance.PlayPooledOneShot(clip);
+        STATIC.PlayPooledOneShot(clip);
     }
 
     public static void PlayOneShot(AudioClip clip, float delaySeconds)
     {
-        instance.StartCoroutine(instance.PlayPooledOneShotWithDelay(clip, delaySeconds));
+        STATIC.StartCoroutine(STATIC.PlayPooledOneShotWithDelay(clip, delaySeconds));
     }
 
     // INSPECTOR METHOD
     public static void PlayMusic(AudioClip clip)
     {
-        instance._musicSource.Stop();
+        STATIC._musicSource.Stop();
         if (clip == null)
         {
             Debug.LogWarning("Trying to play music with null clip selected.");
             return;
         }
-        instance._musicSource.clip = clip;
-        instance._musicSource.Play();
+        STATIC._musicSource.clip = clip;
+        STATIC._musicSource.Play();
     }
 
     public static void PlayMusic(AudioClip clip, bool shouldLoop)
     {
-        instance._musicSource.Stop();
+        STATIC._musicSource.Stop();
         if (clip == null)
         {
             Debug.LogWarning("Trying to play music with null clip selected.");
             return;
         }
-        instance._musicSource.clip = clip;
-        instance._musicSource.loop = shouldLoop;
-        instance._musicSource.Play();
+        STATIC._musicSource.clip = clip;
+        STATIC._musicSource.loop = shouldLoop;
+        STATIC._musicSource.Play();
     }
 
     private AudioSource tempSourceRef;
@@ -114,7 +115,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        var ok = StaticObjectPool.TryPop<AudioSource>(out tempSourceRef);
+        var ok = StaticObjectPool.TryPop(out tempSourceRef);
         if (!ok)
         {
             Debug.LogWarningFormat("Trying to play clip when pool is empty! {0}", clip.name);
@@ -139,13 +140,13 @@ public class AudioManager : MonoBehaviour
         switch (mixerLabel)
         {
             case MixerLabel.Master:
-                instance._masterMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                STATIC._masterMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
                 break;
             case MixerLabel.Music:
-                instance._musicMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                STATIC._musicMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
                 break;
             case MixerLabel.SFX:
-                instance._sfxMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                STATIC._sfxMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
 
                 break;
             default:
@@ -161,13 +162,13 @@ public class AudioManager : MonoBehaviour
         switch (mixerLabel)
         {
             case MixerLabel.Master:
-                instance._masterMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                STATIC._masterMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
                 break;
             case MixerLabel.Music:
-                instance._musicMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                STATIC._musicMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
                 break;
             case MixerLabel.SFX:
-                instance._sfxMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
+                STATIC._sfxMixer.audioMixer.SetFloat(mixerLabel.ToString(), Mathf.Log10(val) * 20);
 
                 break;
             default:
@@ -210,6 +211,6 @@ public class ReturnToPool : MonoBehaviour
         // Return to the pool
         Source.Stop();
         Source.clip = null;
-        StaticObjectPool.Push<AudioSource>(Source);
+        StaticObjectPool.Push(Source);
     }
 }

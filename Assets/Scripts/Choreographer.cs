@@ -43,7 +43,7 @@ public class Choreographer : StateSerializer
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             // Debug.Log("Player hit a choreo trigger.");
 
@@ -56,7 +56,7 @@ public class Choreographer : StateSerializer
             {
                 _canTrigger = AlwaysTrigger;
             }
-            else if (dialogueRunner?.InkBoolName != "")
+            else if (dialogueRunner.InkBoolName != "")
             {
                 _canTrigger = InkManager.CheckVariable(dialogueRunner.InkBoolName);
             }
@@ -84,7 +84,7 @@ public class Choreographer : StateSerializer
                 }
             }
 
-            if (dialogueRunner?.InkKnotName != "")
+            if (dialogueRunner.InkKnotName != "")
             {
                 if (LookTarget != null)
                 {
@@ -101,7 +101,7 @@ public class Choreographer : StateSerializer
                 }
 
                 _collider.enabled = false;
-                dialogueRunner?.EnableInteraction();
+                dialogueRunner.EnableInteraction();
 
                 if (DestroyPostTrigger)
                 {
@@ -112,20 +112,20 @@ public class Choreographer : StateSerializer
                     InkManager.OnDialogueEnd += EnableSelf;
                 }
 
-                if (this.SavePostTrigger)
+                if (SavePostTrigger)
                 {
                     InkManager.OnDialogueEnd += UIUtility.SaveGame;
                 }
 
                 InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
 
-                JTools.ImpactController.current.inputComponent.ChangeLockState(true);
+                ImpactController.current.inputComponent.ChangeLockState(true);
                 InkManager.ToggleReticle(false);
-                InkManager.PlayNext(dialogueRunner?.InkKnotName);
+                InkManager.PlayNext(dialogueRunner.InkKnotName);
             }
             else if (DestroyPostTrigger)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
 
             _canTrigger = false;
@@ -135,7 +135,7 @@ public class Choreographer : StateSerializer
     private void DestroySelf()
     {
         // Debug.LogFormat("Choreo destroying self {0}", this.gameObject.name);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     private void EnableSelf()

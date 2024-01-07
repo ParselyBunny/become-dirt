@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 
 namespace TMPro.Examples
 {
-    
+
     public class TMP_FrameRateCounter : MonoBehaviour
     {
         public float UpdateInterval = 5.0f;
@@ -32,7 +31,7 @@ namespace TMPro.Examples
             m_camera = Camera.main;
             Application.targetFrameRate = 9999;
 
-            GameObject frameCounter = new GameObject("Frame Counter");
+            GameObject frameCounter = new("Frame Counter");
 
             m_TextMeshPro = frameCounter.AddComponent<TextMeshPro>();
             m_TextMeshPro.font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");

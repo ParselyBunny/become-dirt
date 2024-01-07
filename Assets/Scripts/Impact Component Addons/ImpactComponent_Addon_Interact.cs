@@ -1,7 +1,8 @@
+using JTools;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
+public class ImpactComponent_Addon_Interact : ImpactComponent_Addon
 {
     [Tooltip("Whether or not interactions are enabled.")] public bool enableInteractions = true;
     [Tooltip("Range that the player can interact with things.")] public float distance = 3f;
@@ -10,7 +11,7 @@ public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
 
     private Reticle reticle;
 
-    public override void ComponentInitialize(JTools.ImpactController player)
+    public override void ComponentInitialize(ImpactController player)
     {
         base.ComponentInitialize(player);
 
@@ -23,7 +24,7 @@ public class ImpactComponent_Addon_Interact : JTools.ImpactComponent_Addon
     private Interactable interactRef;
     private Ray ray;
     private RaycastHit hitInfo; // Store collision info
-    public override void ComponentUpdate(JTools.ImpactController player)
+    public override void ComponentUpdate(ImpactController player)
     {
         base.ComponentUpdate(player);
 

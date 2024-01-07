@@ -14,7 +14,7 @@ public class Ending : Interactable
     public override void Interact()
     {
         base.Interact();
-        base.SetAllowInteractSound(false);
+        SetAllowInteractSound(false);
 
         ImpactController.current.inputComponent.ChangeLockState(false);
         Destroy(ImpactController.current.gameObject);

@@ -19,23 +19,23 @@ NavMeshProjectSettings:
     cost: 1
   - name: 
     cost: 1
-  - name: 
+  - name: Front Room
     cost: 1
-  - name: 
+  - name: Living Room
     cost: 1
-  - name: 
+  - name: Kitchen
     cost: 1
-  - name: 
+  - name: Dining Room
     cost: 1
-  - name: 
+  - name: Hallway
     cost: 1
-  - name: 
+  - name: Bathroom
     cost: 1
-  - name: 
+  - name: Grandma Room
     cost: 1
-  - name: 
+  - name: Mother Room
     cost: 1
-  - name: 
+  - name: Sibling Room
     cost: 1
   - name: 
     cost: 1
@@ -85,6 +85,8 @@ NavMeshProjectSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_SettingNames:

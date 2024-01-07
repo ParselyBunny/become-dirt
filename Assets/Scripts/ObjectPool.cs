@@ -30,7 +30,7 @@ static class StaticObjectPool
 {
     private static class Pool<T>
     {
-        private static readonly Stack<T> pool = new Stack<T>();
+        private static readonly Stack<T> pool = new();
 
         public static void Push(T obj)
         {
@@ -50,7 +50,7 @@ static class StaticObjectPool
                     return true;
                 }
             }
-            obj = default(T);
+            obj = default;
             return false;
         }
     }
@@ -67,15 +67,13 @@ static class StaticObjectPool
 
     public static T PopOrDefault<T>()
     {
-        T ret;
-        TryPop(out ret);
+        TryPop(out T ret);
         return ret;
     }
 
     public static T PopOrNew<T>()
         where T : new()
     {
-        T ret;
-        return TryPop(out ret) ? ret : new T();
+        return TryPop(out T ret) ? ret : new T();
     }
 }
