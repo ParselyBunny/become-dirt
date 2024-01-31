@@ -117,13 +117,23 @@ I should check on him today.
         # NOTIFICATION: "Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations." 
         # FLAVORTEXT: "Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all."
     
-        SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that... thank you.
+        SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that. Thank you, really.
         GRANDMOTHER:...
         GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
-        SISTER: Yes, you're right. Thank you. I need to put in more effort.
-        GRANDMOTHER: ...
+        SISTER: Yes, you're right. The best I can do is put in more effort and hope I get a high D, but even that will be amazing for someone like me. Thank you.
+        GRANDMOTHER: ... Go, then.
         -> DONE
         
+    
+    =BecomeDirtNotif
+    NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, crumble away from the world, become unremarkable, or otherwise Survive terrifying situations.
+    FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of anything.
+    
+    I feel sick. It's a sort of sick I can feel at the top of my stomach, like bile dripping down and leaving black splotchy stains in the center of me. 
+    It happens every time I use Become Dirt, but it's still not as bad as spending a second longer talking to my grandma.
+    Really, you get used to it pretty quick.
+    ->END
+    
     =ExplorationA1
         My younger brother and I share a room at the end of the hall. 
         There's not a lot of space for either of us, but we spend about as much time in our hideout as we do here so it's never been a problem.
@@ -143,19 +153,21 @@ I should check on him today.
         BROTHER: SISTER. You're back early.
         SISTER: Yep! Hey, there were some extra quarters on the ground under the vending machine at school so I got you a twix.
         BROTHER: ! A whole twix!
-        SISTER: Yeah, haha.
+        SISTER: Yeah.
         BROTHER: Here.
         SISTER: Huh? No, I got it for you. You don't have to give me half or anything, I'm not hungry right now anyway.
         BROTHER: Are you lying?
         SISTER: Yeah, about not being hungry. But I'm telling the truth about getting the whole thing for you so just take it, okay?
         BROTHER: ...Thanks. You're weird.
-        SISTER: Ah, haha... Yeah, probably.
+        SISTER: Definitely.
         BROTHER: Hey. 
         SISTER: Hm?
         BROTHER: What do you put down when teachers ask you about your future career?
         SISTER: I...
+        
         The truth is, I don't put any effort into things like that. Sometimes I write something really generic like, I'd like to be a receptionist at a dentist's office. 
         I'd like to be an office worker at one of the banks downtown. I don't really want either of those things but I don't have any other ideas either, and those answers always satisfy the teachers so it works out for the best that way.
+        
         SISTER: I usually write something practical. 
         SISTER: It's the future so it'll probably change a lot, and it's not like we really know what jobs will hire us or how long we'll be able to stay. 
         BROTHER: My teacher told me that we should write our report about what we think our future job will be, and then look up what people with that job do. 
@@ -178,16 +190,21 @@ I should check on him today.
     
         He kept staring down at his half-written report the whole time we talked. His clothes and the page were covered in eraser shavings.
         
-        I should check on him.
+        I need to check on him.
+        Even though I can't really do anything that would help...
         # CUTEND
         ->END
         
-    =FearA
-        SISTER: Was that-
+    //=FearA
+      //  SISTER: Was that-
         // FearA - Door disappearance 
-        NOTIFICATION: When confronted with overwhelming horror, you can use the BECOME DIRT spell to fall beneath the notice of all monsters, menaces, and members of your family. Take care when using this spell over loose floorboards or open grates. 
+        //NOTIFICATION: When confronted with overwhelming horror, you can use the BECOME DIRT spell to fall beneath the notice of all monsters, menaces, and members of your family. Take care when using this spell over loose floorboards or open grates. 
         // BECOME DIRT falling through the floorboards effect here
+        //->END
+    =DirtAbilityTip
+        NOTIFICATION: When you need to crumble away into insignificance, you can use the BECOME DIRT spell to fall beneath the notice of all monsters, menaces, and members of your family. You can use BECOME DIRT to fall into the crawlspace from the ground floor of your home.
         ->END
+    
         
     =CrawlSpaceA
         SISTER: *coughing*
@@ -220,25 +237,43 @@ I should check on him today.
         I need to get back upstairs.
         ->END
 
-=== GateOne // Return to the house proper, via the hole in the laundry room.
 
-=Realization
-    Our Family only has three spells left, and only one of them is worth using. 
-    Become Dirt, the oldest spell, makes you into something completely useless and common and pathetic. It's the only spell I ever learned, maybe because I'm already useless even without magic.
-    Become Mechanical is my grandma's specialty and it's probably the only reason our family still exists. 
-    It's an incredible spell that turns your body into a machine and makes it possible to do almost anything, no matter how much it hurts or how tired you are or how much your brain is screaming for you to stop. 
-    Grandma told us about how her parents and grandparents used this magic to work perfectly and past the point when their bodies would have normally given out, all so that they could keep moving up in their careers and ensure the family's prosperity. 
-    Everything fell apart when it turned out that my mom couldn't use any magic at all. She works really hard, maybe harder than our ancestors did, 
-    but she can't keep a smile up all the time and she has to call off work sometimes because of her back and knees, or when one of us gets sick.
-    Maybe if I was old enough to work, and if I could use Become Mechanical, things would be better for us... though I don't know if mom would like me any better in that case.
-    The last spell our family keeps is forbidden. Become Dirt and Become Mechanical are temporary spells that you can use while you need them and stop when you're done. Become Fear isn't like that. 
-    Become Fear is a spell you use as an absolute last resort, a spell that will keep you from ever feeling afraid by turning you into every horrible and terrifying thing you've ever known. 
-    Nothing can frighten you if you're the scariest thing around, after all. My grandma tried to teach me about it, once, but since I don't have any talent for magic she never told me how to actually cast it. 
-    It's a spell that requires you to discard everything that makes you a person, and it's a spell you can't break or end on your own. 
-    
-    I think... my brother used Become Fear. 
-    I need to find a way down into our hideout, in the far corner of the crawl space.
+=CrawlSpaceDirt
+    The dirt beneath our house moves around from time to time. I used to think there was a giant worm shifting around beneath us, but it turns out the dirt started moving around on its own when I learned how to use magic. 
+    I've tried to get them to move around before, but they won't listen to me and even if you try to shovel them out they'll pile themselves back up right away.
+    Of course the dirt mounds wouldn't be a problem if the ducts weren't in the way, but they've gotten moved around and twisted in weird shapes too...
+    The dirt wouldn't do that and I don't think, my brother's strong enough to- ah. If he used our grandmother's spell... BECOME MECHANICAL would make anyone strong enough to tear the ductwork down from its frame.
+    Why would he do that, though?
     ->END
+=CrawlSpaceHomework
+    This is the other page of the report he was working on. 
+    'My family is very old and pretigious and has invented many spells. My grandma is the expert on them now, and I am learning them all from her. She says that we used to have many more than 3, but now we only have 3 because of a fire and books we lost. This is sad, but I want to help so I will learn them all.
+    I will enjoy this job because it will keep important spells around and they can be useful to everyone in our community. I think it is a good job because I will not be afraid knowing all the ancestors in my family are expecting a lot from me. 
+    To prepare for my future job I will study every day and make sure I practice in my notebook. I will also study to get a scolarship for a college where I can study history or other languages so I can-'
+    The page is harder to read after that point. It looks like he covered the whole thing with sigils he was practicing, but I can't tell what spell they're for.
+->END
+
+=CrawlSpaceAEnd
+    I can't lift the air ducts and these dirt mounds probably won't move for a while. Maybe... maybe if I could fall down here from another part of the house I could just get around them altogether?
+    SISTER: "Brother! Are you here?"
+    #Shake
+    //A sound should accompany this shake as something happens in the distance to draw player attention, maybe some dust falling from the upper floorboards? make it seem like possibly an impact on the upper floor?
+    SISTER: "Hey, are you over there?"
+    ...I guess not. Oh, unless he's started a game and I didn't realize.
+    Sometimes my brother and I start games when we get back from school, but since we usually get back at different times we leave notes for each other with the rules or hints on them. I must have missed something, like usual.
+    I'm not sure if this is just hide-and-seek or something else so I should look around upstairs and figure out what directions he left for me. That's got to be it.
+    Why did I even freak out about this? I'm always getting worried over nothing.
+    
+    ->END
+
+
+===ChapterOne // Return to the house proper, via the hole in the laundry room.
+
+=FirstCrawlspaceExit
+    SISTER: I didn't check his desk or the place at the table where he studies too closely.
+    SISTER: Oh, but maybe he hid it somewhere he knew I'd look. He's smart so he would've thought of that, but I probably missed it since I was so focused on looking for him. 
+->END
+
 
 =MomConvoA
     // After attempting to leave this area of the house [laundry/pantry/kitchen] we hear the side door close and the mother will return home.
@@ -300,19 +335,76 @@ I should check on him today.
             SISTER: Y-yeah.
             ->END
         
-    =BecomeVigilant
-        I need to keep looking. Not in the normal way... I need to focus.
+    //=BecomeVigilant
+      //  I need to keep looking. Not in the normal way... I need to focus.
     
         //NOTIFICATION: Use the BECOME VIGILANT spell to notice important items around the house or to discern words within noise.
         //FLAVORTEXT: Open your eyes further. We were never meant to only see the narrow band of light before us. Movement. Breaths. The scent of a predator. The brush of wind across your neck. Sight and sense serve to bring you knowledge of the world. Know all. See all. We must be forewarned.
-        ->END
+      //  ->END
         
-    =Vigilance
+    //=Vigilance
     
     //The Detergent box will be highlighted and also easily interactable whereas before its interactions were blocked. 
-        There. It probably fell from the back of the machine when the dryer was rumbling last time. 
-        Vigilance isn't really a spell, by the way. I just got really good at noticing sounds and details because I needed to know if my mom or grandma was walking down the hall and if I should hide the clay I was working with so they didn't get mad at me. If it was useful, that would be one thing, but I don't think I've ever used it for anything but getting myself out of trouble. 
-        ->END
+        //There. It probably fell from the back of the machine when the dryer was rumbling last time. 
+        //Vigilance isn't really a spell, by the way. I just got really good at noticing sounds and details because I needed to know if my mom or grandma was walking down the hall and if I should hide the clay I was working with so they didn't get mad at me. 
+        //If it was useful, that would be one thing, but I don't think I've ever used it for anything but getting myself out of trouble. 
+        //->END
+
+
+    =ClueSearchA
+        //near Grandmother Setting at table, around all the papers on the floor
+        This is where my grandmother teaches my brother about magic. Most of the pages here are photocopies of the family Grimoires, since she won't let those leave her room. It's convenient though, since you can doodle notes all over photocopies without hurting a priceless heirloom!
+        SISTER: Here, I think this is the stuff he was working on yesterday.
+        //We should look at a written page that has a lot of scribbles and near the bottom the words 'I don't want to'
+        SISTER: 'I don't want to' what? 
+        SISTER: I...
+        SISTER: Maybe this isn't a clue. What was he doing in his magic lesson yesterday? His homework was covered in scribbles like that, too.
+        There's another page here from the old Grimoire...
+        GRIMOIRE: Through metaphysical configuration of concentration and spiritual essence, the will that moves the body can be applied to greater effect and additional force insuch that the very bone and sinew will all labor in accord. 
+        GRIMOIRE: Flesh, as stone, exists as the matter of our Dominion and it should not dictate our action - nay, our will should dictate its motion, and its pangs and impulses consigned to their rightful place alongside other chores such as the tidying of a cupboard or the washing of a floor.
+        Even now that I'm older, I don't really understand the older family spellbooks. I think this is a page about BECOME MECHANICAL... probably. The names I use for our spells aren't in any of the family books and my grandmother hates what I call them. 
+        'Our magic is not constrained by the artifice of Speech' is what she says, but it's hard for me to understand how to use them without giving them a name that makes sense. Well, I can only use one of them anyway so maybe she's right.
+    ->END
+    =ClueSearchB
+        //At the desk in the siblings' room
+        SISTER: Here we go, his spell practice notebook.
+        SISTER: He's never hidden clues in there before but, maybe he did this time?
+        The most recent page is full of practice for the BECOME MECHANICAL sigil, and he's drawn it about fifty times or so. They all look fine to me but he's crossed them all out and he even tore the paper scribbling through them. I don't understand...
+        He learned the spell a month ago and he did it just fine. I think he used it in the crawlspace to rearrange the ducts even, so why would he have this much trouble with the sigil?
+    ->END
+    =ClueSearchC
+        //Dresser near the siblings' Bunk Bed
+        SISTER: He leaves notes inside this dresser sometimes, since it's where I keep my stash of horror books I borrow from the school library. 
+        // Rustling sounds if we can get them
+        SISTER: Why is it stuck?
+        //Big dresser sound
+        SISTER: Is that - Oh no, no it's ruined.
+        The new shirt my brother got from the thrift store last week was crammed into the back of the dresser drawer. It is - well, it was - a green t-shirt with a skateboarding dinosaur and three rocketships on it.
+        Now it's half bleached and the ink is blotted and runny. I don't think he's ever used bleach before so he probably didn't realize he had to dilute it to wash out a stain. 
+        I wish I could've cleaned it for him. I should've noticed earlier, since he went to school wearing it yesterday but he didn't have it on when we were eating dinner. 
+        Stupid. 
+        I should've noticed.
+    ->END
+    
+===ChapterTwo
+=Realization
+    Our Family only has three spells left, and only one of them is worth using. 
+    Become Dirt, the oldest spell, makes you into something completely useless and common and pathetic. It's the only spell I ever learned, maybe because I'm already useless even without magic.
+    Become Mechanical is my grandma's specialty and it's probably the only reason our family still exists. 
+    It's an incredible spell that turns your body into a machine and makes it possible to do almost anything, no matter how much it hurts or how tired you are or how much your brain is screaming for you to stop. 
+    Grandma told us about how her parents and grandparents used this magic to work perfectly and past the point when their bodies would have normally given out, all so that they could keep moving up in their careers and ensure the family's prosperity. 
+    Everything fell apart when it turned out that my mom couldn't use any magic at all. She works really hard, maybe harder than our ancestors did, 
+    but she can't keep a smile up all the time and she has to call off work sometimes because of her back and knees, or when one of us gets sick.
+    Maybe if I was old enough to work, and if I could use Become Mechanical, things would be better for us... though I don't know if mom would like me any better in that case.
+    The last spell our family keeps is forbidden. Become Dirt and Become Mechanical are temporary spells that you can use while you need them and stop when you're done. Become Fear isn't like that. 
+    Become Fear is a spell you use as an absolute last resort, a spell that will keep you from ever feeling afraid by turning you into every horrible and terrifying thing you've ever known. 
+    Nothing can frighten you if you're the scariest thing around, after all. My grandma tried to teach me about it, once, but since I don't have any talent for magic she never told me how to actually cast it. 
+    It's a spell that requires you to discard everything that makes you a person, and it's a spell you can't break or end on your own. 
+    
+    I think... my brother used Become Fear. 
+    I need to find a way down into our hideout, in the far corner of the crawl space.
+    ->END
+
 
 === Explanatory
     =FrontDoor1
@@ -392,6 +484,10 @@ I should check on him today.
     =Wardrobe
         I need to fold my clothes right. I don't have that many pairs of jeans but they barely fit in my side because I never fold them.
         ->END
+    =SiblingLaundry
+        I use the laundry pile like a bean bag chair when it gets big enough, so sometimes I leave books or papers there. 
+        Sometimes they get thrown in the laundry, and sometimes I have to pay a fine to the library for ruining one of their books. 
+    ->END
 
     //HallExplore
     =MomDoor
