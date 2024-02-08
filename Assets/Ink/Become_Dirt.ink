@@ -79,7 +79,7 @@ I should check on him today.
             GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
             ->GrandmaStudyQ
         
-        * SISTER: # SIGIL: DIRT
+        * BECOME DIRT
             ->BECOMINGDIRT
         
         - I don’t know what my grandma is thinking. I don’t think I’ve ever known, even when she told me. 
