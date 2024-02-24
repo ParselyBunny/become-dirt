@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: VentilationDuct
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _name: Vent
-  _inkKnot: Explorations.VentilationDuct
-  _examineMessage: []
+  _inkKnots:
+  - Explorations.VentiliationDuct

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: HuskedBear
   m_EditorClassIdentifier: 
   _interactSound: {fileID: 0}
-  _inkKnots: []
+  _inkKnots:
+  - Explorations.HuskedBear

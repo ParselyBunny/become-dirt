@@ -487,7 +487,10 @@ I should check on him today.
     =SiblingLaundry
         I use the laundry pile like a bean bag chair when it gets big enough, so sometimes I leave books or papers there. 
         Sometimes they get thrown in the laundry, and sometimes I have to pay a fine to the library for ruining one of their books. 
-    ->END
+        ->END
+    =ToyChest
+        The large chest that holds my brother's spare notebooks, his textbooks, my textbooks, a couple blankets for winter, and some spare candles.
+        ->END
 
     //HallExplore
     =MomDoor
@@ -616,6 +619,19 @@ I should check on him today.
     =CanShelf
         Canned pears, carrots, corn, peas, green beans, kidney beans, navy beans, black beans, refried beans, and beets.
         Mom gets as many of these as she can on sale, since she can't go to the grocery store often.
+        ->END
+    =Detergent
+        Powdery concentrated detergent. I added too much once and flooded the entire kitchen with suds.
+        ->END
+    =RecordPlayer
+        This record player broke when my brother and I used it to spin dirt figurines around. It still works, but the needle won't sit right and the turntable is warped.
+        ->END
+    =Curtains
+        The curtains keep out a lot of light, but not any dust. 
+        I used to think dust came from sunlight, since I spent a lot of time watching it filter down on sunbeams when I was little. 
+        ->END
+    =Laundry
+        Mom asked me to run the washer today.
         ->END
 
     //CrawlSpaceExplore
