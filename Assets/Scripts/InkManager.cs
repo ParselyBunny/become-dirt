@@ -264,9 +264,6 @@ public class InkManager : MonoBehaviour
             return;
         }
 
-        Debug.Log(_story.currentChoices);
-        Debug.Log(choiceIndex);
-
         _story.ChooseChoiceIndex(choiceIndex);
         _processingChoices = false;
     }
@@ -307,7 +304,6 @@ public class InkManager : MonoBehaviour
                 }
 
                 text = _story.Continue();
-                Debug.Log("Setting Name");
                 ParseNPCName(ref text);
 
                 foreach (string tag in _story.currentTags)

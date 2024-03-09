@@ -13,20 +13,15 @@ MonoBehaviour:
   m_Name: CompressionVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   isEnabled:
     m_OverrideState: 1
     m_Value: 0
   weight:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   accuracy:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 1
   mode:
     m_OverrideState: 0
     m_Value: 0
@@ -46,15 +41,12 @@ MonoBehaviour:
   m_Name: SkyVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   skyMode:
     m_OverrideState: 1
     m_Value: 0
   framebufferDitherWeight:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   skyRotation:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0, z: 0}
@@ -64,24 +56,20 @@ MonoBehaviour:
   skyboxTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+    dimension: 1
   tiledLayersSkyHeightScale:
     m_OverrideState: 0
     m_Value: 0.25
-    min: 0
   tiledLayersSkyHorizonOffset:
     m_OverrideState: 0
     m_Value: 0
-    min: -1
-    max: 1
   tiledLayersSkyColorLayer0:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
   tiledLayersSkyTextureLayer0:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+    dimension: 1
   tiledLayersSkyTextureScaleOffsetLayer0:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 0, w: 0}
@@ -97,12 +85,10 @@ MonoBehaviour:
   tiledLayersSkyColorLayer1:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
   tiledLayersSkyTextureLayer1:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+    dimension: 1
   tiledLayersSkyTextureScaleOffsetLayer1:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 0, w: 0}
@@ -128,60 +114,42 @@ MonoBehaviour:
   m_Name: PrecisionVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   geometryEnabled:
     m_OverrideState: 1
     m_Value: 1
   geometry:
     m_OverrideState: 1
     m_Value: 0.95
-    min: 0
-    max: 1
   geometryPushbackEnabled:
     m_OverrideState: 0
     m_Value: 0
   geometryPushbackMinMax:
     m_OverrideState: 0
     m_Value: {x: 0, y: 1}
-    min: 0
-    max: 10
   color:
     m_OverrideState: 0
     m_Value: 0.5714286
-    min: 0
-    max: 1
   chroma:
     m_OverrideState: 0
     m_Value: 0.33333334
-    min: 0
-    max: 1
   alpha:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   affineTextureWarping:
     m_OverrideState: 1
     m_Value: 1
-    min: 0
-    max: 1
   framebufferDither:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   ditherSize:
     m_OverrideState: 0
     m_Value: 1
-    min: 1
-    max: 8
   drawDistanceFalloffMode:
     m_OverrideState: 0
     m_Value: 0
   drawDistance:
     m_OverrideState: 0
     m_Value: 100
-    min: 0
 --- !u!114 &-4321784992136631331
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -195,79 +163,55 @@ MonoBehaviour:
   m_Name: CathodeRayTubeVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   isEnabled:
     m_OverrideState: 1
     m_Value: 0
   bloom:
     m_OverrideState: 0
     m_Value: 0.0625
-    min: 0
-    max: 1
   grateMaskMode:
     m_OverrideState: 0
     m_Value: 0
   grateMaskTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+    dimension: 1
   grateMaskScale:
     m_OverrideState: 0
     m_Value: 1
   scanlineSharpness:
     m_OverrideState: 0
     m_Value: 0.5
-    min: 0
-    max: 1
   imageSharpness:
     m_OverrideState: 0
     m_Value: 0.5
-    min: 0
-    max: 1
   bloomSharpnessX:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 1
   bloomSharpnessY:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 1
   noiseIntensity:
     m_OverrideState: 0
     m_Value: 0.1
-    min: 0
-    max: 1
   noiseSaturation:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   grateMaskIntensityMin:
     m_OverrideState: 0
     m_Value: 0.25
-    min: 0
-    max: 1
   grateMaskIntensityMax:
     m_OverrideState: 0
     m_Value: 0.75
-    min: 0
-    max: 1
   barrelDistortionX:
     m_OverrideState: 0
     m_Value: 0.125
-    min: 0
-    max: 1
   barrelDistortionY:
     m_OverrideState: 0
     m_Value: 0.33333334
-    min: 0
-    max: 1
   vignette:
     m_OverrideState: 0
     m_Value: 0.5
-    min: 0
-    max: 1
 --- !u!114 &-599335440849418883
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -281,7 +225,6 @@ MonoBehaviour:
   m_Name: FogVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   isEnabled:
     m_OverrideState: 1
     m_Value: 1
@@ -294,33 +237,25 @@ MonoBehaviour:
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
   precisionAlpha:
     m_OverrideState: 0
     m_Value: 1
   precisionAlphaDitherTexture:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 4a3e96c03e7d7c34a8fb8f59764f1945, type: 3}
+    dimension: 1
   precisionAlphaDither:
     m_OverrideState: 1
     m_Value: 1
-    min: 0
-    max: 1
   distanceMin:
     m_OverrideState: 1
     m_Value: 0
-    min: 0
   distanceMax:
     m_OverrideState: 1
     m_Value: 15
-    min: 0.00001
   fogFalloffCurve:
     m_OverrideState: 0
     m_Value: 0
-    min: -1
-    max: 1
   heightFalloffEnabled:
     m_OverrideState: 0
     m_Value: 0
@@ -339,19 +274,16 @@ MonoBehaviour:
   colorLUTTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+    dimension: 1
   colorLUTRotationDegrees:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0, z: 0}
   colorLUTWeight:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   colorLUTWeightLayer1:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 1
   isAdditionalLayerEnabled:
     m_OverrideState: 0
     m_Value: 0
@@ -361,22 +293,15 @@ MonoBehaviour:
   colorLayer1:
     m_OverrideState: 0
     m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
   distanceMinLayer1:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
   distanceMaxLayer1:
     m_OverrideState: 0
     m_Value: 100
-    min: 0.00001
   fogFalloffCurveLayer1:
     m_OverrideState: 0
     m_Value: 0
-    min: -1
-    max: 1
   heightFalloffEnabledLayer1:
     m_OverrideState: 0
     m_Value: 0
@@ -425,27 +350,21 @@ MonoBehaviour:
   m_Name: CameraVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   isFrameLimitEnabled:
     m_OverrideState: 1
     m_Value: 1
   frameLimit:
     m_OverrideState: 1
     m_Value: 60
-    min: 1
   aspectMode:
     m_OverrideState: 1
     m_Value: 3
   targetRasterizationResolutionWidth:
     m_OverrideState: 1
     m_Value: 640
-    min: 1
-    max: 4096
   targetRasterizationResolutionHeight:
     m_OverrideState: 1
     m_Value: 480
-    min: 1
-    max: 4096
   isDepthBufferEnabled:
     m_OverrideState: 1
     m_Value: 1
@@ -468,32 +387,24 @@ MonoBehaviour:
   m_Name: LightingVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   lightingIsEnabled:
     m_OverrideState: 1
     m_Value: 1
   bakedLightingMultiplier:
     m_OverrideState: 1
     m_Value: 1
-    min: 0
   vertexColorLightingMultiplier:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
   dynamicLightingMultiplier:
     m_OverrideState: 1
     m_Value: 1
-    min: 0
   dynamicLightsMaxCount:
     m_OverrideState: 0
     m_Value: 256
-    min: 1
-    max: 256
   dynamicLightsMaxPerObjectCount:
     m_OverrideState: 0
     m_Value: 4
-    min: 1
-    max: 8
 --- !u!114 &4688921415455356692
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -507,7 +418,6 @@ MonoBehaviour:
   m_Name: QualityOverrideVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   isPSXQualityEnabled:
     m_OverrideState: 1
     m_Value: 1
@@ -524,37 +434,24 @@ MonoBehaviour:
   m_Name: AccumulationMotionBlurVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   weight:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 1
   vignette:
     m_OverrideState: 0
     m_Value: 0
-    min: -1
-    max: 1
   dither:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   zoom:
     m_OverrideState: 0
     m_Value: 0
-    min: -1
-    max: 1
   zoomDither:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 1
   anisotropy:
     m_OverrideState: 0
     m_Value: 0
-    min: -1
-    max: 1
   applyToUIOverlay:
     m_OverrideState: 0
     m_Value: 0
@@ -571,45 +468,30 @@ MonoBehaviour:
   m_Name: TonemapperVolume
   m_EditorClassIdentifier: 
   active: 0
-  m_AdvancedMode: 0
   isEnabled:
     m_OverrideState: 1
     m_Value: 1
   contrast:
     m_OverrideState: 0
     m_Value: 0.5
-    min: 0
-    max: 1
   shoulder:
     m_OverrideState: 0
     m_Value: 0.5
-    min: 0
-    max: 1
   graypointIn:
     m_OverrideState: 0
     m_Value: 0.18
-    min: 0
-    max: 1
   graypointOut:
     m_OverrideState: 0
     m_Value: 0.18
-    min: 0
-    max: 1
   whitepoint:
     m_OverrideState: 0
     m_Value: 10
   crossTalk:
     m_OverrideState: 0
     m_Value: 0.394
-    min: 0
-    max: 1
   saturation:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 1
   crossTalkSaturation:
     m_OverrideState: 0
     m_Value: 0.039
-    min: 0.001
-    max: 1
