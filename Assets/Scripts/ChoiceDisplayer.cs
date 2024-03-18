@@ -26,9 +26,8 @@ public class ChoiceDisplayer : MonoBehaviour
             Debug.Log(choices[i].text);
             int index = choices[i].index;
             
-            if (choices[i].text.ToLower() == "become dirt")
+            if (choices[i].text.ToLower() == "becomedirt")
             {
-                becomeDirt.GetComponent<Animator>().SetTrigger("Normal");
                 becomeDirt.GetComponent<Button>().interactable = true;
                 becomeDirt.GetComponent<Button>().onClick.AddListener(() => { SelectChoice(index); });
             }

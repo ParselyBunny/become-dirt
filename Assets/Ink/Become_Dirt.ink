@@ -13,8 +13,8 @@ Become Mechanical, the spell my grandmother used to work beyond her own limits a
 Recently, though, he’s been afraid of something. I don’t know what he’s worried about, but he always seems anxious and uneasy these days. 
 My grandmother wants to make sure he knew all the family’s magic so that he can pass it on one day, and he’s been making great progress. I don’t know what would make him so frightened... 
 I should check on him today.
--> END
-// -> GrandmotherConvoA
+// -> END
+-> GrandmotherConvoA
 
     =CallOut
         SISTER: Brother!
@@ -79,7 +79,7 @@ I should check on him today.
             GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
             ->GrandmaStudyQ
         
-        * BECOME DIRT
+        *BECOMEDIRT
             ->BECOMINGDIRT
         
         - I don’t know what my grandma is thinking. I don’t think I’ve ever known, even when she told me. 
