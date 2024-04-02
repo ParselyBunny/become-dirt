@@ -435,9 +435,11 @@ I should check on him today.
         ->END
     =Sink
         We just unclogged it last week so it finally drains alright. 
+        
         ->END
     =Toilet
-        The fluffy cover on the toilet lid always stares back at me before I lift it. 
+        The fluffy cover on the toilet lid always stares back at me before I lift it.
+        We keep it up so that we don't get startled by the Easter Bunny face.
         ->END
     =BathTub
         My sitting place.
