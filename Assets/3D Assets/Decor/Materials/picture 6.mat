@@ -7,15 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: picture base 1
+  m_Name: picture 6
   m_Shader: {fileID: 4800000, guid: 055eab4e84dc70a47ae75b3125a22de6, type: 3}
-  m_ValidKeywords:
-  - _BRDF_MODE_LAMBERT
-  - _FOG_ON
-  - _LIGHTING_BAKED_ON
-  - _LIGHTING_DYNAMIC_ON
-  - _SHADING_EVALUATION_MODE_PER_VERTEX
-  - _TEXTURE_FILTER_MODE_TEXTURE_IMPORT_SETTINGS
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -48,11 +42,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionTexture:
-        m_Texture: {fileID: 2800000, guid: c5f1f7914dbb6a8439f594caad405fa2, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c3213cec581e76a48ae17d4919576d0e, type: 3}
+        m_Texture: {fileID: 2800000, guid: aba68a170d7ded14bac8e0b4dfb73b0b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -81,7 +75,7 @@ Material:
     - _AlphaClip: 0
     - _AlphaClippingDitherIsEnabled: 0
     - _BRDFMode: 0
-    - _Blend: 3
+    - _Blend: 0
     - _BlendOp: 0
     - _BumpScale: 1
     - _ColorMask: 15
@@ -122,11 +116,11 @@ Material:
     - _VertexColorMode: 0
     - _ZWrite: 1
     m_Colors:
-    - _AlphaClippingScaleBiasMinMax: {r: 100000, g: -0.5, b: 0.000005, a: 0.000015}
+    - _AlphaClippingScaleBiasMinMax: {r: 1, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _DrawDistanceOverride: {r: 100, g: 10000, b: 0, a: 0}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _PrecisionColorOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
     - _PrecisionGeometryOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
