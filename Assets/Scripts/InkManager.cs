@@ -95,16 +95,13 @@ public class InkManager : MonoBehaviour
         Vector3 targetpos = new(continueindicator.localPosition.x, target, continueindicator.localPosition.z);
         continueindicator.localPosition = Vector3.Lerp(continueindicator.localPosition, targetpos, Time.deltaTime * 10);
 
-        if (DisplayingLine && !SkipCalled)
+        if (ImpactComponent_Input_Custom.PlayerInput.inputData.pressedInteract)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
+            if (DisplayingLine && !SkipCalled)
             {
                 SkipCalled = true;
             }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
+            else
             {
                 PlayNext();
             }

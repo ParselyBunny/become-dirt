@@ -55,7 +55,7 @@ public class ImpactComponent_Addon_Interact : ImpactComponent_Addon
 
                     if (owner.inputComponent.inputData.pressedInteract)
                     {
-                        // Debug.Log("Input Locked? " + owner.inputComponent.lockInput);
+                        // Debug.Log("Input Locked? " + owner.inputComponent.LockInput);
                         interactRef.Interact();
                     }
                 }

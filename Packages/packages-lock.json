@@ -62,6 +62,15 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.inputsystem": {
+      "version": "1.7.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.probuilder": {
       "version": "5.2.0",
       "depth": 0,
@@ -137,13 +146,6 @@
       "source": "git",
       "dependencies": {},
       "hash": "2590c6a14a7230b8571383c379124c32d0712090"
-    },
-    "fdsw.jtools.impactcontroller": {
-      "version": "https://github.com/FeverDevJohnny/impactcontroller.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "d60b4646bc68597e0c771427f6c8b319583d90b5"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

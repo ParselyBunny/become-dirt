@@ -18,7 +18,7 @@ public class Choreographer : StateSerializer
     [SerializeField]
     private float LookSpeed = 1.0f; // TODO: UNUSED
 
-    [SerializeField, Tooltip("Create a child object with a DialogueRunner")] private DialogueRunner dialogueRunner;
+    [SerializeField] private DialogueData _dialogueData;
     [SerializeField, Tooltip("If true, this component always triggers even if the Ink flag is false.")] private bool AlwaysTrigger;
     [SerializeField, Tooltip("If true, destroy this component so it only does its arrangement once.")] private bool DestroyPostTrigger;
     [SerializeField, Tooltip("If true, initiate auto-save after choreo execution.")] private bool SavePostTrigger;
@@ -47,18 +47,18 @@ public class Choreographer : StateSerializer
         {
             // Debug.Log("Player hit a choreo trigger.");
 
-            if (dialogueRunner == null)
+            if (_dialogueData == null)
             {
-                Debug.LogWarning("Running choreo with no DialogueRunner.", this);
+                Debug.LogWarning("Running choreo with no dialogueData.", this);
             }
 
             if (AlwaysTrigger)
             {
                 _canTrigger = AlwaysTrigger;
             }
-            else if (dialogueRunner.InkBoolName != "")
+            else if (_dialogueData.InkBoolName != "")
             {
-                _canTrigger = InkManager.CheckVariable(dialogueRunner.InkBoolName);
+                _canTrigger = InkManager.CheckVariable(_dialogueData.InkBoolName);
             }
 
             if (!_canTrigger)
@@ -84,7 +84,7 @@ public class Choreographer : StateSerializer
                 }
             }
 
-            if (dialogueRunner.InkKnotName != "")
+            if (_dialogueData.InkKnotName != "")
             {
                 if (LookTarget != null)
                 {
@@ -101,7 +101,6 @@ public class Choreographer : StateSerializer
                 }
 
                 _collider.enabled = false;
-                dialogueRunner.EnableInteraction();
 
                 if (DestroyPostTrigger)
                 {
@@ -117,11 +116,11 @@ public class Choreographer : StateSerializer
                     InkManager.OnDialogueEnd += UIUtility.SaveGame;
                 }
 
-                InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
-
                 ImpactController.current.inputComponent.ChangeLockState(true);
+
+                InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
                 InkManager.ToggleReticle(false);
-                InkManager.PlayNext(dialogueRunner.InkKnotName);
+                InkManager.PlayNext(_dialogueData.InkKnotName);
             }
             else if (DestroyPostTrigger)
             {

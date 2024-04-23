@@ -1,84 +1,83 @@
+using JTools;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
-[DisallowMultipleComponent, RequireComponent(typeof(ImpactComponent_Addon_UI))]
+[RequireComponent(typeof(PlayerInput)), DisallowMultipleComponent]
 public class ImpactComponent_Input_Custom : JTools.ImpactComponent_Input
 {
-    //The default input component, built around Unity's default input system.
-    [Header("Default - General Controls")]
-    public string lookAxisX = "Mouse X";
-    public string lookAxisY = "Mouse Y";
-    [Space]
-    public string movementStrafe = "Horizontal";
-    public string movementWalk = "Vertical";
-    [Space]
-    public KeyCode keyCrouch = KeyCode.LeftControl;
-    public KeyCode keyJump = KeyCode.Space;
-    public KeyCode keySprint = KeyCode.LeftShift;
+    public static ImpactComponent_Input_Custom PlayerInput;
 
-    public KeyCode keyMenu = KeyCode.Escape;
-    [Space]
-    public JTools.ImpactInput_MouseSetting buttonPrimary = JTools.ImpactInput_MouseSetting.leftMouse;
-    public JTools.ImpactInput_MouseSetting buttonSecondary = JTools.ImpactInput_MouseSetting.rightMouse;
-    [Space]
-    public KeyCode keyInteract = KeyCode.E;
+    private PlayerInput _playerInput;
+    private InputAction _mousePosition;
+    private InputAction _lookAction;
+    private InputAction _moveAction;
+    private InputAction _menuAction;
+    private InputAction _interactAction;
 
-    private ImpactComponent_Addon_UI _uiAddon;
-
-    public override void ComponentInitialize(JTools.ImpactController player)
+    public override void ComponentInitialize(ImpactController player)
     {
         base.ComponentInitialize(player);
+        if (PlayerInput == null)
+        {
+            PlayerInput = this;
+        }
+        else
+        {
+            Debug.LogError("Multiple ImpactComponent_Input_Custom singleton!", this);
+        }
 
-        _uiAddon = GetComponent<ImpactComponent_Addon_UI>();
+        _playerInput = GetComponent<PlayerInput>();
+        _mousePosition = _playerInput.actions["MousePosition"];
+        _lookAction = _playerInput.actions["Look"];
+        _moveAction = _playerInput.actions["Move"];
+        _menuAction = _playerInput.actions["Menu"];
+        _interactAction = _playerInput.actions["Interact"];
     }
 
     public override void Controls()
     {
-        inputData.mouseInput = new Vector2(Input.GetAxis(lookAxisX), Input.GetAxis(lookAxisY));
+        inputData.cursorPosition = _mousePosition.ReadValue<Vector2>();
+        // print(inputData.cursorPosition);
 
-        inputData.pressedPrimary = Input.GetMouseButtonDown((int)buttonPrimary);
-        inputData.holdingPrimary = Input.GetMouseButton((int)buttonPrimary);
-        inputData.releasedPrimary = Input.GetMouseButtonUp((int)buttonPrimary);
+        inputData.mouseInput = _lookAction.ReadValue<Vector2>();
 
-        inputData.pressedSecondary = Input.GetMouseButtonDown((int)buttonSecondary);
-        inputData.holdingSecondary = Input.GetMouseButton((int)buttonSecondary);
-        inputData.releasedSecondary = Input.GetMouseButtonUp((int)buttonSecondary);
+        Vector2 moveInput = _moveAction.ReadValue<Vector2>();
+        inputData.motionInput = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
 
-        inputData.motionInput = new Vector3(Input.GetAxisRaw(movementStrafe), 0f, Input.GetAxisRaw(movementWalk)).normalized;
+        inputData.pressedMenu = _menuAction.WasPressedThisFrame();
+        inputData.holdingMenu = _menuAction.IsPressed();
+        inputData.releasedMenu = _menuAction.WasReleasedThisFrame();
 
-        inputData.pressedCrouch = Input.GetKeyDown(keyCrouch);
-        inputData.holdingCrouch = Input.GetKey(keyCrouch);
-        inputData.releasedCrouch = Input.GetKeyUp(keyCrouch);
+        inputData.pressedInteract = _interactAction.WasPressedThisFrame();
+        Debug.Log("interact = " + inputData.pressedInteract);
+        inputData.holdingInteract = _interactAction.IsPressed();
+        inputData.releasedInteract = _interactAction.WasReleasedThisFrame();
 
-        inputData.pressedJump = Input.GetKeyDown(keyJump);
-        inputData.holdingJump = Input.GetKey(keyJump);
-        inputData.releasedJump = Input.GetKeyUp(keyJump);
-
-        inputData.pressedSprint = Input.GetKeyDown(keySprint);
-        inputData.holdingSprint = Input.GetKey(keySprint);
-        inputData.releasedSprint = Input.GetKeyUp(keySprint);
-
-        inputData.pressedMenu = Input.GetKeyDown(keyMenu);
-        inputData.holdingMenu = Input.GetKey(keyMenu);
-        inputData.releasedMenu = Input.GetKeyUp(keyMenu);
-
-        inputData.pressedInteract = Input.GetKeyDown(keyInteract);
-        inputData.holdingInteract = Input.GetKey(keyInteract);
-        inputData.releasedInteract = Input.GetKeyUp(keyInteract);
+        // Debug.Log(inputData.motionInput);
+        // foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
+        // {
+        //     if (Input.GetKey(kcode))
+        //     {
+        //         Debug.Log("KeyCode down: " + kcode);
+        //     }
+        // }
     }
 
     public override void ControlsLocked()
     {
-        base.ControlsLocked();
+        inputData.motionInput = Vector3.zero;
+        inputData.mouseInput = Vector2.zero;
 
-        if (_uiAddon.MenusOpen)
-        {
-            inputData.pressedInteract = false;
-        }
+        inputData.pressedMenu = false;
+        if (inputData.holdingMenu)
+            inputData.releasedMenu = true;
         else
-        {
-            inputData.pressedInteract = Input.GetKeyDown(keyInteract);
-        }
+            inputData.releasedMenu = false;
+        inputData.holdingMenu = false;
 
-        inputData.pressedMenu = Input.GetKeyDown(keyMenu);
+        inputData.pressedInteract = _interactAction.WasPressedThisFrame();
+        inputData.holdingInteract = _interactAction.IsPressed();
+        inputData.releasedInteract = _interactAction.WasReleasedThisFrame();
     }
 }

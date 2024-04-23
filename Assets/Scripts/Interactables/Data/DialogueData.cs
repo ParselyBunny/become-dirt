@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class DialogueData : InteractableData
+public class DialogueData : ScriptableObject
 {
     public string InkKnotName { get => _inkKnotName; }
     public string InkBoolName { get => _inkBoolName; }

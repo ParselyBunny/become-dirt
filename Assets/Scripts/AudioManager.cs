@@ -111,7 +111,7 @@ public class AudioManager : MonoBehaviour
     {
         if (clip == null)
         {
-            Debug.LogError("Failed to play requested audio clip");
+            Debug.LogWarning("Failed to play requested audio clip, clip is null");
             return;
         }
 
