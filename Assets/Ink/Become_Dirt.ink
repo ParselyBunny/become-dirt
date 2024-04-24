@@ -1,3 +1,5 @@
+VAR GLCOUNT = 0
+
 -> Intro
 
 #Change flow of game through GO TO CRAWLSPACE, SEARCH AROUND, BROTHER CONVO, longer time for uncertainty around Brother condition, dirt in crawlspace is simply Moving Around Like That hahaha nORMAL. Direction to go back to the crawlspace, search around, find that you can’t get to the hideout, and try to get up and around the house. 
@@ -43,10 +45,12 @@ I should check on him today.
         GRANDMOTHER: You will not have the luxury of failure forever. When you become an adult, however long it may take you, failure is unacceptable. There will be no leniency. 
         GRANDMOTHER: When I was left to shepherd the family arts while raising your mother all on my own, there were never extensions or convenient make-up tests. 
         GRANDMOTHER: You will be tested daily in life. You must pass each and every time, each and every day. What would have happened if I hadn’t worked hard enough to support your mother? What would have happened if I had spent my time making baubles and playing in the dirt as you do? We would have lost everything. Our home. Our lives. All knowledge of our family arts. Each of us bears this responsibility.
-        GRANDMOTHER: I know you tire of hearing about this, and that is exactly why I will say it again. Do you think that politely offering to poorly make tea and trawl for sympathy from your own clumsiness will help you in this life? 
+        GRANDMOTHER: I know you tire of hearing about this, and that is exactly why I will say it again. Do you think that politely offering to poorly make tea and trawl for sympathy from your own clumsiness will help you in this life?
+        ~ GLCOUNT = 0
         ->GrandmotherLoop
         
     =GrandmotherLoop
+        ~ GLCOUNT++
         GRANDMOTHER: Well?
         GRANDMOTHER: Answer me. Idle silence is a mark of sloth.
     
@@ -79,7 +83,7 @@ I should check on him today.
             GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
             ->GrandmaStudyQ
         
-        *BECOMEDIRT
+        * {GLCOUNT > 1} BECOMEDIRT
             ->BECOMINGDIRT
         
         - I don’t know what my grandma is thinking. I don’t think I’ve ever known, even when she told me. 
