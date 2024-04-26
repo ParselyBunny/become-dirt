@@ -482,6 +482,11 @@ I should check on him today.
     =Dragonology
         Oh, my copy of ’Dragonology’ is back here. I loved that book when I was my brother’s age, but it’s a little disheartening to think about how expensive it would be to actually see a Dragon. 
         ->END
+        
+    =Backpack
+        His backpack's here, so he must be home. It's heavy. 
+        Neither of us have gotten stronger from carrying heavy backpacks, they just really wear us out.
+    ->END
     
     =Poster
         A poster I got from the school book fair for reading all of ’Where the Red Fern Grows’. I didn’t really like it much but the poster’s nice.
