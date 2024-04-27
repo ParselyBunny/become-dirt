@@ -2,7 +2,7 @@ VAR GLCOUNT = 0
 
 -> Intro
 
-#Change flow of game through GO TO CRAWLSPACE, SEARCH AROUND, BROTHER CONVO, longer time for uncertainty around Brother condition, dirt in crawlspace is simply Moving Around Like That hahaha nORMAL. Direction to go back to the crawlspace, search around, find that you can’t get to the hideout, and try to get up and around the house. 
+// Change flow of game through GO TO CRAWLSPACE, SEARCH AROUND, BROTHER CONVO, longer time for uncertainty around Brother condition, dirt in crawlspace is simply Moving Around Like That hahaha nORMAL. Direction to go back to the crawlspace, search around, find that you can’t get to the hideout, and try to get up and around the house. 
 
 === Intro
 Our family used to do magic.
@@ -83,7 +83,7 @@ I should check on him today.
             GRANDMOTHER: Your previous study habits have failed. Repeating your  deficient methods will lead to the same deficient result.
             ->GrandmaStudyQ
         
-        * {GLCOUNT > 1} BECOMEDIRT
+        * {GLCOUNT > 1} ... #sigil$becomedirt
             ->BECOMINGDIRT
         
         - I don’t know what my grandma is thinking. I don’t think I’ve ever known, even when she told me. 
@@ -118,11 +118,11 @@ I should check on him today.
             ->GrandmaStudyQ
                 
     = BECOMINGDIRT
-        # NOTIFICATION: "Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations." 
-        # FLAVORTEXT: "Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all."
+        // #NOTIFICATION$"Use the BECOME DIRT spell to escape difficult conversations, become unremarkable, or otherwise Survive terrifying situations." 
+        // #FLAVORTEXT$"Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of us all."
     
         SISTER: Haha, you’re right. I can’t even boil water without burning myself. Thank you for looking out for me. I’d probably be dead if you weren’t stopping me from doing stupid things like that. Thank you, really.
-        GRANDMOTHER:...
+        GRANDMOTHER: ...
         GRANDMOTHER: Time wasted will not come back. You have homework to do now, do you not?
         SISTER: Yes, you’re right. The best I can do is put in more effort and hope I get a high D, but even that will be amazing for someone like me. Thank you.
         GRANDMOTHER: ... Go, then.
@@ -153,7 +153,7 @@ I should check on him today.
         ->RecollectionA
     
     =RecollectionA
-        # CUTSTART
+        #CUTSTART
         BROTHER: SISTER. You’re back early.
         SISTER: Yep! Hey, there were some extra quarters on the ground under the vending machine at school so I got you a twix.
         BROTHER: ! A whole twix!
@@ -196,7 +196,7 @@ I should check on him today.
         
         I need to check on him.
         Even though I can’t really do anything that would help...
-        # CUTEND
+        #CUTEND
         ->END
         
     //=FearA

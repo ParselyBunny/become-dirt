@@ -44,7 +44,7 @@ public class UIUtility : MonoBehaviour
 
     public void ApplyFileToScene()
     {
-        SaveStateManager.ApplyFileToScene();
+        SaveStateManager.ApplyLoadedFileToScene();
     }
 
     public static void SaveGame()

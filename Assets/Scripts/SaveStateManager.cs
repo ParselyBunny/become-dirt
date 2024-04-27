@@ -5,7 +5,7 @@ using System.IO;
 
 public static class SaveStateManager
 {
-    public const string VERSION = "0.1";
+    public const string VERSION = "0.2";
     private static string _saveDirectoryPath = Path.Combine(Application.dataPath, "Saves");
 #if UNITY_EDITOR
     private static string _saveFileName = VERSION + "-editor.json";
@@ -34,6 +34,12 @@ public static class SaveStateManager
         if (obj.gameObject == null)
         {
             Debug.LogFormat("Object with UUID `{0}` has nil GameObject, will not mark.", obj.UUID);
+            return;
+        }
+
+        if (obj.SkipSave)
+        {
+            Debug.LogWarningFormat("Object with UUID `{0}` designated to-be-skipped, will not mark.", obj.UUID);
             return;
         }
 
@@ -94,41 +100,49 @@ public static class SaveStateManager
         return true;
     }
 
-    public static void ApplyFileToScene()
+    public static void ApplyLoadedFileToScene()
     {
         var _serializersInScene = Resources.FindObjectsOfTypeAll(typeof(StateSerializer)) as StateSerializer[];
         Debug.LogWarningFormat("IN SCENE = {0}", _serializersInScene.Length);
+        StateSerializer currentSerializer;
 
         for (int i = 0; i < _serializersInScene.Length; i++)
         {
-            if (_markedObjects.ContainsKey(_serializersInScene[i].UUID))
+            currentSerializer = _serializersInScene[i];
+            if (currentSerializer.SkipSave)
             {
-                var go = _markedObjects[_serializersInScene[i].UUID];
+                Debug.LogWarningFormat("Skipping manually-unsaved object for processing with UUID `{0}`", currentSerializer);
+                continue;
+            }
+
+            if (_markedObjects.ContainsKey(currentSerializer.UUID))
+            {
+                var go = _markedObjects[currentSerializer.UUID];
                 if (go == null)
                 {
-                    Debug.LogErrorFormat("Reference to scene serializer `{0}` became null.", _serializersInScene[i].UUID);
+                    Debug.LogErrorFormat("Reference to scene serializer `{0}` became null.", currentSerializer.UUID);
                     continue;
                 }
 
-                switch (_loadedSave[_serializersInScene[i].UUID])
+                switch (_loadedSave[currentSerializer.UUID])
                 {
                     case SaveObject.ObjectState.Destroyed:
-                        Object.Destroy(_serializersInScene[i].gameObject);
+                        Object.Destroy(currentSerializer.gameObject);
                         break;
                     case SaveObject.ObjectState.Enabled:
-                        _serializersInScene[i].gameObject.SetActive(true);
+                        currentSerializer.gameObject.SetActive(true);
                         break;
                     case SaveObject.ObjectState.Disabled:
-                        _serializersInScene[i].gameObject.SetActive(false);
+                        currentSerializer.gameObject.SetActive(false);
                         break;
                     default:
-                        Debug.LogErrorFormat("Invalid object state retrieved for `{0}`.", _serializersInScene[i].UUID);
+                        Debug.LogErrorFormat("Invalid object state retrieved for `{0}`.", currentSerializer.UUID);
                         break;
                 }
             }
             else
             {
-                Debug.LogErrorFormat("Something went bad trying to locate `{0}` in the scene!", _serializersInScene[i].UUID);
+                Debug.LogErrorFormat("Found unmarked save object `{0}` in the scene!", currentSerializer.UUID);
             }
         }
     }

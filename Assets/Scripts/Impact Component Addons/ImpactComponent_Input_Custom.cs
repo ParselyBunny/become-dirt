@@ -50,7 +50,6 @@ public class ImpactComponent_Input_Custom : JTools.ImpactComponent_Input
         inputData.releasedMenu = _menuAction.WasReleasedThisFrame();
 
         inputData.pressedInteract = _interactAction.WasPressedThisFrame();
-        Debug.Log("interact = " + inputData.pressedInteract);
         inputData.holdingInteract = _interactAction.IsPressed();
         inputData.releasedInteract = _interactAction.WasReleasedThisFrame();
 

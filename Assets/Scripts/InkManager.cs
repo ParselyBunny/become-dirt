@@ -44,6 +44,7 @@ public class InkManager : MonoBehaviour
     public static bool IsPlaying { get; private set; }
 
     private static readonly Dictionary<string, Action<string>> TagActions = new();
+    private static readonly Dictionary<string, Action<string>> ChoiceTagActions = new();
 
     [SerializeField]
     private TextAsset _inkJSONAsset;
@@ -94,6 +95,11 @@ public class InkManager : MonoBehaviour
         float target = DisplayingLine || (_story.currentChoices.Count > 0) ? boty : topy;
         Vector3 targetpos = new(continueindicator.localPosition.x, target, continueindicator.localPosition.z);
         continueindicator.localPosition = Vector3.Lerp(continueindicator.localPosition, targetpos, Time.deltaTime * 10);
+
+        if (ImpactComponent_Input_Custom.PlayerInput == null)
+        {
+            return;
+        }
 
         if (ImpactComponent_Input_Custom.PlayerInput.inputData.pressedInteract)
         {
@@ -216,6 +222,35 @@ public class InkManager : MonoBehaviour
         }
     }
 
+    public static void AddChoiceTagChecker(string tag, Action<string> action)
+    {
+        if (ChoiceTagActions.ContainsKey(tag) && ChoiceTagActions[tag] != null)
+        {
+            ChoiceTagActions[tag] += action;
+        }
+        else
+        {
+            ChoiceTagActions.Add(tag, action);
+        }
+    }
+
+    public static void RemoveChoiceTagChecker(string tag, Action<string> action)
+    {
+        if (ChoiceTagActions.ContainsKey(tag) && ChoiceTagActions[tag] != null)
+        {
+            ChoiceTagActions[tag] -= action;
+        }
+    }
+
+    public static Action<string> ChoiceTagMethod(string tag)
+    {
+        if (ChoiceTagActions.ContainsKey(tag) && ChoiceTagActions[tag] != null)
+        {
+            return ChoiceTagActions[tag];
+        }
+        return null;
+    }
+
     public static void PlayNext()
     {
         if (IsPlaying)
@@ -285,6 +320,8 @@ public class InkManager : MonoBehaviour
         StartDialogue();
 
         string text;
+        List<string> tempTag = new();
+        Dictionary<string, string> sanitizedTags = new();
         while (_story.canContinue || _story.currentChoices.Count > 0)
         {
             if (_continuePlaying)
@@ -305,8 +342,26 @@ public class InkManager : MonoBehaviour
 
                 foreach (string tag in _story.currentTags)
                 {
-                    TagActions[tag]?.Invoke(tag);
+                    tempTag = tag.Split('$').ToList();
+
+                    Action<string> tagAction = null;
+                    if (TagActions.ContainsKey(tempTag[0]))
+                    {
+                        tagAction = TagActions[tempTag[0]];
+                    }
+
+                    if (tempTag.Count > 1)
+                    {
+                        sanitizedTags.Add(tempTag[0], tempTag[1]);
+                        tagAction?.Invoke(tempTag[1]);
+                    }
+                    else
+                    {
+                        tagAction?.Invoke("");
+                    }
                 }
+                tempTag.Clear();
+
                 //New method of displaying text
                 DisplayingLine = true;
                 SetDialogue(text);

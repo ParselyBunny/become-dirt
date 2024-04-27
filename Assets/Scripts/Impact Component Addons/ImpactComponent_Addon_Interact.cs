@@ -26,6 +26,11 @@ public class ImpactComponent_Addon_Interact : ImpactComponent_Addon
     private RaycastHit hitInfo; // Store collision info
     public override void ComponentUpdate(ImpactController player)
     {
+        if (InkManager.IsPlaying)
+        {
+            return;
+        }
+
         base.ComponentUpdate(player);
 
         // Create a ray at the center of the camera going forward
