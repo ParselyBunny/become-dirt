@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4632760602622499799}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ArtRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,13 +49,13 @@ GameObject:
   - component: {fileID: 1129899425932247960}
   - component: {fileID: 6964491368052576291}
   - component: {fileID: 2813614935255657674}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ImpactPlayer_Default
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5056173044798251246
 Transform:
   m_ObjectHideFlags: 0
@@ -143,9 +143,9 @@ MonoBehaviour:
       m_Calls: []
   restrainCameraRotating: 0
   restrainCameraPositioning: 0
-  cameraSensitivity: 1
+  cameraSensitivity: 0.2
   screenshakeDecayFactor: 0.2
-  verticalRestraint: {x: -90, y: 90}
+  verticalRestraint: {x: -85, y: 85}
   screenshake: 0
   lookTarget: {fileID: 0}
   perspective: 0
@@ -345,7 +345,7 @@ MonoBehaviour:
   distance: 3
   hitMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2137
   targetMask:
     serializedVersion: 2
     m_Bits: 8
@@ -405,7 +405,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
