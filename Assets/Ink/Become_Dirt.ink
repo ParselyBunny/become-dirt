@@ -482,14 +482,14 @@ I should check on him today.
     =Dragonology
         Oh, my copy of ’Dragonology’ is back here. I loved that book when I was my brother’s age, but it’s a little disheartening to think about how expensive it would be to actually see a Dragon. 
         ->END
-        
     =Backpack
         His backpack's here, so he must be home. It's heavy. 
         Neither of us have gotten stronger from carrying heavy backpacks, they just really wear us out.
     ->END
     
     =Poster
-        A poster I got from the school book fair for reading all of ’Where the Red Fern Grows’. I didn’t really like it much but the poster’s nice.
+        A poster I got from the school book fair for winning a reading competition. I think it's a painting from a fairy tale. 
+        It's nice.
         ->END
         
     =Wardrobe
@@ -502,7 +502,7 @@ I should check on him today.
     =ToyChest
         The large chest that holds my brother’s spare notebooks, his textbooks, my textbooks, a couple blankets for winter, and some spare candles.
         ->END
-
+    
     //HallExplore
     =MomDoor
         //This should only become active after Mother arrives home and while she’s in the room
@@ -574,19 +574,50 @@ I should check on him today.
         Mom’s lint bucket. She uses this for her plushies. 
         ->END
     
+    =CowPlush
+        A cow that Mom rescued from a trash can outside of the SaveMaxx last week. We didn't know it was a cow until it ran through the wash a few times.
+        ->END
+    
     =Paul1
         It’s a creature with the head of a stuffed bird and the body of a mysteriously decapitated stuffed lion, I think. My mom named it Paul. 
         ->END
     =Paul2
         I think there’s styrofoam in his legs. That’s what keeps him standing upright, and also why he sounds so awful when he moves. 
         ->END
+        
     =PlushieGuts
         I wish there was an easy way to clean plushie guts. This pile alone took me two days and I can still see bits of granola in it. 
         ->END
+
     =HuskedBear
         Mom keeps saying she’s going to stuff this bear and dress her up like a ballerina. She’s saved a lot of satin for making the dress, but so far the bear is still just an empty husk.
         ->END
     
+    //Portraits
+    =PortraitTrundle
+        The Trundle.
+        ->END
+    =PortraitChildren
+        I used to think this was a picture of me and my brother when we were younger, but it turns out these are two distant family members I've never met.
+        ->END
+    =PortraitChildren2
+        I'm not sure why my Mom insists on keeping this here. We don't really have any extended family left, at least not any we still speak with. 
+        ->END
+    =PortraitForest
+        A nice portrait of a forest. My mom picked it up at a thrift sale.
+        ->END
+    =PortraitGarden
+        This is a painting of the house my Grandma grew up in. It's the only one on the wall that never gets dusty.
+        ->END
+    =PortraitRuins
+        I don't really know what this one is. I think it's a painting of an old family house that burned down?
+        ->END
+    =PortraitMixed1
+        Just a normal painting. I used to think there were ghosts in the picture, but the ghosts are actually on the glass.
+        ->END
+    =PortraitMixed2
+        You can tell that this frame used to hold the picture of the two kids above it, because their faces are still burned into the glass.
+        ->END
     //KitchenExplore
     =Fridge
         Cleaning the fridge is pretty easy when it’s half empty, actually. 
