@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb0a2d315cdcc14787e8d1441157d26, type: 3}
   m_Name: CoffeePot
   m_EditorClassIdentifier: 
-  _interactSound: {fileID: 0}
+  _interactSound: {fileID: 8300000, guid: 4fcbdcd242554a94d9591908d1760ed1, type: 3}
   _inkKnots:
   - Explorations.CoffeePot

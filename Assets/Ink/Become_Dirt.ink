@@ -130,12 +130,14 @@ I should check on him today.
         
     
     =BecomeDirtNotif
-    NOTIFICATION: Use the BECOME DIRT spell to escape difficult conversations, crumble away from the world, become unremarkable, or otherwise Survive terrifying situations.
-    FLAVORTEXT: Pride, Dignity, Shame, and Defiance: Dirt has no need of these. Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. One day, the dirt will be all that remains of anything.
+    Use the BECOME DIRT spell to escape difficult conversations, crumble away from the world, become unremarkable, or otherwise Survive terrifying situations.
+    Pride, Dignity, Shame, and Defiance: Dirt has no need of these. 
+    Dirt exists beneath us, always, humble and replete with filth and vermin unfit to entertain the Sun. Despite this, dirt will remain even when all else is lost. 
+    One day, the dirt will be all that remains of anything.
     
-    I feel sick. It’s a sort of sick I can feel at the top of my stomach, like bile dripping down and leaving black splotchy stains in the center of me. 
-    It happens every time I use Become Dirt, but it’s still not as bad as spending a second longer talking to my grandma.
-    Really, you get used to it pretty quick.
+    SISTER: I feel sick. It’s a sort of sick I can feel at the top of my stomach, like bile dripping down and leaving black splotchy stains in the center of me. 
+    SISTER: It happens every time I use Become Dirt, but it’s still not as bad as spending a second longer talking to my grandma.
+    SISTER: Really, you get used to it pretty quick.
     ->END
     
     =ExplorationA1
@@ -150,13 +152,13 @@ I should check on him today.
         He studies every night, too... I try to do that, but it’s hard for me to focus on anything when I see that many letters on a page at the same time.
         I mostly try to study to make sure he doesn’t worry about me, but most of the time all I can do is look at the paper and trace lines through the blank spaces with my eyes. 
         There’s a report here... it must be the one he’s working on for school this week. It looks like the topic is "My Future Job." He was asking me about the future just the other day too...
-        ->RecollectionA
+        ->END
     
     =RecollectionA
-        #CUTSTART
-        BROTHER: SISTER. You’re back early.
+        //#CUTSTART
+        BROTHER: Sister. You’re back early.
         SISTER: Yep! Hey, there were some extra quarters on the ground under the vending machine at school so I got you a twix.
-        BROTHER: ! A whole twix!
+        BROTHER: A whole Twix!
         SISTER: Yeah.
         BROTHER: Here.
         SISTER: Huh? No, I got it for you. You don’t have to give me half or anything, I’m not hungry right now anyway.
@@ -191,12 +193,18 @@ I should check on him today.
         BROTHER: I need to learn all of them, so that’s what I’ll put down. Is ’Family Business’ okay?
         SISTER: You don’t have to. If you don’t really want to, you don’t have to learn all the family arts. I learned one spell already, right? So I can definitely learn more.
         BROTHER: I’m good at it though. Grandma said I’m good at it, and if I do this then they won’t yell at you as much.
+        
+        That was three days ago. He's hasn't been speaking as much since then. 
+       //#CUTEND
+        ->END
     
+    =RecollectionB
         He kept staring down at his half-written report the whole time we talked. His clothes and the page were covered in eraser shavings.
         
-        I need to check on him.
+        He's probably in the hideout - I could get there from here but I feel queasy enough already. I'll use the hatch in the pantry this time.
+        I need to check on him. 
         Even though I can’t really do anything that would help...
-        #CUTEND
+
         ->END
         
     //=FearA
@@ -206,7 +214,7 @@ I should check on him today.
         // BECOME DIRT falling through the floorboards effect here
         //->END
     =DirtAbilityTip
-        NOTIFICATION: When you need to crumble away into insignificance, you can use the BECOME DIRT spell to fall beneath the notice of all monsters, menaces, and members of your family. You can use BECOME DIRT to fall into the crawlspace from the ground floor of your home.
+        When you need to crumble away into insignificance, you can use the BECOME DIRT spell to fall beneath the notice of all monsters, menaces, and members of your family. You can use BECOME DIRT to fall into the crawlspace from the ground floor of your home.
         ->END
     
         
@@ -299,7 +307,7 @@ I should check on him today.
             MOTHER: Don’t try and change the subject. You know full well I just got home, and he’s got a report due at the end of this week so don’t you bother him while he’s working on that. 
             MOTHER: And, dear? Try not to rip any other sockets out of the wall while you’re at it, okay?
             SISTER: I’m sorry. I-
-            [SISTER trips]
+            #shake
             MOTHER: Watch it now! I told you to stand back, didn’t I? You don’t need to crowd in here while I fix this... I just need to grab the fool thing and get it situated right.
             ->MotherConvoLoop
         *I can fix the cord later if you want.
@@ -462,12 +470,12 @@ I should check on him today.
         I thought I learned a really valuable lesson the day Mom yelled at me and made me scrape the stickers off one by one, but yesterday I scratched the varnish trying to open the top drawer. 
         ->END
     =SiblingDesk
-        Two of grandma’s old magic books are laid out on top of [Brother]’s homework.
+        Two of grandma’s old magic books are laid out on top of my Brother’s homework.
         None of us can use the spells in most of her old books, but she makes him study all of them anyway. 
         ->END
         
     =OpenTome
-        Two of grandma’s old magic books are laid out on top of [Brother]’s homework.
+        Two of grandma’s old magic books are laid out on top of my Brother’s homework.
         None of us can use the spells in most of her old books, but she makes him study all of them anyway. 
         ->END
     
