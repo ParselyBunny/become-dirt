@@ -68,12 +68,9 @@ public class ImpactComponent_Input_Custom : JTools.ImpactComponent_Input
         inputData.motionInput = Vector3.zero;
         inputData.mouseInput = Vector2.zero;
 
-        inputData.pressedMenu = false;
-        if (inputData.holdingMenu)
-            inputData.releasedMenu = true;
-        else
-            inputData.releasedMenu = false;
-        inputData.holdingMenu = false;
+        inputData.pressedMenu = _menuAction.WasPressedThisFrame();
+        inputData.holdingMenu = _menuAction.IsPressed();
+        inputData.releasedMenu = _menuAction.WasReleasedThisFrame();
 
         inputData.pressedInteract = _interactAction.WasPressedThisFrame();
         inputData.holdingInteract = _interactAction.IsPressed();

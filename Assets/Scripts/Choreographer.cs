@@ -9,6 +9,8 @@ using JTools;
 [RequireComponent(typeof(Collider))]
 public class Choreographer : StateSerializer
 {
+    private static bool _init;
+
     [SerializeField]
     private List<StateSerializer> ObjectsToDisable;
     [SerializeField]
@@ -30,6 +32,26 @@ public class Choreographer : StateSerializer
     {
         _collider = GetComponent<Collider>();
 
+        InitChoreos(); // works as long as there is at least ONE choreo active in the scene
+    }
+
+    void InitChoreos()
+    {
+        if (!_init)
+        {
+            _init = true;
+            var choreos = GameObject.FindObjectsOfType<Choreographer>(true);
+            Debug.LogFormat("{0}", choreos);
+            for (int i = 0; i < choreos.Length; i++)
+            {
+                choreos[i].InitSaveObjects();
+            }
+        }
+    }
+
+    public void InitSaveObjects()
+    {
+        Debug.Log("Intializing Choreo for Saving", this);
         SaveStateManager.MarkObjectForSaving(this);
         for (int i = 0; i < ObjectsToDisable.Count; i++)
         {

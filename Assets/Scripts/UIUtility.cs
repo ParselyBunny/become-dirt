@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class UIUtility : MonoBehaviour
+public class UIUtility : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private static UIUtility instance;
+
+    [SerializeField] private bool _debugMouseEvents;
 
     private UnityEngine.Events.UnityEvent _OnDestroy = new();
 
@@ -56,5 +59,21 @@ public class UIUtility : MonoBehaviour
     {
         yield return null; // Wait a frame before saving
         SaveStateManager.SaveGame();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (_debugMouseEvents)
+        {
+            Debug.Log("OnPointerEnter " + gameObject.name);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (_debugMouseEvents)
+        {
+            Debug.Log("OnPointerExit " + gameObject.name);
+        }
     }
 }

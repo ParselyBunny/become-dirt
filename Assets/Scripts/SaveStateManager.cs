@@ -2,10 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System;
 
 public static class SaveStateManager
 {
-    public const string VERSION = "0.2";
+    public const string VERSION = "0.3";
     private static string _saveDirectoryPath = Path.Combine(Application.dataPath, "Saves");
 #if UNITY_EDITOR
     private static string _saveFileName = VERSION + "-editor.json";
@@ -39,7 +40,7 @@ public static class SaveStateManager
 
         if (obj.SkipSave)
         {
-            Debug.LogWarningFormat("Object with UUID `{0}` designated to-be-skipped, will not mark.", obj.UUID);
+            Debug.LogWarningFormat(obj.gameObject, "Object with UUID `{0}` designated to-be-skipped, will not mark.", obj.UUID);
             return;
         }
 
@@ -124,10 +125,16 @@ public static class SaveStateManager
                     continue;
                 }
 
+                if (!_loadedSave.ContainsKey(currentSerializer.UUID))
+                {
+                    Debug.LogErrorFormat(currentSerializer.gameObject, "Save file did not contain marked object `{0}`.", currentSerializer.UUID);
+                    continue;
+                }
+
                 switch (_loadedSave[currentSerializer.UUID])
                 {
                     case SaveObject.ObjectState.Destroyed:
-                        Object.Destroy(currentSerializer.gameObject);
+                        UnityEngine.Object.Destroy(currentSerializer.gameObject);
                         break;
                     case SaveObject.ObjectState.Enabled:
                         currentSerializer.gameObject.SetActive(true);
@@ -142,7 +149,7 @@ public static class SaveStateManager
             }
             else
             {
-                Debug.LogErrorFormat("Found unmarked save object `{0}` in the scene!", currentSerializer.UUID);
+                Debug.LogErrorFormat(currentSerializer.gameObject, "Found unmarked save object `{0}` in the scene!", currentSerializer.UUID);
             }
         }
     }
