@@ -17,9 +17,15 @@ public class InkManager : MonoBehaviour
     public static InkManager Instance { get; private set; }
     public static Action OnDialogueEnd;
 
+    [SerializeField]
+    private TextAsset _inkJSONAsset;
 
     //Text Speed and Skipping Lines
     [Header("Text Display")]
+    [SerializeField, Tooltip("Drag the TMPro text UI object for the name of the speaker in here to have it updated.")]
+    private TextMeshProUGUI NameText;
+    [SerializeField, Tooltip("Drag the TMPro text UI object for dialogue content in here to have it updated.")]
+    private TextMeshProUGUI DialogueText;
     public float textspeed = .01f;
     public Dictionary<char, float> specialtextdelays = new();
     public AudioSource textnoise;
@@ -27,6 +33,7 @@ public class InkManager : MonoBehaviour
 
     [Header("NonChar Lines")]
     public GameObject NameBoxChild;
+    [SerializeField] private TextMeshProUGUI _autosaveNotification;
 
     [Header("Character Visuals")]
     public List<CharNamePair> CharPortraits;
@@ -36,41 +43,22 @@ public class InkManager : MonoBehaviour
 
     [Header("ContinueVisual")]
     public RectTransform continueindicator;
+
     private const float boty = 20;
     private const float topy = 90;
 
-    private bool DisplayingLine;
-    private bool SkipCalled;
     public static bool IsPlaying { get; private set; }
-
     private static readonly Dictionary<string, Action<string>> TagActions = new();
     private static readonly Dictionary<string, Action<string>> ChoiceTagActions = new();
-
-    [SerializeField]
-    private TextAsset _inkJSONAsset;
-    [SerializeField, Tooltip("Drag the TMPro text UI object for the name of the speaker in here to have it updated.")]
-    private TextMeshProUGUI NameText;
-    [SerializeField, Tooltip("Drag the TMPro text UI object for dialogue content in here to have it updated.")]
-    private TextMeshProUGUI DialogueText;
-
-    private ChoiceDisplayer _choiceDisplayer;
-
     private static Story _story;
     private static NPC _speakingNPC;
     private static bool _continuePlaying;
     private static bool _processingChoices;
     private static string _currentPath;
 
-    private void Start()
-    {
-        specialtextdelays.Add(',', 10f);
-        specialtextdelays.Add('-', 10f);
-        specialtextdelays.Add(';', 10f);
-        specialtextdelays.Add('.', 20f);
-        specialtextdelays.Add('?', 20f);
-        specialtextdelays.Add('!', 20f);
-
-    }
+    private ChoiceDisplayer _choiceDisplayer;
+    private bool DisplayingLine;
+    private bool SkipCalled;
 
     private void Awake()
     {
@@ -88,6 +76,18 @@ public class InkManager : MonoBehaviour
         _choiceDisplayer = GetComponent<ChoiceDisplayer>();
         _story = new Story(_inkJSONAsset.text);
         SetName("");
+    }
+
+    private void Start()
+    {
+        specialtextdelays.TryAdd(',', 10f);
+        specialtextdelays.TryAdd('-', 10f);
+        specialtextdelays.TryAdd(';', 10f);
+        specialtextdelays.TryAdd('.', 20f);
+        specialtextdelays.TryAdd('?', 20f);
+        specialtextdelays.TryAdd('!', 20f);
+
+        _autosaveNotification.gameObject.SetActive(false);
     }
 
     public void Update()
@@ -121,6 +121,23 @@ public class InkManager : MonoBehaviour
         {
             EndDialogue(true);
         }
+    }
+
+    public static void SaveGame()
+    {
+        Instance.StartCoroutine(Instance.SaveGameAsync());
+    }
+
+    public IEnumerator SaveGameAsync()
+    {
+        yield return null; // Wait a frame before saving
+        _autosaveNotification.text = "Saving...";
+        _autosaveNotification.gameObject.SetActive(true);
+        SaveStateManager.SaveGame();
+        yield return new WaitForSecondsRealtime(2.0f);
+        _autosaveNotification.text = "Saved.";
+        yield return new WaitForSecondsRealtime(1.0f);
+        _autosaveNotification.gameObject.SetActive(false);
     }
 
     public string[] GetAllKnots()

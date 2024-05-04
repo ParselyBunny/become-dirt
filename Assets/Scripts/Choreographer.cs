@@ -135,7 +135,7 @@ public class Choreographer : StateSerializer
 
                 if (SavePostTrigger)
                 {
-                    InkManager.OnDialogueEnd += UIUtility.SaveGame;
+                    InkManager.OnDialogueEnd += InkManager.SaveGame;
                 }
 
                 ImpactController.current.inputComponent.ChangeLockState(true);

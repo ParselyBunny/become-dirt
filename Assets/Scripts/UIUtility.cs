@@ -5,25 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UIUtility : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private static UIUtility instance;
-
     [SerializeField] private bool _debugMouseEvents;
 
     private UnityEngine.Events.UnityEvent _OnDestroy = new();
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            Debug.Log("UIUtility initialized.");
-        }
-        else
-        {
-            Debug.LogWarning("UIUtility already instanced, destroying self.", gameObject);
-            Destroy(this);
-        }
-    }
 
     private void OnDestroy()
     {
@@ -48,17 +32,6 @@ public class UIUtility : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void ApplyFileToScene()
     {
         SaveStateManager.ApplyLoadedFileToScene();
-    }
-
-    public static void SaveGame()
-    {
-        instance.StartCoroutine(instance.SaveGameAfterFrame());
-    }
-
-    public IEnumerator SaveGameAfterFrame()
-    {
-        yield return null; // Wait a frame before saving
-        SaveStateManager.SaveGame();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
