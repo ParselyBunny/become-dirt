@@ -23133,7 +23133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2436092308787779840, guid: c93564c5680a70c47b52291468f9a8ba, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2806765065243575716, guid: c93564c5680a70c47b52291468f9a8ba, type: 3}
       propertyPath: m_Layer
@@ -23272,6 +23272,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndingMusic: {fileID: 8300000, guid: ffe6c392ab0c62247a2451bca5847038, type: 3}
+--- !u!65 &765778756 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 2436092308787779840, guid: c93564c5680a70c47b52291468f9a8ba, type: 3}
+  m_PrefabInstance: {fileID: 765778753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &769046568
 GameObject:
   m_ObjectHideFlags: 0
@@ -24441,6 +24446,9 @@ MonoBehaviour:
   _skipSave: 0
   ObjectsToDisable: []
   ObjectsToEnable: []
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
   LookTarget: {fileID: 1361229978}
   LookSpeed: 1
   _dialogueData: {fileID: 11400000, guid: fc65b2b691ee17845807eca90660c26f, type: 2}
@@ -28668,8 +28676,10 @@ MonoBehaviour:
   _skipSave: 0
   ObjectsToDisable: []
   ObjectsToEnable:
-  - {fileID: 1250791111}
   - {fileID: 1083241421}
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
   LookTarget: {fileID: 1196692502}
   LookSpeed: 0.75
   _dialogueData: {fileID: 11400000, guid: 2b11ec8717876cd49ac10c9ad2251740, type: 2}
@@ -31077,6 +31087,9 @@ MonoBehaviour:
   - {fileID: 70983055}
   - {fileID: 1983736742}
   - {fileID: 1626440865}
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
   LookTarget: {fileID: 1026280940}
   LookSpeed: 0.05
   _dialogueData: {fileID: 11400000, guid: 93e1a961c8018de43a024e3448441ebd, type: 2}
@@ -31532,6 +31545,21 @@ MonoBehaviour:
   - {fileID: 1670999077}
   - {fileID: 39055681}
   - {fileID: 660553049}
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 765778756}
+        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   LookTarget: {fileID: 1949417164}
   LookSpeed: 0.4
   _dialogueData: {fileID: 11400000, guid: df0caef7135c7374795c3647b5a195fc, type: 2}
@@ -31882,12 +31910,15 @@ MonoBehaviour:
   _skipSave: 0
   ObjectsToDisable: []
   ObjectsToEnable: []
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
   LookTarget: {fileID: 217295386}
   LookSpeed: 0.4
   _dialogueData: {fileID: 11400000, guid: fde430556b7c21c43b3a08a7a12aa65f, type: 2}
   AlwaysTrigger: 1
   DestroyPostTrigger: 1
-  SavePostTrigger: 0
+  SavePostTrigger: 1
 --- !u!1 &1109268281
 GameObject:
   m_ObjectHideFlags: 0
@@ -34977,30 +35008,11 @@ Transform:
   m_Father: {fileID: 2142108063}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1250791108 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5446943600388408778, guid: c93564c5680a70c47b52291468f9a8ba, type: 3}
-  m_PrefabInstance: {fileID: 765778753}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1250791109 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4673820472613101424, guid: c93564c5680a70c47b52291468f9a8ba, type: 3}
   m_PrefabInstance: {fileID: 765778753}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1250791111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250791108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b4f5d31e8af7d4b8192d6e201e2052, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uuid: 4e0805f6-e1b4-4563-911f-74ec51b3742a
-  _skipSave: 1
 --- !u!1 &1253347974 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4293890032357006002, guid: 2ec25c9f932826a478722a22165e42f0, type: 3}
@@ -43114,6 +43126,9 @@ MonoBehaviour:
   _skipSave: 0
   ObjectsToDisable: []
   ObjectsToEnable: []
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
   LookTarget: {fileID: 1881381665}
   LookSpeed: 1
   _dialogueData: {fileID: 11400000, guid: 2cb3f393bcea0b5488b7768022c7e385, type: 2}
@@ -52647,6 +52662,9 @@ MonoBehaviour:
   _skipSave: 0
   ObjectsToDisable: []
   ObjectsToEnable: []
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
   LookTarget: {fileID: 0}
   LookSpeed: 1
   _dialogueData: {fileID: 11400000, guid: e5f988d8a83140f4c8e411a77e44ece0, type: 2}
@@ -54457,6 +54475,9 @@ MonoBehaviour:
   _skipSave: 0
   ObjectsToDisable: []
   ObjectsToEnable: []
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
   LookTarget: {fileID: 173447246}
   LookSpeed: 1
   _dialogueData: {fileID: 11400000, guid: 6cf392fbed637dd47b392d40df92c228, type: 2}

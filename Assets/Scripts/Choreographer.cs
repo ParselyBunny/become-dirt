@@ -1,6 +1,7 @@
+using JTools;
 using System.Collections.Generic;
 using UnityEngine;
-using JTools;
+using UnityEngine.Events;
 
 /// <summary>
 /// Activate and deactivate NPCs
@@ -15,6 +16,8 @@ public class Choreographer : StateSerializer
     private List<StateSerializer> ObjectsToDisable;
     [SerializeField]
     private List<StateSerializer> ObjectsToEnable;
+    [SerializeField]
+    private UnityEvent OnDialogueEnd = new();
     [SerializeField]
     private Transform LookTarget;
     [SerializeField]
@@ -123,6 +126,8 @@ public class Choreographer : StateSerializer
                 }
 
                 _collider.enabled = false;
+
+                InkManager.OnDialogueEnd += () => { OnDialogueEnd?.Invoke(); };
 
                 if (DestroyPostTrigger)
                 {
