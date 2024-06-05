@@ -10,6 +10,7 @@ public class Pickup : Interactable
 
         // TODO: functionality go here
 
+        base.PostInteract();
         Destroy(gameObject);
     }
 }

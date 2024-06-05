@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -6,11 +7,21 @@ using UnityEngine;
 /// </summary>
 public abstract class Interactable : MonoBehaviour
 {
+    public Action OnInteract = () => { };
+    public Action OnPostInteract = () => { };
+
     private bool AllowInteractSound = true;
 
     public virtual void Interact()
     {
         Debug.Log("Interact target: " + name);
+        OnInteract.Invoke();
+    }
+
+    public virtual void PostInteract()
+    {
+        Debug.Log("Post-interaction target: " + name);
+        OnPostInteract.Invoke();
     }
 
     protected void PlayInteractSound(AudioClip audio)

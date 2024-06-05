@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class EnumExtensions
@@ -21,5 +24,10 @@ public static class EnumExtensions
             return zone.RoomType == roomType;
         }
         return false;
+    }
+
+    public static IReadOnlyList<T> GetNumbers<T>()
+    {
+        return (T[])Enum.GetValues(typeof(T));
     }
 }

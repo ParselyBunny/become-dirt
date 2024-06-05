@@ -16,7 +16,11 @@ public class Examinable : Interactable
             {
                 SetAllowInteractSound(true);
                 InkManager.ToggleReticle(false);
-                InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
+                InkManager.OnDialogueEnd += () =>
+                {
+                    InkManager.ToggleReticle(true);
+                    base.PostInteract();
+                };
                 JTools.ImpactController.current.inputComponent.ChangeLockState(true);
             }
 

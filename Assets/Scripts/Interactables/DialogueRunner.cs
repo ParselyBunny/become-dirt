@@ -28,7 +28,11 @@ public class DialogueRunner : Interactable
 
         if (!InkManager.IsPlaying)
         {
-            InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
+            InkManager.OnDialogueEnd += () =>
+            {
+                InkManager.ToggleReticle(true);
+                base.PostInteract();
+            };
             JTools.ImpactController.current.inputComponent.ChangeLockState(true);
             InkManager.ToggleReticle(false);
         }

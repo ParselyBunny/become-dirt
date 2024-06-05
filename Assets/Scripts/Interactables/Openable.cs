@@ -44,5 +44,7 @@ public class Openable : Interactable
                 AudioManager.PlayOneShot(_data.CloseSound);
             }
         }
+
+        base.PostInteract();
     }
 }

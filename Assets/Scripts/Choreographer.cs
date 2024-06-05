@@ -30,10 +30,12 @@ public class Choreographer : StateSerializer
 
     private bool _canTrigger = false;
     private Collider _collider;
+    private Interactable _interactable;
 
     private void Awake()
     {
         _collider = GetComponent<Collider>();
+        _interactable = GetComponent<Interactable>();
 
         InitChoreos(); // works as long as there is at least ONE choreo active in the scene
     }
@@ -48,6 +50,11 @@ public class Choreographer : StateSerializer
             for (int i = 0; i < choreos.Length; i++)
             {
                 choreos[i].InitSaveObjects();
+            }
+
+            if (_interactable != null)
+            {
+                _interactable.OnPostInteract += TriggerChoreo;
             }
         }
     }
@@ -68,94 +75,105 @@ public class Choreographer : StateSerializer
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_interactable != null)
+        {
+            Debug.LogWarning("Using interactable instead of collider events for choreo.", this);
+            return;
+        }
+
         if (other.CompareTag("Player"))
         {
-            // Debug.Log("Player hit a choreo trigger.");
+            TriggerChoreo();
+        }
+    }
 
-            if (_dialogueData == null)
+    private void TriggerChoreo()
+    {
+        // Debug.Log("Player hit a choreo trigger.");
+
+        if (_dialogueData == null)
+        {
+            Debug.LogWarning("Running choreo with no dialogueData.", this);
+        }
+
+        if (AlwaysTrigger)
+        {
+            _canTrigger = AlwaysTrigger;
+        }
+        else if (_dialogueData.InkBoolName != "")
+        {
+            _canTrigger = InkManager.CheckVariable(_dialogueData.InkBoolName);
+        }
+
+        if (!_canTrigger)
+        {
+            return;
+        }
+
+        // Debug.Log(name + " Choreographer was triggered. Rearranging scene.");
+
+        foreach (StateSerializer obj in ObjectsToDisable)
+        {
+            if (obj != null)
             {
-                Debug.LogWarning("Running choreo with no dialogueData.", this);
+                obj.gameObject.SetActive(false);
             }
+        }
 
-            if (AlwaysTrigger)
+        foreach (StateSerializer obj in ObjectsToEnable)
+        {
+            if (obj != null)
             {
-                _canTrigger = AlwaysTrigger;
+                obj.gameObject.SetActive(true);
             }
-            else if (_dialogueData.InkBoolName != "")
-            {
-                _canTrigger = InkManager.CheckVariable(_dialogueData.InkBoolName);
-            }
+        }
 
-            if (!_canTrigger)
+        if (_dialogueData.InkKnotName != "")
+        {
+            if (LookTarget != null)
             {
-                return;
-            }
-
-            // Debug.Log(name + " Choreographer was triggered. Rearranging scene.");
-
-            foreach (StateSerializer obj in ObjectsToDisable)
-            {
-                if (obj != null)
+                if (ImpactController.current != null && ImpactController.current.cameraComponent != null)
                 {
-                    obj.gameObject.SetActive(false);
-                }
-            }
-
-            foreach (StateSerializer obj in ObjectsToEnable)
-            {
-                if (obj != null)
-                {
-                    obj.gameObject.SetActive(true);
-                }
-            }
-
-            if (_dialogueData.InkKnotName != "")
-            {
-                if (LookTarget != null)
-                {
-                    if (ImpactController.current != null && ImpactController.current.cameraComponent != null)
-                    {
-                        // TODO: Add a check for direction facing using quaternions?
-                        ImpactController.current.cameraComponent.SetLookTarget(LookTarget);
-                        InkManager.OnDialogueEnd += StopLookAt;
-                    }
-                    else
-                    {
-                        Debug.LogError("Trying to use LookTarget when ImpactController Camera is not set up!", this);
-                    }
-                }
-
-                _collider.enabled = false;
-
-                InkManager.OnDialogueEnd += () => { OnDialogueEnd?.Invoke(); };
-
-                if (DestroyPostTrigger)
-                {
-                    InkManager.OnDialogueEnd += DestroySelf;
+                    // TODO: Add a check for direction facing using quaternions?
+                    ImpactController.current.cameraComponent.SetLookTarget(LookTarget);
+                    InkManager.OnDialogueEnd += StopLookAt;
                 }
                 else
                 {
-                    InkManager.OnDialogueEnd += EnableSelf;
+                    Debug.LogError("Trying to use LookTarget when ImpactController Camera is not set up!", this);
                 }
-
-                if (SavePostTrigger)
-                {
-                    InkManager.OnDialogueEnd += InkManager.SaveGame;
-                }
-
-                ImpactController.current.inputComponent.ChangeLockState(true);
-
-                InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
-                InkManager.ToggleReticle(false);
-                InkManager.PlayNext(_dialogueData.InkKnotName);
             }
-            else if (DestroyPostTrigger)
+
+            _collider.enabled = false;
+
+            InkManager.OnDialogueEnd += () => { OnDialogueEnd?.Invoke(); };
+
+            if (DestroyPostTrigger)
             {
-                Destroy(gameObject);
+                InkManager.OnDialogueEnd += DestroySelf;
+            }
+            else
+            {
+                InkManager.OnDialogueEnd += EnableSelf;
             }
 
-            _canTrigger = false;
+            if (SavePostTrigger)
+            {
+                InkManager.OnDialogueEnd += InkManager.SaveGame;
+            }
+
+            ImpactController.current.inputComponent.ChangeLockState(true);
+
+            InkManager.OnDialogueEnd += () => InkManager.ToggleReticle(true);
+            InkManager.ToggleReticle(false);
+            InkManager.PlayNext(_dialogueData.InkKnotName);
         }
+        else if (DestroyPostTrigger)
+        {
+            Destroy(gameObject);
+        }
+
+        _canTrigger = false;
     }
 
     private void DestroySelf()
