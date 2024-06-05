@@ -219,10 +219,6 @@ I should check on him today.
     
         
     =CrawlSpaceA
-        SISTER: *coughing*
-        SISTER: Ow... Why does falling through the floor always hurt my stomach like that. 
-        SISTER: ...
-        
         The air ducts are all moved around. I don’t think I can get to the hideout like this.
         
         SISTER: Brother? Brother!
@@ -243,10 +239,6 @@ I should check on him today.
         ...
         He and I are the only two people who ever come down here. Not even raccoons or squirrels go down into the crawl space. 
         That had to be him.
-        And then, upstairs...
-        
-        That monster was one he told me about, from a nightmare of his.
-        I need to get back upstairs.
         ->END
 
 
@@ -274,8 +266,8 @@ I should check on him today.
     ...I guess not. Oh, unless he’s started a game and I didn’t realize.
     Sometimes my brother and I start games when we get back from school, but since we usually get back at different times we leave notes for each other with the rules or hints on them. I must have missed something, like usual.
     I’m not sure if this is just hide-and-seek or something else so I should look around upstairs and figure out what directions he left for me. That’s got to be it.
-    Why did I even freak out about this? I’m always getting worried over nothing.
-    
+    Why did I even freak out about this? I’m always getting worried over nothing. 
+    He's probably right around the corner up ahead.
     ->END
 
 
