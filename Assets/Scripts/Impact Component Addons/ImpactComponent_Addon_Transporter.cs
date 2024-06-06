@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ImpactComponent_Addon_Transporter : ImpactComponent_Addon
 {
+    public float TeleportDuration = 2.5f;
+
     public static void TeleportPlayer(Zone targetLocation)
     {
         if (ImpactController.current == null)
@@ -24,13 +26,32 @@ public class ImpactComponent_Addon_Transporter : ImpactComponent_Addon
 
     public IEnumerator Teleport(Zone targetLocation)
     {
-        var current = Zone.GetCurrent(transform.position);
+        // var current = Zone.GetCurrent(transform.position);
         ImpactController.current.inputComponent.ChangeLockState(true);
-        // TODO: await screen transition UI part 1
+
+        ImpactComponent_Addon_Sound.Floor = targetLocation.FloorType;
+        if (targetLocation.FloorType == Zone.Floor.Basement)
+        {
+            UIMenus.SetActiveMenu("TransDown");
+        }
+        else
+        {
+            UIMenus.SetActiveMenu("TransUp");
+        }
+
+        yield return null;
         var tp = ZoneManager.GetTeleportPoint(targetLocation);
         transform.SetPositionAndRotation(tp.position, tp.rotation);
-        // TODO: await screen transition UI loop
-        // TODO: await screen transition UI part 2
+
+        // TODO: screen transition UI part 1
+        yield return new WaitForSecondsRealtime(TeleportDuration);
+
+        // TODO: screen transition UI loop
+
+        // TODO: screen transition UI part 2
+
+        UIMenus.SetActiveMenu("Reticle");
+        yield return new WaitForSecondsRealtime(0.5f);
         ImpactController.current.inputComponent.ChangeLockState(false);
         yield return null;
     }
