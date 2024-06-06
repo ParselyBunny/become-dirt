@@ -505,6 +505,9 @@ public class InkManager : MonoBehaviour
                 case "BROTHER: ":
                     name = "Brother";
                     goto default;
+                case "BROTHER?: ":
+                    name = "Brother?";
+                    goto default;
                 default:
                     Instance.NameText.text = name;
                     text = text.Substring(match.Value.Length);
