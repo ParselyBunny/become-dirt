@@ -10,7 +10,9 @@ using JTools;
 public class Ending : Interactable
 {
     public AudioClip EndingMusic;
+
     private float _musicVolume;
+
     public override void Interact()
     {
         base.Interact();

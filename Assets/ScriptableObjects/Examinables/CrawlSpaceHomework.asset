@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb0a2d315cdcc14787e8d1441157d26, type: 3}
   m_Name: CrawlSpaceHomework
   m_EditorClassIdentifier: 
-  _interactSound: {fileID: 0}
+  _interactSound: {fileID: 8300000, guid: 3e5cece40eba0ea47a16502a1d0b0616, type: 3}
   _inkKnots:
-  - 
+  - Intro.CrawlSpaceHomework

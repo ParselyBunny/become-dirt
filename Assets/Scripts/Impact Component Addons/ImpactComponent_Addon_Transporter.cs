@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ImpactComponent_Addon_Transporter : ImpactComponent_Addon
 {
+    public static Zone.Floor CurrentFloor = Zone.Floor.Ground;
+
     public float TeleportDuration = 2.5f;
 
     public static void TeleportPlayer(Zone targetLocation)
@@ -29,7 +31,7 @@ public class ImpactComponent_Addon_Transporter : ImpactComponent_Addon
         // var current = Zone.GetCurrent(transform.position);
         ImpactController.current.inputComponent.ChangeLockState(true);
 
-        ImpactComponent_Addon_Sound.Floor = targetLocation.FloorType;
+        CurrentFloor = targetLocation.FloorType;
         if (targetLocation.FloorType == Zone.Floor.Basement)
         {
             UIMenus.SetActiveMenu("TransDown");
@@ -42,6 +44,7 @@ public class ImpactComponent_Addon_Transporter : ImpactComponent_Addon
         yield return null;
         var tp = ZoneManager.GetTeleportPoint(targetLocation);
         transform.SetPositionAndRotation(tp.position, tp.rotation);
+        ZoneManager.OnTeleport?.Invoke(targetLocation);
 
         // TODO: screen transition UI part 1
         yield return new WaitForSecondsRealtime(TeleportDuration);

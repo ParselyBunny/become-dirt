@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class StateSerializer : MonoBehaviour
 {
     public string UUID { get { return _uuid; } }

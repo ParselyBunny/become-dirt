@@ -38,6 +38,11 @@ public class Choreographer : StateSerializer
         _interactable = GetComponent<Interactable>();
 
         InitChoreos(); // works as long as there is at least ONE choreo active in the scene
+
+        if (_interactable != null)
+        {
+            _interactable.OnPostInteract += TriggerChoreo;
+        }
     }
 
     void InitChoreos()
@@ -50,11 +55,6 @@ public class Choreographer : StateSerializer
             for (int i = 0; i < choreos.Length; i++)
             {
                 choreos[i].InitSaveObjects();
-            }
-
-            if (_interactable != null)
-            {
-                _interactable.OnPostInteract += TriggerChoreo;
             }
         }
     }
@@ -107,6 +107,7 @@ public class Choreographer : StateSerializer
 
         if (!_canTrigger)
         {
+            Debug.Log("Cannot trigger choreo.");
             return;
         }
 

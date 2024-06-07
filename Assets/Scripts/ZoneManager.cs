@@ -5,7 +5,13 @@ using UnityEngine.InputSystem.EnhancedTouch;
 
 public class ZoneManager : MonoBehaviour
 {
+    public delegate void TeleportEvent(Zone zone);
+
+    public static TeleportEvent OnTeleport = (_) => { };
     private static ZoneManager Instance;
+
+    public GameObject GroundLights;
+    public GameObject BasementLights;
 
     [System.Serializable]
     public class ZoneEntry
@@ -27,6 +33,9 @@ public class ZoneManager : MonoBehaviour
             Debug.Log("ZoneManager: Disabled self.");
             gameObject.SetActive(false);
         }
+
+        ToggleLights(new Zone(Zone.Room.FrontRoom, Zone.Floor.Ground));
+        OnTeleport += ToggleLights;
     }
 
     [ContextMenu("Reset Zone List")]
@@ -61,5 +70,11 @@ public class ZoneManager : MonoBehaviour
 
         Debug.LogWarningFormat("Teleport Point not defined for {0} {1}", targetZone.FloorType, targetZone.RoomType);
         return null;
+    }
+
+    public void ToggleLights(Zone targetZone)
+    {
+        GroundLights.SetActive(targetZone.FloorType == Zone.Floor.Ground);
+        BasementLights.SetActive(targetZone.FloorType == Zone.Floor.Basement);
     }
 }

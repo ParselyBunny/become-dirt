@@ -13,6 +13,8 @@ public class Openable : Interactable
     private OpenableData _data;
     [SerializeField, Tooltip("If this is true, the door is locked when closed.")]
     private bool _isLocked = false;
+    [SerializeField]
+    private bool _startsOpen = false;
 
     private Animator _Animator;
 
@@ -20,6 +22,11 @@ public class Openable : Interactable
     {
         _Animator = (GetComponent<Animator>() != null) ? GetComponent<Animator>() : new Animator();
         SetAllowInteractSound(false);
+
+        if (_startsOpen)
+        {
+            _Animator.SetBool(_data.BoolName, true);
+        }
     }
 
     public override void Interact()
@@ -32,19 +39,24 @@ public class Openable : Interactable
         }
         else
         {
-            bool isOpen = _Animator.GetBool(_data.BoolName);
-            _Animator.SetBool(_data.BoolName, !isOpen);
-
-            if (!isOpen)
-            {
-                AudioManager.PlayOneShot(_data.OpenSound);
-            }
-            else
-            {
-                AudioManager.PlayOneShot(_data.CloseSound);
-            }
+            ToggleState();
         }
 
         base.PostInteract();
+    }
+
+    public void ToggleState()
+    {
+        bool isOpen = _Animator.GetBool(_data.BoolName);
+        _Animator.SetBool(_data.BoolName, !isOpen);
+
+        if (!isOpen)
+        {
+            AudioManager.PlayOneShot(_data.OpenSound);
+        }
+        else
+        {
+            AudioManager.PlayOneShot(_data.CloseSound);
+        }
     }
 }

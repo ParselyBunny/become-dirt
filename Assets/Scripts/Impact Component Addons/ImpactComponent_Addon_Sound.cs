@@ -3,8 +3,6 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class ImpactComponent_Addon_Sound : JTools.ImpactComponent_Addon
 {
-    public static Zone.Floor Floor = Zone.Floor.Ground;
-
     [Tooltip("Whether or not sounds will play from the player.")] public bool enableSounds = true;
     [Space]
     [Tooltip("The sound that plays whenever the player walks. The rate this plays at is scaled based on speed.")] public AudioClip[] walkSounds;
@@ -46,7 +44,7 @@ public class ImpactComponent_Addon_Sound : JTools.ImpactComponent_Addon
     {
         if (validStepping)
         {
-            if (Floor == Zone.Floor.Ground)
+            if (ImpactComponent_Addon_Transporter.CurrentFloor == Zone.Floor.Ground)
             {
                 AudioManager.PlayOneShot(walkSounds[Random.Range(0, walkSounds.Length)]);
             }
