@@ -7,16 +7,16 @@ using JTools;
 /// will end the game.
 /// </summary>
 [RequireComponent(typeof(Collider))]
-public class Ending : Interactable
+public class Ending : MonoBehaviour    
 {
     public AudioClip EndingMusic;
 
     private float _musicVolume;
 
-    public override void Interact()
+    public void Interact()
     {
-        base.Interact();
-        SetAllowInteractSound(false);
+        // base.Interact();
+        // SetAllowInteractSound(false);
 
         ImpactController.current.inputComponent.ChangeLockState(false);
         Destroy(ImpactController.current.gameObject);

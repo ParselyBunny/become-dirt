@@ -9,9 +9,9 @@ Our family used to do magic.
 Years before I was born, our family knew hundreds of spells and used them a dozen times each day. It was easier for them than sweeping dirt from the kitchen floor. Now we only have three spells left.
 My grandmother knows them all - She learned them when she was young and practiced every day to keep them clear in her mind. She told me, before I was old enough to understand, that it was her responsibility to make sure we didn’t lose the last of our magic.
 Normally my mother would be the one to teach us, but she can’t do magic at all. She never could. I heard that when I was born, my grandmother was overjoyed and nearly cracked a smile as she held me. 
-She could tell I had the talent for magic, but even with all the lessons she gave me I could only ever use the most useless of our family’s spells. Become Dirt - the spell that makes you worthless.
+She could tell I had the talent for magic, but even with all the lessons she gave me I could only ever use the most useless of our family’s spells. BECOME DIRT - the spell that makes you worthless.
 My younger brother is better at it than me - Magic, that is. He learned our family’s strongest spell without any trouble. 
-Become Mechanical, the spell my grandmother used to work beyond her own limits and raise a daughter on her own without ever breaking or slowing down. He’s a really smart kid, and he’s a lot more responsible than I ever was. 
+BECOME MECHANICAL, the spell my grandmother used to work beyond her own limits and raise a daughter on her own without ever breaking or slowing down. He’s a really smart kid, and he’s a lot more responsible than I ever was. 
 Recently, though, he’s been afraid of something. I don’t know what he’s worried about, but he always seems anxious and uneasy these days. 
 My grandmother wants to make sure he knew all the family’s magic so that he can pass it on one day, and he’s been making great progress. I don’t know what would make him so frightened... 
 I should check on him today.
@@ -404,13 +404,13 @@ I should check on him today.
 =Realization
     Our Family only has three spells left, and only one of them is worth using. 
     Become Dirt, the oldest spell, makes you into something completely useless and common and pathetic. It’s the only spell I ever learned, maybe because I’m already useless even without magic.
-    Become Mechanical is my grandma’s specialty and it’s probably the only reason our family still exists. 
+    BECOME MECHANICAL is my grandma’s specialty and it’s probably the only reason our family still exists. 
     It’s an incredible spell that turns your body into a machine and makes it possible to do almost anything, no matter how much it hurts or how tired you are or how much your brain is screaming for you to stop. 
     Grandma told us about how her parents and grandparents used this magic to work perfectly and past the point when their bodies would have normally given out, all so that they could keep moving up in their careers and ensure the family’s prosperity. 
     Everything fell apart when it turned out that my mom couldn’t use any magic at all. She works really hard, maybe harder than our ancestors did, 
     but she can’t keep a smile up all the time and she has to call off work sometimes because of her back and knees, or when one of us gets sick.
-    Maybe if I was old enough to work, and if I could use Become Mechanical, things would be better for us... though I don’t know if mom would like me any better in that case.
-    The last spell our family keeps is forbidden. Become Dirt and Become Mechanical are temporary spells that you can use while you need them and stop when you’re done. Become Fear isn’t like that. 
+    Maybe if I was old enough to work, and if I could use BECOME MECHANICAL, things would be better for us... though I don’t know if mom would like me any better in that case.
+    The last spell our family keeps is forbidden. Become Dirt and BECOME MECHANICAL are temporary spells that you can use while you need them and stop when you’re done. Become Fear isn’t like that. 
     Become Fear is a spell you use as an absolute last resort, a spell that will keep you from ever feeling afraid by turning you into every horrible and terrifying thing you’ve ever known. 
     Nothing can frighten you if you’re the scariest thing around, after all. My grandma tried to teach me about it, once, but since I don’t have any talent for magic she never told me how to actually cast it. 
     It’s a spell that requires you to discard everything that makes you a person, and it’s a spell you can’t break or end on your own. 
@@ -421,6 +421,13 @@ I should check on him today.
     I need to talk to him.
     ->END
 
+
+=DemoEnd
+    SISTER: Okay. It's ok, I'll hate how it feels but it'll be done soon.
+    SISTER: Just turn into dirt, fall through the floor, and...
+    SISTER: Figure out the rest when I get down there.
+    SISTER: Here we go.
+    ->END
 
 === Explanatory
     =FrontDoor1
