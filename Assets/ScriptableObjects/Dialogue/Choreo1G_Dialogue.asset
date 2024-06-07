@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb0a2d315cdcc14787e8d1441157d26, type: 3}
-  m_Name: CrawlSpaceHomework
+  m_Script: {fileID: 11500000, guid: 8b353ef7a75ad1b44bcda17e8ea62641, type: 3}
+  m_Name: Choreo1G_Dialogue
   m_EditorClassIdentifier: 
-  _interactSound: {fileID: 0}
-  _inkKnots:
-  - 
+  _inkKnotName: ChapterTwo.DemoEnd
+  _inkBoolName: 

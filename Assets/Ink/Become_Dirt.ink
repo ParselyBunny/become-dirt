@@ -238,7 +238,12 @@ I should check on him today.
         
         ...
         He and I are the only two people who ever come down here. Not even raccoons or squirrels go down into the crawl space. 
-        That had to be him.
+        That has to be him.
+        
+        He must be playing hide & seek if he's not responding. He never reacts until I find all the clues he leaves for the game.
+        Or he's really upset about something...
+        Mom will just yell at him if she finds him down here like this. I hate doing it but maybe I can BECOME DIRT in another part of the house I can fall through the floorboards to get around these ducts.
+        I should check for hide & seek clues though, just in case. Probably back upstairs.
         ->END
 
 
@@ -364,10 +369,15 @@ I should check on him today.
         SISTER: I...
         SISTER: Maybe this isn’t a clue. What was he doing in his magic lesson yesterday? His homework was covered in scribbles like that, too.
         There’s another page here from the old Grimoire...
-        GRIMOIRE: Through metaphysical configuration of concentration and spiritual essence, the will that moves the body can be applied to greater effect and additional force insuch that the very bone and sinew will all labor in accord. 
-        GRIMOIRE: Flesh, as stone, exists as the matter of our Dominion and it should not dictate our action - nay, our will should dictate its motion, and its pangs and impulses consigned to their rightful place alongside other chores such as the tidying of a cupboard or the washing of a floor.
-        Even now that I’m older, I don’t really understand the older family spellbooks. I think this is a page about BECOME MECHANICAL... probably. The names I use for our spells aren’t in any of the family books and my grandmother hates what I call them. 
-        ’Our magic is not constrained by the artifice of Speech’ is what she says, but it’s hard for me to understand how to use them without giving them a name that makes sense. Well, I can only use one of them anyway so maybe she’s right.
+        "Through metaphysical configuration of concentration and spiritual essence, the will that moves the body can be applied to greater effect and additional force insuch that the very bone and sinew will all labor in accord."
+        "Flesh, as stone, exists as the matter of our Dominion and it should not dictate our action - nay, our will should dictate its motion,"
+        "and its pangs and impulses consigned to their rightful place alongside other chores such as the tidying of a cupboard or the washing of a floor."
+        Even now that I’m older, I don’t really understand the older family spellbooks. I think this is a page about BECOME MECHANICAL... probably. 
+        The names I use for our spells aren’t in any of the family books and my grandmother hates what I call them.
+        ’Our magic is not constrained by the artifice of Speech’ is what she says, 
+        but it’s hard for me to understand how to use them without giving them a name that makes sense. 
+        Well, I can only use one of them anyway so maybe she’s right.
+        SISTER: If he didn't leave any clues here, maybe they're in our room? He always puts them somewhere that he knows I'll look.
     ->END
     =ClueSearchB
         //At the desk in the siblings’ room
@@ -378,12 +388,12 @@ I should check on him today.
     ->END
     =ClueSearchC
         //Dresser near the siblings’ Bunk Bed
-        SISTER: He leaves notes inside this dresser sometimes, since it’s where I keep my stash of horror books I borrow from the school library. 
+        SISTER: He leaves notes under the bed sometimes, since it’s where I keep my stash of horror books I borrow from the school library. 
         // Rustling sounds if we can get them
-        SISTER: Why is it stuck?
+        SISTER: What's this stuffed on top of everything?
         //Big dresser sound
         SISTER: Is that - Oh no, no it’s ruined.
-        The new shirt my brother got from the thrift store last week was crammed into the back of the dresser drawer. It is - well, it was - a green t-shirt with a skateboarding dinosaur and three rocketships on it.
+        The new shirt my brother got from the thrift store last week was crammed into the slats of the bottom bunk. It is - well, it was - a green t-shirt with a skateboarding dinosaur and three rocketships on it.
         Now it’s half bleached and the ink is blotted and runny. I don’t think he’s ever used bleach before so he probably didn’t realize he had to dilute it to wash out a stain. 
         I wish I could’ve cleaned it for him. I should’ve noticed earlier, since he went to school wearing it yesterday but he didn’t have it on when we were eating dinner. 
         Stupid. 
@@ -405,8 +415,10 @@ I should check on him today.
     Nothing can frighten you if you’re the scariest thing around, after all. My grandma tried to teach me about it, once, but since I don’t have any talent for magic she never told me how to actually cast it. 
     It’s a spell that requires you to discard everything that makes you a person, and it’s a spell you can’t break or end on your own. 
     
-    I think... my brother used Become Fear. 
-    I need to find a way down into our hideout, in the far corner of the crawl space.
+    I think... my brother used BECOME FEAR. 
+    ...
+    The best way to get to the hideout is probably turning into dirt behind the armchair in the living room.
+    I need to talk to him.
     ->END
 
 
@@ -675,6 +687,10 @@ I should check on him today.
     =Laundry
         Mom asked me to run the washer today.
         ->END
+    =WasherPanel
+        We got this washer second-hand and it was missing the side panel for the dryer. Mom replaced it with this piece of plywood. She's so handy.
+        ->END
+
 
     //CrawlSpaceExplore
     =VentilationDuct

@@ -2,6 +2,26 @@
     "Objects": [
         {
             "UUID": "c0b2dbb6-b483-4e0c-b066-9c480d68dbf9",
+            "State": 1
+        },
+        {
+            "UUID": "a06db5bb-0362-4107-8365-8ee7fb4a6c26",
+            "State": 1
+        },
+        {
+            "UUID": "5922fa62-12e0-4355-b2c7-af44534f1a6b",
+            "State": 1
+        },
+        {
+            "UUID": "a2ff6a51-2471-41b1-aa90-a192efe9ebc3",
+            "State": 2
+        },
+        {
+            "UUID": "c2b6af3f-8fb1-4ddb-b09d-502c1b6433f2",
+            "State": 2
+        },
+        {
+            "UUID": "a5c87063-9670-416b-826f-5087038d17ca",
             "State": 2
         },
         {
@@ -41,8 +61,16 @@
             "State": 2
         },
         {
+            "UUID": "e3a22c26-acd2-417f-bf69-97864ae4ce99",
+            "State": 1
+        },
+        {
+            "UUID": "3335d60d-2149-4f14-a386-892c291e5d49",
+            "State": 2
+        },
+        {
             "UUID": "becf6757-4024-4461-b7b9-ebfd2df3e5a8",
-            "State": 0
+            "State": 2
         },
         {
             "UUID": "6c0283a8-9fef-4e2a-bdbf-ed4184cfa8b4",
